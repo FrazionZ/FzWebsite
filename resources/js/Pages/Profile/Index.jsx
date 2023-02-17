@@ -1,13 +1,13 @@
 import React from "react"
 import Layout from "@/Layouts/Layout"
 import { Link, Head } from '@inertiajs/react'
+import Alert from "@/Components/Alert"
 
 export default class ProfileIndex extends React.Component {
 
     constructor(props){
         super(props)
         this.title = "Profil"
-        console.log(props)
         this.status = props.status
         this.mustVerifyEmail = props.mustVerifyEmail
         this.TwoFA = props.auth.TwoFA
