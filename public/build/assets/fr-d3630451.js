@@ -1,4 +1,4 @@
-import{a as bb,d as CA,e as GM,h as PA}from"./app-ea394b83.js";function $q({state:M,message:b,className:O,styleBadge:c}){return bb("div",{className:`badge ${M} ${O}`,style:c,children:bb("span",{children:b})})}var vM={},YA={get exports(){return vM},set exports(M){vM=M}},CM={},xA={get exports(){return CM},set exports(M){CM=M}};//! moment.js
+import{a as bb,d as CA,e as GM,h as PA}from"./app-c3c193b5.js";function $q({state:M,message:b,className:O,styleBadge:c}){return bb("div",{className:`badge ${M} ${O}`,style:c,children:bb("span",{children:b})})}var vM={},YA={get exports(){return vM},set exports(M){vM=M}},CM={},xA={get exports(){return CM},set exports(M){CM=M}};//! moment.js
 //! version : 2.29.4
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT

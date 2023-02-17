@@ -13,7 +13,10 @@ export default function Login(props, { status, canResetPassword }) {
         email: '',
         password: '',
         remember: '',
+        _token: props.csrf_token
     });
+
+    alert(props.csrf_token)
 
     useEffect(() => {
         return () => {
