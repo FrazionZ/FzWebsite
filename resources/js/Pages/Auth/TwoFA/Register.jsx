@@ -8,6 +8,7 @@ export default function Register(props){
 
     const { data, setData, post, processing, errors } = useForm({
         code: '',
+        _token: props.csrf_token
     })
     
     function submit(e) {

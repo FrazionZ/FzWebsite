@@ -7,6 +7,7 @@ import { Head, useForm } from '@inertiajs/react';
 export default function ForgotPassword(props, { status }) {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
+        _token: props.csrf_token
     });
 
     const onHandleChange = (event) => {

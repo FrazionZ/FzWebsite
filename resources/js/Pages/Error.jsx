@@ -2,13 +2,6 @@ import { Link, Head } from '@inertiajs/react';
 import Error from '../../assets/img/error.png'
 
 export default function ErrorPage({ status }) {
-    const title = {
-      503: '503',
-      500: '500',
-      404: '404',
-      403: '403',
-      302: '302'
-    }[status]
   
     const description = {
       503: 'Sorry, we are doing some maintenance. Please check back soon.',
@@ -21,9 +14,9 @@ export default function ErrorPage({ status }) {
   
     return (
       <>
-        <Head title={title} />
+        <Head title={status} />
         <div className="error-page">
-          <h1>{(title == "") ? status : title}</h1>
+          <h1>{status}</h1>
           <img src={Error} alt="error_bee" />
           <span>{description}</span>
           <Link className="btn" href="/">Accueil</Link>

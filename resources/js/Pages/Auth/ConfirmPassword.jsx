@@ -9,6 +9,7 @@ import { Head, useForm } from '@inertiajs/react';
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
         password: '',
+        _token: props.csrf_token
     });
 
     useEffect(() => {

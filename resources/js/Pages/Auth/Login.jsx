@@ -16,8 +16,6 @@ export default function Login(props, { status, canResetPassword }) {
         _token: props.csrf_token
     });
 
-    alert(props.csrf_token)
-
     useEffect(() => {
         return () => {
             reset('password');
