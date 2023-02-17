@@ -30,7 +30,7 @@ export default class ProfileIndex extends React.Component {
                     {this.mustVerifyEmail && this.user.email_verified_at === null && (
                         <div className="flex justify-between items-center gap-[60px]">
                             <Alert state="warning" message="Tu dois valider ton adresse mail pour pouvoir jouer !" />
-                            <Link href={route('verification.send')} method="post" as="button" className="btn">Renvoyer un email</Link>
+                            <Link href={route('verification.send')} data={{_token: props.csrf_token}} method="post" as="button" className="btn">Renvoyer un email</Link>
 
                             {this.status === 'verification-link-sent' && (
                                 <div className="mt-2 font-medium text-sm text-green-600">

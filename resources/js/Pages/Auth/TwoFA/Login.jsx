@@ -22,7 +22,7 @@ export default function Register(props){
     
     async function handleClick(code) {
         setDisabledForm(true)
-        router.post(route('2fa.handleLogin'), { code: code })
+        router.post(route('2fa.handleLogin'), { code: code, _token: props.csrf_token })
     }
 
     return (
