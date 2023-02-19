@@ -13,18 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('candidate', function (Blueprint $table) {
-            $table->id();
-            $table->integer('uid');
-            $table->integer('age');
-            $table->string('discordtag');
-            $table->string('rank');
-            $table->text('present');
-            $table->integer('locked')->default(0);
-            $table->integer('public');
-            $table->integer('state')->default(0);
+        Schema::table('candidate', function (Blueprint $table) {
             $table->integer('substate')->default(0);
-            $table->timestamps();
         });
     }
 
