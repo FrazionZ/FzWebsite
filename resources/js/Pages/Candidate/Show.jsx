@@ -31,7 +31,7 @@ export default function CandidateShow(props) {
     
     async function submitComment(e) {
         e.preventDefault()
-        post(route('candidate.comment'), {
+        post(route('candidate.handleComment'), {
             preserveScroll: true,
             preserveState: true,
             onSuccess: (data) => {

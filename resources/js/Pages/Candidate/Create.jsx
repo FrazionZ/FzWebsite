@@ -34,18 +34,13 @@ export default function CandidateShow(props) {
     async function submitCandidate(e) {
         e.preventDefault()
         post(route('candidate.handleCreate'), {
-            preserveScroll: true,
             preserveState: true,
             resetOnSuccess: true,
             onFinish: (data) => {
-                console.log(data)
             },
             onSuccess: (data) => {
-                console.log(data)
             },
             onError: (data) => {
-                console.log(data)
-                FzToast.flash(data)
             },
         });
     }

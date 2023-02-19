@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import FzToast from './FzToast'
@@ -7,7 +7,6 @@ import { usePage } from '@inertiajs/react'
 export default function FzToastContainer(){
     
     const { flash } = usePage().props
-    const [flashed, setFlashed] = useState(false)
 
     if(flash.status !== null){
         let type = flash.status.type;

@@ -1,16 +1,18 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import Eye from '../../assets/img/icons/eye.svg'
 import EyeCrossed from '../../assets/img/icons/eye-crossed.svg'
-import Settings from '../../assets/img/icons/settings.svg'
 import { Tooltip } from "flowbite-react";
 
+import CandidateSettings from '@/Pages/Candidate/Settings'
 import Badge from "./Badge";
 
 import moment from 'moment-timezone'
 import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
-export default function CandidateComponentCardItem({ candid }){
+export default function CandidateComponentCardItem({ funcParse, candid }){
+
+    const props = usePage().props
 
     function replaceMonth(str)  {
         return str.replaceAll('January', 'Janvier')
@@ -42,7 +44,9 @@ export default function CandidateComponentCardItem({ candid }){
                 </div>
                 <div className="actions">
                     <Link className="btn" href={route('candidate.show', {id: candid.id})}>Visionner</Link>
-                    <Link className="btn icon" style={{width: "95px !important"}}><img src={Settings} /></Link>
+                    {props.auth.isAdmin == true &&
+                        <CandidateSettings funcParse={ funcParse } candid={candid} />
+                    }
                 </div>
             </div>
         </div>

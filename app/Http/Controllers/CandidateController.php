@@ -229,6 +229,33 @@ class CandidateController extends Controller
 
     }
 
+
+    public function handleSettings(Request $request){
+        $validator = Validator::make($request->all(), [
+            'cid' => 'required|int',
+            'state' => 'required|string',
+            'locked' => 'required|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez correctement remplir le formulaire !"));
+        }
+
+        $dstate = explode('_', $request->input('state'));
+        $state = $dstate[0];
+        $substate = $dstate[1];
+        $cid = $request->input('cid');
+        $locked = $request->input('locked');
+
+        Candidate::where('id', $cid)->update([
+            'state' => $state,
+            'substate' => $substate,
+            'locked' => $locked
+        ]);
+
+        return redirect()->back()->with("status", $this->toastResponse('success', "La candidature a bien été mis à jour"));
+    }
+
     
     public function dateDiff($date1, $date2){
         $diff = abs($date1 - $date2); // abs pour avoir la valeur absolute, ainsi éviter d'avoir une différence négative

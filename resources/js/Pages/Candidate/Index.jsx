@@ -9,12 +9,12 @@ import Clock from '../../../assets/img/icons/clock.svg'
 import ClockFast from '../../../assets/img/icons/time_fast.svg'
 import CommentPen from '../../../assets/img/icons/comment-pen.svg'
 import Alert from '@/Components/Alert'
+
 export default class CandidateIndex extends React.Component {
 
 
     constructor(props){
         super(props)
-        console.log(props)
         this.title = "Rejoindre notre équipe"
         for (const [i, category] of this.props.categories.entries()){
             switch(i){
@@ -33,9 +33,30 @@ export default class CandidateIndex extends React.Component {
             }
         }
         this.state = { categories: this.props.categories }
+        this.reloadCandidature = this.reloadCandidature.bind(this)
         this.setPageCategory = this.setPageCategory.bind(this)
         this.setLoading = this.setLoading.bind(this)
-        this.funcParse = { setLoading: this.setLoading, setPageCategory: this.setPageCategory }
+        this.funcParse = { setLoading: this.setLoading, reloadCandidature: this.reloadCandidature, setPageCategory: this.setPageCategory }
+    }
+
+    async initCategory(newData) {
+        for await (const [i, category] of newData.entries()){
+            switch(i){
+                case 0:
+                    category.icon = Clock;
+                    category.load = false;
+                    break;
+                case 1:
+                    category.icon = ClockFast;
+                    category.load = false;
+                    break;
+                case 2:
+                    category.icon = Pnotes;
+                    category.load = false;
+                    break;
+            }
+        }
+        return newData;
     }
 
     async setLoading(i, bool){
@@ -54,7 +75,10 @@ export default class CandidateIndex extends React.Component {
         this.setState({ categories: categories })
     }
 
-    
+    async reloadCandidature(categories){
+        let newCategories = await this.initCategory(categories)
+        this.setState({ categories: newCategories })
+    }
 
     render(){
         return (
@@ -73,7 +97,6 @@ export default class CandidateIndex extends React.Component {
                         {this.props.feature == false && 
                             <Alert className="w-full" state="error" message="Les Candidatures sont temporairement désactivées." />
                         }
-                        
                         {this.props.feature == true && this.props.candidCooldown == true && 
                             <Alert className="w-full" state="error" message="Votre précédente candidature a été traitée. Vous devez attendre 30 jours avant de postuler à nouveau" />
                         }
@@ -112,7 +135,7 @@ export default class CandidateIndex extends React.Component {
                                         }
                                         {category.load == false && category.candids.data.map((candid, index) => {
                                             return(
-                                                <CandidateComponentCard key={index} candid={candid} />   
+                                                <CandidateComponentCard funcParse={ this.funcParse } key={index} candid={candid} />   
                                             )
                                         })}
                                         <CandidateComponentPaginate funcParse={ this.funcParse } category={category} />

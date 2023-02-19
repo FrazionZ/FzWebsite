@@ -576,7 +576,7 @@ select:disabled label.file-upload:has([disabled]) {
 }
 
 input.discord[type="text"] {
-    box-shadow: inset 0px -4px 0px #6370F4 !important;
+    box-shadow: inset 0px -4px 0px #6370f4 !important;
 }
 
 input[type="radio"] {
@@ -590,6 +590,16 @@ input[type="radio"]:focus {
 input[type="tel"] {
     width: 4rem;
     text-align: center;
+}
+.dialog .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.dialog .head .titleDialog {
+    text-align: left;
 }
 .wmde-markdown {
     background-color: transparent !important;
