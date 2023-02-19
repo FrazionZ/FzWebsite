@@ -85,7 +85,6 @@ export default function CandidateShow(props) {
                                     <label>Rôle souhaité</label>
                                     <select name="rank" value={data.rank} disabled={processing} onChange={(e) => { setData('rank', e.target.value) }}>
                                         <option value="helper">Helper</option>
-                                        <option value="michel">Michel</option>
                                     </select>
                                 </div>
                             </div>
