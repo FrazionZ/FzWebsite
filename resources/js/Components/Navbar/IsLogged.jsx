@@ -8,7 +8,7 @@ export default function IsLogged({ auth }) {
             name: "Profil"
         },
         {
-            value: "/prfoile/settings",
+            value: "/profile/settings",
             name: "Paramètres"
         },
         
