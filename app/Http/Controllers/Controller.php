@@ -18,4 +18,8 @@ class Controller extends BaseController
         return $features->state;
     }
 
+    public function toastResponse($type, $message){
+        return ["type" => $type, "msg" => $message];
+    }
+
 }

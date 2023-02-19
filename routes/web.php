@@ -19,19 +19,14 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Home', []);
 })->name('index');
 
 Route::get('/launcher', function () {
     return Inertia::render('Launcher', [ ]);
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('fzauth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -44,10 +39,12 @@ Route::middleware(['2fa'])->group(function () {
     Route::post('/2fa/login', [TwoFAController::class, 'handleLogin'])->name('2fa.handleLogin');
 });
 
-Route::middleware(['auth'])->prefix('candidate')->name('candidate.')->group(function() {
+Route::middleware(['fzauth'])->prefix('candidate')->name('candidate.')->group(function() {
     Route::get('/', [CandidateController::class, 'index'])->name('index');
+    Route::get('/create', [CandidateController::class, 'create'])->name('create');
     Route::get('/show/{id}', [CandidateController::class, 'show'])->name('show');
-    Route::post('/handleComment', [CandidateController::class, 'show'])->name('comment');
+    Route::post('/handleCreate', [CandidateController::class, 'handleCreate'])->name('handleCreate');
+    Route::post('/handleComment', [CandidateController::class, 'handleComment'])->name('comment');
     Route::get('/paginate/{category}/{page}', [CandidateController::class, 'requestPaginate'])->name('paginate');
 });
 

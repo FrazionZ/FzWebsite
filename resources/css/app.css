@@ -279,7 +279,10 @@ header nav .menu_account .not_logged {
     header nav .menu_account .not_logged {
         align-items: center;
     }
-    header nav, header nav .menu_general, header nav .menu_subgeneral, header nav .menu_account .not_logged {
+    header nav,
+    header nav .menu_general,
+    header nav .menu_subgeneral,
+    header nav .menu_account .not_logged {
         flex-direction: column;
     }
 }
@@ -517,7 +520,8 @@ input[type="tel"],
 input[type="file"],
 input[type="number"],
 input[type="email"],
-textarea,
+textarea:not(.w-md-editor-text-input),
+select,
 input[type="password"] {
     border-radius: 12px !important;
     padding: 24px !important;
@@ -531,7 +535,7 @@ input[type="password"] {
     transition: 0.2s all ease-in-out;
 }
 
-textarea {
+textarea:not(.w-md-editor-text-input) {
     height: 10rem !important;
     font-size: 1.2rem !important;
     padding: 0px 0px 5rem;
@@ -543,8 +547,9 @@ input:not([disabled])[type="tel"]:hover,
 input:not([disabled])[type="file"]:hover,
 input:not([disabled])[type="number"]:hover,
 input:not([disabled])[type="email"]:hover,
-textarea:not([disabled])[type="email"]:hover,
-input:not([disabled])[type="password"]:hover {
+textarea:not(.w-md-editor-text-input):not([disabled]):hover,
+select:not([disabled])[type="email"]:hover
+    input:not([disabled])[type="password"]:hover {
     box-shadow: inset 0px -4px 0px var(--color-2);
     --tw-ring-color: transparent !important;
 }
@@ -554,7 +559,8 @@ input[type="tel"]:focus,
 input[type="file"]:focus,
 input[type="number"]:focus,
 input[type="email"]:focus,
-textarea:focus,
+textarea:not(.w-md-editor-text-input):focus,
+select:focus,
 input[type="password"]:focus {
     box-shadow: inset 0px -4px 0px var(--color-2);
     --tw-ring-color: transparent !important;
@@ -564,9 +570,13 @@ input:disabled[type="text"],
 input:disabled[type="email"],
 input:disabled[type="tel"],
 input:disabled[type="password"],
-textarea:disabled,
-label.file-upload:has([disabled]) {
-    color: var(--text-inactive)
+textarea:not(.w-md-editor-text-input):disabled,
+select:disabled label.file-upload:has([disabled]) {
+    color: var(--text-inactive);
+}
+
+input.discord[type="text"] {
+    box-shadow: inset 0px -4px 0px #6370F4 !important;
 }
 
 input[type="radio"] {
@@ -581,7 +591,9 @@ input[type="tel"] {
     width: 4rem;
     text-align: center;
 }
-
+.wmde-markdown {
+    background-color: transparent !important;
+}
 .w-md-editor-toolbar,
 .w-md-editor-content {
     background-color: var(--fzbg-2) !important;
@@ -627,6 +639,35 @@ input[type="tel"] {
     top: -7rem;
     left: 34.5rem;
 }
+
+button[role="switch"][aria-checked="true"] {
+    background: linear-gradient(91.92deg, #f7a92f 0%, #f16b1f 100%) !important;
+    border: 0px solid transparent;
+}
+
+button[role="switch"] {
+    width: 80px;
+    height: 40px;
+    padding: 0px !important;
+    position: relative;
+    border: 1px solid #24262b;
+}
+
+button[role="switch"] span {
+    width: 28px !important;
+    height: 28px !important;
+    position: absolute;
+    --tw-translate-x: 0 !important;
+    transition: all 0.2s ease-in-out;
+}
+
+button[role="switch"][aria-checked="false"] span {
+    left: 6px;
+}
+button[role="switch"][aria-checked="true"] span {
+    left: 46px;
+}
+
 .badge {
     border-radius: 8px;
     padding: 8px 16px;
@@ -685,7 +726,7 @@ input[type="tel"] {
     gap: 24px;
 }
 .card.candidate.comment {
-    box-shadow: 0px 4px 0px #6C26B2;
+    box-shadow: 0px 4px 0px #6c26b2;
 }
 .card.candidate.comment .card-body {
     display: flex;

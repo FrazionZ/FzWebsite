@@ -13,6 +13,8 @@ use App\Models\User;
 
 class LoginRequest extends FormRequest
 {
+
+    protected $redirect = "/login";
     /**
      * Determine if the user is authorized to make this request.
      */

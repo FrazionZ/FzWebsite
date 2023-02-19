@@ -10,4 +10,6 @@ class Candidate extends Model
     use HasFactory;
 
     protected $table = "candidate";
+
+    protected $fillable = ['age', 'uid', 'discordtag', 'rank', 'present', 'public'];
 }

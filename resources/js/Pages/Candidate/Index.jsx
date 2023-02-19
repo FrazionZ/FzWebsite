@@ -14,6 +14,7 @@ export default class CandidateIndex extends React.Component {
 
     constructor(props){
         super(props)
+        console.log(props)
         this.title = "Rejoindre notre équipe"
         for (const [i, category] of this.props.categories.entries()){
             switch(i){
@@ -73,15 +74,21 @@ export default class CandidateIndex extends React.Component {
                             <Alert className="w-full" state="error" message="Les Candidatures sont temporairement désactivées." />
                         }
                         
-                        {this.props.feature == true && 
+                        {this.props.feature == true && this.props.candidCooldown == true && 
+                            <Alert className="w-full" state="error" message="Votre précédente candidature a été traitée. Vous devez attendre 30 jours avant de postuler à nouveau" />
+                        }
+                        {this.props.feature == true && this.props.candidAlreadyPost == true && 
+                            <Alert className="w-full" state="error" message="Vous avez déjà envoyé une candidature, vous ne pouvez plus en poster pour le moment." />
+                        }
+                        {this.props.feature == true && this.props.candidAlreadyPost == false && this.props.candidCooldown == false && 
                             <>
                                 <div className="alert infos w-full">
                                     <span>
-                                        Pour rejoindre notre équipe, merci de remplir le formulaire ci-dessous. <br />Merci de suivre un maximum les conditions pour postuler. 
+                                        Pour rejoindre notre équipe, merci de remplir le formulaire ci-dessous. Merci de suivre un maximum les conditions pour postuler. 
                                         <br />Les conditions, et un exemple, sont présents sur <Link href="#">cette page.</Link>
                                     </span>
                                 </div>
-                                <Link href="#" className='btn'>Postuler Maintenant</Link>
+                                <Link href={ route('candidate.create') } className='btn'>Postuler Maintenant</Link>
                             </>
                         }
                     </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navbar from '@/Components/Navbar'
 import { FaDiscord, FaTwitter, FaInstagram, FaYoutube, FaTiktok, FaTwitch } from 'react-icons/fa'
+import FzToastContainer from '@/Components/FzToastContainer'
 
 export default function Layout({ props, mc, title, isHome, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false); 
@@ -38,6 +39,7 @@ export default function Layout({ props, mc, title, isHome, children }) {
                     </div>
                 </footer>
             </div>
+            <FzToastContainer />
         </div>
     );
 }

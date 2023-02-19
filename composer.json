@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "bacon/bacon-qr-code": "^2.0",
+        "graham-campbell/markdown": "14.0",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.3",
         "jeremykenedy/laravel-roles": "^9.1",

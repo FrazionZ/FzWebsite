@@ -1,12 +1,10 @@
 import Badge from "./Badge";
 
 import moment from 'moment-timezone'
-import 'moment/locale/fr'  // without this line it didn't work
+import 'moment/locale/fr' 
 moment.locale('fr')
 
 export default function CandidateComponentCardComment({ comment }){
-
-    console.log(comment)
 
     return (
         <div className="card candidate comment">

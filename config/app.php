@@ -213,6 +213,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
+        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
     ])->toArray(),
 
 ];
