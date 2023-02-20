@@ -55,7 +55,7 @@ a {
     border-radius: 12px;
     background: var(--fzbg-2);
     padding: 24px;
-    font-size: 20px;
+    font-size: 16px;
     color: var(--text);
     border: solid #24262b;
     border-width: 1px 1px 0px 1px;
@@ -69,6 +69,7 @@ a {
 
 .alert span {
     font-family: "Poppins";
+    font-size: 16px;
 }
 
 .alert.error {

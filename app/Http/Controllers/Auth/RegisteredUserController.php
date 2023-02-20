@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Role;
+use App\Models\RoleUser;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -32,7 +34,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string',
             'email' => 'required|string|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -40,14 +42,25 @@ class RegisteredUserController extends Controller
         if ($validator->fails()) {
             return redirect(route('register'))
                         ->withErrors($validator)
-                        ->withInput();
+                        ->withInput()
+                        ->with("status", $this->toastResponse('error', "Le formulaire est incomplet"));
         }
+
+        $patternUsername = "/^[A-Z0-9_]{3,16}$/i";
+        if(!preg_match($patternUsername, $request->name))
+            return redirect(route('register'))->with("status", $this->toastResponse('error', "Votre pseudo n'est pas valide."));
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'two_factor_secret' => $request->two_factor_secret,
+        ]);
+
+        //Attribute role at user created
+        RoleUser::insert([
+            'role_id' => Role::defaultRoleId(),
+            'user_id' => $user->id,
         ]);
 
         event(new Registered($user));

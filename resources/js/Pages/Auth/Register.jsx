@@ -112,9 +112,9 @@ export default function Register(props) {
                         Already registered?
                     </Link>
 
-                    <PrimaryButton className="ml-4" processing={processing}>
-                        Register
-                    </PrimaryButton>
+                    <button className="btn" disabled={processing}>
+                        Continuer
+                    </button>
                 </div>
             </form>
         </Layout>

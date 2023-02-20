@@ -30,9 +30,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->authenticate($this);
 
         $user = Auth::user();
+        
         if($user->hasTwoFactorAuth()){
             Auth::guard('web')->logout();
             $request->session()->put('login.2fa', [

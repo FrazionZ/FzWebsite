@@ -91,9 +91,9 @@ export default function Login(props, { status, canResetPassword }) {
                         </Link>
                     )}
 
-                    <PrimaryButton className="ml-4" processing={processing}>
-                        Log in
-                    </PrimaryButton>
+                    <button className="btn" disabled={processing}>
+                        Se connecter
+                    </button>
                 </div>
             </form>
         </Layout>

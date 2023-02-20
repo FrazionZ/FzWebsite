@@ -254,4 +254,5 @@ return [
     */
 
     'route_middlewares' => true,
+    'default' => 2
 ];

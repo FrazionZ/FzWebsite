@@ -1,5 +1,6 @@
 import { Link, Head } from '@inertiajs/react';
 import Error from '../../assets/img/error.png'
+import '../../css/app.css';
 
 export default function ErrorPage({ status }) {
   
