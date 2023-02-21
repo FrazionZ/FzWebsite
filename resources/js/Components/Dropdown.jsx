@@ -1,51 +1,83 @@
-import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Link } from '@inertiajs/react'
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+import '../../css/dropdown.css'
 
-export default function Dropdown({ text, items }) {
+export default function DropdownProfile({ text, items, user }) {
+  
+  const itemVariants = {
+      open: {
+        opacity: 1,
+        y: 0,
+        transition: { type: "spring", stiffness: 300, damping: 24 }
+      },
+      closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+  }
+
+  
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Menu as="div" className="relative inline-block text-left nav-link">
-      <div>
-        <Menu.Button className="nav-link">
-          { text }
-          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-        </Menu.Button>
-      </div>
-
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
+    <motion.div
+      initial={false}
+      animate={isOpen ? "open" : "closed"}
+      className="dropdownFz menu"
+    >
+      <motion.button
+        whileTap={{ scale: 0.97 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className={(isOpen) ? "isOpen" : ""}
       >
-        <Menu.Items className="absolute dropdown_menu right-0 z-10 mt-2 w-56 origin-top-right shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          {items.map((elem, i) => {
+        { text }
+        <motion.div
+          variants={{
+            open: { rotate: 180 },
+            closed: { rotate: 0 }
+          }}
+          transition={{ duration: 0.2 }}
+          style={{ originY: 0.55 }}
+        >
+          <svg width="15" height="15" viewBox="0 0 20 20">
+            <path d="M0 7 L 20 7 L 10 16" />
+          </svg>
+        </motion.div>
+      </motion.button>
+      <motion.ul
+        variants={{
+          open: {
+            clipPath: "inset(0% 0% 0% 0% round 10px)",
+            transition: {
+              type: "spring",
+              bounce: 0,
+              duration: 0.7,
+              delayChildren: 0.3,
+              staggerChildren: 0.05
+            }
+          },
+          closed: {
+            clipPath: "inset(10% 50% 90% 50% round 10px)",
+            transition: {
+              type: "spring",
+              bounce: 0,
+              duration: 0.3
+            }
+          }
+        }}
+        style={{ pointerEvents: isOpen ? "auto" : "none" }}
+      >
+        {items.map((elem, i) => {
             return (
-              <Menu.Item key={i}>
-                {({ active }) => (
-                  <Link
-                    href={elem.value}
-                    method={(elem.method !== undefined) ? elem.method : "get"}
-                    className={classNames(
-                      active ? 'bg-[var(--fzbg-1)]' : '',
-                      'block px-4 py-2 text-[16px] leading-[24px] font-normal text-[#FFF]'
-                    )}
-                  >
-                    {elem.name}
-                  </Link>
-                )}
-              </Menu.Item>
+              <Link
+                href={elem.value}
+                method={(elem.method !== undefined) ? elem.method : "get"}
+                >
+                <motion.li variants={itemVariants}>{elem.name}</motion.li>
+              </Link>
             )
           })}
-        </Menu.Items>
-      </Transition>
-    </Menu>
+      </motion.ul>
+    </motion.div>
   )
+
+
 }

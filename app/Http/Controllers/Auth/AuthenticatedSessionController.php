@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -30,9 +31,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+       
+
         $request->authenticate($this);
 
         $user = Auth::user();
+
+        if(!$user == null)
+            return redirect(route('login'))->with("status", $this->toastResponse('error', "Les identifiants ne sont pas correctes."));
         
         if($user->hasTwoFactorAuth()){
             Auth::guard('web')->logout();

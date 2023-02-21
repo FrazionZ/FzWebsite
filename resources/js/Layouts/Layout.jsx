@@ -4,6 +4,13 @@ import { FaDiscord, FaTwitter, FaInstagram, FaYoutube, FaTiktok, FaTwitch } from
 import FzToastContainer from '@/Components/FzToastContainer'
 import '../../css/app.css';
 
+import Discord from '../../assets/img/icons/network/discord'
+import Insta from '../../assets/img/icons/network/insta'
+import Tiktok from '../../assets/img/icons/network/tiktok'
+import Twitter from '../../assets/img/icons/network/twitter'
+import Twitch from '../../assets/img/icons/network/twitch'
+import Youtube from '../../assets/img/icons/network/youtube'
+
 export default function Layout({ props, mc, title, isHome, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false); 
 
@@ -18,12 +25,12 @@ export default function Layout({ props, mc, title, isHome, children }) {
                     <div className="network">
                         <div className="title">Nos Réseaux</div>
                         <ul>
-                            <li><a href="https://discord.gg/sSf7NCs8Ap" target="_blank"><FaDiscord /></a></li>
-                            <li><a href="https://twitter.com/frazionz/" target="_blank"><FaTwitter /></a></li>
-                            <li><a href="https://www.instagram.com/frazionz/" target="_blank"><FaInstagram /></a></li>
-                            <li><a href="https://www.youtube.com/" target="_blank"><FaYoutube /></a></li>
-                            <li><a href="https://www.tiktok.com/@frazionz" target="_blank"><FaTiktok /></a></li>
-                            <li><a href="https://www.twitch.tv/frazionz" target="_blank"><FaTwitch /></a></li>
+                            <li><a className="social" href="https://discord.gg/sSf7NCs8Ap" target="_blank"><Discord /></a></li>
+                            <li><a className="social" href="https://twitter.com/frazionz/" target="_blank"><Twitter /></a></li>
+                            <li><a className="social" href="https://www.instagram.com/frazionz/" target="_blank"><Insta /></a></li>
+                            <li><a className="social" href="https://www.youtube.com/" target="_blank"><Youtube /></a></li>
+                            <li><a className="social" href="https://www.tiktok.com/@frazionz" target="_blank"><Tiktok /></a></li>
+                            <li><a className="social" href="https://www.twitch.tv/frazionz" target="_blank"><Twitch /></a></li>
                         </ul>
                     </div>
                     <div className="contact">

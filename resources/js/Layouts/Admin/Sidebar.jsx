@@ -33,38 +33,38 @@ export default function AdminSidebar() {
                                                         icon={BsFillBarChartFill}
                                                         label="Paramètres"
                                                     >  
-                                                    <Link href={route('admin.index')}>
+                                                    <Link href={route('admin.index')} preserveState>
                                                         <Sidebar.Item>
                                                             Maintenance
                                                         </Sidebar.Item>
                                                     </Link>
-                                                    <Link href={route('admin.index')}>
+                                                    <Link href={route('admin.index')} preserveState>
                                                         <Sidebar.Item>
                                                             Liste des joueurs
                                                         </Sidebar.Item>
                                                     </Link> 
-                                                    <Link href={route('admin.index')}>
+                                                    <Link href={route('admin.index')} preserveState>
                                                         <Sidebar.Item>
                                                             Grades
                                                         </Sidebar.Item>
                                                     </Link> 
-                                                    <Link href={route('admin.index')}>
+                                                    <Link href={route('admin.index')} preserveState>
                                                         <Sidebar.Item>
                                                             Features
                                                         </Sidebar.Item>
                                                     </Link> 
-                                                    <Link href={route('admin.index')}>
+                                                    <Link href={route('admin.index')} preserveState>
                                                         <Sidebar.Item>
                                                             Réseaux Sociaux
                                                         </Sidebar.Item>
                                                     </Link>
-                                                    <Link href={route('admin.index')}>
+                                                    <Link href={route('admin.index')} preserveState>
                                                         <Sidebar.Item>
                                                             CGU/CGV
                                                         </Sidebar.Item>
                                                     </Link>  
                                                 </Sidebar.Collapse>
-                                                <Link href={route('admin.index')}>
+                                                <Link href={route('admin.index')} preserveState>
                                                     <Sidebar.Item icon={FiNavigation}>
                                                         Navigation
                                                     </Sidebar.Item>
@@ -75,12 +75,12 @@ export default function AdminSidebar() {
                                                     icon={IoMdCart}
                                                     label="Boutique"
                                                 >
-                                                <Link href={route('admin.index')}>
+                                                <Link href={route('admin.index')} preserveState>
                                                     <Sidebar.Item>
                                                         Liste des articles
                                                     </Sidebar.Item>
                                                 </Link> 
-                                                <Link href={route('admin.index')}>
+                                                <Link href={route('admin.index')} preserveState>
                                                     <Sidebar.Item>
                                                         Historique d'achats
                                                     </Sidebar.Item>

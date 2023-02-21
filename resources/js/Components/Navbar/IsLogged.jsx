@@ -5,11 +5,13 @@ export default function IsLogged({ auth }) {
     let childsElement = [
         {
             value: "/profile",
-            name: "Profil"
+            name: "Profil",
+            type: "inerlink"
         },
         {
             value: "/profile/settings",
-            name: "Paramètres"
+            name: "Paramètres",
+            type: "inerlink"
         },
         
     ]
@@ -17,13 +19,15 @@ export default function IsLogged({ auth }) {
     if(auth.isAdmin) 
         childsElement.push({
             value: "/admin",
-            name: "Panel Admin"
+            name: "Panel Admin",
+            type: "hyperlink"
         })
 
     childsElement.push({
         value: "/logout",
         name: "Déconnexion",
-        method: 'post'
+        method: 'post',
+        type: "inerlink"
     })
 
 

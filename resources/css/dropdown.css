@@ -1,0 +1,133 @@
+.dropdownFz {
+    --black: #000000;
+    --ash-black: #222;
+    --white: #fafafa;
+    --sky: #00ccff;
+    --green: #22dddd;
+    --blue: #1300ff;
+    --dusk: #6600ff;
+    --purple: #9900ff;
+    --pink: #ff0066;
+    --red: #fe0222;
+    --orange: #fd7702;
+    --yellow: #ffbb00;
+  
+    --background: var(--fzbg-2);
+    --accent: var(--color-2);
+  
+    margin: 0;
+    padding: 0;
+    color: var(--accent);
+    padding-bottom: 100px;
+}
+
+.dropdownFz.menu {
+    width: 10rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: -moz-fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+.dropdownFz ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    background: var(--background);
+    position: absolute;
+    width: 100%;
+    top: 3.58rem;
+    z-index: 99;
+    padding: 0 !important;
+}
+
+.dropdownFz li {
+    color: var(--white);
+    display: block;
+    padding: 12px 20px;
+    transition: background 0.2s ease-in-out;
+}
+
+.dropdownFz li:hover {
+    background: var(--fzbg-1);
+}
+
+.dropdownFz ul,
+.dropdownFz li {
+    list-style: none;
+    margin: 0;
+}
+
+.dropdownFz button {
+    -webkit-appearance: button;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease-in-out;
+}
+
+.dropdownFz button:hover,
+.dropdownFz button.isOpen {
+    background-color: var(--fzbg-1);
+}
+
+.dropdownFz button .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdownFz button .user img {
+    border-radius: 5px;
+    width: 2.09rem;
+}
+
+.dropdownFz button path {
+    fill: var(--white);
+}
+
+.dropdownFz .controls {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-bottom: 50px;
+    align-items: center;
+}
+
+.dropdownFz .example {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.dropdownFz .item {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: var(--background);
+    color: var(--accent);
+    font-size: 240px;
+    line-height: 260px;
+    font-weight: 700;
+    border-radius: 30px;
+}
+
+header nav .dropdownFz {
+    background: transparent;
+}
