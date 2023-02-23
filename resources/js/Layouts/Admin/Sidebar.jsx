@@ -33,12 +33,12 @@ export default function AdminSidebar() {
                                                         icon={BsFillBarChartFill}
                                                         label="Paramètres"
                                                     >  
-                                                    <Link href={route('admin.index')} preserveState>
+                                                    <Link href={route('admin.maintenance.index')} preserveState>
                                                         <Sidebar.Item>
                                                             Maintenance
                                                         </Sidebar.Item>
                                                     </Link>
-                                                    <Link href={route('admin.index')} preserveState>
+                                                    <Link href={ route('admin.users.index') } preserveState>
                                                         <Sidebar.Item>
                                                             Liste des joueurs
                                                         </Sidebar.Item>

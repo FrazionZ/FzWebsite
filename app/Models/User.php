@@ -24,6 +24,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'uuid',
+        'money',
+        'banned',
         'two_factor_secret'
     ];
 
@@ -55,7 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function getRole($userID)
     {
         $roleUser = RoleUser::where('user_id', $userID)->first();
-        $role =  Role::select('name', 'color')->where('id', $roleUser->id)->first();
+        $roleUserID = Role::defaultRoleId();
+        if($roleUser !== null) $roleUserID = $roleUser->role_id;
+        $role =  Role::select('name', 'color')->where('id', $roleUserID)->first();
         return $role->toArray();
     }
 }

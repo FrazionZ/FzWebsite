@@ -32,11 +32,11 @@ Route::middleware('fzauth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['2fa'])->group(function () {
-    Route::get('/2fa/register', [TwoFAController::class, 'register'])->middleware(['auth'])->name('2fa.register');
-    Route::post('/2fa/enable', [TwoFAController::class, 'enable'])->middleware(['auth'])->name('2fa.enable');
-    Route::get('/2fa/login', [TwoFAController::class, 'login'])->name('2fa.login');
-    Route::post('/2fa/login', [TwoFAController::class, 'handleLogin'])->name('2fa.handleLogin');
+Route::middleware(['2fa'])->name('2fa.')->group(function () {
+    Route::get('/2fa/register', [TwoFAController::class, 'register'])->middleware(['auth'])->name('register');
+    Route::post('/2fa/enable', [TwoFAController::class, 'enable'])->middleware(['auth'])->name('enable');
+    Route::get('/2fa/login', [TwoFAController::class, 'login'])->name('login');
+    Route::post('/2fa/login', [TwoFAController::class, 'handleLogin'])->name('handleLogin');
 });
 
 Route::middleware(['fzauth'])->prefix('candidate')->name('candidate.')->group(function() {
@@ -50,5 +50,10 @@ Route::middleware(['fzauth'])->prefix('candidate')->name('candidate.')->group(fu
 });
 
 Route::get('/complete-registration', [Auth\RegisteredUserController::class, 'completeRegistration'])->name('complete.registration');
+
+
+Route::get('/maintenance', function() {
+    return Inertia::render('Maintenance', []);
+})->name('maintenance');
 
 require __DIR__.'/auth.php';

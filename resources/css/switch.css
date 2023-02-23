@@ -1,0 +1,27 @@
+button[role="switch"][aria-checked="true"] {
+    background: linear-gradient(91.92deg, #f7a92f 0%, #f16b1f 100%) !important;
+    border: 0px solid transparent;
+}
+
+button[role="switch"] {
+    width: 80px;
+    height: 40px;
+    padding: 0px !important;
+    position: relative;
+    border: 1px solid #24262b;
+}
+
+button[role="switch"] span {
+    width: 28px !important;
+    height: 28px !important;
+    position: absolute;
+    --tw-translate-x: 0 !important;
+    transition: all 0.2s ease-in-out;
+}
+
+button[role="switch"][aria-checked="false"] span {
+    left: 6px;
+}
+button[role="switch"][aria-checked="true"] span {
+    left: 46px;
+}

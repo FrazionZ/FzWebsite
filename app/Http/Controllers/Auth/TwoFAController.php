@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -97,6 +98,8 @@ class TwoFAController extends Controller
         $request->session()->remove('login.2fa');
 
         //$user->replaceRecoveryCode($code);
+
+        if($user->uuid == null) $user->update(['uuid' => Str::uuid()]);
 
         return redirect()->route('index');
     }

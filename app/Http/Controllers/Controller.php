@@ -7,7 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Features;
-
+use Illuminate\Support\Facades\Artisan;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -21,5 +21,14 @@ class Controller extends BaseController
     public function toastResponse($type, $message){
         return ["type" => $type, "msg" => $message];
     }
+
+    public static function putConfig($name,$key,$value)
+    {
+        config([$name.'.'.$key => $value]);
+        $fp = fopen(base_path() .'/config/'.$name.'.php' , 'w');
+        fwrite($fp, '<?php return ' . var_export(config($name), true) . ';');
+        fclose($fp);
+        Artisan::call('cache:clear');
+     }
 
 }

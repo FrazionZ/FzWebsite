@@ -3,21 +3,27 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
+use \Illuminate\Support\Str;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
+    
+    
+    use AuthenticatesUsers;
+
+    
+    protected $redirectTo = RouteServiceProvider::HOME;
+
     public function create(): Response
     {
         return Inertia::render('Auth/Login', [
@@ -29,18 +35,43 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-       
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string',
+            'password' => 'required|string',
+        ]);
 
-        $request->authenticate($this);
+        if ($validator->fails()) {
+            return redirect(route('login'))
+                        ->withErrors($validator)
+                        ->withInput()
+                        ->with("status", $this->toastResponse('error', "Le formulaire est incomplet"));
+        }
 
-        $user = Auth::user();
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+            return redirect(route('login'))->with("status", $this->toastResponse('error', "Too Many Login."));
+        }
 
-        if(!$user == null)
-            return redirect(route('login'))->with("status", $this->toastResponse('error', "Les identifiants ne sont pas correctes."));
-        
-        if($user->hasTwoFactorAuth()){
+        if (! $this->guard()->once($this->credentials($request))) {
+            $this->incrementLoginAttempts($request);
+            return redirect(route('login'))->with("status", $this->toastResponse('error', "Identifiants invalides."));
+        }
+
+        $user = $this->guard()->user();
+
+        if ($user === null || $user->isDeleted()) {
+            return redirect(route('login'))->with("status", $this->toastResponse('error', "L'utilisatuer n'est plus valide."));
+        }
+
+        return $this->loginUser($request, $user);
+    }
+
+    protected function loginUser(Request $request, User $user)
+    {
+
+        if ($user->hasTwoFactorAuth()) {
             Auth::guard('web')->logout();
             $request->session()->put('login.2fa', [
                 'id' => $user->id,
@@ -49,9 +80,11 @@ class AuthenticatedSessionController extends Controller
             return to_route('2fa.login', []);
         }
 
-        $request->session()->regenerate();
+        $this->guard()->login($user, $request->filled('remember'));
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if($user->uuid == null) $user->update(['uuid' => Str::uuid()]);
+
+        return $this->sendLoginResponse($request);
     }
 
     /**

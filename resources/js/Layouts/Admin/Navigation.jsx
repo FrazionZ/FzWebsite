@@ -96,7 +96,7 @@ export default class Navigation extends React.Component {
                                         ></path>
                                     </svg>
                                 </button>
-                                <a href="" className="flex ml-2 md:mr-24">
+                                <a href={ route('index') } className="flex ml-2 md:mr-24">
                                     <img
                                         src={logo}
                                         className="h-8 mr-3"

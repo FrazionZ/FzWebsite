@@ -16,6 +16,7 @@ use App\Models\RoleUser;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 class RegisteredUserController extends Controller
 {
     /**
@@ -53,6 +54,7 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'uuid' => Str::uuid(),
             'password' => Hash::make($request->password),
             'two_factor_secret' => $request->two_factor_secret,
         ]);

@@ -3,6 +3,7 @@ import Navbar from '@/Components/Navbar'
 import { FaDiscord, FaTwitter, FaInstagram, FaYoutube, FaTiktok, FaTwitch } from 'react-icons/fa'
 import FzToastContainer from '@/Components/FzToastContainer'
 import '../../css/app.css';
+import '../../css/switch.css';
 
 import Discord from '../../assets/img/icons/network/discord'
 import Insta from '../../assets/img/icons/network/insta'
