@@ -18,7 +18,7 @@ export default class AdminIndex extends React.Component {
                 <div className="p-10">
                     <h1 className="text-3xl text-white mb-5">Bienvenue <b>{this.user.name}</b></h1>
 
-                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                         <Card>
                             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 Nombre d'utilisateurs

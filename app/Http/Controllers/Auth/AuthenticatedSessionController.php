@@ -71,6 +71,10 @@ class AuthenticatedSessionController extends Controller
     protected function loginUser(Request $request, User $user)
     {
 
+        if ($user->isBanned()){
+            return redirect(route('login'))->with("status", $this->toastResponse('error', "Vous êtes bannis. Vous ne pouvez plus vous connecter"));
+        }
+
         if ($user->hasTwoFactorAuth()) {
             Auth::guard('web')->logout();
             $request->session()->put('login.2fa', [

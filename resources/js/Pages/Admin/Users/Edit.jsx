@@ -21,6 +21,7 @@ export default function MaintenanceIndex(props) {
         email: user.email,
         money: user.money,
         banned: user.banned,
+        role: user.role.id,
         _token: props.csrf_token
     })
 
@@ -115,23 +116,35 @@ export default function MaintenanceIndex(props) {
                         <form onSubmit={submitUser}>
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="first-name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pseudo</label>
-                                    <input type="text" onChange={ (e) => { setData('username', e.target.value) }} name="first-name" id="first-name" value={ data.username } className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Bonnie" required/>
+                                    <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pseudo</label>
+                                    <input type="text" onChange={ (e) => { setData('username', e.target.value) }} name="first-name" id="name" value={ data.username } className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Pseudo" required/>
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="last-name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Adresse Email</label>
-                                    <input type="email" onChange={ (e) => { setData('email', e.target.value) }} name="last-name" id="last-name" value={ data.email }  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Green" required/>
+                                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Adresse Email</label>
+                                    <input type="email" onChange={ (e) => { setData('email', e.target.value) }} name="email" id="email" value={ data.email }  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Email" required/>
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="country" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">UUID</label>
-                                    <input type="text" name="country" id="country" disabled value={ user.uuid } className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="United States" required/>
+                                    <label htmlFor="uuid" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">UUID</label>
+                                    <input type="text" name="uuid" id="uuid" disabled value={ user.uuid } className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="N/A" required/>
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="city" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Points boutique</label>
-                                    <input type="number" onChange={moneyChange} name="city" id="city" value={ data.money } className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. San Francisco" required/>
+                                    <label htmlFor="money" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Points boutique</label>
+                                    <input type="number" onChange={moneyChange} name="money" id="money" value={ data.money } className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="N/A" required/>
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="city" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Est bannis ?</label>
+                                    <label htmlFor="banned" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rôle</label>
+                                    <Select
+                                        onChange={ (e) => { setData('role', e.target.value) } } 
+                                        value={ data.role }
+                                        required={true}
+                                    >
+                                        {props.roles.map((role, index) => {
+                                            return <option key={index} value={role.id}>{role.name}</option>
+                                        })}
+                                    </Select>
+                                </div>
+                                <div className="col-span-6 sm:col-span-3">
+                                    <label htmlFor="role" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Est bannis ?</label>
                                     <Select
                                         onChange={ (e) => { setData('banned', e.target.value) } } 
                                         value={ data.banned }
@@ -141,9 +154,9 @@ export default function MaintenanceIndex(props) {
                                         <option value="0">Non</option>
                                     </Select>
                                 </div>
-                                <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Inscrit depuis le</label>
-                                    <input type="text" name="address" id="address"disabled value={moment(user.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY')}  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. California" required/>
+                                <div className="col-span-6 sm:col-full">
+                                    <label htmlFor="createdat" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Inscrit depuis le</label>
+                                    <input type="text" name="createdat" id="createdat" disabled value={moment(user.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY')}  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="N/A" required/>
                                 </div>
                                 <div className="col-span-6 sm:col-full">
                                     <button className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Sauvegarder</button>

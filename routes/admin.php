@@ -27,6 +27,7 @@ Route::prefix('maintenance')->name('maintenance.')->group(function() {
 
 Route::prefix('users')->name('users.')->group(function() {
     Route::get('/', [UsersController::class, 'index'])->name('index');
+    Route::post('/search', [UsersController::class, 'search'])->name('search');
     Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('edit');
     Route::post('/edit/save', [UsersController::class, 'save'])->name('edit.save');
     Route::post('/token/revoke', [UsersController::class, 'tokenRevoke'])->name('token.revoke');
