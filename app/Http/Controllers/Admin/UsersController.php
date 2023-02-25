@@ -39,9 +39,8 @@ class UsersController extends Controller
 
     public function paginateUsers($pageCurrent = 0, $search = null){
         $users = User::select('id', 'name', 'email', 'created_at')->where('name', 'LIKE', '%'.$search.'%')->paginate(
-            10, ['*'], 'page', $pageCurrent
+            10, ['*'], 'page', ($search !== null) ? 0 : $pageCurrent
         );
-
         foreach($users as $user)
             $user->role = User::getRole($user->id);
         

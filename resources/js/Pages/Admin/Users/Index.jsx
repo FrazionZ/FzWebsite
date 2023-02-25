@@ -101,7 +101,7 @@ export default function MaintenanceIndex(props) {
                                         return (
                                             <tr key={index} className="hover:bg-gray-100 dark:hover:bg-gray-700">
                                                 <td className="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
-                                                    <img className="w-10 h-10 rounded-full" src={`https://auth.frazionz.net/skins/face.php?u=${user.id}`} alt={`avatar_${user.id}`} />
+                                                    <img className="w-10 h-10 rounded-[4px]" src={`https://api.frazionz.net/user/${user.id}/skin/head`} alt={`avatar_${user.id}`} />
                                                     <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
                                                         <div className="text-base font-semibold text-gray-900 dark:text-white">{user.name}</div>
                                                         <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
