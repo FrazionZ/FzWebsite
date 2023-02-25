@@ -140,7 +140,7 @@ export default function MaintenanceIndex(props) {
                     className="flex justify-end gap-10 items-center w-full"
                     previousLabel="Précédent"
                     nextLabel="Suivant"
-                    onPageChange={(e) => { router.get(`${props.ziggy.location}?page=${e}`) }}
+                    onPageChange={(e) => { router.get(`${route('admin.users.index')}?page=${e}`) }}
                     />
             </div>
         </AdminLayout>
