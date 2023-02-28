@@ -32,11 +32,19 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $isLogged =  ($request->user() !== null);
+        $perms = [];
+        if($isLogged){
+            foreach($request->user()->getPermissions() as $perm){
+                array_push($perms, $perm->slug);
+            }
+        }
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
                 'isAdmin' => ($isLogged) ? $request->user()->isAdmin() : false,
+                'isAccessAdmin' => ($isLogged) ? ($request->user()->isAdmin() || $request->user()->hasPermission('admin.access')) ? true : false  : false,
                 'TwoFA' => ($isLogged) ? $request->user()->hasTwoFactorAuth() : false,
+                'permissions' => $perms,
                 'isLogged' => ($request->user() !== null)
             ],
             'navbar' => NavbarElements::get(),

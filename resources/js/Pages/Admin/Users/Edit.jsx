@@ -1,12 +1,15 @@
-import { Head, useForm, router } from "@inertiajs/react";
+import { Head, useForm, router, Link } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
+import { Badge, Button } from "flowbite-react";
 import moment from 'moment-timezone'
 import 'moment/locale/fr'  // without this line it didn't work
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 import { Select } from "flowbite-react";
+import Dropdown from "@/Components/Dropdown";
 moment.locale('fr')
 
-export default function MaintenanceIndex(props) {
+export default function UserEdit(props) {
 
 
 
@@ -21,7 +24,6 @@ export default function MaintenanceIndex(props) {
         email: user.email,
         money: user.money,
         banned: user.banned,
-        role: user.role.id,
         _token: props.csrf_token
     })
 
@@ -29,6 +31,11 @@ export default function MaintenanceIndex(props) {
         const value = Math.max(0, Math.min(999999999, Number(event.target.value)));
         setData('money', value);
     }
+
+    const rolesAdd = []
+    props.roles.map((role) => {
+        rolesAdd.push({ value: route('admin.users.role.attach', { id: user.id, role: role.id }), method: "get", name: role.name })
+    })
 
     async function submitUser(e){
         e.preventDefault()
@@ -59,8 +66,6 @@ export default function MaintenanceIndex(props) {
         });
     }
 
-
-
     return (
         <AdminLayout>
             <Head title={title} />
@@ -71,11 +76,25 @@ export default function MaintenanceIndex(props) {
                 <div className="col-span-full xl:col-auto">
                     <div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
                         <div className="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
-                            <img className="mb-4 rounded-lg w-[64px] h-[64px] sm:mb-0 xl:mb-4 2xl:mb-0" src={`https://auth.frazionz.net/skins/face.php?u=${user.id}&s=120`} alt="Jese picture"/>
-                            <div>
+                            <img className="mb-4 rounded-lg w-[64px] h-[64px] sm:mb-0 xl:mb-4 2xl:mb-0" src={`https://api.frazionz.net/user/${user.id}/skin/head`} alt="Jese picture"/>
+                            <div className="flex flex-col gap-1">
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">{user.name}</h3>
-                                <div className="text-sm text-gray-500 dark:text-gray-400">
-                                    {user.role.name}
+                                <div className="flex gap-1 items-center">
+                                    {user.roles.map((role, index) => {
+                                        return (
+                                            <Badge size="sm" key={index} style={{ background: role.color, color: "#fff"}} className="w-fit text-white">
+                                                <div className="flex items-center gap-2">
+                                                    <span>{role.name}</span>
+                                                    {user.roles.length > 1 && 
+                                                        <Link href={route('admin.users.role.detach', {id: user.id, role: role.id})}>
+                                                            <FaTimes />
+                                                        </Link>
+                                                    }
+                                                </div>
+                                            </Badge>
+                                        )
+                                    })}
+                                    {props.roles.length !== 0 && <Dropdown text="+" items={rolesAdd} hideArrow={true} styleMenu={{ top: "36px"}} styleButton={{ height: "28px", backgroundColor: "rgb(31 41 55/var(--tw-bg-opacity))", width: "fit-content", padding: "12px 6px 16px" }}/> }
                                 </div>
                             </div>
                         </div>
@@ -132,18 +151,6 @@ export default function MaintenanceIndex(props) {
                                     <input type="number" onChange={moneyChange} name="money" id="money" value={ data.money } className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="N/A" required/>
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="banned" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rôle</label>
-                                    <Select
-                                        onChange={ (e) => { setData('role', e.target.value) } } 
-                                        value={ data.role }
-                                        required={true}
-                                    >
-                                        {props.roles.map((role, index) => {
-                                            return <option key={index} value={role.id}>{role.name}</option>
-                                        })}
-                                    </Select>
-                                </div>
-                                <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="role" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Est bannis ?</label>
                                     <Select
                                         onChange={ (e) => { setData('banned', e.target.value) } } 
@@ -154,7 +161,7 @@ export default function MaintenanceIndex(props) {
                                         <option value="0">Non</option>
                                     </Select>
                                 </div>
-                                <div className="col-span-6 sm:col-full">
+                                <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="createdat" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Inscrit depuis le</label>
                                     <input type="text" name="createdat" id="createdat" disabled value={moment(user.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY')}  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="N/A" required/>
                                 </div>

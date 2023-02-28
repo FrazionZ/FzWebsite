@@ -74,7 +74,7 @@ class Role extends Model
      */
     public function permissions()
     {
-        return $this->hasMany(Permission::class);
+        return $this->hasMany(PermissionRole::class);
     }
 
     public function rawPermissions()
@@ -108,18 +108,28 @@ class Role extends Model
         }
     }
 
+    public function color_contrast(string $hex)
+    {
+        $r = hexdec(substr($hex, 1, 2));
+        $g = hexdec(substr($hex, 3, 2));
+        $b = hexdec(substr($hex, 5, 2));
+        $yiq = (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+        return ($yiq >= 128) ? 'black' : 'white';
+    }
+
     /**
      * Get the CSS inline style rules of this role.
      * The background color is the role color and the text
      * color is white or black depending on the role color.
      *
-     * @return string
+     * @return array<string>
      */
     public function getBadgeStyle()
     {
-        $color = color_contrast($this->color);
+        $color = self::color_contrast($this->color);
 
-        return "color: {$color}; background: {$this->color};";
+        return ["color" => $color, "background" => $this->color];
     }
 
     /**

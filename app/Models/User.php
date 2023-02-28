@@ -68,4 +68,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $role =  Role::select('id', 'name', 'color')->where('id', $roleUserID)->first();
         return $role->toArray();
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

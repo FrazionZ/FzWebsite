@@ -71,13 +71,14 @@ export default function DropdownProfile({ text, items, user }) {
         {items.map((elem, i) => {
           if(elem.type == "hyperlink"){
             return (
-              <a href={elem.value}>
+              <a key={i} href={elem.value}>
                 <motion.li variants={itemVariants}>{elem.name}</motion.li>
               </a>
             )
           }else if(elem.type == "inerlink"){
             return (
               <Link
+                key={i}
                 href={elem.value}
                 method={(elem.method !== undefined) ? elem.method : "get"}
                 >

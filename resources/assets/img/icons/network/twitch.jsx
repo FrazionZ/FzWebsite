@@ -15,7 +15,7 @@ export default function Tiktok() {
                     <stop offset="1" stopColor="white" />
                 </linearGradient>
             </defs>
-            <g clip-path="url(#clip0_2518_5007)">
+            <g clipPath="url(#clip0_2518_5007)">
                 <path
                     d="M9.28646 0L0.00012207 9.28633V42.7158H11.1433V52L20.4296 42.7137H27.8591L44.5728 26V0H9.28646ZM40.857 24.1432L33.4275 31.5727H25.998L19.498 38.0727V31.5727H11.1433V3.71367H40.857V24.1432Z"
                     fill="url(#gradientTwitch)"

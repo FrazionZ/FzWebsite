@@ -1,11 +1,11 @@
-import { FaHome, FaCartPlus } from "react-icons/fa";
-import { BsFillBarChartFill } from 'react-icons/bs'
+import { FaHome } from "react-icons/fa";
+import { BsFillBarChartFill, BsFiles } from 'react-icons/bs'
 import { FiNavigation } from 'react-icons/fi'
 import { IoMdCart } from "react-icons/io"
 import { Link } from "@inertiajs/react";
 import { Sidebar } from "flowbite-react";
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ auth }) {
     return (
         <>
             <aside
@@ -31,21 +31,24 @@ export default function AdminSidebar() {
                                                 <span className="title">Général</span>
                                                 <Sidebar.Collapse
                                                         icon={BsFillBarChartFill}
+                                                        open={true}
                                                         label="Paramètres"
                                                     >  
-                                                    <Link href={route('admin.maintenance.index')} preserveState>
-                                                        <Sidebar.Item>
-                                                            Maintenance
-                                                        </Sidebar.Item>
-                                                    </Link>
+                                                    {auth.permissions.includes('admin.maintenance') && 
+                                                        <Link href={route('admin.maintenance.index')} preserveState>
+                                                            <Sidebar.Item>
+                                                                Maintenance
+                                                            </Sidebar.Item>
+                                                        </Link>
+                                                    }
                                                     <Link href={ route('admin.users.index') } preserveState>
                                                         <Sidebar.Item>
                                                             Liste des joueurs
                                                         </Sidebar.Item>
                                                     </Link> 
-                                                    <Link href={route('admin.index')} preserveState>
+                                                    <Link href={route('admin.roles.index')} preserveState>
                                                         <Sidebar.Item>
-                                                            Grades
+                                                            Rôles
                                                         </Sidebar.Item>
                                                     </Link> 
                                                     <Link href={route('admin.index')} preserveState>
@@ -74,6 +77,7 @@ export default function AdminSidebar() {
                                             <Sidebar.Collapse
                                                     icon={IoMdCart}
                                                     label="Boutique"
+                                                    open={true}
                                                 >
                                                 <Link href={route('admin.index')} preserveState>
                                                     <Sidebar.Item>
@@ -86,6 +90,12 @@ export default function AdminSidebar() {
                                                     </Sidebar.Item>
                                                 </Link>    
                                             </Sidebar.Collapse>
+
+                                            <Link href={route('admin.logs.index')} preserveState>
+                                                <Sidebar.Item icon={BsFiles}>
+                                                    Logs
+                                                </Sidebar.Item>
+                                            </Link>  
                                         </Sidebar.ItemGroup>
                                     </Sidebar.Items>
                                 </Sidebar>

@@ -7,7 +7,7 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 moment.locale('fr')
 
-export default function MaintenanceIndex(props) {
+export default function UsersIndex(props) {
 
     const [dataUsers, setDataUsers] = useState(props.users);
     const [searchProcess, setSearchProcess] = useState(false)
@@ -104,10 +104,15 @@ export default function MaintenanceIndex(props) {
                                                     <img className="w-10 h-10 rounded-[4px]" src={`https://api.frazionz.net/user/${user.id}/skin/head`} alt={`avatar_${user.id}`} />
                                                     <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
                                                         <div className="text-base font-semibold text-gray-900 dark:text-white">{user.name}</div>
-                                                        <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                                            <Badge style={{ background: user.role.color, color: "#fff" }} className="w-fit text-white">
-                                                                {user.role.name}
-                                                            </Badge>
+                                                        <div className="flex gap-1">
+                                                            {user.role.map((role, index) => {
+
+                                                                return (
+                                                                    <Badge key={index} style={{ background: role.barStyle.background, color: role.barStyle.color }} className="w-fit text-white">
+                                                                        {role.name}
+                                                                    </Badge>
+                                                                )
+                                                            })}
                                                         </div>
                                                     </div>
                                                 </td>

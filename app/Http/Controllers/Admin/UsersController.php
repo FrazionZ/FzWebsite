@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Adrianorosa\GeoLocation\GeoLocation;
 use App\Http\Controllers\Controller;
+use App\Models\Logger;
 use App\Models\Role;
 use App\Models\RoleUser;
 use App\Models\TokenUsers;
@@ -41,16 +42,27 @@ class UsersController extends Controller
         $users = User::select('id', 'name', 'email', 'created_at')->where('name', 'LIKE', '%'.$search.'%')->paginate(
             10, ['*'], 'page', ($search !== null) ? 0 : $pageCurrent
         );
-        foreach($users as $user)
-            $user->role = User::getRole($user->id);
+        foreach($users as $user){
+            $user->role = $user->roles;
+            foreach($user->role as $role){
+                $role->barStyle = $role->getBadgeStyle();
+            }
+        }
         
         return $users;
     }
 
     public function edit($id){
         $user = User::where('id', $id)->first();
-        $user->role = User::getRole($user->id);
-        $roles = Role::get();
+
+        $user->role = $user->roles;
+        $rolesQuery = Role::get();
+        $roles = [];
+        foreach($rolesQuery as $ritem){
+            if(!$user->hasRole($ritem->slug)){
+                array_push($roles, $ritem);
+            }
+        }
 
         $tokenUsers = TokenUsers::where('uid', $user->id)->get();
         foreach($tokenUsers as $token){
@@ -64,6 +76,28 @@ class UsersController extends Controller
         ]);
     }
 
+    public function role_attach($id, $role){
+        $user = User::where('id', $id)->first();
+        if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Utilisateur introuvable"));
+        $targetRole = config('roles.models.role')::where('id', '=', $role)->first();
+        if($targetRole == null) return redirect()->back()->with("status", $this->toastResponse('error', "Rôle introuvable"));
+        if($user->hasRole($targetRole->slug)) return redirect()->back()->with("status", $this->toastResponse('error', "Ce joueur a déjà ce rôle"));
+        $user->attachRole($targetRole);
+        Logger::log('system.role.attach', json_encode(array('role' => array('id' => $targetRole->id))), $user);
+        return redirect()->back()->with("status", $this->toastResponse('success', "Rôle ajouté"));
+    }
+
+    public function role_detach($id, $role) {
+        $user = User::where('id', $id)->first();
+        if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Utilisateur introuvable"));
+        $targetRole = config('roles.models.role')::where('id', '=', $role)->first();
+        if($targetRole == null) return redirect()->back()->with("status", $this->toastResponse('error', "Rôle introuvable"));
+        if(!$user->hasRole($targetRole->slug)) return redirect()->back()->with("status", $this->toastResponse('error', "Ce joueur n'a pas ce rôle"));
+        $user->detachRole($targetRole);
+        Logger::log('system.role.dettach', json_encode(array('role' => array('id' => $targetRole->id))), $user);
+        return redirect()->back()->with("status", $this->toastResponse('success', "Rôle retiré"));
+    }
+
     public function save(Request $request){
         $validator = Validator::make($request->all(), [
             'id' => 'required|int',
@@ -71,7 +105,6 @@ class UsersController extends Controller
             'email' => 'required|string',
             'money' => 'required|int',
             'banned' => 'required|int',
-            'role' => 'required|int',
         ]);
 
         if ($validator->fails()) {
@@ -87,17 +120,6 @@ class UsersController extends Controller
             'money' => $request->money,
             'banned' => $request->banned,
         ]);
-
-        //ROLE CREATED OR UPDATE
-        $roleUser = RoleUser::where('user_id', $user->id)->first();
-        $roleInput = [
-            "role_id" => $request->role,
-            "user_id" => $user->id
-        ];
-        if($roleUser == null)
-            RoleUser::insert($roleInput);
-        else
-            $roleUser->update($roleInput);
 
         return redirect()->back()->with("status", $this->toastResponse('success', "Utilisateur sauvegardé."));
     }

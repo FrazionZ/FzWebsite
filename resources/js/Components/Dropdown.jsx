@@ -3,8 +3,9 @@ import { motion } from 'framer-motion'
 import { Link } from '@inertiajs/react'
 import '../../css/dropdown.css'
 
-export default function DropdownProfile({ text, items, user }) {
+export default function Dropdown({ text, items, hideArrow, buttonClassName, styleButton, styleMenu }) {
   
+  const [isOpen, setIsOpen] = useState(false);
   const itemVariants = {
       open: {
         opacity: 1,
@@ -14,8 +15,12 @@ export default function DropdownProfile({ text, items, user }) {
       closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
   }
 
+  if(styleMenu == undefined)
+    styleMenu = {pointerEvents: isOpen ? "auto" : "none"}
+  else
+    styleMenu.pointerEvents = isOpen ? "auto" : "none"
+
   
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <motion.div
@@ -26,10 +31,11 @@ export default function DropdownProfile({ text, items, user }) {
       <motion.button
         whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
-        className={(isOpen) ? "isOpen" : ""}
+        className={`${(isOpen) ? "isOpen" : ""} ${buttonClassName}`}
+        style={styleButton}
       >
         { text }
-        <motion.div
+        {hideArrow !== true && <motion.div
           variants={{
             open: { rotate: 180 },
             closed: { rotate: 0 }
@@ -40,7 +46,7 @@ export default function DropdownProfile({ text, items, user }) {
           <svg width="15" height="15" viewBox="0 0 20 20">
             <path d="M0 7 L 20 7 L 10 16" />
           </svg>
-        </motion.div>
+        </motion.div> }
       </motion.button>
       <motion.ul
         variants={{
@@ -63,11 +69,12 @@ export default function DropdownProfile({ text, items, user }) {
             }
           }
         }}
-        style={{ pointerEvents: isOpen ? "auto" : "none" }}
+        style={styleMenu}
       >
         {items.map((elem, i) => {
             return (
               <Link
+                key={i}
                 href={elem.value}
                 method={(elem.method !== undefined) ? elem.method : "get"}
                 >

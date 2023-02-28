@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Features;
 use Illuminate\Support\Facades\Artisan;
@@ -29,6 +31,13 @@ class Controller extends BaseController
         fwrite($fp, '<?php return ' . var_export(config($name), true) . ';');
         fclose($fp);
         Artisan::call('cache:clear');
-     }
+    }
+
+    public function checkPerm(Request $request, $perm){
+        if(!$request->user()->hasPermission($perm)) {
+            dd("No perm");
+            return redirect()->back()->with("status", $this->toastResponse('error', "Vous n'avez pas la permission d'exécuter cette requête"));
+        }
+    }
 
 }

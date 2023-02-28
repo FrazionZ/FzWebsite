@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Inertia\Inertia;
@@ -51,6 +52,22 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
+
+        $userLevelCheck = $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\RoleDeniedException ||
+            $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\PermissionDeniedException ||
+            $e instanceof \jeremykenedy\LaravelRoles\App\Exceptions\LevelDeniedException;
+        
+        if ($userLevelCheck) {
+
+            $uri = explode('/', Route::getCurrentRoute()->uri)[0];
+            
+            if ($request->expectsJson()) {
+                return redirect($uri)->back()->with('status', ["type" => 'error', "msg" => "Vous n'avez pas la permission pour cette requête"]);
+            }
+            
+            return redirect($uri)->with('status', ["type" => 'error', "msg" => "Vous n'avez pas la permission pour cette requête"]);
+        }
+
         $response = parent::render($request, $e);
 
         return Inertia::render('Error', ['status' => $response->status()])

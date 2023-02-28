@@ -10,7 +10,7 @@ import moment from 'moment-timezone'
 import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
-export default function CandidateComponentCardItem({ funcParse, candid }){
+export default function CandidateComponentCardItem({ funcParse, candid, canManage }){
 
     const props = usePage().props
 
@@ -44,7 +44,7 @@ export default function CandidateComponentCardItem({ funcParse, candid }){
                 </div>
                 <div className="actions">
                     <Link className="btn" href={route('candidate.show', {id: candid.id})}>Visionner</Link>
-                    {props.auth.isAdmin == true &&
+                    {canManage == true &&
                         <CandidateSettings funcParse={ funcParse } candid={candid} />
                     }
                 </div>

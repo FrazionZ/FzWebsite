@@ -66,7 +66,8 @@ class CandidateController extends Controller
             "feature" => $feature,
             "categories" => $categories,
             "candidAlreadyPost" => $candidAlreadyPost, 
-            "candidCooldown" => $candidCooldown
+            "candidCooldown" => $candidCooldown,
+            "canManageCandidate" => $request->user()->hasPermission('admin.candidate.manage')
         ]);
     }
 
@@ -96,7 +97,7 @@ class CandidateController extends Controller
         );
         foreach($candidatesData as $k => $candid){
             if($candid->public == 0)
-                if(!$request->user()->isAdmin())
+                if(!$request->user()->hasPermission('admin.candidate.manage'))
                     if($request->user()->id !== $candid->uid)
                         unset($candidatesData[$k]);
 
@@ -115,6 +116,11 @@ class CandidateController extends Controller
     public function show($id){
         $candidate = Candidate::where('id', '=', $id)->first();
         if($candidate == null) abort(404);
+        if($candidate->public == 0)
+            if(!Auth::user()->hasPermission('admin.candidate.manage'))
+                if(Auth::user()->id !== $candidate->uid)
+                    abort(404);
+
         $user = User::where('id', $candidate->uid)->first();
         $candidate->upseudo = $user->name;
         $candidate->present = base64_decode($candidate->present);
@@ -215,7 +221,7 @@ class CandidateController extends Controller
         if($candidate == null)
             return redirect()->back()->with("status", $this->toastResponse('error', "Votre commentaire n'a pas été envoyé :'("));
         if($candidate->public == 0)
-            if(!Auth::user()->isAdmin())
+            if(!Auth::user()->hasPermission('admin.candidate.manage'))
                 if(Auth::user()->id !== $candidate->uid)
                     return redirect()->back()->with("status", $this->toastResponse('error', "Votre commentaire n'a pas été envoyé :'("));
 

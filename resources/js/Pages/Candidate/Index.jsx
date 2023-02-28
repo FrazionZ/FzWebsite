@@ -135,7 +135,7 @@ export default class CandidateIndex extends React.Component {
                                         }
                                         {category.load == false && category.candids.data.map((candid, index) => {
                                             return(
-                                                <CandidateComponentCard funcParse={ this.funcParse } key={index} candid={candid} />   
+                                                <CandidateComponentCard funcParse={ this.funcParse } key={index} canManage={this.props.canManageCandidate} candid={candid} />   
                                             )
                                         })}
                                         <CandidateComponentPaginate funcParse={ this.funcParse } category={category} />

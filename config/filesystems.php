@@ -56,6 +56,13 @@ return [
             'throw' => false,
         ],
 
+        'fzlogger' => [
+            'driver' => 'local',
+            'root' => storage_path('app/fzlogger'),
+            'visibility' => 'private',
+            'throw' => false
+        ]
+
     ],
 
     /*

@@ -224,7 +224,7 @@ export default class Navigation extends React.Component {
                     </div>
                 </nav>
                 <div className="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-                    <Sidebar />
+                    <Sidebar auth={this.props.auth} />
                 </div>
             </>
         );

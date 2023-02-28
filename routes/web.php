@@ -45,7 +45,7 @@ Route::middleware(['fzauth'])->prefix('candidate')->name('candidate.')->group(fu
     Route::get('/show/{id}', [CandidateController::class, 'show'])->name('show');
     Route::post('/handleCreate', [CandidateController::class, 'handleCreate'])->name('handleCreate');
     Route::post('/handleComment', [CandidateController::class, 'handleComment'])->name('handleComment');
-    Route::patch('/handleSettings', [CandidateController::class, 'handleSettings'])->name('handleSettings');
+    Route::patch('/handleSettings', [CandidateController::class, 'handleSettings'])->name('handleSettings')->middleware('permission:admin.candidate.manage');
     Route::get('/paginate/{category}/{page}', [CandidateController::class, 'requestPaginate'])->name('paginate');
 });
 

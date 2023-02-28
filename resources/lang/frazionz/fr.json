@@ -1,0 +1,18 @@
+{
+    "logger": {
+        "system": {
+            "maintenance": {
+                "enabled": "%user_name% a activé la maintenance",
+                "disabled": "%user_name% a désactivé la maintenance",
+                "message": "%user_name% a mis à jour le message de maintenance"
+            },
+            "role": {
+                "attach": "%user_name% a attaché le rôle %role_name% à %target_name%",
+                "dettach": "%user_name% a déttaché le rôle %role_name% à %target_name%"
+            }
+        },
+        "user": {
+
+        }
+    }
+}

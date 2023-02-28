@@ -54,8 +54,6 @@ export default function Login(props, { status, canResetPassword }) {
                         isFocused={true}
                         handleChange={onHandleChange}
                     />
-
-                    <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
@@ -70,8 +68,6 @@ export default function Login(props, { status, canResetPassword }) {
                         autoComplete="current-password"
                         handleChange={onHandleChange}
                     />
-
-                    <InputError message={errors.password} className="mt-2" />
                 </div>
 
                 <div className="block mt-4">

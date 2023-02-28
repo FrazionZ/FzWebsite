@@ -16,7 +16,7 @@ export default function IsLogged({ auth }) {
         
     ]
 
-    if(auth.isAdmin) 
+    if(auth.isAccessAdmin) 
         childsElement.push({
             value: "/admin",
             name: "Panel Admin",

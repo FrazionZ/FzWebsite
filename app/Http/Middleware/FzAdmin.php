@@ -21,7 +21,7 @@ class FzAdmin
             return redirect()->route('login');
         }
         
-        if(!$request->user()->isAdmin()){
+        if(!$request->user()->isAdmin() && !$request->user()->hasPermission('admin.access')){
             return redirect()->route('index');
         }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Logger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
@@ -27,6 +28,8 @@ class MaintenanceController extends Controller
             'enabled' => 'required|boolean',
         ]);
 
+        $originMessage = base64_decode(Config::get('frazionz.maintenance.message', ''));
+
         if ($validator->fails()) {
             return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez remplir touts les champs"));
         }
@@ -38,7 +41,16 @@ class MaintenanceController extends Controller
         if($request->message !== "")
             $this->putConfig('frazionz', 'maintenance.message', base64_encode($request->message));
 
+        $finalMessage = base64_decode(Config::get('frazionz.maintenance.message', ''));
+
+        if($originMessage !== $finalMessage)
+            Logger::log('system.maintenance.message', null);
+
         $this->putConfig('frazionz', 'maintenance.enabled', $request->enabled);
+
+        //system.maintenance.enabled
+        $boolLog = ($request->enabled) ? 'system.maintenance.enabled' : 'system.maintenance.disabled';
+        Logger::log($boolLog, null);
 
         return redirect()->back()->with("status", $this->toastResponse('success', "Sauvegarde terminée"));
 
