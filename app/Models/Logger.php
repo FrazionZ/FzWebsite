@@ -43,7 +43,7 @@ class Logger extends Model
     }
 
     public function pagination($perPage = 10, $url, $page){
-        $logger = $this->paginate($perPage, ['*'], $url, $page);
+        $logger = $this->orderBy('created_at', 'desc')->paginate($perPage, ['*'], $url, $page);
    
         foreach($logger as $log){
             $log->userOrigin = $log->user;

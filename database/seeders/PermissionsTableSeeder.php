@@ -84,6 +84,18 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Pouvoir changer le status et clôturer une candidature',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Réorganiser un rôle',
+                'slug'        => 'admin.role.swap',
+                'description' => 'Pouvoir changer la hiérarchie des rôles',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Edition d\'un rôle',
+                'slug'        => 'admin.role.edit',
+                'description' => 'Pouvoir changer les infos et les permission d\'un rôle',
+                'model'       => 'Permission',
+            ],
         ];
 
         /*

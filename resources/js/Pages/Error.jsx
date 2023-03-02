@@ -7,6 +7,7 @@ export default function ErrorPage({ status }) {
     const description = {
       503: 'Sorry, we are doing some maintenance. Please check back soon.',
       500: 'Whoops, something went wrong on our servers.',
+      401: 'Whoops, Tu n\'as pas le droit d\'être ici !',
       404: 'La Page recherchée est Introuvable',
       403: 'Sorry, you are forbidden from accessing this page.',
     }[status]

@@ -1,4 +1,4 @@
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, router } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import moment from "moment-timezone";
 import "moment/locale/fr";
@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Draggable } from "react-drag-reorder";
 import { FaPlus, FaEdit } from "react-icons/fa";
 import { Badge, Button } from "flowbite-react";
+import RoleCard from "./RoleCard";
 moment.locale("fr");
 
 export default function RolesIndex(props) {
@@ -13,46 +14,99 @@ export default function RolesIndex(props) {
 
     const [roles, setRoles] = useState(props.roles);
 
+    const [adminRoles, setAdminRoles] = useState([]);
+
+    let perms = props.auth.permissions;
+
+    let arh = props.authRoleHigh;
+    
+    roles.map((role, index) => {
+        if(role.level >= 5 || arh.position >= role.position){
+            let aRole = adminRoles
+            aRole.push(role)
+
+            setAdminRoles(aRole)
+            delete roles[index]
+            setRoles(roles);
+        }
+    })
+
+    console.log(adminRoles)
+    
+    Array.prototype.swap = function (x, y) {
+        var b = this[x];
+        this[x] = this[y];
+        this[y] = b;
+        return this;
+    };
+
     async function getChangedPos(currentPos, newPos) {
         console.log(currentPos, newPos);
+        let rolesPrepare = roles;
+        rolesPrepare = rolesPrepare.swap(newPos, currentPos);
+        rolesPrepare[newPos].position = newPos;
+        rolesPrepare[currentPos].position = currentPos;
+        setRoles(rolesPrepare);
     }
 
-    console.log(roles)
+    async function submitRoles(){
+        router.post(route('admin.roles.swap'), {roles: roles, _token: props.csrf_token}, { 
+            onSuccess: (data) => {
+                console.log(data)
+            }
+        })
+    }
 
     return (
         <AdminLayout>
             <Head title={title} />
             <div className="p-10">
-                <h1 className="text-3xl text-white mb-5">
-                    {title}
-                </h1>
+                <h1 className="text-3xl text-white mb-5">{title}</h1>
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:gap-10 dark:bg-gray-900">
                     <div className="col-span-1">
-                        <Draggable>
-                            {roles.map((role, index) => {
-                                return (
-                                    <div key={index}>
-                                        <div className="p-4 mb-4 justify-between flex items-center gap-10 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-                                            <Badge size="sm" style={{ background: role.barStyle.background, color: role.barStyle.color }} className="justify-center text-white">
-                                                <span className="text-xl">{role.name}</span>
-                                            </Badge>
-                                            <div className="whitespace-nowrap">
-                                                <Link href={route('admin.roles.edit', {id: role.id})} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                    <FaEdit /> Editer le rôle
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </Draggable>
+                        {adminRoles.map((arole, index) => {
+                            return (
+                                <RoleCard key={index} authRoleHigh={arh} role={arole} />
+                            )
+                        })}
+                        {perms.includes('admin.role.swap') == true &&  
+                            <Draggable onPosChange={getChangedPos}>
+                                {roles.map((role, index) => {
+                                    if (role.level < 5) {
+                                        return (
+                                            <RoleCard key={index} authRoleHigh={arh} role={role} />
+                                        );
+                                    }
+                                })}
+                            </Draggable>
+                        }
+                        {perms.includes('admin.role.swap') == false &&  
+                            <>
+                                {roles.map((role, index) => {
+                                    if (role.level < 5) {
+                                        return (
+                                            <RoleCard key={index} authRoleHigh={arh} role={role} />
+                                        );
+                                    }
+                                })} 
+                            </>
+                        }
                         <div className="flex justify-end">
-                            <Button>Sauvegarder</Button>
+                            <Button onClick={submitRoles}>Sauvegarder</Button>
                         </div>
                     </div>
                     <div className="col-span-1 flex flex-col justify-center gap-5 border-gray-800 border-l pl-6">
-                        <h2 className="text-3xl text-white">Comment fonctionne les rôles ?</h2>
-                        <h4 className="text-1xl text-white">L'ordre d'affichage des cartes forment la hiérarchie des rôles. Plus un rôle est haut, plus il a de pribilèges. (NB. Si vous avez la permission d'éditer les permissions et les rôles, vous ne pouvez pas éditer vos propres rôles ni les rôles au dessus des votres)</h4>
+                        <h2 className="text-3xl text-white">
+                            Comment fonctionne les rôles ?
+                        </h2>
+                        <h4 className="text-1xl text-white">
+                            L'ordre d'affichage des cartes forment la hiérarchie
+                            des rôles. Plus un rôle est haut, plus il a de
+                            pribilèges. (NB. Si vous avez la permission d'éditer
+                            les permissions et les rôles, vous ne pouvez pas
+                            éditer vos propres rôles ni les rôles au dessus des
+                            votres)
+                        </h4>
                     </div>
                 </div>
             </div>

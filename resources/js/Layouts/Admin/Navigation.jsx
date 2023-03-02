@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../../assets/img/logo.svg";
 import Sidebar from "./Sidebar";
 import { FaHome } from "react-icons/fa";
+import { Link } from "@inertiajs/react";
 
 export default class Navigation extends React.Component {
     constructor(props) {
@@ -94,7 +95,7 @@ export default class Navigation extends React.Component {
                                         ></path>
                                     </svg>
                                 </button>
-                                <a
+                                <Link
                                     href={route("index")}
                                     className="flex ml-2 md:mr-24"
                                 >
@@ -106,7 +107,7 @@ export default class Navigation extends React.Component {
                                     <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                                         FrazionZ
                                     </span>
-                                </a>
+                                </Link>
                                 <form
                                     action="#"
                                     method="GET"
@@ -182,40 +183,40 @@ export default class Navigation extends React.Component {
                                     </div>
                                     <ul className="py-1" role="none">
                                         <li>
-                                            <a
+                                            <Link
                                                 href="#"
                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 role="menuitem"
                                             >
                                                 Dashboard
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a
+                                            <Link
                                                 href="#"
                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 role="menuitem"
                                             >
                                                 Settings
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a
+                                            <Link
                                                 href="#"
                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 role="menuitem"
                                             >
                                                 Earnings
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a
+                                            <Link
                                                 href="#"
                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 role="menuitem"
                                             >
                                                 Sign out
-                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>

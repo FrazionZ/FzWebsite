@@ -41,11 +41,13 @@ export default function AdminSidebar({ auth }) {
                                                             </Sidebar.Item>
                                                         </Link>
                                                     }
-                                                    <Link href={ route('admin.users.index') } preserveState>
-                                                        <Sidebar.Item>
-                                                            Liste des joueurs
-                                                        </Sidebar.Item>
-                                                    </Link> 
+                                                    {auth.permissions.includes('admin.users.list') && 
+                                                        <Link href={ route('admin.users.index') } preserveState>
+                                                            <Sidebar.Item>
+                                                                Liste des joueurs
+                                                            </Sidebar.Item>
+                                                        </Link> 
+                                                    }
                                                     <Link href={route('admin.roles.index')} preserveState>
                                                         <Sidebar.Item>
                                                             Rôles

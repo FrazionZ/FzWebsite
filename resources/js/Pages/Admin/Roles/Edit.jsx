@@ -1,13 +1,14 @@
 import { Head, useForm } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { useState } from "react";
-import { Card, Checkbox } from "flowbite-react";
+import { Alert, Card, Checkbox, Button } from "flowbite-react";
+import { HiInformationCircle } from "react-icons/hi"
+import Permissions from "./Permissions";
 
 export default function UserEdit(props) {
     const [role, setRole] = useState(props.role);
     let title = `Edition d'un rôle`;
 
-    console.log(props.permissions)
     const [permissions, setPermissions] = useState(props.permissions)
     
     const { data, setData, post, processing, errors } = useForm({
@@ -32,12 +33,6 @@ export default function UserEdit(props) {
         });
     }
 
-    async function setCheckPerm(id, e){
-        let perms = permissions
-        perms[id].hasCheck = e.target.checked
-        setPermissions(perms => [...perms])
-    }
-
     return (
         <AdminLayout>
             <Head title={title} />
@@ -45,6 +40,21 @@ export default function UserEdit(props) {
                 <h1 className="text-3xl text-white mb-5">
                     {title}
                 </h1>
+                {role.level >= 5 && 
+                    <Alert
+                        color="info"
+                        withBorderAccent={true}
+                        className="mb-4"
+                        icon={HiInformationCircle}
+                        >
+                        <span>
+                            <span className="font-medium">
+                                INFOS
+                            </span>
+                            {' '}L'affichage des permissions est désactivé sur les rôles niveau 5.
+                        </span>
+                    </Alert>
+                }
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 md:gap-4 xl:gap-4 dark:bg-gray-900">
                     <div className="col-span-1">
                         <Card>
@@ -68,7 +78,7 @@ export default function UserEdit(props) {
                                         <input type="text" onChange={ (e) => { setData('slug', e.target.value) }} name="slug" id="slug" value={ role.slug } disabled={true} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Pseudo" required/>
                                     </div>
                                     <div className="col-span-6 sm:col-full">
-                                        <button className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Sauvegarder</button>
+                                        <Button className="w-fit" type="submit">Sauvegarder</Button>
                                     </div>
                                 </div>
                             </form>
@@ -80,31 +90,9 @@ export default function UserEdit(props) {
                         </Card>
                     </div>
                 </div>
-                <div className="mt-4">
-                    <div className="col-span-2">
-                        <Card>
-                            <h3 className="text-xl font-semibold dark:text-white">Liste des permissions</h3>
-                            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-4 xl:gap-4">
-                                {permissions.map((perm, index) => {
-                                    return (  
-                                        <li key={index} className="flex items-center gap-5 text-white">
-                                            <Checkbox
-                                                checked={perm.hasCheck}
-                                                onChange={(e) => {
-                                                    setCheckPerm(index, e);
-                                                }}
-                                            />
-                                            <div className="flex flex-col">
-                                                <span className="text-xl">{perm.name}</span>
-                                                <span className="text-sm">{perm.description}</span>
-                                            </div>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </Card>
-                    </div>
-                </div>
+                {role.level < 5 && 
+                    <Permissions role={role} permissions={permissions} /> 
+                }
             </div>
         </AdminLayout>
     );

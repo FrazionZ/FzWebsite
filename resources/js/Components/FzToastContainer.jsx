@@ -8,8 +8,6 @@ export default function FzToastContainer(){
     
     const { flash } = usePage().props
 
-    console.log(flash)
-
     if(flash.status !== null){
         let type = flash.status.type;
         let msg = flash.status.msg;

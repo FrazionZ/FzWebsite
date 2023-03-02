@@ -73,4 +73,21 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function getHigherRole()
+    {
+        if($this->roles !== null)
+            $roles = $this->roles;
+        else
+            $roles = $this->role;
+
+        $roleParent = null;
+        foreach($roles as $role){
+            if($roleParent == null)
+                $roleParent = $role;
+            else if($roleParent->position > $role->position)
+                $roleParent = $role;
+        }
+        return $roleParent;
+    }
 }

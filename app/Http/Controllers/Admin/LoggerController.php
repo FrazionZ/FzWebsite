@@ -14,7 +14,6 @@ class LoggerController extends Controller
     public function index(Request $request){
         $logger = new Logger();
         $logger = $logger->pagination(10, 'page', $request->query('page', 0));
-        
         return Inertia::render('Admin/Logger/Index', [
             'logger' => $logger
         ]);

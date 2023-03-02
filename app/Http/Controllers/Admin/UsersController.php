@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\RoleUser;
 use App\Models\TokenUsers;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -56,6 +57,7 @@ class UsersController extends Controller
         $user = User::where('id', $id)->first();
 
         $user->role = $user->roles;
+
         $rolesQuery = Role::get();
         $roles = [];
         foreach($rolesQuery as $ritem){
@@ -72,6 +74,7 @@ class UsersController extends Controller
         return Inertia::render('Admin/Users/Edit', [
             'user' => $user,
             'roles' => $roles,
+            'authRoleHigh' => Auth::user()->getHigherRole(),
             'tokenUsers' => $tokenUsers
         ]);
     }
@@ -81,6 +84,8 @@ class UsersController extends Controller
         if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Utilisateur introuvable"));
         $targetRole = config('roles.models.role')::where('id', '=', $role)->first();
         if($targetRole == null) return redirect()->back()->with("status", $this->toastResponse('error', "Rôle introuvable"));
+        $arh = Auth::user()->getHigherRole();
+        if($arh->position >= $targetRole->position && (!$arh->level >= 5)) return redirect()->back()->with("status", $this->toastResponse('error', "Impossible d'attacher un rôle égale ou supérieur à votre rôle le plus haut"));
         if($user->hasRole($targetRole->slug)) return redirect()->back()->with("status", $this->toastResponse('error', "Ce joueur a déjà ce rôle"));
         $user->attachRole($targetRole);
         Logger::log('system.role.attach', json_encode(array('role' => array('id' => $targetRole->id))), $user);
@@ -90,8 +95,11 @@ class UsersController extends Controller
     public function role_detach($id, $role) {
         $user = User::where('id', $id)->first();
         if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Utilisateur introuvable"));
+        if(count($user->roles) == 1) return redirect()->back()->with("status", $this->toastResponse('error', "L'utilisateur n'a qu'un seul rôle, impossible de lui détacher"));
         $targetRole = config('roles.models.role')::where('id', '=', $role)->first();
         if($targetRole == null) return redirect()->back()->with("status", $this->toastResponse('error', "Rôle introuvable"));
+        $arh = Auth::user()->getHigherRole();
+        if($arh->position >= $targetRole->position && (!$arh->level >= 5)) return redirect()->back()->with("status", $this->toastResponse('error', "Impossible de déttacher un rôle égale ou supérieur à votre rôle le plus haut"));
         if(!$user->hasRole($targetRole->slug)) return redirect()->back()->with("status", $this->toastResponse('error', "Ce joueur n'a pas ce rôle"));
         $user->detachRole($targetRole);
         Logger::log('system.role.dettach', json_encode(array('role' => array('id' => $targetRole->id))), $user);
@@ -99,13 +107,21 @@ class UsersController extends Controller
     }
 
     public function save(Request $request){
-        $validator = Validator::make($request->all(), [
+        $rules = [
             'id' => 'required|int',
             'username' => 'required|string',
             'email' => 'required|string',
             'money' => 'required|int',
             'banned' => 'required|int',
-        ]);
+        ];
+
+        if($request->user()->hasPermission('admin.user.money'))
+            $rules['money'] = 'required|int';
+
+        if($request->user()->hasPermission('admin.user.ban'))
+            $rules['banned'] = 'required|int';
+
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
             return redirect()->back()->with("status", $this->toastResponse('error', "Le formulaire est invalide ou incomplet"));
@@ -114,12 +130,18 @@ class UsersController extends Controller
         $user = User::where('id', $request->id)->first();
         if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Utilisateur non trouvable"));
 
-        $user->update([
+        $updated = [
             'name' => $request->username,
-            'email' => $request->email,
-            'money' => $request->money,
-            'banned' => $request->banned,
-        ]);
+            'email' => $request->email
+        ];
+
+        if($request->user()->hasPermission('admin.user.money'))
+            $updated['money'] = $request->money;
+
+        if($request->user()->hasPermission('admin.user.ban'))
+            $updated['banned'] = $request->banned;
+
+        $user->update($updated);
 
         return redirect()->back()->with("status", $this->toastResponse('success', "Utilisateur sauvegardé."));
     }
