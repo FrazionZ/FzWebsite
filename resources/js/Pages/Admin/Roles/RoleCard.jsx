@@ -3,7 +3,6 @@ import { Link, usePage } from "@inertiajs/react";
 import { FaEdit } from "react-icons/fa";
 
 export default function RoleCard({ authRoleHigh, role }) {
-
     let perms = usePage().props.auth.permissions;
 
     return (
@@ -18,21 +17,35 @@ export default function RoleCard({ authRoleHigh, role }) {
             >
                 <span className="text-xl">{role.name}</span>
             </Badge>
-            {authRoleHigh.position < role.position &&
-                <>
-                    {perms.includes('admin.role.edit') && 
+            <>
+                {perms.includes("admin.role.edit") &&
+                    authRoleHigh.position < role.position && (
                         <div className="whitespace-nowrap">
                             <Link
-                                href={route("admin.roles.edit", { id: role.id })}
+                                href={route("admin.roles.edit", {
+                                    id: role.id,
+                                })}
                                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             >
                                 <FaEdit /> Editer le rôle
                             </Link>
                         </div>
-                    }
-                </>
-            }
-            
+                    )}
+                {perms.includes("admin.role.edit") &&
+                    role.level >= 5 &&
+                    authRoleHigh.level >= 5 && (
+                        <div className="whitespace-nowrap">
+                            <Link
+                                href={route("admin.roles.edit", {
+                                    id: role.id,
+                                })}
+                                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            >
+                                <FaEdit /> Editer le rôle
+                            </Link>
+                        </div>
+                    )}
+            </>
         </div>
     );
 }

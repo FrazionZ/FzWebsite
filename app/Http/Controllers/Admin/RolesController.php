@@ -36,7 +36,10 @@ class RolesController extends Controller
         if($role == null) abort(404);
 
         $highRole = Auth::user()->getHigherRole();
-        if($highRole->position >= $role->position) abort(401);
+
+        if(!($role->level >= 5 && $highRole->level >= 5))
+            if($highRole->position >= $role->position)
+                abort(401);
 
         $role->users = RoleUser::where('role_id', $role->id)->count();
         $role->barStyle = $role->getBadgeStyle();
@@ -97,7 +100,9 @@ class RolesController extends Controller
         if($role == null) return redirect()->back()->with("status", $this->toastResponse('error', "Rôle non trouvable"));
 
         $highRole = Auth::user()->getHigherRole();
-        if($highRole->position >= $role->position) return redirect()->back()->with("status", $this->toastResponse('error', "Vous n'avez pas le droit de faire cette requête !"));
+        if(!($role->level >= 5 && $highRole->level >= 5))
+            if($highRole->position >= $role->position) 
+                return redirect()->back()->with("status", $this->toastResponse('error', "Vous n'avez pas le droit de faire cette requête !"));
 
         $role->update([
             'name' => $request->name,
@@ -122,7 +127,9 @@ class RolesController extends Controller
         if($role == null) return redirect()->back()->with("status", $this->toastResponse('error', "Rôle non trouvable"));
 
         $highRole = Auth::user()->getHigherRole();
-        if($highRole->position >= $role->position) return redirect()->back()->with("status", $this->toastResponse('error', "Vous n'avez pas le droit de faire cette requête !"));
+        if(!($role->level >= 5 && $highRole->level >= 5))
+            if($highRole->position >= $role->position) 
+                return redirect()->back()->with("status", $this->toastResponse('error', "Vous n'avez pas le droit de faire cette requête !"));
 
         foreach($request->permissions as $perm){
             if($perm['hasCheck'])
