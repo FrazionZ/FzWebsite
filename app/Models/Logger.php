@@ -31,7 +31,7 @@ class Logger extends Model
             'enum' => $action,
             'data' => $data,
             'target_id' => $target?->id,
-            'ip' => $_SERVER['REMOTE_ADDR'],
+            'ip' => (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'],
         ]);
     }
 
