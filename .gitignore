@@ -2,6 +2,7 @@
 /node_modules
 /storage/*.key
 /vendor
+/config/frazionz.php
 .env
 .env.backup
 .env.production

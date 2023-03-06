@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Logger;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -56,6 +57,12 @@ class AuthenticatedSessionController extends Controller
 
         if (! $this->guard()->once($this->credentials($request))) {
             $this->incrementLoginAttempts($request);
+
+            //TRY REGISTER LOG
+            $user_log = User::where('email', $request->email)->first();
+            if($user_log !== null)
+                Logger::log('user.auth.login.password', null, null, $user_log);
+
             return redirect(route('login'))->with("status", $this->toastResponse('error', "Identifiants invalides."));
         }
 
@@ -88,6 +95,8 @@ class AuthenticatedSessionController extends Controller
 
         if($user->uuid == null) $user->update(['uuid' => Str::uuid()]);
 
+        Logger::log('user.auth.login.successful', null, null, $user);
+
         return $this->sendLoginResponse($request);
     }
 
@@ -96,6 +105,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        Logger::log('user.auth.logout', null, null, Auth::user());
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

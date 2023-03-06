@@ -1,0 +1,170 @@
+.stepper{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    position:relative;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    width:100%;
+    padding:10px
+}
+.stepper .steps-container{
+    height:100%;
+    -webkit-box-orient:horizontal;
+    -webkit-box-direction:normal;
+    -ms-flex-direction:row;
+    flex-direction:row
+}
+.stepper .steps-container .steps{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:horizontal;
+    -webkit-box-direction:normal;
+    -ms-flex-direction:row;
+    flex-direction:row;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    height:100%;
+    overflow-x:auto;
+    -webkit-box-pack:justify!important;
+    -ms-flex-pack:justify!important;
+    justify-content:space-between!important
+}
+.stepper .steps-container .steps .step{
+    display:table-cell;
+    text-align:center;
+    position:relative;
+    min-width:150px;
+    max-width:150px
+}
+.stepper .steps-container .steps .step .step-title{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    margin-left:5px;
+    padding:10px 0;
+    color: white;
+    opacity:.8
+}
+.stepper .steps-container .steps .step .step-title .step-number{
+    color: white;
+    font-size:30px;
+    font-weight:600
+}
+.stepper .steps-container .steps .step .step-title .step-text{
+    font-size:14px;
+    color: white;
+    line-height:18px;
+    font-weight:600;
+    margin-left:10px;
+    text-align:start;
+    max-width:150px;
+    word-wrap:break-word
+}
+.stepper .steps-container .steps .step .step-indicator{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    width:fit-content
+}
+.stepper .steps-container .steps .step .step-indicator .step-divider{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:horizontal;
+    -webkit-box-direction:normal;
+    -ms-flex-direction:row;
+    flex-direction:row;
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    margin-left:10px
+}
+.stepper .steps-container .steps .step .step-indicator .step-divider span{
+    margin:0 2px;
+    border-radius:6px;
+    -webkit-transition:.4;
+    transition:.4;
+    opacity:.8;
+    background-color:#9f9d9d
+}
+.stepper .steps-container .steps .step .step-indicator .step-divider span:first-child{
+    width:6px;
+    height:6px
+}
+.stepper .steps-container .steps .step .step-indicator .step-divider span:nth-child(2){
+    width:50px;
+    height:6px
+}
+.stepper .steps-container .steps .step .step-indicator .step-node{
+    position:relative;
+    cursor:pointer;
+    width:45px;
+    height:45px;
+    font-size:16px;
+    border-radius:50%;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+    -webkit-transition:width .3;
+    transition:width .3;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    color:#fff;
+    background-color:#9f9d9d
+}
+.stepper .steps-container .steps .step.prev .step-node{
+    background-color:#333;
+    color:#fff;
+    border:2px solid #ccc
+}
+.stepper .steps-container .steps .step.prev .step-title{
+    opacity:1!important
+}
+.stepper .steps-container .steps .step.prev .step-divider span:first-child{
+    background:#333!important
+}
+.stepper .steps-container .steps .step.prev .step-divider span:nth-child(2){
+    background:#333!important
+}
+.stepper .steps-container .steps .step.active .step-node{
+    background-color:#fff;
+    border:2px solid #333;
+    color:#333
+}
+.stepper .steps-container .steps .step.active .step-title{
+    opacity:1!important
+}
+.stepper .steps-container .steps .step.active .step-divider span:first-child{
+    background:#333!important
+}
+.stepper .stepper-content-container{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    width:100%
+}
+.stepper .stepper-content-container .stepper-content{
+    width:100%;
+    padding:15px 10px;
+    display:none
+}
+.stepper .stepper-content-container .stepper-content.show{
+    display:block
+}

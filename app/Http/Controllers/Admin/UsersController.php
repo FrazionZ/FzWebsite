@@ -21,6 +21,7 @@ class UsersController extends Controller
     
     public function index(Request $request){
         $users = $this->paginateUsers($request->query('page', 0));
+
         return Inertia::render('Admin/Users/Index', [
             'users' => $users,
         ]);
@@ -53,7 +54,7 @@ class UsersController extends Controller
         return $users;
     }
 
-    public function edit($id){
+    public function edit(Request $request, $id){
         $user = User::where('id', $id)->first();
 
         $user->role = $user->roles;
@@ -70,10 +71,15 @@ class UsersController extends Controller
         foreach($tokenUsers as $token){
             $token->geo = GeoLocation::lookup(base64_decode($token->ip));
         }
+        
+        //GET LOGGER USER
+        $logger = new Logger();
+        $logger = $logger->pagination(10, 'logger', $request->query('logger', 0), true, $user->id);
 
         return Inertia::render('Admin/Users/Edit', [
             'user' => $user,
             'roles' => $roles,
+            'logger' => $logger,
             'authRoleHigh' => Auth::user()->getHigherRole(),
             'tokenUsers' => $tokenUsers
         ]);
@@ -88,7 +94,7 @@ class UsersController extends Controller
         if($arh->position >= $targetRole->position && (!$arh->level >= 5)) return redirect()->back()->with("status", $this->toastResponse('error', "Impossible d'attacher un rôle égale ou supérieur à votre rôle le plus haut"));
         if($user->hasRole($targetRole->slug)) return redirect()->back()->with("status", $this->toastResponse('error', "Ce joueur a déjà ce rôle"));
         $user->attachRole($targetRole);
-        Logger::log('system.role.attach', json_encode(array('role' => array('id' => $targetRole->id))), $user);
+        Logger::log('user.role.attach', json_encode(array('role' => array('id' => $targetRole->id))), $user);
         return redirect()->back()->with("status", $this->toastResponse('success', "Rôle ajouté"));
     }
 
@@ -102,7 +108,7 @@ class UsersController extends Controller
         if($arh->position >= $targetRole->position && (!$arh->level >= 5)) return redirect()->back()->with("status", $this->toastResponse('error', "Impossible de déttacher un rôle égale ou supérieur à votre rôle le plus haut"));
         if(!$user->hasRole($targetRole->slug)) return redirect()->back()->with("status", $this->toastResponse('error', "Ce joueur n'a pas ce rôle"));
         $user->detachRole($targetRole);
-        Logger::log('system.role.dettach', json_encode(array('role' => array('id' => $targetRole->id))), $user);
+        Logger::log('user.role.dettach', json_encode(array('role' => array('id' => $targetRole->id))), $user);
         return redirect()->back()->with("status", $this->toastResponse('success', "Rôle retiré"));
     }
 

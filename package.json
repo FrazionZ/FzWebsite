@@ -21,19 +21,29 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
         "@headlessui/tailwindcss": "^0.1.2",
         "@heroicons/react": "^2.0.15",
+        "@mui/material": "^5.11.11",
+        "@mui/styled-engine-sc": "^5.11.11",
         "@uiw/react-md-editor": "^3.20.2",
         "@vitejs/plugin-basic-ssl": "^1.0.1",
+        "buffer": "^6.0.3",
         "flowbite": "^1.6.3",
         "flowbite-react": "^0.3.8",
         "framer-motion": "^9.0.4",
         "moment-timezone": "^0.5.40",
+        "primeicons": "^6.0.1",
+        "primereact": "^9.2.0",
+        "prop-types": "^15.8.1",
         "react-auth-code-input": "^3.2.1",
+        "react-drag-drop-files": "^2.3.9",
         "react-drag-reorder": "^1.2.0",
         "react-icons": "^4.7.1",
         "react-markdown": "^8.0.5",
         "react-toastify": "^9.1.1",
+        "styled-components": "^5.3.8",
         "walk": "^2.3.15"
     }
 }

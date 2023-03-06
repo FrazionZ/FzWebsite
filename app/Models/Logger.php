@@ -20,14 +20,10 @@ class Logger extends Model
 
     private $loggable = ["role" => LogRole::class];
 
-    public static function log(string $action, $data, User $target = null)
+    public static function log(string $action, $data, User $target = null, User $user_origin = null)
     {
-        if (Auth::guest()) {
-            return null;
-        }
-
         return self::create([
-            'user_id' => Auth::id(),
+            'user_id' => ($user_origin !== null) ? $user_origin->id : Auth::id(),
             'enum' => $action,
             'data' => $data,
             'target_id' => $target?->id,
@@ -42,9 +38,12 @@ class Logger extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pagination($perPage = 10, $url, $page){
-        $logger = $this->orderBy('created_at', 'desc')->paginate($perPage, ['*'], $url, $page);
-   
+    public function pagination($perPage = 10, $url, $page, $onlyUser, $user_id = null){
+        $logger = $this->orderBy('created_at', 'desc')
+                        ->where('enum', 'like', ($onlyUser) ? 'user.%' : '%%')
+                        ->Where('user_id', ($onlyUser && $user_id !== null) ? $user_id : null)
+                        ->orWhere('target_id', ($onlyUser && $user_id !== null) ? $user_id : null)
+                        ->paginate($perPage, ['*'], $url, $page);
         foreach($logger as $log){
             $log->userOrigin = $log->user;
             $log->enum = $this->determineEnum($log);
@@ -64,7 +63,7 @@ class Logger extends Model
         $dataReplaceArr = [];
         array_push($dataReplaceArr, array('key' => '%user_name%', 'value' => $log->user->name)); //CHANGE KEY USER_NAME FOR SHOW USER ORIGIN NAME
         if($log->target_id !== null){
-            $tu = User::select('name')->where('id', $log->target_id)->first();
+            $tu = User::select('id', 'name')->where('id', $log->target_id)->first();
             array_push($dataReplaceArr, array('key' => '%target_name%', 'value' => $tu->name)); //CHANGE KEY TARGET_NAME FOR SHOW USER TARGET ORIGIN NAME
             $log->target = $tu;
         }

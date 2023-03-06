@@ -3,6 +3,7 @@ import logo from "../../../assets/img/logo.svg";
 import Sidebar from "./Sidebar";
 import { FaHome } from "react-icons/fa";
 import { Link } from "@inertiajs/react";
+import AdminDropdownProfile from "@/Components/AdminDropdownProfile";
 
 export default class Navigation extends React.Component {
     constructor(props) {
@@ -146,22 +147,7 @@ export default class Navigation extends React.Component {
                             </div>
                             <div className="flex items-center ml-3">
                                 <div>
-                                    <button
-                                        type="button"
-                                        className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                                        id="user-menu-button-2"
-                                        aria-expanded="false"
-                                        data-dropdown-toggle="dropdown-2"
-                                    >
-                                        <span className="sr-only">
-                                            Open user menu
-                                        </span>
-                                        <img
-                                            className="w-8 h-8 rounded-full"
-                                            src={`https://auth.frazionz.net/skins/face.php?u=${this.user.id}`}
-                                            alt="user photo"
-                                        />
-                                    </button>
+                                    <AdminDropdownProfile />
                                 </div>
                                 <div
                                     className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"

@@ -13,6 +13,8 @@ export default function MaintenanceIndex(props) {
     const lang = new Language(props.language);
     const logger = props.logger;
 
+    console.log(props.realeses)
+
     return (
         <AdminLayout>
             <Head title={title} />
@@ -57,7 +59,7 @@ export default function MaintenanceIndex(props) {
                                                     <Link href={route('admin.users.edit', {id: log.userOrigin.id})}>{log.userOrigin.name}</Link>
                                                 </td>
                                                 <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    {(log.target_id == null) ? "N/A" : log.target.name}
+                                                    {(log.target_id == null) ? "N/A" : <Link href={route('admin.users.edit', {id: log.target.id})}>{log.target.name}</Link>}
                                                 </td>
                                                 <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     {log.ip}

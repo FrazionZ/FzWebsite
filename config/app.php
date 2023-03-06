@@ -196,6 +196,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Ixudra\Curl\CurlServiceProvider::class,
 
     ],
 
@@ -214,6 +215,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
+        'Curl'          => Ixudra\Curl\Facades\Curl::class,
     ])->toArray(),
 
     'roleDefault' => 2

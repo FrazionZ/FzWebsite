@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\LoggerController;
+use App\Http\Controllers\Admin\GithubController;
+use App\Http\Controllers\Admin\Github\ReposController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -46,5 +48,22 @@ Route::middleware(['permission:admin.access'])->group(function() {
 
     Route::prefix('logs')->name('logs.')->group(function() {
         Route::get('/', [LoggerController::class, 'index'])->name('index');
+    });
+    
+    Route::prefix('github')->middleware(['web'])->name('github.')->group(function() {
+        Route::get('/auth/start', [GithubController::class, 'start'])->name('auth.start');
+        Route::get('/auth/callback', [GithubController::class, 'callback'])->name('auth.callback');
+    });
+
+    Route::prefix('github')->middleware(['web', 'gauth'])->name('github.')->group(function() {
+        Route::get('/', [GithubController::class, 'index'])->name('index');
+        Route::get('/repos/{id}', [ReposController::class, 'index'])->name('repos.index');
+        Route::get('/repos/{id}/create', [ReposController::class, 'create'])->name('repos.create');
+
+        Route::post('/repos/draft/create', [ReposController::class, 'draft_create'])->name('repos.draft.create');
+        Route::get('/repos/{id}/tag/check/{tag}', [ReposController::class, 'draft_check_tag_exist'])->name('repos.tag.check');
+        Route::post('/repos/draft/asset/store', [ReposController::class, 'draft_asset_store'])->name('repos.draft.asset.store');
+        Route::put('/repos/draft/asset/upload', [ReposController::class, 'draft_asset_upload'])->name('repos.draft.asset.upload');
+        Route::post('/repos/draft/update', [ReposController::class, 'draft_update'])->name('repos.draft.update');
     });
 });

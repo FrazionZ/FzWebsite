@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Logger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -90,6 +91,8 @@ class TwoFAController extends Controller
         if (! $user->isValidTwoFactorCode($code)) {
             $request->session()->keep('login.2fa');
 
+            Logger::log('user.auth.login.twofa.error', null, null, $user);
+
             return redirect()->route('login');
         }
 
@@ -100,6 +103,8 @@ class TwoFAController extends Controller
         //$user->replaceRecoveryCode($code);
 
         if($user->uuid == null) $user->update(['uuid' => Str::uuid()]);
+
+        Logger::log('user.auth.login.successful', null, null, $user);
 
         return redirect()->route('index');
     }
