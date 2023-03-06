@@ -8,6 +8,7 @@ export default function Recap({ recapData }) {
 
     const repos = usePage().props.repos
     const subasset = usePage().props.subasset
+    const csrf_token = usePage().props.csrf_token
 
     let branchSelect = repos.branches[recapData.branchSelect]?.name
     let branchSplit = branchSelect.split("/")
@@ -55,7 +56,7 @@ export default function Recap({ recapData }) {
             branch: branchSelect,
             tag: tagName,
             title: tagName,
-            _token: props.csrf_token
+            _token: csrf_token
         })
         .then(async function (response) {
             setCreateDraft(2)
@@ -78,7 +79,7 @@ export default function Recap({ recapData }) {
                         repo_name: repos.name,
                         repo_release_id: data.data.id,
                         file: file,
-                        _token: props.csrf_token
+                        _token: csrf_token
                     }, {
                         headers: {
                             "Content-Type": "multipart/form-data",
@@ -106,7 +107,7 @@ export default function Recap({ recapData }) {
             repo_name: repos.name,
             repo_release_id: data.data.id,
             files: recapData.filesAssets,
-            _token: props.csrf_token
+            _token: csrf_token
         }, {
             onSuccess: () => {
                 setUploadFilesGithub(2)
@@ -123,7 +124,7 @@ export default function Recap({ recapData }) {
         axios.post(route('admin.github.repos.draft.update'), {
             repo_name: repos.name,
             release_id: data.data.id,
-            _token: props.csrf_token
+            _token: csrf_token
         })
         .then(function (response) {
             setUpdateDraft(2)

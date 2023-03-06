@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!env('APP_ENV', 'local') == "local")
+        if(env('APP_ENV', 'local') !== "local")
             \URL::forceScheme('https');
         Collection::macro('paginate', function ($perPage, $total = null, $page = null, $pageName = 'page') {
             $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
