@@ -45,11 +45,15 @@ export default class ValueCard extends React.Component {
                     </div>
                     <div className="actions">
                         <motion.button whileTap={{ scale: 0.97 }} className="btn" onClick={() => { 
-                            if(this.link !== undefined)
-                                router.get(this.link)
-                            else if(this.state.isOpen && this.props.method == "put") {
-                                this.formSubmitPut(); 
-                                this.setState({ isOpen: !this.state.isOpen }) }}}>{this.state.isOpen ? "Sauvegarder" : "Modifier"}</motion.button>
+                                if(this.link !== undefined)
+                                    router.get(this.link)
+                                else {
+                                    if(this.state.isOpen && this.props.method == "put")
+                                        this.formSubmitPut();
+                                    this.setState({ isOpen: !this.state.isOpen }) 
+                                }
+                            }
+                            }>{this.state.isOpen ? "Sauvegarder" : "Modifier"}</motion.button>
                     </div>
                 </div>
                 <AnimatePresence initial={false}>

@@ -78,8 +78,6 @@ export default function ProfileIndex(props) {
     let factionUser = props.factionProfile
     let capeData = props.capeData
 
-    console.log(capeData)
-
     return (
         <Layout
             props={props}
