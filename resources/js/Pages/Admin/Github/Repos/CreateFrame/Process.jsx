@@ -27,7 +27,6 @@ export default function Recap({ recapData }) {
     const [uploadFilesGithub, setUploadFilesGithub] = useState(0)
     const [updateDraft, setUpdateDraft] = useState(0)
     const [filesUpload, setFilesUpload] = useState(recapData.filesAssets)
-    const [stateFileCurrent, setStateFileCurrent] = useState({ file: null, percentage: 0 })
 
     const state = {
         0: {

@@ -25,8 +25,16 @@
     --tran-03: all 0.3s ease;
     --tran-04: all 0.4s ease;
     --tran-05: all 0.5s ease;
-}
 
+    --discord: #6370f4;
+}
+@font-face {
+    font-family: 'Minecraft Regular';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(../assets/fonts/Minecraft-Regular.otf) format('opentype');
+}
 * {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -402,10 +410,10 @@ footer a.social svg linearGradient stop:last-child {
     transition: all 0.2s ease-in-out;
 }
 footer a.social:hover svg linearGradient stop:first-child {
-    stop-color: #F7A92F;
+    stop-color: #f7a92f;
 }
 footer a.social:hover svg linearGradient stop:last-child {
-    stop-color: #F16B1F;
+    stop-color: #f16b1f;
 }
 .icon_title {
     display: flex;
@@ -801,6 +809,247 @@ input[type="tel"] {
 .maintenance .title {
     font-size: 2rem;
 }
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.profile .top {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.profile .infos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.profile .infos .card {
+    min-height: 80px;
+    max-height: 80px;
+}
+
+.profile .infos .card img,
+.profile .infos .card svg {
+    width: 32px;
+    height: 32px;
+}
+
+.profile .infos .card img[alt="avatar"] {
+    border-radius: 5px;
+}
+
+.profile .frame {
+    display: flex;
+    gap: 60px;
+}
+
+.profile .menu {
+}
+
+.profile .menu .title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.profile .menu .items {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.profile .menu .items .item {
+    display: flex;
+    gap: 16px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    height: 50px;
+    align-items: center;
+    width: 292px;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    transition: 0.1s all ease-in-out;
+}
+
+.profile .menu .items .item .icon {
+    width: 24px;
+    height: 24px;
+}
+
+.profile .menu .items .item svg.icon linearGradient stop:first-child {
+    stop-color: #fff;
+}
+.profile .menu .items .item svg.icon linearGradient stop:last-child {
+    stop-color: #fff;
+}
+
+.profile .menu .items .item.active svg.icon linearGradient stop:first-child {
+    stop-color: #f7a92f;
+}
+.profile .menu .items .item.active svg.icon linearGradient stop:last-child {
+    stop-color: #f16b1f;
+}
+
+.profile .frame .component {
+    width: 100%;
+}
+
+.profile .containers-player {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.profile .inventory {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+.profile .inventory .item {
+    width: 68px;
+    height: 68px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+    overflow: hidden;
+}
+.profile .inventory .item .amount {
+    position: absolute;
+    bottom: -2px;
+    right: 6px;
+    font-size: 20px;
+    text-shadow: 2px 2px 0px black;
+    font-family: 'Minecraft Regular';
+    z-index: 600;
+}
+
+.profile .inventory .item span.mcsprite {
+    transform: scale(0.375, 0.375);
+    z-index: 99;
+}
+
+.profile .settings {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.profile .settings .data_personnal {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+.profile .settings .data_personnal .title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+}
+.profile .settings .data_personnal .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+    gap: 0;
+}
+.profile .settings .data_personnal .card  .head {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 24px;
+}
+.profile .settings .data_personnal .card .head .infos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profile .settings .data_personnal .card .head .infos span {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+}
+.profile .settings .data_personnal .card .content {
+    top: 0 !important;
+    position: relative !important;
+    background: var(--fzbg-1);
+    width: 100%;
+    padding: 24px;
+    border-radius: 0 0 12px 12px;
+}
+.profile .settings .data_personnal .card .content {
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+    overflow: hidden;
+}
+.profile .settings .data_personnal .card .content input {
+    height: 27px !important;
+    background: transparent !important;
+    padding: 0px !important;
+    box-shadow: none;
+    border-radius: 0 !important;
+    border-width: 0 !important;
+    border-bottom-width: 4px !important;
+    border-style: solid !important;
+    border-color: transparent;
+    border-image: var(--gradient) 1 !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    line-height: 27px !important;
+}
+.profile .settings .data_personnal .card .content .form-group {
+    display: flex;
+    gap: 8px !important;
+    width: 45%;
+}
+.profile .settings .data_personnal .card .content .form-group label {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+}
+.tooltip {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(16px);
+    border-radius: 15px;
+    width: 20rem;
+}
+.tooltip .tippy-content {
+    padding: 0;
+    border-radius: 15px;
+    min-width: 320px;
+    max-width: 320px;
+}
+.tooltip .title {
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 15px 15px 0 0px;
+    background: var(--color-2);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.tooltip .title.hide-content {
+    border-radius: 15px;
+}
+.tooltip .content {
+    padding: 1.5rem 2rem;
+}
+.tooltip .content.hide-content {
+    padding: 0rem !important;
+}
+
+.profile .menu .items .item:hover,.profile .menu .items .item.active {
+    background-color: var(--fzbg-1);
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }

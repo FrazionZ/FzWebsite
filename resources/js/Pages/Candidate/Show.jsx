@@ -54,7 +54,7 @@ export default function CandidateShow(props) {
                         <img src={BubbleInfos} alt="" />
                         <span>Information</span>
                     </div>
-                    <Alert state="infos" message={category.show} />
+                    <Alert state="infos">{category.show}</Alert>
                     <div className="flex gap-8">
                         <div className="form-group w-1/2">
                             <label>Pseudo</label>
@@ -132,16 +132,10 @@ export default function CandidateShow(props) {
                         );
                     })}
                     {comments.length == 0 && (
-                        <Alert
-                            state="infos"
-                            message="Aucun commentaire n'a été posté"
-                        />
+                        <Alert state="infos">Aucun commentaire n'a été posté</Alert>
                     )}
                     {candidate.locked == true && (
-                        <Alert
-                            state="error"
-                            message="Cette candidature est verrouillée, vous ne pouvez plus commenter"
-                        />
+                        <Alert state="error">Cette candidature est verrouillée, vous ne pouvez plus commenter"</Alert>
                     )}
                     {candidate.locked == false && (
                         <form onSubmit={submitComment} className="flex flex-col gap-5">

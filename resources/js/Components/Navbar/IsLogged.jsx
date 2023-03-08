@@ -9,7 +9,7 @@ export default function IsLogged({ auth }) {
             type: "inerlink"
         },
         {
-            value: "/profile/settings",
+            value: "/profile?fastMenu=5",
             name: "Paramètres",
             type: "inerlink"
         },

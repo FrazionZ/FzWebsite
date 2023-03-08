@@ -55,16 +55,16 @@ export default function CandidateShow(props) {
                         <span>Candidater</span>
                     </div>
                     {props.feature == false && 
-                        <Alert state="error" message="Les candidatures sont temporairement désactivées" />
+                        <Alert state="error">Les candidatures sont temporairement désactivées</Alert>
                     }
                     {props.feature == true && 
                         <>
-                            <div className="alert infos w-full">
+                            <Alert state="infos" className="w-full">
                                 <span>
                                     Pour rejoindre notre équipe, merci de remplir le formulaire ci-dessous. <br />Merci de suivre un maximum les conditions pour postuler. 
                                     <br />Les conditions, et un exemple, sont présents sur <Link href="#">cette page.</Link>
                                 </span>
-                            </div>
+                            </Alert>
                             <div className="flex gap-8">
                                 <div className="form-group w-1/6">
                                     <label>Votre âge</label>

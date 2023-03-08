@@ -5,7 +5,7 @@ return [
     /*
      * Enable / disable Google2FA.
      */
-    'enabled' => env('OTP_ENABLED', true),
+    'enabled' => env('OTP_ENABLED', false),
 
     /*
      * Lifetime in minutes.
@@ -57,7 +57,7 @@ return [
     /*
      * One Time Password View.
      */
-    'view' => 'google2fa.index',
+    'view' => null,
 
     /*
      * One Time Password error message.

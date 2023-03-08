@@ -17,8 +17,15 @@ use Illuminate\Support\HtmlString;
 class TwoFAController extends Controller
 { 
 
+    public function index(Request $request) {
+        return Inertia::render('Auth/TwoFA/Index', []);
+    }
+
     public function register(Request $request)
     {
+
+        if($request->user()->hasTwoFactorAuth())
+            return redirect()->route('2fa.index');
 
         $google2fa = new Google2FA();
 

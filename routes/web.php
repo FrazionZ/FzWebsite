@@ -35,6 +35,7 @@ Route::middleware('fzauth')->group(function () {
 Route::middleware(['2fa'])->name('2fa.')->group(function () {
     Route::get('/2fa/register', [TwoFAController::class, 'register'])->middleware(['auth'])->name('register');
     Route::post('/2fa/enable', [TwoFAController::class, 'enable'])->middleware(['auth'])->name('enable');
+    Route::get('/2fa', [TwoFAController::class, 'index'])->middleware(['auth'])->name('index');
     Route::get('/2fa/login', [TwoFAController::class, 'login'])->name('login');
     Route::post('/2fa/login', [TwoFAController::class, 'handleLogin'])->name('handleLogin');
 });

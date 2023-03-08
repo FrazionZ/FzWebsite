@@ -55,7 +55,7 @@ export default class Alert extends React.Component {
           <div className="flex justify-between align-center w-full">
             <div className="flex gap-[24px] items-center">
               <img src={AlertData(this.props.state).icon} alt={`bubble_${this.props.state}`} />
-              <span>{this.props.message}</span>
+              {this.props.children}
             </div>
             {this.props.closable !== undefined && 
               (

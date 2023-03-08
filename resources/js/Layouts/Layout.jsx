@@ -26,7 +26,7 @@ export default function Layout({ props, mc, title, isHome, children }) {
                     <div className="network">
                         <div className="title">Nos Réseaux</div>
                         <ul>
-                            <li><a className="social" href="https://discord.gg/sSf7NCs8Ap" target="_blank"><Discord /></a></li>
+                            <li><a className="social" href="https://discord.frazionz.net/" target="_blank"><Discord /></a></li>
                             <li><a className="social" href="https://twitter.com/frazionz/" target="_blank"><Twitter /></a></li>
                             <li><a className="social" href="https://www.instagram.com/frazionz/" target="_blank"><Insta /></a></li>
                             <li><a className="social" href="https://www.youtube.com/" target="_blank"><Youtube /></a></li>

@@ -5,7 +5,7 @@ import { FaFingerprint } from "react-icons/fa"
 import AuthCode from "react-auth-code-input"
 import { useState } from "react"
 
-export default function Register(props){
+export default function Login(props){
     
     let title = "Se Connecter"
 

@@ -95,22 +95,22 @@ export default class CandidateIndex extends React.Component {
                             <span>Candidater</span>
                         </div>
                         {this.props.feature == false && 
-                            <Alert className="w-full" state="error" message="Les Candidatures sont temporairement désactivées." />
+                            <Alert className="w-full" state="error">Les Candidatures sont temporairement désactivées.</Alert>
                         }
                         {this.props.feature == true && this.props.candidCooldown == true && 
-                            <Alert className="w-full" state="error" message="Votre précédente candidature a été traitée. Vous devez attendre 30 jours avant de postuler à nouveau" />
+                            <Alert className="w-full" state="error">Votre précédente candidature a été traitée. Vous devez attendre 30 jours avant de postuler à nouveau</Alert>
                         }
                         {this.props.feature == true && this.props.candidAlreadyPost == true && 
-                            <Alert className="w-full" state="error" message="Vous avez déjà envoyé une candidature, vous ne pouvez plus en poster pour le moment." />
+                            <Alert className="w-full" state="error">Vous avez déjà envoyé une candidature, vous ne pouvez plus en poster pour le moment.</Alert>
                         }
                         {this.props.feature == true && this.props.candidAlreadyPost == false && this.props.candidCooldown == false && 
                             <>
-                                <div className="alert infos w-full">
+                                <Alert state="infos" className="w-full">
                                     <span>
                                         Pour rejoindre notre équipe, merci de remplir le formulaire ci-dessous. Merci de suivre un maximum les conditions pour postuler. 
                                         <br />Les conditions, et un exemple, sont présents sur <Link href="#">cette page.</Link>
                                     </span>
-                                </div>
+                                </Alert>
                                 <Link href={ route('candidate.create') } className='btn'>Postuler Maintenant</Link>
                             </>
                         }
@@ -124,7 +124,7 @@ export default class CandidateIndex extends React.Component {
                                         <span>{category.display}</span>
                                     </div>
                                     <div className="column flex flex-col gap-[24px]">
-                                        <Alert state="infos" message={category.info} />
+                                        <Alert state="infos">{category.info}</Alert>
                                         {category.load == true && 
                                             <>
                                                 <div className="flex justify-center items-center gap-5 py-20">

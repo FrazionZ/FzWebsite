@@ -86,7 +86,7 @@ export default class Launcher extends React.Component {
                         <div className="icon_title">
                             <span>Un Problème avec le Launcher ?</span>
                         </div>
-                        <Alert state="error" message="Contactez nous sur le serveur discord ! On trouvera sûrement le problème." />
+                        <Alert state="error">Contactez nous sur le serveur discord ! On trouvera sûrement le problème.</Alert>
                     </div>
                     <div className="flex flex-col gap-[30px] mt-[120px]">
                         <div className="icon_title">
