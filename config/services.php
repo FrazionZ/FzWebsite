@@ -14,6 +14,12 @@ return [
     |
     */
 
+    'discord' => [
+        'client_id' => '847942487506681897',
+        'client_secret' => 'orFTgIB5mEbtcJMJ66G3TvOFRtFI9cwO',
+        'redirect' => '/social/discord/callback',
+    ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),

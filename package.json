@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "fzstart": "start npm run dev && start php artisan serve",
+        "fzstart": "vite --host && php artisan serve",
         "build": "vite build && vite build --ssr"
     },
     "devDependencies": {

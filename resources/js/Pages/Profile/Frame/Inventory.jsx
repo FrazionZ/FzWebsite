@@ -41,7 +41,7 @@ export default function FrameInventory() {
                     <img src={BubbleInfos} alt="" />
                     <span>Mon Inventaire</span>
                 </div>
-                <div className="flex gap-[50px]">
+                <div className="flex gap-[50px] overflow-auto xl:overflow-hidden">
                     <div className="flex gap-[10px]">
                         <div className="grid grid-row-4 gap-[10px]">
                             <Slots items={armor} />
@@ -65,7 +65,7 @@ export default function FrameInventory() {
                     <img src={BubbleInfos} alt="" />
                     <span>Mon Ender Chest</span>
                 </div>
-                <div className="flex justify-center gap-[50px]">
+                <div className="flex justify-center gap-[50px] overflow-auto xl:overflow-hidden">
                     <div className="grid gap-[10px]" style={{ gridTemplateColumns: "repeat(9, 1fr)" }}>
                         <Slots items={enchest} />
                     </div>

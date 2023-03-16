@@ -81,6 +81,7 @@ export default function DropdownProfile({ text, items, user }) {
                 key={i}
                 href={elem.value}
                 method={(elem.method !== undefined) ? elem.method : "get"}
+                as={elem?.as}
                 >
                 <motion.li variants={itemVariants}>{elem.name}</motion.li>
               </Link>

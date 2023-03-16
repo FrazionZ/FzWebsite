@@ -18,10 +18,12 @@ import MenuSkills from '../../../assets/img/icons/profile/skills.jsx'
 import MenuFaction from '../../../assets/img/icons/profile/factions.jsx'
 import MenuSuccess from '../../../assets/img/icons/profile/success.jsx'
 import MenuSettings from '../../../assets/img/icons/profile/settings.jsx'
+import MenuLogExternal from '../../../assets/img/icons/profile/logexternal.jsx'
 
 import FrameInventory from './Frame/Inventory'
 import FrameAppareance from './Frame/Appareance'
 import FrameSettings from './Frame/Settings'
+import FrameLogExternal from './Frame/LogExternal'
 
 import { FaDiscord } from "react-icons/fa"
 
@@ -33,6 +35,45 @@ moment.locale('fr')
 import { WalkingAnimation } from 'skinview3d'
 
 export default function ProfileIndex(props) {
+
+
+    let title = "Profil"
+    let status = props.status
+    let mustVerifyEmail = props.mustVerifyEmail
+    let TwoFA = props.auth.TwoFA
+    let lang = new Language(props.language);
+    let user = props.auth.user
+    let factionUser = props.factionProfile
+    let capeData = props.capeData
+
+    const [socialDiscordData, setSocialDiscordData] = useState(null)
+    const [socialDiscordLoaded, setSocialDiscordLoaded] = useState(false)
+
+
+    const [socialTwitchData, setSocialTwitchData] = useState(null)
+    const [socialTwitchLoaded, setSocialTwitchLoaded] = useState(false)
+
+    if (!socialDiscordLoaded)
+        axios.get(route('social.discord.get'))
+            .then((response) => {
+                setSocialDiscordData(response.data)
+                setSocialDiscordLoaded(true)
+            })
+            .catch((err) => {
+                setSocialDiscordData(undefined)
+                setSocialDiscordLoaded(true)
+            })
+
+    if (!socialTwitchLoaded)
+        axios.get(route('social.twitch.get'))
+            .then((response) => {
+                setSocialTwitchData(response.data)
+                setSocialTwitchLoaded(true)
+            })
+            .catch((err) => {
+                setSocialTwitchData(undefined)
+                setSocialTwitchLoaded(true)
+            })
 
     const menu = [
         {
@@ -48,35 +89,32 @@ export default function ProfileIndex(props) {
         {
             icon: <MenuSkills className="icon" />,
             display: "Skills",
-            component: null
+            component: <FrameLogExternal />
         },
         {
             icon: <MenuFaction className="icon" />,
             display: "Faction",
-            component: null
+            component: <FrameLogExternal />
         },
         {
             icon: <MenuSuccess className="icon" />,
             display: "Succès",
-            component: null
+            component: <FrameLogExternal />
         },
         {
             icon: <MenuSettings className="icon" />,
             display: "Paramètres",
             component: <FrameSettings />
+        },
+        {
+            icon: <MenuLogExternal className="icon" />,
+            display: "Connexions Externe",
+            component: <FrameLogExternal twitch={socialTwitchData} updateTwitch={setSocialTwitchData} discord={socialDiscordData} updateDiscord={setSocialDiscordData} />
         }
     ]
     const [playerObjectRotateY, setPlayerObjectRotateY] = useState(31.7)
     const [menuItemActive, setMenuItemActive] = useState((props.fastMenu !== null) ? props.fastMenu : 0)
 
-    let title = "Profil"
-    let status = props.status
-    let mustVerifyEmail = props.mustVerifyEmail
-    let TwoFA = props.auth.TwoFA
-    let lang = new Language(props.language);
-    let user = props.auth.user
-    let factionUser = props.factionProfile
-    let capeData = props.capeData
 
     return (
         <Layout
@@ -85,7 +123,7 @@ export default function ProfileIndex(props) {
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Profile</h2>}
         >
             <Head title={title} />
-            <div className="flex flex-col gap-[60px]">
+            <div className="flex flex-col  gap-[60px]">
                 {TwoFA === false && (
                     <div className="alert infos w-full"><span>Tu peux activer la double authentification en allant <Link href="/2fa/register">ici</Link></span></div>
                 )}
@@ -103,7 +141,7 @@ export default function ProfileIndex(props) {
                 )}
             </div>
             <div className="profile">
-                <div className="top">
+                <div className="top flex-wrap xl:flex-nowrap">
                     <ReactSkinview3d
                         skinUrl={`https://api.frazionz.net/user/${user.id}/skin/display`}
                         capeUrl={`https://api.frazionz.net/capes/display/brut/${capeData.cape_id}`}
@@ -122,14 +160,25 @@ export default function ProfileIndex(props) {
                             <img src={BubbleInfos} alt="" />
                             <span>Mes Informations</span>
                         </div>
-                        <div className="grid grid-cols-2 gap-6 w-full">
-                            <div className="card">
+                        <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6 w-full">
+                            <div className="card" 
+                                onClick={
+                                    () => {
+                                        navigator.share({
+                                            title: 'web.dev',
+                                            text: 'Check out web.dev.',
+                                            url: 'https://web.dev/',
+                                          })
+                                            .then(() => console.log('Successful share'))
+                                            .catch((error) => console.log('Error sharing', error));
+                                    }
+                                }>
                                 <img src={`https://api.frazionz.net/user/${user.id}/skin/head?s=32`} alt="avatar" />
                                 {user.name}
                             </div>
                             <div className="card">
                                 <FaDiscord fill={"var(--discord)"} />
-                                Data Discord Error Get
+                                {(socialDiscordData !== null) ? (socialDiscordData !== undefined) ? socialDiscordData?.username : "Aucun compte lié" : "Recherche.."}
                             </div>
                             <div className="card">
                                 <img src={Coins} alt="coins" />
@@ -150,7 +199,7 @@ export default function ProfileIndex(props) {
                         </div>
                     </div>
                 </div>
-                <div className="frame">
+                <div className="frame flex-wrap xl:flex-nowrap">
                     <div className="menu">
                         <div className="items">
                             <span className="title">Autres pages</span>
@@ -161,10 +210,10 @@ export default function ProfileIndex(props) {
                                         whileTap={{ scale: 0.87 }}
                                         onClick={() => { setMenuItemActive(index) }}
                                         className={`item ${(index == menuItemActive) ? "active" : ""}`}
-                                        >
+                                    >
                                         {item.icon} {item.display}
                                     </motion.button>
-                                   
+
                                 )
                             })}
                         </div>
@@ -177,7 +226,7 @@ export default function ProfileIndex(props) {
                             exit={{ y: -10, opacity: 0 }}
                             transition={{ duration: 0.2 }}
                             className="component"
-                        >  
+                        >
                             {menu[menuItemActive].component}
                         </motion.div>
                     </AnimatePresence>
