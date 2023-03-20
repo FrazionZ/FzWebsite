@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('public')->default(1);
             $table->text('content')->nullable(false);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(null);
+            $table->timestamp('updated_at')->nullable();
             $table->integer('updated_type')->default(-1);
         });
     }
