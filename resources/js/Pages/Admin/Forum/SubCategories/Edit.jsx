@@ -38,13 +38,13 @@ export default function ForumSubCategoriesEdit(props) {
 
     async function saveCategory(e) {
         e.preventDefault()
-        post(route('admin.forum.category.save'), {
+        post(route('admin.forum.subcategory.save'), {
             preserveState: true,
             resetOnSuccess: true,
             onFinish: (data) => {
             },
             onSuccess: (data) => {
-                setCategory(data.props.forumCategory)
+                setSubcategory(data.props.forumSubcategory)
             },
             onError: (data) => {
             },

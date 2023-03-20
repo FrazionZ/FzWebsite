@@ -21,10 +21,16 @@ class ForumController extends Controller
             $category->subcategories = ForumSubcategories::where('parent_id', $category->id)->orderBy('position', 'ASC')->get();
             foreach($category->subcategories as $sc){
                 $sc->roles = $sc->roles();
-                $sc->isAllowedCreated = true;
-                foreach($sc->roles as $scr){
-                    $sc->isAllowedCreated = $scr->isAllowed;
-                    break;
+                if(count($sc->roles) == 0) 
+                    $sc->isAllowedCreated = true;
+                else {
+                    $sc->isAllowedCreated = false;
+                    foreach($sc->roles as $scr){
+                        if($scr->isAllowed){
+                            $sc->isAllowedCreated = true;
+                            break;
+                        }
+                    }
                 }
             }
         }

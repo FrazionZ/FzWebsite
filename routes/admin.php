@@ -76,6 +76,7 @@ Route::middleware(['permission:admin.access'])->group(function() {
         Route::get('/subcategory/edit/{id}', [ForumController::class, 'subcategory_edit'])->name('subcategory.edit');
         Route::post('/subcategory/role/attach', [ForumController::class, 'subcategory_role_attach'])->name('subcategory.role.attach');
         Route::post('/subcategory/role/detach', [ForumController::class, 'subcategory_role_detach'])->name('subcategory.role.detach');
+        Route::post('/subcategory/save', [ForumController::class, 'subcategory_save'])->name('subcategory.save');
         Route::post('/category/save', [ForumController::class, 'category_save'])->name('category.save');
         Route::get('/subcategories', [ForumController::class, 'subcategories_index'])->name('subcategories.index');
     });

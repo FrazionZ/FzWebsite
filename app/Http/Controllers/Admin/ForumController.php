@@ -108,6 +108,27 @@ class ForumController extends Controller
         ]);
 
         return redirect()->back()->with("status", $this->toastResponse('success', "Mise à jour terminée"));
+    }
+
+    public function subcategory_save(Request $request){
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|int',
+            'name' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Le formulaire est invalide ou incomplet"));
+        }
+
+        $sc = ForumSubcategories::where('id', $request->id)->first();
+        if($sc == null) return redirect()->back()->with("status", $this->toastResponse('error', "Erreur lors de la lecture des données"));
+
+        $sc->update([
+            'name' => $request->name,
+            'updated_at' => now()
+        ]);
+
+        return redirect()->back()->with("status", $this->toastResponse('success', "Mise à jour terminée"));
 
 
     }

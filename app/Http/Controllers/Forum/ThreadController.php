@@ -9,6 +9,7 @@ use App\Models\Forum\ForumSubcategories;
 use App\Models\Forum\ForumThreads;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
@@ -72,6 +73,9 @@ class ThreadController extends Controller
             return redirect()->back()->with("status", $this->toastResponse('error', "La requête de cette action est incomplète."));
         }
 
+        if(!Auth::user()->hasPermission('forum.thread.pinned'))
+            return redirect()->back()->with("status", $this->toastResponse('error', "Vous n'avez pas la permission d'exécuter cette requête"));
+
         $thread = ForumThreads::where('id', '=', $request->th_id)->first();
         if($thread == null)
             return redirect()->back()->with("status", $this->toastResponse('error', "L'action a échoué"));
@@ -90,6 +94,9 @@ class ThreadController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->with("status", $this->toastResponse('error', "La requête de cette action est incomplète."));
         }
+
+        if(!Auth::user()->hasPermission('forum.thread.locked'))
+            return redirect()->back()->with("status", $this->toastResponse('error', "Vous n'avez pas la permission d'exécuter cette requête"));
 
         $thread = ForumThreads::where('id', '=', $request->th_id)->first();
         if($thread == null)

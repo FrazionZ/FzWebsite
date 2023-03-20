@@ -27,10 +27,11 @@ export default function ForumThreadView(props) {
     const title = "Forum"
     const lang = new Language(props.Language)
     const md = new MarkdownIt();
+    const perms = props.auth.permissions
     const [comments, setComments] = useState(props.thread?.comments?.data)
     const [commentPagination, setCommentPagination] = useState(props.thread?.comments)
-    const [pinnedAction, setPinnedAction] = useState(false)
-    const [lockedAction, setLockedAction] = useState(false)
+    const [pinnedAction, setPinnedAction] = useState((!perms.includes('forum.thread.pinned')))
+    const [lockedAction, setLockedAction] = useState((!perms.includes('forum.thread.locked')))
 
     async function changePage(action) {
         let result = null

@@ -16,15 +16,19 @@ export default function ForumIndex(props) {
     const categories = props.categories
     const csrf_token = props.csrf_token
 
-    const [selectSubcategory, setSelectSubcategory] = useState(1) //1 = ID in database
+    const [selectCategory, setSelectCategory] = useState(0) //1 = ID in database
+    const [selectSubcategory, setSelectSubcategory] = useState(0) //1 = ID in database
     const [allowedCreatedThread, setAllowedCreateThread] = useState(props.isAllowedCreateThread)
     const [threads, setThreads] = useState(props.threads.data)
     const [threadsPaginate, setThreadsPaginate] = useState(props.threads)
 
+    console.log(props)
+
     const routeNamePagination = "forum.threads.paginate"
  
-    async function requestThreads(item, page) {
-        setSelectSubcategory(item.id)
+    async function requestThreads(category_index, subcategory_index, item, page) {
+        setSelectCategory(category_index)
+        setSelectSubcategory(subcategory_index)
         setAllowedCreateThread(item.isAllowedCreated)
         setThreads(null)
         setThreadsPaginate(null)
@@ -66,9 +70,9 @@ export default function ForumIndex(props) {
                 </div>
                 <div className="body">
                     <div className="menu">
-                        {categories.map((category, index) => {
+                        {categories.map((category, category_index) => {
                             return (
-                                <div key={index} className="category">
+                                <div key={category_index} className="category">
                                     <div className="name">{category.name}</div>
                                     <div className="subcategory">
                                         {category.subcategories.map((item, index) => {
@@ -76,8 +80,8 @@ export default function ForumIndex(props) {
                                                 <motion.button
                                                     key={index}
                                                     whileTap={{ scale: 0.87 }}
-                                                    onClick={() => { requestThreads(item, 1) }}
-                                                    className={`item ${(item.id == selectSubcategory) ? "active" : ""}`}
+                                                    onClick={() => { requestThreads(category_index, index, item, 1) }}
+                                                    className={`item ${(index == selectSubcategory && category_index == selectCategory) ? "active" : ""}`}
                                                 >
                                                     {item.name}
                                                 </motion.button>
