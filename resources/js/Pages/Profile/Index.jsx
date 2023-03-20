@@ -26,10 +26,10 @@ import FrameSettings from './Frame/Settings'
 import FrameLogExternal from './Frame/LogExternal'
 
 import { FaDiscord } from "react-icons/fa"
+import FzToast from "@/Components/FzToast"
 
 import moment from 'moment-timezone'
 import 'moment/locale/fr'  // without this line it didn't work
-import FzToast from "@/Components/FzToast"
 moment.locale('fr')
 
 import { WalkingAnimation } from 'skinview3d'
@@ -115,7 +115,6 @@ export default function ProfileIndex(props) {
     const [playerObjectRotateY, setPlayerObjectRotateY] = useState(31.7)
     const [menuItemActive, setMenuItemActive] = useState((props.fastMenu !== null) ? props.fastMenu : 0)
 
-
     return (
         <Layout
             props={props}
@@ -143,7 +142,7 @@ export default function ProfileIndex(props) {
             <div className="profile">
                 <div className="top flex-wrap xl:flex-nowrap">
                     <ReactSkinview3d
-                        skinUrl={`https://api.frazionz.net/user/${user.id}/skin/display`}
+                        skinUrl={`https://api.frazionz.net/user/${user.uuid}/skin/display`}
                         capeUrl={`https://api.frazionz.net/capes/display/brut/${capeData.cape_id}`}
                         width="262"
                         height="442"
@@ -161,19 +160,8 @@ export default function ProfileIndex(props) {
                             <span>Mes Informations</span>
                         </div>
                         <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6 w-full">
-                            <div className="card" 
-                                onClick={
-                                    () => {
-                                        navigator.share({
-                                            title: 'web.dev',
-                                            text: 'Check out web.dev.',
-                                            url: 'https://web.dev/',
-                                          })
-                                            .then(() => console.log('Successful share'))
-                                            .catch((error) => console.log('Error sharing', error));
-                                    }
-                                }>
-                                <img src={`https://api.frazionz.net/user/${user.id}/skin/head?s=32`} alt="avatar" />
+                            <div className="card">
+                                <img src={`https://api.frazionz.net/user/${user.uuid}/skin/head?s=32`} alt="avatar" />
                                 {user.name}
                             </div>
                             <div className="card">

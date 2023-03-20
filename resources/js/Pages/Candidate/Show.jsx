@@ -7,7 +7,7 @@ import FzToast from '@/Components/FzToast';
 import Alert from '@/Components/Alert'
 import CandidateComponentCardComment from '@/Components/CandidateComponentCardComment'
 
-import Comments from '../../../assets/img/icons/comments.svg'
+import Comments from '../../../assets/img/icons/comments.jsx'
 import BubbleInfos from '../../../assets/img/icons/bubble_infos.svg'
 import EnvoleOpen from '../../../assets/img/icons/envelope_open.svg'
 import MDEditor from '@uiw/react-md-editor';

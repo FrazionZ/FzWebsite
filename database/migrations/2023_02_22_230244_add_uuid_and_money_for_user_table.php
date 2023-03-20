@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('uuid')->nullable();
-            $table->integer('money')->default(0);
-            $table->integer('banned')->default(0);
+            $table->string('uuid')->nullable()->after('password');
+            $table->integer('money')->default(0)->after('uuid');
+            $table->integer('banned')->default(0)->after('money');
         });
     }
 

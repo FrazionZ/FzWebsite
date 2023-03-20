@@ -7,18 +7,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\TwoFAController;
 use App\Http\Controllers\Social\DiscordController;
+use App\Http\Controllers\ForumController;
+use App\Http\Controllers\Forum\ThreadController;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return Inertia::render('Home', []);
@@ -70,7 +62,16 @@ Route::middleware(['fzauth'])->prefix('candidate')->name('candidate.')->group(fu
 });
 
 Route::middleware(['fzauth'])->prefix('forum')->name('forum.')->group(function() {
-    
+    Route::get('/', [ForumController::class, "index"])->name('index');
+    Route::get('/thread/create/{sc_id}', [ThreadController::class, 'create_form'])->name('thread.create.form');
+    Route::post('/thread/create/handle', [ThreadController::class, 'create_handle'])->name('thread.create.handle');
+    Route::get('/thread/view/{th_id}', [ForumController::class, 'thread_view'])->name('thread.view');
+    Route::post('/thread/actions/pinned', [ThreadController::class, "actions_pinned"])->name('thread.actions.pinned');
+    Route::post('/thread/actions/locked', [ThreadController::class, "actions_locked"])->name('thread.actions.locked');
+    Route::post('/thread/comment/publish', [ThreadController::class, 'comment_publish'])->name('thread.comment.publish');
+    Route::post('/threads/comment/paginate', [ThreadController::class, "comment_paginate"])->name('thread.comment.paginate');
+    Route::get('/threads/paginate/{sc_id}/{page}', [ForumController::class, "threads_paginate"])->name('threads.paginate');
+    Route::post('/threads/paginate', [ForumController::class, "threads_paginate"])->name('threads.paginate');
 });
 
 Route::get('/complete-registration', [Auth\RegisteredUserController::class, 'completeRegistration'])->name('complete.registration');

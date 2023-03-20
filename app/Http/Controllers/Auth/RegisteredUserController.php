@@ -59,11 +59,8 @@ class RegisteredUserController extends Controller
             'two_factor_secret' => $request->two_factor_secret,
         ]);
 
-        //Attribute role at user created
-        RoleUser::insert([
-            'role_id' => Role::defaultRoleId(),
-            'user_id' => $user->id,
-        ]);
+        $user = config('roles.models.defaultUser')::find($user->id);
+        $user->attachRole(Role::defaultRole());
 
         event(new Registered($user));
 

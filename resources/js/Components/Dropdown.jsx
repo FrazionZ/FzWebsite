@@ -76,6 +76,7 @@ export default function Dropdown({ text, items, hideArrow, buttonClassName, styl
               <Link
                 key={i}
                 href={elem.value}
+                data={elem?.data}
                 method={(elem.method !== undefined) ? elem.method : "get"}
                 >
                 <motion.li variants={itemVariants}>{elem.name}</motion.li>

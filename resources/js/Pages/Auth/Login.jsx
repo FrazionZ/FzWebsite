@@ -40,7 +40,7 @@ export default function Login(props, { status, canResetPassword }) {
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
-            <form onSubmit={submit}>
+            <form className="2xl:mx-[260px]" onSubmit={submit}>
                 <div>
                     <InputLabel forInput="email" value="Email" />
 
@@ -51,6 +51,7 @@ export default function Login(props, { status, canResetPassword }) {
                         value={data.email}
                         className="mt-1 block w-full"
                         autoComplete="username"
+                        placeholder="bob@frazionz.net"
                         isFocused={true}
                         handleChange={onHandleChange}
                     />
@@ -64,6 +65,7 @@ export default function Login(props, { status, canResetPassword }) {
                         type="password"
                         name="password"
                         value={data.password}
+                        placeholder="***************"
                         className="mt-1 block w-full"
                         autoComplete="current-password"
                         handleChange={onHandleChange}

@@ -18,7 +18,7 @@ export default function Layout({ props, mc, title, isHome, children }) {
         <div id="app">
             <Navbar auth={props.auth} mc={mc} title={title} isHome={isHome} navbar={props.navbar} />
             <div className={`content ${(isHome) ? "home" : "other"} flex flex-col gap-[90px]`}>
-                <div className="2xl:mx-[380px] pb-16">
+                <div className="mx-8 xl:mx-[340px] pb-16">
                     {children}
                 </div>
             </div>

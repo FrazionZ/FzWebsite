@@ -77,13 +77,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getHigherRole()
     {
-        if($this->roles !== null)
-            $roles = $this->roles;
-        else
-            $roles = $this->role;
-
         $roleParent = null;
-        foreach($roles as $role){
+        foreach($this->getRoles() as $role){
             if($roleParent == null)
                 $roleParent = $role;
             else if($roleParent->position > $role->position)

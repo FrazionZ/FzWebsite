@@ -533,6 +533,14 @@ footer a.social:hover svg linearGradient stop:last-child {
     list-style: disc;
 }
 
+svg.gradientForce linearGradient stop:first-child {
+    stop-color: #f7a92f;
+}
+
+svg.gradientForce linearGradient stop:last-child {
+    stop-color: #f16b1f;
+}
+
 .btn {
     display: flex;
     align-items: center;
@@ -1252,6 +1260,37 @@ input[type="tel"] {
     bottom: 0;
     right: 0;
     top: 20px;
+}
+
+
+
+.paginate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+.paginate.reverse {
+    flex-direction: column-reverse;
+}
+.paginate span {
+    font-size: 1.25rem;
+}
+.paginate .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.paginate .btn {
+    width: 54px;
+    height: 54px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 0;
 }
 
 ::-webkit-scrollbar {

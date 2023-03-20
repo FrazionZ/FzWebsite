@@ -28,7 +28,7 @@ export default function IsLogged({ auth }) {
         name: "Déconnexion",
         method: 'post',
         type: "inerlink",
-        as: "button"
+        as: "a"
     })
 
 

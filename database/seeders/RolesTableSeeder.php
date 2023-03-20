@@ -22,24 +22,28 @@ class RolesTableSeeder extends Seeder
                 'name'        => 'Admin',
                 'slug'        => 'admin',
                 'description' => 'Admin Role',
+                'color'       => '#fff',
                 'level'       => 5,
             ],
             [
                 'name'        => 'Responsable',
                 'slug'        => 'responsable',
                 'description' => 'Responsable Role',
+                'color'       => '#fff',
                 'level'       => 1,
             ],
             [
                 'name'        => 'Développeur',
                 'slug'        => 'developer',
                 'description' => 'Développeur Role',
+                'color'       => '#fff',
                 'level'       => 1,
             ],
             [
                 'name'        => 'User',
                 'slug'        => 'user',
                 'description' => 'User Role',
+                'color'       => '#fff',
                 'level'       => 1,
             ],
         ];
@@ -55,6 +59,7 @@ class RolesTableSeeder extends Seeder
                     'name'          => $RoleItem['name'],
                     'slug'          => $RoleItem['slug'],
                     'description'   => $RoleItem['description'],
+                    'color'         => $RoleItem['color'],
                     'level'         => $RoleItem['level'],
                 ]);
             }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\LoggerController;
 use App\Http\Controllers\Admin\GithubController;
+use App\Http\Controllers\Admin\ForumController;
 use App\Http\Controllers\Admin\Github\ReposController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -65,5 +66,17 @@ Route::middleware(['permission:admin.access'])->group(function() {
         Route::post('/repos/draft/asset/store', [ReposController::class, 'draft_asset_store'])->name('repos.draft.asset.store');
         Route::put('/repos/draft/asset/upload', [ReposController::class, 'draft_asset_upload'])->name('repos.draft.asset.upload');
         Route::post('/repos/draft/update', [ReposController::class, 'draft_update'])->name('repos.draft.update');
+    });
+
+    Route::prefix('forum')->middleware(['web'])->name('forum.')->group(function() {
+        Route::get('/categories', [ForumController::class, 'categories_index'])->name('categories.index');
+        Route::post('/categories/swap', [ForumController::class, 'categories_swap'])->name('categories.swap');
+        Route::post('/subcategories/swap', [ForumController::class, 'subcategories_swap'])->name('subcategories.swap');
+        Route::get('/category/edit/{id}', [ForumController::class, 'category_edit'])->name('category.edit');
+        Route::get('/subcategory/edit/{id}', [ForumController::class, 'subcategory_edit'])->name('subcategory.edit');
+        Route::post('/subcategory/role/attach', [ForumController::class, 'subcategory_role_attach'])->name('subcategory.role.attach');
+        Route::post('/subcategory/role/detach', [ForumController::class, 'subcategory_role_detach'])->name('subcategory.role.detach');
+        Route::post('/category/save', [ForumController::class, 'category_save'])->name('category.save');
+        Route::get('/subcategories', [ForumController::class, 'subcategories_index'])->name('subcategories.index');
     });
 });

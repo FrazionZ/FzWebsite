@@ -96,6 +96,19 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Pouvoir changer les infos et les permission d\'un rôle',
                 'model'       => 'Permission',
             ],
+            //FORUM
+            [
+                'name'        => 'Vérouiller un Thread',
+                'slug'        => 'forum.thread.locked',
+                'description' => 'Pouvoir créer un thread sur une catégorie Admin',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Epingler un Thread',
+                'slug'        => 'forum.thread.pinned',
+                'description' => 'Pouvoir épingler un thread',
+                'model'       => 'Permission',
+            ],
         ];
 
         /*

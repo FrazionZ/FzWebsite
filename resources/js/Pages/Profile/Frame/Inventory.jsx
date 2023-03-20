@@ -12,6 +12,9 @@ export default function FrameInventory() {
     if (inventory == undefined)
         inventory = []
 
+    if(enderchest == undefined)
+        enderchest = []
+
     let armor = [];
     let trophy = [];
     let slots = [];

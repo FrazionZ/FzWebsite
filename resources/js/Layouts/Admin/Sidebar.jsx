@@ -1,4 +1,4 @@
-import { FaHome } from "react-icons/fa";
+import { FaComments, FaHome } from "react-icons/fa";
 import { BsFillBarChartFill, BsFiles } from 'react-icons/bs'
 import { FiNavigation } from 'react-icons/fi'
 import { IoMdCart } from "react-icons/io"
@@ -91,6 +91,22 @@ export default function AdminSidebar({ auth }) {
                                                         Historique d'achats
                                                     </Sidebar.Item>
                                                 </Link>    
+                                            </Sidebar.Collapse>
+                                            <Sidebar.Collapse
+                                                    icon={FaComments}
+                                                    label="Forum"
+                                                    open={true}
+                                                >
+                                                <Link href={route('admin.forum.categories.index')} preserveState>
+                                                    <Sidebar.Item>
+                                                        Catégories
+                                                    </Sidebar.Item>
+                                                </Link> 
+                                                <Link href={route('admin.forum.subcategories.index')} preserveState>
+                                                    <Sidebar.Item>
+                                                        Sous Catégories
+                                                    </Sidebar.Item>
+                                                </Link> 
                                             </Sidebar.Collapse>
 
                                             <Link href={route('admin.logs.index')} preserveState>

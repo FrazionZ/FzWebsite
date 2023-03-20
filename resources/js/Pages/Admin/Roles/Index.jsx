@@ -31,15 +31,6 @@ export default function RolesIndex(props) {
         }
     })
 
-    console.log(adminRoles)
-    
-    Array.prototype.swap = function (x, y) {
-        var b = this[x];
-        this[x] = this[y];
-        this[y] = b;
-        return this;
-    };
-
     async function getChangedPos(currentPos, newPos) {
         console.log(currentPos, newPos);
         let rolesPrepare = roles;
