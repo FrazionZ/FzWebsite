@@ -466,7 +466,7 @@ footer a.social:hover svg linearGradient stop:last-child {
     border-radius: 12px;
     padding: 24px;
     gap: 24px;
-    overflow-x: auto;
+    overflow: auto hidden;
     -moz-user-select: none;
     user-select: none;
     -webkit-user-select: none;
@@ -561,6 +561,8 @@ svg.gradientForce linearGradient stop:last-child {
     user-select: none;
     cursor: pointer;
     transition: 0.2s opacity;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .btn.icon {

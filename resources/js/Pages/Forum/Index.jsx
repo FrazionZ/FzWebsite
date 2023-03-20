@@ -68,8 +68,8 @@ export default function ForumIndex(props) {
                         </div>
                     </div>
                 </div>
-                <div className="body">
-                    <div className="menu">
+                <div className="body flex-wrap 2xl:flex-nowrap">
+                    <div className="menu w-full 2xl:w-fitcontent">
                         {categories.map((category, category_index) => {
                             return (
                                 <div key={category_index} className="category">
