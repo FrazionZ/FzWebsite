@@ -91,6 +91,7 @@
 
 .forum .body .threads .item {
     padding: 16px;
+    overflow: hidden;
 }
 
 .forum .body .threads .item:hover {

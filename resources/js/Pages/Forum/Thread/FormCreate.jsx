@@ -31,7 +31,7 @@ export default function FormCreate(props) {
                 <span>Création d'un Thread</span>
             </div>
             <form onSubmit={submitThread} className="flex flex-col gap-5 mt-8">
-                <div className="grid grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 2xl:grid-cols-2 gap-8">
                     <div className="form-group">
                         <label>Titre</label>
                         <input

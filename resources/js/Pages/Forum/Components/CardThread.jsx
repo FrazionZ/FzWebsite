@@ -27,7 +27,7 @@ export default function CardThread({ thread }) {
 
     return (
         <Link href={route('forum.thread.view', { th_id: thread.id })}>
-            <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2, type: "tween" }} className="card item">
+            <motion.div whileHover={{ scale: 1.02, overflow: "hidden" }} transition={{ duration: 0.2, type: "tween" }} className="card item overflow-hidden">
                 <div className="infos">
                     <div className="datas">
                         <div className="title">
