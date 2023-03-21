@@ -1364,6 +1364,10 @@ header .menu_account .not_logged.mobile {
         opacity: 0;
     }
 
+    .bannerShadow.closed {
+        display: none !important;
+    }
+
     header nav,
     header nav .menu_general,
     header nav .menu_subgeneral,

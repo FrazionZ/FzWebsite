@@ -92,8 +92,12 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
                 <MenuToggle toggle={() => toggleOpen(isOpen ? false : true)} />
             </motion.div>
             <AnimatePresence>
-                <motion.div className="bannerShadow" onClick={handleHeaderClick}
-                    initial={{ opacity: 0, display: "none", backdropFilter: "blur(0px)" }}
+                <motion.div className={`bannerShadow ${isOpen ? "" : "closed"}`} onClick={handleHeaderClick}
+                    initial={{ 
+                        opacity: 0, 
+                        display: "none", 
+                        backdropFilter: "blur(0px)" 
+                    }}
                     animate={{
                         opacity: isOpen ? "1" : "0",
                         display: "block",
