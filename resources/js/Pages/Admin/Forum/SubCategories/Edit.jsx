@@ -80,7 +80,7 @@ export default function ForumSubCategoriesEdit(props) {
                             <Button className="mt-3" disabled={processing} type="submit">Sauvegarder</Button>
                         </form>
                     </div>
-                    <div className="col-span-1 flex flex-col justify-center gap-5 border-gray-800 border-l pl-6">
+                    <div className="col-span-1 flex flex-col justify-center gap-5">
                         <h1 className="text-2xl text-white mb-5">Rôles</h1>
                         {true &&
                             <div className="flex gap-1 items-center">

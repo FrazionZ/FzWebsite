@@ -1316,13 +1316,13 @@ input[type="tel"] {
 header .mobile_menu .hamburger, header .mobile_menu .menu_account {
     display: none;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
     header aside {
         display: none;
     }
 }
 /* MOBILE */
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 1280px) {
     header {
         height: fit-content !important;
     }
@@ -1361,6 +1361,7 @@ header .mobile_menu .hamburger, header .mobile_menu .menu_account {
     }
     header .mobile_menu {
         margin: 1rem 0;
+        width: inherit;
     }
     header .mobile_menu .hamburger, header .mobile_menu .menu_account {
         display: block;
@@ -1391,6 +1392,13 @@ header .mobile_menu .hamburger, header .mobile_menu .menu_account {
 
     header aside {
         margin-bottom: 1.5rem;
+        width: 80%;
+        position: absolute;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background: var(--fzbg-2);
+        padding: 20px;
     }
 
     header .mobile_menu .btn-container {
@@ -1399,10 +1407,11 @@ header .mobile_menu .hamburger, header .mobile_menu .menu_account {
 
     header .mobile_menu {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
         gap: 1rem;
         margin-top: 1rem;
+        position: relative;
     }
 
     header .mobile_menu svg {

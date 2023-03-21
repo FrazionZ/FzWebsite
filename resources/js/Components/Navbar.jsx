@@ -50,67 +50,79 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
         <header>
             <nav>
                 <div className="menu_general">
-                    <div className="mobile_menu">
-                        <div className="hamburger" onClick={cycleOpen}>
-                            <BiMenu />
-                        </div>
-                        <Link href="/"><img src={logo} className="logo" alt="logo" /></Link>
-                        <div className="menu_account">
-                            {auth.isLogged ? <IsLogged auth={auth} /> : <NotLogged />}
-                        </div>
-                    </div>
                     <AnimatePresence>
+                        <motion.div 
+                            initial={{ left: "0px" }}
+                            animate={{
+                                left: `${open ? "calc(80% - -15px)" : "0px"}`
+                            }}
+                            exit={{
+                                left: "0px",
+                                transition: { delay: 0.7, duration: 0.3 }
+                            }}
+                            className="mobile_menu">
+                            <div className="hamburger" onClick={cycleOpen}>
+                                <BiMenu />
+                            </div>
+                            <Link href="/"><img src={logo} className="logo" alt="logo" /></Link>
+                            <div className="menu_account">
+                                {auth.isLogged ? <IsLogged auth={auth} /> : <NotLogged />}
+                            </div>
+                        </motion.div>
                         {open && (
-                            <motion.aside
-                                initial={{ width: 0 }}
-                                animate={{
-                                    width: "100%"
-                                }}
-                                exit={{
-                                    width: 0,
-                                    transition: { delay: 0.7, duration: 0.3 }
-                                }}
-                            >
-                                <motion.div
-                                    className="container"
-                                    initial="closed"
-                                    animate="open"
-                                    exit="closed"
-                                    variants={sideVariants}
+                            <>
+                                <motion.aside
+                                    initial={{ width: 0 }}
+                                    animate={{
+                                        width: "80%"
+                                    }}
+                                    exit={{
+                                        width: 0,
+                                        transition: { delay: 0.7, duration: 0.3 }
+                                    }}
                                 >
-                                    {navbar.map((elem, i) => {
-                                        if (elem.type !== "dropdown" && elem.parent_id == null)
-                                            return (
-                                                <motion.div
-                                                    key={i}
-                                                    whileHover={{ scale: 1.1 }}
-                                                    variants={itemVariants}
-                                                >
-                                                    <Link preserveState key={i} className={`nav-link ${(url == elem.value) ? 'active' : ''}`} href={elem.value}>
-                                                        {elem.name}
-                                                    </Link>
-                                                </motion.div>
+                                    <motion.div
+                                        className="container"
+                                        initial="closed"
+                                        animate="open"
+                                        exit="closed"
+                                        variants={sideVariants}
+                                    >
+                                        {navbar.map((elem, i) => {
+                                            if (elem.type !== "dropdown" && elem.parent_id == null)
+                                                return (
+                                                    <motion.div
+                                                        key={i}
+                                                        whileHover={{ scale: 1.1 }}
+                                                        variants={itemVariants}
+                                                    >
+                                                        <Link preserveState key={i} className={`nav-link ${(url == elem.value) ? 'active' : ''}`} href={elem.value}>
+                                                            {elem.name}
+                                                        </Link>
+                                                    </motion.div>
 
-                                            )
-                                        else if (elem.type == "dropdown" && elem.parent_id == null) {
-                                            let childsElement = []
-                                            navbar.forEach((childElem, i) => {
-                                                if (childElem.parent_id == elem.id)
-                                                    childsElement.push(childElem)
-                                            })
-                                            return (
-                                                <motion.div
-                                                    key={i}
-                                                    whileHover={{ scale: 1.1 }}
-                                                    variants={itemVariants}
-                                                >
-                                                    <Dropdown key={i} text={elem.name} items={childsElement} />
-                                                </motion.div>
-                                            )
-                                        }
-                                    })}
-                                </motion.div>
-                            </motion.aside>
+                                                )
+                                            else if (elem.type == "dropdown" && elem.parent_id == null) {
+                                                let childsElement = []
+                                                navbar.forEach((childElem, i) => {
+                                                    if (childElem.parent_id == elem.id)
+                                                        childsElement.push(childElem)
+                                                })
+                                                return (
+                                                    <motion.div
+                                                        key={i}
+                                                        whileHover={{ scale: 1.1 }}
+                                                        variants={itemVariants}
+                                                    >
+                                                        <Dropdown key={i} text={elem.name} items={childsElement} />
+                                                    </motion.div>
+                                                )
+                                            }
+                                        })}
+                                    </motion.div>
+                                </motion.aside>
+                            </>
+
                         )}
                     </AnimatePresence>
                     <div className={`menu_subgeneral ${showNavigationMobile ? "open" : "closed"}`}>

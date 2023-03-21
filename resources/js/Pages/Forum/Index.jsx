@@ -22,8 +22,6 @@ export default function ForumIndex(props) {
     const [threads, setThreads] = useState(props.threads.data)
     const [threadsPaginate, setThreadsPaginate] = useState(props.threads)
 
-    console.log(props)
-
     const routeNamePagination = "forum.threads.paginate"
  
     async function requestThreads(category_index, subcategory_index, item, page) {
@@ -47,6 +45,7 @@ export default function ForumIndex(props) {
         })
     }
 
+
     return (
         <Layout
             props={props}
@@ -61,7 +60,7 @@ export default function ForumIndex(props) {
                         <span>Rédiger un Article</span>
                     </div>
                     <div className="card">
-                        <button className='btn' disabled={!allowedCreatedThread} onClick={()=>{router.get(route('forum.thread.create.form', {sc_id: selectSubcategory}))}}>Nouvelle Discussion</button>
+                        <button className='btn' disabled={!allowedCreatedThread} onClick={()=>{router.get(route('forum.thread.create.form', {sc_id: categories?.[selectCategory]?.subcategories[selectSubcategory]}))}}>Nouvelle Discussion</button>
                         <div className="user">
                             <span>{user.name}</span>
                             <img src={`https://auth.frazionz.net/skins/face.php?u=${user.id}`} alt="" />

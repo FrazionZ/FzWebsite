@@ -30,7 +30,7 @@ export default function DropdownProfile({ text, items, user }) {
       >
         <div className="user">
           <img src={`https://auth.frazionz.net/skins/face.php?u=${user.id}`} alt="" />
-          <span>{ user.name }</span>
+          <span className='hidden xl:block'>{ user.name }</span>
         </div>
         <motion.div
           variants={{
@@ -39,6 +39,7 @@ export default function DropdownProfile({ text, items, user }) {
           }}
           transition={{ duration: 0.2 }}
           style={{ originY: 0.55 }}
+          className="hidden xl:block"
         >
           <svg width="15" height="15" viewBox="0 0 20 20">
             <path d="M0 7 L 20 7 L 10 16" />
@@ -66,7 +67,7 @@ export default function DropdownProfile({ text, items, user }) {
             }
           }
         }}
-        style={{ pointerEvents: isOpen ? "auto" : "none" }}
+        style={{ pointerEvents: isOpen ? "auto" : "none", width: "16rem", right: "0rem" }}
       >
         {items.map((elem, i) => {
           if(elem.type == "hyperlink"){
