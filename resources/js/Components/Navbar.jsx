@@ -73,6 +73,9 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
             toggleOpen(false)
     }
 
+    if(isOpen)
+        window.scrollTo(0, 0);
+
     isOpen ? 
         document.body.style.overflow = "hidden" : 
         document.body.style.overflow = "auto"
@@ -89,7 +92,7 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
                 <MenuToggle toggle={() => toggleOpen(isOpen ? false : true)} />
             </motion.div>
             <AnimatePresence>
-                <motion.div className="bannerShadow"
+                <motion.div className="bannerShadow" onClick={handleHeaderClick}
                     initial={{ opacity: 0, display: "none", backdropFilter: "blur(0px)" }}
                     animate={{
                         opacity: isOpen ? "1" : "0",
