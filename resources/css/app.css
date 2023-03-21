@@ -1483,7 +1483,7 @@ header .menu_account .not_logged.mobile {
     header .mobile_menu .menu_account .not_logged.mobile .nav-link {
         width: fit-content;
         font-size: 1rem;
-        padding: 0;
+        padding: 0 8px;
     }
     header .mobile_menu .menu_account .not_logged.mobile .nav-link svg {
         font-size: 2rem;
