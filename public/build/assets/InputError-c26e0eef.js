@@ -1,0 +1,1 @@
+import{W as p,a as c}from"./app-f24b5933.js";import{L as g}from"./Language-45cbb11a.js";function x({prefixLang:r,attribute:m,message:t,isTrad:n,className:o=""}){const s=p().props,a=new g(s.language),e=r+"."+t;return t?c("p",{className:"text-sm text-red-600 "+o,children:n?a.get(e,[]):t}):null}export{x as I};

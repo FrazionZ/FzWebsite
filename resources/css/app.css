@@ -1334,15 +1334,19 @@ header .menu_account .not_logged.mobile {
 .bannerShadow {
     display: none;
 }
-@media screen and (min-width: 1371px) {
+@media screen and (min-width: 1440px) {
     header aside {
         display: none;
     }
 }
 /* MOBILE */
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1372px) {
     header {
         height: fit-content !important;
+    }
+
+    header nav .logo {
+        display: none;
     }
 
     header .home {
@@ -1433,8 +1437,8 @@ header .menu_account .not_logged.mobile {
         margin-bottom: 1.5rem;
         width: 80%;
         position: absolute;
-        height: calc(100vh - 82px);
-        top: 82.8px;
+        height: calc(100vh - 80px);
+        top: 80px;
         left: 0;
         background: var(--fzbg-4);
         padding: 20px;

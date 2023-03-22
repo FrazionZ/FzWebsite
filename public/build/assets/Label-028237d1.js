@@ -1,1 +1,0 @@
-import{a as t}from"./app-c8a2a8e1.js";import{u as c,c as b}from"./Toast-fd1285e0.js";const h=({children:s,color:a="default",disabled:l=!1,value:m,className:o,...r})=>{const e=c().theme.label;return t("label",{className:b(e.base,e.colors[a],l??e.disabled,o),...r,children:m??s??""})};export{h as L};
