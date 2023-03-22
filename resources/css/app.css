@@ -1334,13 +1334,11 @@ header .menu_account .not_logged.mobile {
 .bannerShadow {
     display: none;
 }
-@media screen and (min-width: 1440px) {
-    header aside {
-        display: none;
-    }
+.mobile_navbar {
+    display: none;
 }
 /* MOBILE */
-@media screen and (max-width: 1372px) {
+@media screen and (max-width: 768px) {
     header {
         height: fit-content !important;
     }
@@ -1363,8 +1361,7 @@ header .menu_account .not_logged.mobile {
     }
 
     header nav .menu_general {
-        gap: 20px;
-        width: 100%;
+        display: none;
     }
 
     header nav .menu_account .not_logged {
@@ -1508,6 +1505,46 @@ header .menu_account .not_logged.mobile {
         font-size: 2rem;
     }
 
+    .mobile_navbar {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: var(--fzbg-3);
+        padding: 0px 0px;
+        z-index: 99;
+        border-radius: 12px 12px 0 0;
+    }
+    .mobile_navbar .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex: 1 1 auto!important;
+    }
+    .mobile_navbar .menu .nav-link {
+        padding: 20px 0;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .mobile_navbar .menu .nav-link.active::before {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 5px;
+        bottom: 0;
+        border-radius: 5px 5px 0 0;
+        background: var(--gradient);
+    }
+    .mobile_navbar .menu .nav-link > img, svg {
+        width: 32px;
+        height: 32px;
+    }
+    .mobile_navbar .menu .nav-link img {
+        border-radius: 5px;
+    }
+
     button[role="switch"].large {
         width: 92px !important;
     }
@@ -1516,6 +1553,10 @@ header .menu_account .not_logged.mobile {
         font-weight: 500;
         font-size: 15px;
         line-height: 20px;
+    }
+
+    body {
+        margin-bottom: 60px;
     }
 
     footer .network ul,

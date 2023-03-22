@@ -3,7 +3,10 @@ import { motion } from 'framer-motion'
 import { Link } from '@inertiajs/react'
 import '../../css/dropdownProfile.css'
 
+
+
 export default function DropdownProfile({ text, items, user }) {
+  
   
   const itemVariants = {
       open: {
@@ -30,7 +33,7 @@ export default function DropdownProfile({ text, items, user }) {
       >
         <div className="user">
           <img src={`https://auth.frazionz.net/skins/face.php?u=${user.id}`} alt="" />
-          <span className='hidden xl:block'>{ user.name }</span>
+          <span className='hidden lg:block'>{ user.name }</span>
         </div>
         <motion.div
           variants={{

@@ -1,1 +1,0 @@
-import{W as r,a as e}from"./app-5b1e434c.js";import{F as t,k as n}from"./FzToast-007c4ea7.js";function f(){const{flash:a}=r().props;if(a.status!==null){let o=a.status.type,s=a.status.msg;switch(o){case"error":t.error(s);break;case"success":t.success(s);break;case"info":t.info(s);break;case"warning":t.warning(s);break;default:t.info(s)}a.status=null}return e(n,{})}export{f as F};

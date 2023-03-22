@@ -1,0 +1,1 @@
+import{a as e}from"./app-64c982be.js";function i({state:a,message:s,className:r,styleBadge:n,styleMessage:t}){return e("div",{className:`badge ${a} ${r}`,style:n,children:e("span",{style:t,children:s})})}export{i as B};
