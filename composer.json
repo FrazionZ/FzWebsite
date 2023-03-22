@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "adrianorosa/laravel-geolocation": "^1.1",
         "alchemyguy/youtube-laravel-api": "^1.0",
+        "anhskohbo/no-captcha": "^3.5",
         "bacon/bacon-qr-code": "^2.0",
         "graham-campbell/markdown": "14.0",
         "guzzlehttp/guzzle": "^7.5",

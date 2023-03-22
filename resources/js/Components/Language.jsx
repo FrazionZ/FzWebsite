@@ -14,7 +14,7 @@ export default class Language {
         let parts = key.split('.')
         let currentObject = this.lang;
         for (let i = 0; i < parts.length; i++) {
-            currentObject = currentObject[parts[i]];
+            currentObject = currentObject?.[parts?.[i]];
         }
 
         if(replaceArr !== undefined)
@@ -23,6 +23,7 @@ export default class Language {
                     currentObject = currentObject.replaceAll(rs.key, rs.value)
                 })
             }
+            
 
         return currentObject
     }

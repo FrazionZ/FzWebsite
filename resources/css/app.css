@@ -657,6 +657,7 @@ textarea:not(.w-md-editor-text-input) {
 }
 
 input:not([disabled])[type="text"]:hover,
+input:not([disabled])[type="password"]:hover,
 input:not([disabled])[type="tel"]:hover,
 input:not([disabled])[type="file"]:hover,
 input:not([disabled])[type="number"]:hover,
@@ -1296,6 +1297,12 @@ input[type="tel"] {
     padding: 0;
 }
 
+label[for="switch"] {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -1377,7 +1384,7 @@ header .menu_account .not_logged.mobile {
         padding: 0;
         justify-content: flex-start;
         align-items: flex-start;
-        background-color: var(--fzbg-2);
+        background-color: var(--fzbg-4);
     }
     header nav .menu_general {
         padding: 0 1.5rem;
@@ -1390,8 +1397,8 @@ header .menu_account .not_logged.mobile {
     }
     header .mobile_menu .hamburger, header .mobile_menu .menu_account {
         display: block;
-        background: var(--fzbg-2);
-        background-color: var(--fzbg-2);
+        background: var(--fzbg-4);
+        background-color: var(--fzbg-4);
     }
 
     header .menu_account {
@@ -1419,7 +1426,7 @@ header .menu_account .not_logged.mobile {
     }
 
     header nav .logo {
-        width: 48px;
+        width: 68px;
     }
 
     header aside {
@@ -1427,9 +1434,9 @@ header .menu_account .not_logged.mobile {
         width: 80%;
         position: absolute;
         height: calc(100vh - 82px);
-        top: 82px;
+        top: 82.8px;
         left: 0;
-        background: var(--fzbg-2);
+        background: var(--fzbg-4);
         padding: 20px;
     }
 
@@ -1447,7 +1454,7 @@ header .menu_account .not_logged.mobile {
 
     header .mobile_menu {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
         gap: 1rem;
         margin-top: 1rem;
@@ -1474,8 +1481,8 @@ header .menu_account .not_logged.mobile {
     }
     .dropdownProfile.menu {
         width: 100%;
-        background: var(--fzbg-2);
-        background-color: var(--fzbg-2);
+        background: var(--fzbg-4);
+        background-color: var(--fzbg-4);
     }
     header .mobile_menu .menu_account .not_logged {
         display: none; 
@@ -1491,6 +1498,16 @@ header .menu_account .not_logged.mobile {
     }
     header .mobile_menu .menu_account .not_logged.mobile .nav-link svg {
         font-size: 2rem;
+    }
+
+    button[role="switch"].large {
+        width: 92px !important;
+    }
+
+    label[for="switch"] {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 20px;
     }
 
     footer .network ul,

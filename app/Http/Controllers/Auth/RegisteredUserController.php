@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Str;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -35,9 +36,11 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
+            'name' => 'required|string|unique:'.User::class,
             'email' => 'required|string|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'captcha' => 'required|captcha',
+            'confirm_cguv' => 'accepted'
         ]);
 
         if ($validator->fails()) {

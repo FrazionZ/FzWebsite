@@ -183,6 +183,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         PragmaRX\Google2FALaravel\ServiceProvider::class,
         jeremykenedy\LaravelRoles\RolesServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
         /*
          * Package Service Providers...

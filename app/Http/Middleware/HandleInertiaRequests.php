@@ -47,6 +47,7 @@ class HandleInertiaRequests extends Middleware
                 'permissions' => $perms,
                 'isLogged' => ($request->user() !== null)
             ],
+            'recaptcha_site_key' => config('services.google_recaptcha.site_key'),
             'navbar' => NavbarElements::get(),
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [

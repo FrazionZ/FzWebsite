@@ -43,4 +43,10 @@ return [
         'redirect' => env('GITHUB_REDIRECT_URI') 
     ],
 
+    'google_recaptcha' => [
+        'url' => 'https://www.google.com/recaptcha/api/siteverify',
+        'site_key' => env('NOCAPTCHA_SITEKEY'),
+        'secret_key' => env('NOCAPTCHA_SECRET'),
+    ]     
+
 ];

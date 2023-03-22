@@ -5,13 +5,23 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import ReCAPTCHA from "react-google-recaptcha";
+import FzSwitch from '@/Components/FzSwitch';
+import Lang from '@/Components/Language'
+import Alert from '@/Components/Alert';
 
 export default function Register(props) {
+
+    const rCaptchaKey = props.recaptcha_site_key
+    const lang = new Lang(props.language)
+
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
         password: '',
         password_confirmation: '',
+        g_recaptcha_response: '',
+        confirm_cguv: false,
         _token: props.csrf_token
     });
 
@@ -28,92 +38,128 @@ export default function Register(props) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('register'));
+        post(route('register'), {
+            onFinish: (test) => {
+            },
+            onError: (err) => {
+            }
+        });
     };
 
+    const title = "Inscription"
+
+    const errorsEntries = Object.entries(errors);
+
     return (
-        <Layout props={props}>
-            <Head title="Register" />
+        <Layout props={props} title={title}>
+            <Head title={title} />
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel forInput="name" value="Name" />
+            {errorsEntries.length > 0 &&
+                <Alert state="error" className="mb-4">
+                    <h1 className="text-xl">Le formulaire semble incomplet et comporte des erreurs: </h1>
+                    <ul className="mt-2 xl:pl-7">
+                        {errorsEntries.map((err, key) => {
+                            return (
+                                <li className="mb-2">- {lang.get('auth.register.'+err[1], [{ key: ':attribute', value: err[0] }])}</li>
+                            )
+                        })}
+                    </ul>
+                    
+                </Alert>
+            }
 
-                    <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
-                        className="mt-1 block w-full"
-                        autoComplete="name"
-                        isFocused={true}
-                        handleChange={onHandleChange}
-                        required
-                    />
+            <form className='flex gap-12 flex-col justify-center' onSubmit={submit}>
+                <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6">
 
-                    <InputError message={errors.name} className="mt-2" />
+                    <div>
+                        <InputLabel forInput="email" value="Adresse Mail" />
+
+                        <TextInput
+                            id="email"
+                            type="email"
+                            name="email"
+                            value={data.email}
+                            className="mt-1 block w-full"
+                            autoComplete="username"
+                            placeholder="bob@frazionz.net"
+                            disabled={processing}
+                            handleChange={onHandleChange}
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <InputLabel forInput="name" value="Pseudonyme" />
+
+                        <TextInput
+                            id="name"
+                            name="name"
+                            value={data.name}
+                            className="mt-1 block w-full"
+                            autoComplete="name"
+                            isFocused={true}
+                            placeholder="SuperBob3000"
+                            disabled={processing}
+                            handleChange={onHandleChange}
+                            required
+                        />
+                    </div>
+
+
+                    <div>
+                        <InputLabel forInput="password" value="Mot de passe" />
+
+                        <TextInput
+                            id="password"
+                            type="password"
+                            name="password"
+                            value={data.password}
+                            className="mt-1 block w-full"
+                            autoComplete="new-password"
+                            placeholder="********************"
+                            disabled={processing}
+                            handleChange={onHandleChange}
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <InputLabel forInput="password_confirmation" value="Confirmer le Mot de passe" />
+
+                        <TextInput
+                            id="password_confirmation"
+                            type="password"
+                            name="password_confirmation"
+                            value={data.password_confirmation}
+                            disabled={processing}
+                            className="mt-1 block w-full"
+                            autoComplete="new-password"
+                            placeholder="********************"
+                            handleChange={onHandleChange}
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <FzSwitch large={true} checked={data.confirm_cguv} onChange={(e) => { setData('confirm_cguv', e) }}>
+                            Accepter les <Link href="#">Conditions d'utilisations</Link>
+                        </FzSwitch>
+                    </div>
+
+                    <div>
+                        <ReCAPTCHA
+                            sitekey={rCaptchaKey}
+                            onChange={(e) => {
+                                setData('captcha', e)
+                            }}
+                        />
+                    </div>
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel forInput="email" value="Email" />
 
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        handleChange={onHandleChange}
-                        required
-                    />
-
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel forInput="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        handleChange={onHandleChange}
-                        required
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel forInput="password_confirmation" value="Confirm Password" />
-
-                    <TextInput
-                        id="password_confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        value={data.password_confirmation}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        handleChange={onHandleChange}
-                        required
-                    />
-
-                    <InputError message={errors.password_confirmation} className="mt-2" />
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    <Link
-                        href={route('login')}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Already registered?
-                    </Link>
-
+                <div className="flex items-center justify-center mt-4">
                     <button className="btn" disabled={processing}>
-                        Continuer
+                        S'inscrire
                     </button>
                 </div>
             </form>
