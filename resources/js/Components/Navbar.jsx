@@ -142,7 +142,7 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
                                         animate="open"
                                         exit="closed"
                                     >
-                                        <Link href="/" className='flex justify-center pt-2 pb-4'><img src={logo} className="logo" alt="logo" /></Link>
+                                        <Link href="/" className='flex justify-center pt-2 pb-6'><img src={logo} className="logo" alt="logo" /></Link>
                                         {navbar.map((elem, i) => {
                                             if (elem.type !== "dropdown" && elem.parent_id == null)
                                                 return (

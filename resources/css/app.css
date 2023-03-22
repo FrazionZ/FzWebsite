@@ -1349,6 +1349,10 @@ header .menu_account .not_logged.mobile {
         display: none;
     }
 
+    header nav aside .logo {
+        display: block;
+    }
+
     header .home {
         flex-direction: column;
     }
