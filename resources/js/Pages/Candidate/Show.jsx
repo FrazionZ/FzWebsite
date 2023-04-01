@@ -123,7 +123,7 @@ export default function CandidateShow(props) {
                 </div>
                 <div className="flex flex-col gap-[20px]">
                     <div className="justify-start icon_title w-full">
-                        <Comments />
+                        <img src={Comments} alt="" />
                         <span>Commentaires</span>
                     </div>
                     {comments.map((comment, index) => {

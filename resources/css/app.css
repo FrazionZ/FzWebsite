@@ -933,6 +933,7 @@ input[type="tel"] {
 
 .card.candidate.item .actions {
     display: flex;
+    align-items: center;
     gap: 24px;
 }
 
@@ -981,6 +982,7 @@ input[type="tel"] {
 
 .paginate.candidate {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 12px;
 }
