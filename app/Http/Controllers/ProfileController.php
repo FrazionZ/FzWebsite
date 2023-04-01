@@ -319,10 +319,10 @@ class ProfileController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->with("status", $this->toastResponse('error', "Le mot de passe semble incorrecte"));
+            return response()->json(['state' => 'error', 'msg' => "Le mot de passe semble incorrecte"]);
         }
 
-        return redirect()->back();
+        return response()->json(['state' => 'success', 'msg' => "Mot de passe validé"]);
     }
 
     public function confirmMailSend(Request $request){

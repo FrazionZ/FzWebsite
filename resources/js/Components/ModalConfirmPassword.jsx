@@ -45,14 +45,24 @@ export default function ModalConfirmPassword({ withEmailCode, iconButton, labelB
     async function confirmPassword() {
         setFormDisabled(true)
         setForceFormDisabled(true)
-        router.post(route('frazion.password.confirm'), {
+        axios.post(route('frazion.password.confirm'), {
             password: password,
             _token: props.csrf_token
-        }, {
-            onSuccess: () => {
-                sendCodeMail()
-            }
         })
+            .then((res) => {
+                const data = res.data
+                if (data?.state == "error"){
+                    FzToast.error(data?.msg)
+                    setForceFormDisabled(false)
+                }else if (data?.state == "success") {
+                    sendCodeMail()
+                }
+                setFormDisabled(false)
+            })
+            .catch((err) => {
+                setFormDisabled(false)
+                setForceFormDisabled(false)
+            })
     }
 
     async function sendCodeMail() {
@@ -97,7 +107,6 @@ export default function ModalConfirmPassword({ withEmailCode, iconButton, labelB
                     onConfirm()
                 }
                 setFormDisabled(false)
-                setForceFormDisabled(false)
             })
             .catch((err) => {
                 setFormDisabled(false)
