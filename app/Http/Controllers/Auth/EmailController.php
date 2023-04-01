@@ -21,7 +21,7 @@ class EmailController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'unique:'.User::class, 'confirmed'],
         ]);
-
+        
         if ($validator->fails()) {
             return redirect()->back()->with("status", $this->toastResponse('error', "Le formulaire est invalide ou incomplet"));
         }

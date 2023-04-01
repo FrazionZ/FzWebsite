@@ -15,6 +15,18 @@ use Inertia\Inertia;
 
 class ThreadController extends Controller
 {
+
+    public function getThread($id, $page){
+        $thread = ForumThreads::where('id', $id)->first();
+        if($thread == null) abort(404);
+        $thread->author = User::where('id', $thread->user_id)->first();
+        $threadsAuthor = ForumThreads::where('user_id', $thread->user_id)->count();
+        $commentsAuthor = ForumComments::where('user_id', $thread->user_id)->count();
+        $thread->author->messages = $threadsAuthor + $commentsAuthor;
+        $thread->author->role = $thread->author->getHigherRole();
+        $thread->comments = $this->sqlPaginate_Comment($thread->id, $page);
+        return $thread;
+    }
     
     public function comment_paginate(Request $request){
         return response()->json($this->sqlPaginate_Comment($request->parent_id, $request->page));
@@ -22,8 +34,12 @@ class ThreadController extends Controller
 
     public function sqlPaginate_Comment($th_id, $page){
         $comments = ForumComments::where('th_id', $th_id)->orderBy('created_at', 'ASC')->paginate(
-            10, ['*'], 'comments', $page
+            10, ['*'], 'comments', ($page == "lastPage" ? 0 : $page)
         );
+        if($page == "lastPage")
+            $comments = ForumComments::where('th_id', $th_id)->orderBy('created_at', 'ASC')->paginate(
+                10, ['*'], 'comments', $comments->lastPage()
+            );
         foreach($comments as $comment){
             $comment->author = User::where('id', $comment->user_id)->first();
             $threadsAuthor = ForumThreads::where('user_id', $comment->author->id)->count();
@@ -60,7 +76,11 @@ class ThreadController extends Controller
             "content" => base64_encode($request->comment)
         ]);
 
-        return redirect()->back()->with("status", $this->toastResponse('success', "Votre commentaire a bien été envoyé !"));
+        $newThreadLastPageComments = $this->getThread($request->th_id, "lastPage");
+
+        return redirect()->back()
+                    ->with("status", $this->toastResponse('success', "Votre commentaire a bien été envoyé !"))
+                    ->with('dataReset', $newThreadLastPageComments);
     }
 
 

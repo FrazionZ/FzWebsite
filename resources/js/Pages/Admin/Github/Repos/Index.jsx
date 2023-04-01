@@ -11,8 +11,6 @@ export default function GithubReposIndex(props) {
     const lang = new Language(props.language);
     const logger = props.logger;
 
-    console.log(props)
-
     return (
         <AdminLayout>
             <Head title={title} />

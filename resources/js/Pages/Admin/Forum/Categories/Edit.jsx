@@ -25,10 +25,8 @@ export default function ForumCategoriesEdit(props) {
 
 
     async function submitSubcategories(){
-        console.log(subcategories)
         router.post(route('admin.forum.subcategories.swap'), {subcategories: subcategories, _token: props.csrf_token}, { 
             onSuccess: (data) => {
-                console.log(data)
             }
         })
     }

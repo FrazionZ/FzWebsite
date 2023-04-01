@@ -226,5 +226,12 @@
                 }
             }
         }
+    },
+    "passwords": {
+        "sent": "test",
+        "reset": "test",
+        "user": "test",
+        "token": "test",
+        "throttled": "test"
     }
 }

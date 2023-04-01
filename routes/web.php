@@ -1,15 +1,16 @@
 <?php
 
+use Inertia\Inertia;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Social\TwitchController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\TwoFAController;
-use App\Http\Controllers\Social\DiscordController;
+use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\PagesController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Forum\ThreadController;
-use Inertia\Inertia;
+use App\Http\Controllers\Auth\TwoFAController;
+use App\Http\Controllers\Social\TwitchController;
+use App\Http\Controllers\Social\DiscordController;
 
 
 Route::get('/', function () {
@@ -20,18 +21,29 @@ Route::get('/launcher', function () {
     return Inertia::render('Launcher', [ ]);
 });
 
-Route::middleware('fzauth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('/token/revoke', [ProfileController::class, 'token_revoke'])->name('profile.token.revoke');
+Route::middleware('fzauth')->prefix('profile')->name('profile.')->group(function () {
+    Route::get('/', [ProfileController::class, 'index'])->name('index');
+    Route::get('/username', [ProfileController::class, 'username'])->name('username');
+    Route::post('/username', [ProfileController::class, 'username_handle'])->name('username.handle');
+    Route::post('/skin/update', [ProfileController::class, 'skin_update'])->name('skin.update');
+    Route::patch('/', [ProfileController::class, 'update'])->name('update');
+    Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
+    Route::post('/token/revoke', [ProfileController::class, 'token_revoke'])->name('token.revoke');
 });
 
+//Confirm Data Profile Session
+Route::middleware('fzauth')->group(function () {
+    Route::post('/password/confirm', [ProfileController::class, 'confirmPassword'])->name('frazion.password.confirm');
+    Route::post('/mail/send', [ProfileController::class, 'confirmMailSend'])->name('frazion.mail.send');
+    Route::post('/mail/confirm', [ProfileController::class, 'confirmMailCode'])->name('frazion.email.confirm');
+});
 
 Route::middleware(['2fa'])->name('2fa.')->group(function () {
-    Route::get('/2fa/register', [TwoFAController::class, 'register'])->middleware(['auth'])->name('register');
-    Route::post('/2fa/enable', [TwoFAController::class, 'enable'])->middleware(['auth'])->name('enable');
-    Route::get('/2fa', [TwoFAController::class, 'index'])->middleware(['auth'])->name('index');
+    Route::get('/2fa/register', [TwoFAController::class, 'register'])->middleware(['fzauth'])->name('register');
+    Route::post('/2fa/disable', [TwoFAController::class, 'disable'])->middleware(['fzauth'])->name('disable');
+    Route::post('/2fa/enable', [TwoFAController::class, 'enable'])->middleware(['fzauth'])->name('enable');
+    Route::get('/2fa', [TwoFAController::class, 'index'])->middleware(['fzauth'])->name('index');
+    Route::post('/2fa/regenerate', [TwoFAController::class, 'regenerate'])->middleware(['fzauth'])->name('regenerate');
     Route::get('/2fa/login', [TwoFAController::class, 'login'])->name('login');
     Route::post('/2fa/login', [TwoFAController::class, 'handleLogin'])->name('handleLogin');
 });
@@ -73,6 +85,21 @@ Route::middleware(['fzauth'])->prefix('forum')->name('forum.')->group(function()
     Route::get('/threads/paginate/{sc_id}/{page}', [ForumController::class, "threads_paginate"])->name('threads.paginate');
     Route::post('/threads/paginate', [ForumController::class, "threads_paginate"])->name('threads.paginate');
 });
+
+Route::middleware(['fzauth'])->prefix('support')->name('support.')->group(function() {
+    Route::get('/', [SupportController::class, 'index'])->name('index');
+    Route::get('/create', [SupportController::class, 'create'])->name('create');
+    Route::post('/create', [SupportController::class, 'create_handle'])->name('create.handle');
+    Route::get('/view/{id}', [SupportController::class, 'view'])->name('view');
+});
+
+
+Route::middleware(['fzauth'])->prefix('twitch')->name('twitch.')->group(function() {
+    Route::get('/', [TwitchController::class, "index"])->name('index');
+    Route::get('/watch/{uid}', [TwitchController::class, "watch"])->name('watch');
+});
+
+Route::get('page/{slug}', [PagesController::class, 'display'])->name('page.display');
 
 Route::get('/complete-registration', [Auth\RegisteredUserController::class, 'completeRegistration'])->name('complete.registration');
 

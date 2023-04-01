@@ -16,7 +16,6 @@ export default function Permissions({ role, permissions }) {
             preserveScroll: true,
             preserveState: true,
             onSuccess: (data) => {
-                console.log(data)
             },
             onError: () => {
                 

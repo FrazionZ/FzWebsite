@@ -10,7 +10,8 @@ export default function FormCreate(props) {
     const { data, setData, post, processing, errors } = useForm({
         title: "",
         content: "",
-        sc_id: props.sc.id
+        sc_id: props.sc.id,
+        _token: props.csrf_token
     })
 
     async function submitThread(e) {

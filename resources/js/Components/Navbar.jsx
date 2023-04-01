@@ -9,7 +9,7 @@ import { AnimatePresence, motion, useCycle } from "framer-motion";
 import { MenuToggle } from './MenuToggle';
 import { BsFillHouseFill } from 'react-icons/bs';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import Comments from '../../assets/img/icons/comments'
+import Comments from '../../assets/img/icons/commentForum.svg'
 import MobileDropdownProfile from './MobileDropdownProfile';
 
 const solutions = [
@@ -57,12 +57,6 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
         }
     };
 
-    async function handleHeaderClick(e) {
-        e.preventDefault()
-        if (e.target.nodeName !== "svg" && e.target.nodeName !== "BUTTON")
-            toggleOpen(false)
-    }
-
     if (isOpen)
         window.scrollTo(0, 0);
 
@@ -74,26 +68,7 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
 
     return (
         <>
-            <AnimatePresence>
-                <motion.div className={`bannerShadow ${isOpen ? "" : "closed"}`} onClick={handleHeaderClick}
-                    initial={{
-                        opacity: 0,
-                        display: "none",
-                        backdropFilter: "blur(0px)"
-                    }}
-                    animate={{
-                        opacity: isOpen ? "1" : "0",
-                        display: "block",
-                        backdropFilter: `blur(${isOpen ? "5px" : "0px"})`
-                    }}
-                    exit={{
-                        opacity: 0,
-                        backdropFilter: `blur(0)`,
-                        display: "none",
-                        transition: { delay: 0.7, duration: 0.1 }
-                    }} />
-            </AnimatePresence>
-            <header onClick={handleHeaderClick}>
+            <header>
                 <nav>
                     <div className="menu_general">
                         <AnimatePresence>
@@ -139,11 +114,17 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
                     </div>
                 )}
                 {!isHome && (
-                    <div className="title_top">
+                    <div className="hidden md:flex title_top">
                         {title}
                     </div>
                 )}
             </header>
+            <div className={`mobile_user ${isHome ? "absolute" : "relative"}`}>
+                <div className="block md:hidden title_top">
+                    {title}
+                </div>
+                <MobileDropdownProfile />
+            </div>
             <div className="mobile_navbar">
                 <div className="menu">
                     <Link href="/" className={`nav-link ${(url == "/") ? 'active' : ''}`}>
@@ -153,9 +134,8 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
                         <FaShoppingCart />
                     </Link>
                     <Link href={route('forum.index')} className={`nav-link ${url.startsWith("/forum") ? 'active' : ''}`}>
-                        <Comments />
+                        <img src={Comments} alt="" />
                     </Link>
-                    <MobileDropdownProfile />
                 </div>
             </div>
         </>

@@ -5,14 +5,13 @@ import '../../css/app.css';
 export default function ErrorPage({ status }) {
   
     const description = {
-      503: 'Sorry, we are doing some maintenance. Please check back soon.',
-      500: 'Whoops, something went wrong on our servers.',
+      503: 'Désolé, nous faisons un peu de maintenance. Veuillez revenir bientôt.',
+      500: 'Oups, quelque chose s\'est mal passé sur nos serveurs.',
       401: 'Whoops, Tu n\'as pas le droit d\'être ici !',
       404: 'La Page recherchée est Introuvable',
-      403: 'Sorry, you are forbidden from accessing this page.',
+      403: 'Désolé, il vous est interdit d\'accéder à cette page.',
     }[status]
 
-    console.log(status)
   
     return (
       <>

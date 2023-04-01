@@ -91,7 +91,6 @@
 
 .forum .body .threads .item {
     padding: 16px;
-    overflow: hidden;
 }
 
 .forum .body .threads .item:hover {
@@ -176,7 +175,7 @@
     background: var(--fzbg-3);
     padding: 24px 24px 24px 24px;
     width: 100%;
-    min-height: 18rem;
+    min-height: 12rem;
 }
 .forum.thread .card.vertical .profile {
     background: var(--fzbg-2);

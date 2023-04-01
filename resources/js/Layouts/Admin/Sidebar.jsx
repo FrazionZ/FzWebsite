@@ -1,4 +1,4 @@
-import { FaComments, FaHome } from "react-icons/fa";
+import { FaComments, FaDesktop, FaHome } from "react-icons/fa";
 import { BsFillBarChartFill, BsFiles } from 'react-icons/bs'
 import { FiNavigation } from 'react-icons/fi'
 import { IoMdCart } from "react-icons/io"
@@ -63,11 +63,6 @@ export default function AdminSidebar({ auth }) {
                                                             Réseaux Sociaux
                                                         </Sidebar.Item>
                                                     </Link>
-                                                    <Link href={route('admin.index')} preserveState>
-                                                        <Sidebar.Item>
-                                                            CGU/CGV
-                                                        </Sidebar.Item>
-                                                    </Link>  
                                                 </Sidebar.Collapse>
                                                 <Link href={route('admin.index')} preserveState>
                                                     <Sidebar.Item icon={FiNavigation}>
@@ -101,12 +96,7 @@ export default function AdminSidebar({ auth }) {
                                                     <Sidebar.Item>
                                                         Catégories
                                                     </Sidebar.Item>
-                                                </Link> 
-                                                <Link href={route('admin.forum.subcategories.index')} preserveState>
-                                                    <Sidebar.Item>
-                                                        Sous Catégories
-                                                    </Sidebar.Item>
-                                                </Link> 
+                                                </Link>
                                             </Sidebar.Collapse>
 
                                             <Link href={route('admin.logs.index')} preserveState>
@@ -114,6 +104,11 @@ export default function AdminSidebar({ auth }) {
                                                     Logs
                                                 </Sidebar.Item>
                                             </Link>  
+                                            <Link href={route('admin.pages.index')} preserveState>
+                                                <Sidebar.Item icon={FaDesktop}>
+                                                    Pages
+                                                </Sidebar.Item>
+                                            </Link>
                                         </Sidebar.ItemGroup>
                                     </Sidebar.Items>
                                 </Sidebar>

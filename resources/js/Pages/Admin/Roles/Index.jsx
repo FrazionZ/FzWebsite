@@ -32,7 +32,6 @@ export default function RolesIndex(props) {
     })
 
     async function getChangedPos(currentPos, newPos) {
-        console.log(currentPos, newPos);
         let rolesPrepare = roles;
         rolesPrepare = rolesPrepare.swap(newPos, currentPos);
         rolesPrepare[newPos].position = newPos;
@@ -43,7 +42,6 @@ export default function RolesIndex(props) {
     async function submitRoles(){
         router.post(route('admin.roles.swap'), {roles: roles, _token: props.csrf_token}, { 
             onSuccess: (data) => {
-                console.log(data)
             }
         })
     }

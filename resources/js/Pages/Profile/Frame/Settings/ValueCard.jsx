@@ -20,7 +20,6 @@ export default class ValueCard extends React.Component {
         let hasSubmit = false;
         Object.entries(this.props.data).map((data) => {
             if(data[0] !== "_token" && data[1] !== ""){
-                console.log(data[1])
                 hasSubmit = true;
                 return;
             }
@@ -39,7 +38,8 @@ export default class ValueCard extends React.Component {
             <div className={`card`} >
                 <div className="head">
                     <div className="infos">
-                        <img src={this.icon} width="32" height="32" alt="" />
+                        {typeof this.icon == "string" && <img src={this.icon} width="32" height="32" alt="" /> }
+                        {typeof this.icon == "object" && this.icon }
                         <span>{this.title}</span>
                         <span className="text-[var(--text-inactive)]">{this.value}</span>
                     </div>

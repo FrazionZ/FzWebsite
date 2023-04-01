@@ -52,21 +52,20 @@ export default function ForumThreadView(props) {
     async function afterCommentPublish(newDataComments) {
         setCommentPagination(newDataComments)
         setComments(newDataComments?.data)
-        refreshListComments(commentPagination?.last_page)
     }
 
     async function refreshListComments(page) {
         setComments(null)
         axios.post(route('forum.thread.comment.paginate'), {
-            th_id: thread?.id,
+            parent_id: thread?.id,
             page: page,
             _token: props.csrf_token
         })
-            .then((res) => {
-                let resultPagination = res.data
-                setComments(resultPagination.data)
-                setCommentPagination(resultPagination)
-            })
+        .then((res) => {
+            const result = res.data
+            setComments(result?.data)
+            setCommentPagination(result)
+        })
     }
 
     async function pinned(){
@@ -105,8 +104,8 @@ export default function ForumThreadView(props) {
             text: thread?.title,
             url: route('forum.thread.view', {th_id: thread?.id}),
         })
-        .then(() => console.log('Successful share'))
-        .catch((error) => console.log('Error sharing', error));
+        .then(() => {})
+        .catch((error) => {});
     }
 
     useEffect(() => {
@@ -124,9 +123,9 @@ export default function ForumThreadView(props) {
                 <div className="actions">
                     <span className="text-4xl">{thread?.title}</span>
                     <div className="flex gap-3">
-                        <button className="btn icon" disabled={pinnedAction} onClick={pinned}>{!thread?.pinned ? <TbPinned /> : <TbPinnedOff /> }</button>
-                        <button className="btn icon" disabled={lockedAction} onClick={locked}>{!thread?.locked ? <FiLock /> : <FiUnlock /> }</button>
-                        <button className="btn icon" onClick={share}><BiLink /></button>
+                        <button className="btn icon" disabled={pinnedAction} onClick={pinned}>{!thread?.pinned ? <Tooltip content="Epingler"><TbPinned /></Tooltip> : <Tooltip content="Désépingler"><TbPinnedOff /></Tooltip> }</button>
+                        <button className="btn icon" disabled={lockedAction} onClick={locked}>{!thread?.locked ? <Tooltip content="Vérouiller"><FiLock /></Tooltip> : <Tooltip content="Dévérouiller"><FiUnlock /></Tooltip> }</button>
+                        <button className="btn icon" onClick={share}><Tooltip content="Partager ce thread"><BiLink /></Tooltip></button>
                     </div>
                 </div>
                 <div className="card vertical">
@@ -136,7 +135,7 @@ export default function ForumThreadView(props) {
                         </div>
                         <div className="details">
                             <span>{thread.author.name}</span>
-                            <Badge styleBadge={{ backgroundColor: thread?.author?.role?.color, padding: "0px 6px", display: "flex" }} styleMessage={{ fontSize: "10px", lineHeight: "20px" }} message={thread?.author?.role?.name} />
+                            <Badge styleBadge={{ backgroundColor: thread?.author?.role?.badgeStyle?.background, padding: "0px 6px", display: "flex" }} styleMessage={{ fontSize: "10px", lineHeight: "20px", color: thread?.author?.role?.badgeStyle?.color  }} message={thread?.author?.role?.name} />
                         </div>
                         <div className="grid">
                             <span>Rejoins <b>{lang.replaceMonth(moment(thread?.author?.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}</b></span>
@@ -181,14 +180,10 @@ export default function ForumThreadView(props) {
                                                 </div>
                                                 <div className="details">
                                                     <span>{comment.author.name}</span>
-                                                    <Badge key={index} styleBadge={{ backgroundColor: comment?.author?.role?.color, padding: "0px 6px", display: "flex" }} styleMessage={{ fontSize: "10px", lineHeight: "20px" }} message={comment?.author?.role.name} />
+                                                    <Badge key={index} styleBadge={{ backgroundColor: comment?.author?.role?.badgeStyle?.background, padding: "0px 6px", display: "flex" }} styleMessage={{ color: comment?.author?.role?.badgeStyle?.color, fontSize: "10px", lineHeight: "20px" }} message={comment?.author?.role.name} />
                                                 </div>
                                             </div>
                                             <div className="grid">
-                                                <span>Rejoins <br /><b>{lang.replaceMonth(moment(comment?.author?.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}</b></span>
-                                                <Tooltip content="Messages totaux par cet utilisateur">
-                                                    <span>Messages <br /><b>{comment?.author?.messages}</b></span>
-                                                </Tooltip>
                                                 <span>Publié le <br /><b>{lang.replaceMonth(moment(comment?.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}</b></span>
                                             </div>
                                         </div>
@@ -196,7 +191,7 @@ export default function ForumThreadView(props) {
                                     </div>
                                 )
                             })}
-                            <Paginate layout="bottom" labelType="Commentaires" routePagination="forum.thread.comment.paginate" pagination={commentPagination} parent_id={thread?.id} />
+                            <Paginate layout="bottom" labelType="Commentaires" routeName="forum.thread.comment.paginate" pagination={commentPagination} setList={setComments} setPagination={setCommentPagination} parent_id={thread?.id} />
                         </>
                     }
                 </div>

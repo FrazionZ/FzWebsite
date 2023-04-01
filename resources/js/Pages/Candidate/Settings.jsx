@@ -7,8 +7,6 @@ import Settings from '../../../assets/img/icons/settings.svg'
 
 export default function CandidateSettings(props, {funcParse}) {
 
-    console.log(props)
-
     const [isOpen, setIsOpen] = useState(false);
 
     let candid = props.candid

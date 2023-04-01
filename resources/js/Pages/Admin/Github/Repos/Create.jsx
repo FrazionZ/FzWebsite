@@ -127,7 +127,7 @@ export default function GithubCreate(props) {
     }
 
     useEffect(() => {
-        //console.log(branchSelect, typeAssetSelect, "VersionName: " + versionName, filesAssets)
+        
     }, [activeStep]);
 
 

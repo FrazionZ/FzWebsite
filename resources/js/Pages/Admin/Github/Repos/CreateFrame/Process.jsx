@@ -62,7 +62,6 @@ export default function Recap({ recapData }) {
             await storeAsset(response.data)
         })
         .catch(function (error) {
-            console.log(error)
             setCreateDraft(3)
         });
     }

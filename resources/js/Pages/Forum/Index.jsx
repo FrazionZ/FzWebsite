@@ -41,7 +41,6 @@ export default function ForumIndex(props) {
             setThreadsPaginate(resultPagination)
         })
         .catch((err) => {
-            console.log(err)
         })
     }
 

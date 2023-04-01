@@ -2,7 +2,7 @@ import { router, usePage } from "@inertiajs/react";
 import { useEffect, useState } from 'react';
 import ValueCard from './ValueCard'
 
-import Lock from '../../../../../assets/img/icons/lock.svg'
+import Lock from '../../../../../assets/img/icons/lock.jsx'
 
 export default function FormPassword(props) {
 
@@ -13,7 +13,7 @@ export default function FormPassword(props) {
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
     return (
-        <ValueCard title={"Mot de passe"} icon={Lock} value="****************" method="put" url={route('password.update')} data={{ current_password: currentPassword, password: password, password_confirmation: passwordConfirmation, _token: csrf_token }}>
+        <ValueCard title={"Mot de passe"} icon={<Lock stopColorFirst="white" stopColorLast="white" />} value="****************" method="put" url={route('password.update')} data={{ current_password: currentPassword, password: password, password_confirmation: passwordConfirmation, _token: csrf_token }}>
             <div className="form-group">
                 <label>Mot de Passe Actuel</label>
                 <input type="password" name="current_password" value={currentPassword} onChange={(e) => { setCurrentPassword(e.target.value)}} />

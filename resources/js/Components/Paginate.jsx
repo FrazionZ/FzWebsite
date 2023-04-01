@@ -44,7 +44,6 @@ export default function Paginate({ layout, labelType, routeName, parent_id, pagi
             setPagination(resultPagination)
         })
         .catch((err) => {
-            console.log(err)
         })
     }
 

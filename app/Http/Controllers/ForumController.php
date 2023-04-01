@@ -66,14 +66,7 @@ class ForumController extends Controller
     }
 
     public function thread_view($th_id){
-        $thread = ForumThreads::where('id', $th_id)->first();
-        if($thread == null) abort(404);
-        $thread->author = User::where('id', $thread->user_id)->first();
-        $threadsAuthor = ForumThreads::where('user_id', $thread->user_id)->count();
-        $commentsAuthor = ForumComments::where('user_id', $thread->user_id)->count();
-        $thread->author->messages = $threadsAuthor + $commentsAuthor;
-        $thread->author->role = $thread->author->getHigherRole();
-        $thread->comments = (new ThreadController)->sqlPaginate_Comment($thread->id, 0);
+        $thread = (new ThreadController)->getThread($th_id, 0);
         return Inertia::render('Forum/Thread/View', [
             'thread' => $thread
         ]);

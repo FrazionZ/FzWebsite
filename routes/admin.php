@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\LoggerController;
 use App\Http\Controllers\Admin\GithubController;
 use App\Http\Controllers\Admin\ForumController;
+use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\Github\ReposController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -79,5 +80,12 @@ Route::middleware(['permission:admin.access'])->group(function() {
         Route::post('/subcategory/save', [ForumController::class, 'subcategory_save'])->name('subcategory.save');
         Route::post('/category/save', [ForumController::class, 'category_save'])->name('category.save');
         Route::get('/subcategories', [ForumController::class, 'subcategories_index'])->name('subcategories.index');
+    });
+
+    
+    Route::prefix('pages')->middleware(['web'])->name('pages.')->group(function() {
+        Route::get('/', [PagesController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [PagesController::class, 'edit'])->name('edit');
+        Route::post('/update', [PagesController::class, 'update'])->name('update');
     });
 });

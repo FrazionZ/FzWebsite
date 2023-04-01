@@ -7,7 +7,7 @@ import FzToast from '@/Components/FzToast';
 import Alert from '@/Components/Alert'
 import CandidateComponentCardComment from '@/Components/CandidateComponentCardComment'
 
-import Comments from '../../../assets/img/icons/comments.jsx'
+import Comments from '../../../assets/img/icons/comment.svg'
 import BubbleInfos from '../../../assets/img/icons/bubble_infos.svg'
 import EnvoleOpen from '../../../assets/img/icons/envelope_open.svg'
 import MDEditor from '@uiw/react-md-editor';
@@ -123,7 +123,7 @@ export default function CandidateShow(props) {
                 </div>
                 <div className="flex flex-col gap-[20px]">
                     <div className="justify-start icon_title w-full">
-                        <img src={Comments} alt="" />
+                        <Comments />
                         <span>Commentaires</span>
                     </div>
                     {comments.map((comment, index) => {

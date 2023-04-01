@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'uuid',
         'money',
         'banned',
+        'isSlim',
         'two_factor_secret'
     ];
 
@@ -84,6 +85,7 @@ class User extends Authenticatable implements MustVerifyEmail
             else if($roleParent->position > $role->position)
                 $roleParent = $role;
         }
+        $roleParent->badgeStyle = $roleParent->getBadgeStyle();
         return $roleParent;
     }
 }

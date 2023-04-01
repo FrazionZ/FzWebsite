@@ -1,0 +1,19 @@
+.ui.modal {
+    border-radius: 16px !important;
+}
+.ui.modal .header {
+    background: var(--fzbg-3);
+    border-radius: 12px 12px 0 0 !important;
+    color: white;
+    padding-bottom: 0;
+}
+.ui.modal>.content {
+    background: var(--fzbg-3);
+}
+.ui.modal>.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    background: var(--fzbg-3);
+    border-radius: 0 0 12px 12px;
+}

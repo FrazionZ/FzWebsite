@@ -76,8 +76,9 @@ export default function Login(props, { status, canResetPassword }) {
                         />
                     </div>
 
-                    <div>
+                    <div className='flex flex-wrap justify-between items-center'>
                         <Switch checked={data.remember} disabled={processing} label="Rester connecté" onChange={(e) => { setData('remember', e) }} />
+                        <Link href={route('password.request')}>Mot de passe oublié ?</Link>
                     </div>
                 </div>
 

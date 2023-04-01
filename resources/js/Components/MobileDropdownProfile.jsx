@@ -9,8 +9,6 @@ export default function MobileDropdownProfile() {
 
   const auth = usePage().props?.auth
 
-  console.log(auth)
-
   let childsElementLogged = [
     {
         value: "/profile",
@@ -41,10 +39,10 @@ export default function MobileDropdownProfile() {
   })
 
   return (
-    <Menu as="div" className="flex text-left">
-        <div className="flex nav-link">
+    <Menu as="div">
+        <div className="flex">
           <Menu.Button >
-            {auth?.isLogged ? <img src={`https://auth.frazionz.net/skins/face.php?u=${auth?.user?.id}`} width="32" height="32" alt="" /> : <FaUser />}
+            {auth?.isLogged ? <img src={`https://auth.frazionz.net/skins/face.php?u=${auth?.user?.id}`} width="48" height="48" className='rounded-md' alt="" /> : <FaUser />}
           </Menu.Button>
         </div>
         <Transition
@@ -56,12 +54,12 @@ export default function MobileDropdownProfile() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute bottom-20 right-4 mt-2 w-40 divide-y divide-gray-100 rounded-md bg-[var(--fzbg-3)] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute top-12 right-1 mt-2 w-40 divide-y divide-gray-100 rounded-md bg-[var(--fzbg-3)] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {auth?.isLogged ?
                 <>
                   {childsElementLogged.map((item, i) => {
-                    return (<Menu.Item>
+                    return (<Menu.Item key={i}>
                       <Link href={item.value} method={item?.method}>
                         <button className={`text-white group flex w-full items-center rounded-md px-2 py-2`} >
                           {item?.name}

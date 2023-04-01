@@ -30,7 +30,6 @@ export default function ForumCategoriesIndex(props) {
     async function submitCategories(){
         router.post(route('admin.forum.categories.swap'), {categories: categories, _token: props.csrf_token}, { 
             onSuccess: (data) => {
-                console.log(data)
             }
         })
     }

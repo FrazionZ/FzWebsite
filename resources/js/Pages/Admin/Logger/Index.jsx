@@ -7,13 +7,11 @@ import moment from 'moment-timezone'
 import 'moment/locale/fr'  // without this line it didn't work
 moment.locale('fr')
 
-export default function MaintenanceIndex(props) {
+export default function LogsIndex(props) {
 
     let title = "Logs";
     const lang = new Language(props.language);
     const logger = props.logger;
-
-    console.log(props.realeses)
 
     return (
         <AdminLayout>

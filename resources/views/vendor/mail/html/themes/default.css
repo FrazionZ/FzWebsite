@@ -1,4 +1,26 @@
 /* Base */
+:root {
+    --fzbg-1: #24262b;
+    --fzbg-2: #1c1f23;
+    --fzbg-3: #15171b;
+    --fzbg-4: #0e1014;
+    --text: #f5f5f5;
+    --color-1: #f1b53f;
+    --color-2: #e48515;
+    --color-3: #df5d14;
+    --gradient: linear-gradient(91.92deg, #f7a92f 0%, #f16b1f 100%);
+    --color-red: #981503;
+    --color-green: #459803;
+    --color-blue: #0fa0b4;
+    --text: #f5f5f5;
+    --text-inactive: #7c7c7c;
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+
+    --discord: #6370f4;
+}
 
 body,
 body *:not(html):not(style):not(br):not(tr):not(code) {
@@ -232,11 +254,11 @@ img {
 
 .button-blue,
 .button-primary {
-    background-color: #2d3748;
-    border-bottom: 8px solid #2d3748;
-    border-left: 18px solid #2d3748;
-    border-right: 18px solid #2d3748;
-    border-top: 8px solid #2d3748;
+    background-color: #15171b;
+    border-bottom: 8px solid #15171b;
+    border-left: 18px solid #15171b;
+    border-right: 18px solid #15171b;
+    border-top: 8px solid #15171b;
 }
 
 .button-green,
@@ -260,7 +282,7 @@ img {
 /* Panels */
 
 .panel {
-    border-left: #2d3748 solid 4px;
+    border-left: #15171b solid 4px;
     margin: 21px 0;
 }
 

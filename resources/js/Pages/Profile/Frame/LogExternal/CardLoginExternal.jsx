@@ -23,7 +23,7 @@ export default function CardLoginExternal({ data, updateData }){
         <div className="card">
             <div className="head">
                 {data?.icon} 
-                <img src={data.avatar} alt="" className="avatar" />
+                {data.avatar !== undefined ? <img src={data.avatar} alt="" className="avatar" /> : "" }
                 <div className="name">
                     { data?.display }
                 </div>

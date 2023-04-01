@@ -59,7 +59,7 @@ export default class Launcher extends React.Component {
         }
 
         let pnotes = await axios.get('https://api.frazionz.net/github/launcher')
-        console.log(pnotes)
+
         this.setState({ pnotes: pnotes.data })
 
         this.setState({ platforms: this.state.platforms })
@@ -93,10 +93,8 @@ export default class Launcher extends React.Component {
                             <img src={ PNotes } alt="" />
                             <span>Y'a quoi de nouveau ?</span>
                         </div>
-                        <div className="card pnotes">
-                            <div id="versions">
-                                <LauncherPatchNotes pnotes={this.state.pnotes} />
-                            </div>
+                        <div className="overflow-y-auto h-[40rem] px-4">
+                            <LauncherPatchNotes pnotes={this.state.pnotes} />
                         </div>
                     </div>
                 </Layout>

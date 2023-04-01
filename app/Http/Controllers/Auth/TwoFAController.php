@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Logger;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,10 @@ class TwoFAController extends Controller
 { 
 
     public function index(Request $request) {
+
+        if(!$request->user()->hasTwoFactorAuth())
+            return redirect()->route('2fa.register');
+
         return Inertia::render('Auth/TwoFA/Index', []);
     }
 
@@ -52,9 +57,12 @@ class TwoFAController extends Controller
 
     public function enable(Request $request)
     {
-        $this->validate($request, [
-            'code' => ['required', 'string'],
-        ]);
+
+        $validator = Validator::make($request->all(), ['code' => 'required']);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez remplir touts les champs"));
+        }
 
         if ($request->user()->hasTwoFactorAuth()) {
             return redirect()->route('profile.index');
@@ -74,6 +82,24 @@ class TwoFAController extends Controller
 
         return redirect()->route('profile.index');
     }
+
+    public function disable(Request $request)
+    {
+        $request->user()->forceFill([
+            'two_factor_secret' => null,
+            'two_factor_recovery_codes' => null,
+        ])->save();
+
+        return redirect()->route('2fa.register')->with("status", $this->toastResponse('success', "Votre 2FA a bien été désactivé"));
+    }
+
+    public function regenerate(Request $request){
+        $request->user()->forceFill([
+            'two_factor_recovery_codes' => $request->user()->generateRecoveryCodes(),
+        ])->save();
+
+        return redirect()->route('2fa.index')->with("status", $this->toastResponse('success', "Vos codes ont étaient régénéré"));
+    }
  
     public function login(Request $request)
     {        
@@ -86,21 +112,40 @@ class TwoFAController extends Controller
 
     public function handleLogin(Request $request)
     {
-        $this->validate($request, ['code' => 'required']);
+        $validator = Validator::make($request->all(), ['code' => 'required', 'typeCode' => 'required']);
 
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez remplir touts les champs"));
+        }
+        
         if (! $request->session()->has('login.2fa.id')) {
             return redirect()->route('login');
         }
 
         $user = User::findOrFail($request->session()->get('login.2fa.id'));
-        $code = $request->input('code');
+        $code = $request->code;
+        $typeCode = $request->typeCode;
 
-        if (! $user->isValidTwoFactorCode($code)) {
-            $request->session()->keep('login.2fa');
+        if ($typeCode == 0) {//CHECK 2FA FROM SERVER OPT
+            if (!$user->isValidTwoFactorCode($code)) {
+                $request->session()->keep('login.2fa');
 
-            Logger::log('user.auth.login.twofa.error', null, null, $user);
+                Logger::log('user.auth.login.twofa.error', null, null, $user);
 
-            return redirect()->route('login');
+                return redirect()->route('login')->with('status', $this->toastResponse('error', "Le code 2FA n'est pas correcte."));
+            }
+        }else if($typeCode == 1) {
+            $codes = json_decode($user->two_factor_recovery_codes, true);
+            if(!in_array($code, $codes)){
+                $request->session()->keep('login.2fa');
+
+                Logger::log('user.auth.login.twofa.error', null, null, $user);
+
+                return redirect()->route('login')->with('status', $this->toastResponse('error', "Le code de secours n'est pas correcte."));
+            }
+            $user->forceFill([
+                'two_factor_recovery_codes' => $user->generateRecoveryCodes(),
+            ])->save();
         }
 
         Auth::guard()->login($user, $request->session()->get('login.2fa.remember'));

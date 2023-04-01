@@ -16,11 +16,10 @@ export default function FormComment({ thread, setThread, afterCommentPublish }) 
         e.preventDefault()
         post(route('forum.thread.comment.publish'), {
             preserveScroll: true,
-            preserveState: true,
             onSuccess: (data) => {
-                setThread(data.props.thread)
+                setThread(data.props.flash?.dataReset)
                 setData('comment', '')
-                afterCommentPublish(data.props.thread.comments)
+                afterCommentPublish(data.props.flash?.dataReset?.comments)
                 
             },
             onError: () => {

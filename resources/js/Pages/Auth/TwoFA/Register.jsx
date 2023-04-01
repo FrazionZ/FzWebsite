@@ -43,7 +43,7 @@ export default function Register(props){
                                 <div className="form-group w-full">
                                     <label>Code</label>
                                     {errors.code && <div>{errors.code}</div>}
-                                    <input type="text" value={data.code} onChange={e => setData('code', e.target.value)} />
+                                    <input type="text" value={data.code} disabled={processing} onChange={e => setData('code', e.target.value)} />
                                 </div>
                             </div>
                         </form>

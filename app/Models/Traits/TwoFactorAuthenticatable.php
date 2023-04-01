@@ -77,6 +77,6 @@ trait TwoFactorAuthenticatable
      */
     public function generateRecoveryCode()
     {
-        return Str::random(8).'-'.Str::random(8);
+        return Str::random(8).'-'.Str::random(8).'-'.Str::random(8);
     }
 }

@@ -7,9 +7,9 @@ import { motion } from 'framer-motion'
 import Lang from '@/Components/Language'
 import { Link, usePage } from '@inertiajs/react'
 import { Tooltip } from 'flowbite-react'
-import Lock from '../../../../assets/img/icons/lock.svg'
-import Pinned from '../../../../assets/img/icons/pinned.svg'
-import Comments from '../../../../assets/img/icons/comments.jsx'
+import Lock from '../../../../assets/img/icons/lock.jsx'
+import Pinned from '../../../../assets/img/icons/pinned.jsx'
+import CommentForum from '../../../../assets/img/icons/commentForum.svg'
 
 export default function CardThread({ thread }) {
 
@@ -27,7 +27,7 @@ export default function CardThread({ thread }) {
 
     return (
         <Link href={route('forum.thread.view', { th_id: thread.id })}>
-            <motion.div whileHover={{ scale: 1.02, overflow: "hidden" }} transition={{ duration: 0.2, type: "tween" }} className="card item overflow-hidden">
+            <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2, type: "tween" }} className="card item">
                 <div className="infos">
                     <div className="datas">
                         <div className="title">
@@ -35,7 +35,7 @@ export default function CardThread({ thread }) {
                         </div>
                         <div className="flex gap-3">
                             <div className="flex gap-2">
-                                <img className='rounded-md' src={`https://api.frazionz.net/user/${thread?.author?.id}/skin/head?s=32`} width="24" height="24" alt="avatar" />
+                                <img className='rounded-md' src={`https://api.frazionz.net/user/${thread?.author?.uuid}/skin/head?s=32`} width="24" height="24" alt="avatar" />
                                 {thread?.author?.name}
                             </div>
                             <div className="flex flex-col">
@@ -48,17 +48,18 @@ export default function CardThread({ thread }) {
                     <div className="states">
                         <div className="comments">
                             <Tooltip style='dark' content="Commentaires totaux">
-                                <span>{thread?.comments}</span><Comments className="gradientForce" /> 
+                                <span>{thread?.comments}</span>
+                                <img src={CommentForum} alt="" />
                             </Tooltip>
                         </div>
                         {thread?.pinned == true &&
                             <Tooltip content="Épinglé">
-                                <img src={Pinned} />
+                                <Pinned />
                             </Tooltip>
                         }
                         {thread?.locked == true &&
                             <Tooltip content="Vérrouillé">
-                                <img src={Lock} />
+                                <Lock />
                             </Tooltip>
                         }
                     </div>

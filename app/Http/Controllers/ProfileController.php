@@ -5,12 +5,20 @@ namespace App\Http\Controllers;
 use Adrianorosa\GeoLocation\GeoLocation;
 use App\Http\Controllers\Social\DiscordController;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\SkinAPI;
+use App\Mail\ConfirmMail;
+use App\Models\ApiSkins;
+use App\Models\EmailIdentify;
 use App\Models\FactionProfile;
 use App\Models\TokenUsers;
+use App\Models\User;
+use App\Models\UserHName;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
@@ -207,5 +215,140 @@ class ProfileController extends Controller
 
         $token->delete();
         return redirect()->back()->with("status", $this->toastResponse('success', "Le token a bien été révoqué"));
+    }
+
+    public function username(Request $request){
+        return Inertia::render('Profile/Username/Index', [
+            'aCAC' => $this->checkAlreadyChangeName($request)
+        ]);
+    }
+
+    public function username_handle(Request $request){
+        if(User::where('name', $request->username)->count())
+            return redirect()->route('profile.username')->with("status", $this->toastResponse('error', "Ce pseudo est déjà utilisé"));
+        
+        $patternUsername = "/^[A-Z0-9_]{3,16}$/i";
+        if(!preg_match($patternUsername, $request->username))
+            return redirect()->route('profile.username')->with("status", $this->toastResponse('error', "Votre pseudo n'est pas valide."));
+
+        if($request->username == $request->user()->name)
+            return redirect()->route('profile.username')->with("status", $this->toastResponse('error', "Pour valider, vous devez changer d'abord de pseudo."));
+
+        $aCN = $this->checkAlreadyChangeName($request);
+        if($aCN['result'])
+            return redirect()->route('profile.username')->with("status", $this->toastResponse('error', "Vous avez déjà changer de pseudo, vous devez attendre ".$aCN['diff']." jours pour rechanger de pseudo."));
+    
+        $firstChange = true;
+        $dateDefine = $request->user()->created_at;
+        if($aCN['alreadyChange'])
+            $firstChange = false;
+
+        if($firstChange){
+            UserHName::insert([
+                "user_id" => $request->user()->id,
+                "username" => $request->user()->name,
+                "created_at" => $dateDefine
+            ]);
+        }
+    
+        UserHName::insert([
+            "user_id" => $request->user()->id,
+            "username" => $request->username
+        ]);
+    
+    
+        $request->user()->update(["name" => $request->username, "updated_at" => now()]);
+
+        return redirect()->route('profile.username')->with("status", $this->toastResponse('success', "Votre pseudo a bien été changé ! Si votre jeu était déjà ouvert, veuillez le relancer."));
+    }
+
+    public function checkAlreadyChangeName(Request $request){
+        $alreadyChangeName = UserHName::where('user_id', '=', $request->user()->id)->orderBy('created_at', 'desc')->latest()->first();
+        if($alreadyChangeName !== null){
+            $now   = time();
+            $date2 = strtotime($alreadyChangeName->created_at);
+            $diffDayCooldown = (int) dateDiff($date2, $now)['day'];
+            if($diffDayCooldown !== null){
+                if($diffDayCooldown < 30)
+                    return ["result" => true, "alreadyChange" => true, "date" => date('d/m/y', strtotime($alreadyChangeName->created_at)), "diff" => $diffDayCooldown+1];
+            }
+        }
+        return ["result" => false, "alreadyChange" => (($alreadyChangeName !== null) ? true : false), "date" => "", "diff" => ""];
+    }
+
+    public function skin_update(Request $request){
+
+        $rules = ['typeSkin' => 'required|string'];
+
+        if($request->skinFile !== null)
+            $rules = array_merge($rules, ['skinFile' => ['mimes:png', SkinAPI::getRule('skin')]]);
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lors de la validation de la requête"));
+        }
+
+        if($request->typeSkin !== "steve" && $request->typeSkin !== "alex")
+            return redirect()->back()->with("status", $this->toastResponse('error', "La valeur du type de skin n'est pas valide (steve, alex)"));
+
+        if($request->skinFile !== null){
+            $request->file('skinFile')->storeAs('skins', "{$request->user()->id}.png", 'public');
+            $skin = ApiSkins::where('uuid', '=', $request->user()->uuid)->first();
+            if($skin == null)
+                ApiSkins::create([
+                    'uuid' => $request->user()->uuid,
+                    'sha1' => sha1_file($request->file('skinFile')->getRealPath())
+                ]);
+            else
+                $skin->update([
+                    'uuid' => $request->user()->uuid,
+                    'sha1' => sha1_file($request->file('skinFile')->getRealPath())
+                ]);
+        }
+
+        $request->user()->update(['isSlim' => $request->typeSkin]);
+
+        return redirect()->back()->with("status", $this->toastResponse('success', "Votre skin a bien été mis à jour"));
+    }
+
+    public function confirmPassword(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', 'current_password'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Le mot de passe semble incorrecte"));
+        }
+
+        return redirect()->back();
+    }
+
+    public function confirmMailSend(Request $request){
+
+        Mail::to($request->user())->send(new ConfirmMail($request, 'Obtenir les codes de secours 2FA'));
+
+        return redirect()->back();
+    }
+
+    public function confirmMailCode(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'password' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['state' => 'error', 'msg' => "Le code de confirmation semble invalide"]);
+        }
+
+        $emailIdent = EmailIdentify::where('user_id', $request->user()->id)->first();
+
+        if(!Hash::check($request->password, $emailIdent->code))
+            return response()->json(['state' => 'error', 'msg' => "Le code de confirmation est invalide."]);
+
+        $emailIdent->delete();
+
+        return response()->json(['state' => 'success', 'msg' => "Identité confirmée"]);
     }
 }
