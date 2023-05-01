@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use App\Models\Traits\TwoFactorAuthenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -40,7 +40,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_secret'
+        'two_factor_secret',
+        'two_factor_recovery_codes'
     ];
 
     /**

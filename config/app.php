@@ -184,6 +184,7 @@ return [
         PragmaRX\Google2FALaravel\ServiceProvider::class,
         jeremykenedy\LaravelRoles\RolesServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
         /*
          * Package Service Providers...

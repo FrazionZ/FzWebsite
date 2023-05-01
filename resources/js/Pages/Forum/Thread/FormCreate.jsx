@@ -1,6 +1,6 @@
 import { useForm, Head } from "@inertiajs/react"
 import { useState } from "react";
-import MDEditor from '@uiw/react-md-editor';
+import Editor from "@/Components/Editor/Editor";
 import Layout from "@/Layouts/Layout";
 import CommentPen from '../../../../assets/img/icons/comment-pen.svg'
 
@@ -54,13 +54,13 @@ export default function FormCreate(props) {
                 </div>
                 <div className="form-group">
                     <label>Contenue</label>
-                    <MDEditor
-                        preview="edit"
-                        value={data.content}
+                    <Editor 
+                        showToolbar={true}
+                        processing={processing}
+                        state={data.content}
                         height={500}
-                        disabled={processing}
                         onChange={(e) => { setData('content', e) }}
-                    />
+                        />
                 </div>
                 <button disabled={processing} type="submit" className="btn">Poster</button>
             </form>

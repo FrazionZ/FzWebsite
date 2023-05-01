@@ -107,20 +107,31 @@ class TwoFAController extends Controller
             return redirect()->route('login');
         }
 
-        return Inertia::render('Auth/TwoFA/Login', [  ]);
+        return Inertia::render($request->session()->get('login.2fa.isOauth') ? 'Oauth/Prompt/TwoFa' : 'Auth/TwoFA/Login', [ ]);
     }
 
     public function handleLogin(Request $request)
     {
         $validator = Validator::make($request->all(), ['code' => 'required', 'typeCode' => 'required']);
 
+        $isOauth = $request->session()->get('login.2fa.isOauth');
+
         if ($validator->fails()) {
-            return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez remplir touts les champs"));
+            if($isOauth)
+                return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez remplir touts les champs"));
+            else
+                return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez remplir touts les champs"));
         }
         
         if (! $request->session()->has('login.2fa.id')) {
-            return redirect()->route('login');
+            if($isOauth)
+                return redirect()->back();
+            else
+                return redirect()->route('login');
         }
+
+        
+        $redirectURL = $request->session()->get('login.2fa.redirectURL');
 
         $user = User::findOrFail($request->session()->get('login.2fa.id'));
         $code = $request->code;
@@ -132,7 +143,10 @@ class TwoFAController extends Controller
 
                 Logger::log('user.auth.login.twofa.error', null, null, $user);
 
-                return redirect()->route('login')->with('status', $this->toastResponse('error', "Le code 2FA n'est pas correcte."));
+                if($isOauth)
+                    return redirect()->back()->with('status', $this->toastResponse('error', "Le code 2FA n'est pas correcte."));
+                else
+                    return redirect()->route('login')->with('status', $this->toastResponse('error', "Le code 2FA n'est pas correcte."));
             }
         }else if($typeCode == 1) {
             $codes = json_decode($user->two_factor_recovery_codes, true);
@@ -141,7 +155,10 @@ class TwoFAController extends Controller
 
                 Logger::log('user.auth.login.twofa.error', null, null, $user);
 
-                return redirect()->route('login')->with('status', $this->toastResponse('error', "Le code de secours n'est pas correcte."));
+                if($isOauth)
+                    return redirect()->back()->with('status', $this->toastResponse('error', "Le code de secours n'est pas correcte."));
+                else
+                    return redirect()->route('login')->with('status', $this->toastResponse('error', "Le code de secours n'est pas correcte."));
             }
             $user->forceFill([
                 'two_factor_recovery_codes' => $user->generateRecoveryCodes(),
@@ -151,6 +168,8 @@ class TwoFAController extends Controller
         Auth::guard()->login($user, $request->session()->get('login.2fa.remember'));
 
         $request->session()->remove('login.2fa');
+        $request->session()->remove('login.2fa.isOauth');
+        $request->session()->remove('login.2fa.redirectURL');
 
         //$user->replaceRecoveryCode($code);
 
@@ -158,6 +177,9 @@ class TwoFAController extends Controller
 
         Logger::log('user.auth.login.successful', null, null, $user);
 
-        return redirect()->route('index');
+        if($isOauth)
+            return Inertia::location($redirectURL  . '?demandeConsent=true');
+        else
+            return redirect()->route('index');
     }
 }

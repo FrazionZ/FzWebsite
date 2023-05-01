@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Adrianorosa\GeoLocation\GeoLocation;
-use App\Http\Controllers\Social\DiscordController;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\SkinAPI;
 use App\Mail\ConfirmMail;
 use App\Models\ApiSkins;
 use App\Models\EmailIdentify;
-use App\Models\FactionProfile;
 use App\Models\TokenUsers;
 use App\Models\User;
 use App\Models\UserHName;
+use App\Models\Guild;
+use App\Models\GuildProfile;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -30,12 +31,27 @@ class ProfileController extends Controller
      * Display the user's profile form.
      */
 
+    function str_without_accents($str, $charset='utf-8')
+    {
+        $str = htmlentities($str, ENT_NOQUOTES, $charset);
+
+        $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
+        $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
+        $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caractères
+
+        return $str;   // or add this : mb_strtoupper($str); for uppercase :)
+    }
+
     public function index(Request $request): Response
     {
         $fastMenu = $request->query('fastMenu');
         $factionProfile = json_decode(@file_get_contents('https://api.frazionz.net/faction/profile/'.$request->user()->id), true);
         $capeData = json_decode(@file_get_contents('https://api.frazionz.net/user/'.$request->user()->id.'/cape/data'), true);
         $tokenUsers = TokenUsers::where('uid', $request->user()->id)->get();
+        $guildProfile = GuildProfile::where('user_id', $request->user()->uuid)->first();
+        $guild = null;
+        if($guildProfile !== null)
+            $guild = Guild::where('id', $guildProfile->faction_id)->first();
         foreach($tokenUsers as $token){
             $token->geo = GeoLocation::lookup(base64_decode($token->ip));
         }
@@ -46,6 +62,9 @@ class ProfileController extends Controller
             'fastMenu' => $fastMenu,
             'capeData' => $capeData,
             'tokensUser' => $tokenUsers,
+            'url' => "michel.lan/pd.pdf",
+            'guild' => $guild,
+            'guildProfile' => $guildProfile,
             'status' => session('status'),
         ]);
     }

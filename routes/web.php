@@ -11,6 +11,7 @@ use App\Http\Controllers\Forum\ThreadController;
 use App\Http\Controllers\Auth\TwoFAController;
 use App\Http\Controllers\Social\TwitchController;
 use App\Http\Controllers\Social\DiscordController;
+use App\Http\Controllers\Auth\Oauth\AuthorizationController;
 
 
 Route::get('/', function () {
@@ -102,6 +103,11 @@ Route::middleware(['fzauth'])->prefix('twitch')->name('twitch.')->group(function
 Route::get('page/{slug}', [PagesController::class, 'display'])->name('page.display');
 
 Route::get('/complete-registration', [Auth\RegisteredUserController::class, 'completeRegistration'])->name('complete.registration');
+
+
+//Oauth
+Route::middleware('web')->get('oauth/authorize', [AuthorizationController::class, 'authorize'])->name('passport.oauth.authorize');
+Route::middleware('web')->get('oauth/twofa', [AuthorizationController::class, 'authorize'])->name('passport.oauth.twofa');
 
 
 Route::get('/maintenance', function() {

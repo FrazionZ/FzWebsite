@@ -14,6 +14,7 @@ export default function Login(props, { status, canResetPassword }) {
         email: '',
         password: '',
         remember: false,
+        isOauth: true,
         _token: props.csrf_token
     });
 
@@ -83,15 +84,6 @@ export default function Login(props, { status, canResetPassword }) {
                 </div>
 
                 <div className="flex items-center justify-center">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
                     <button className="btn" disabled={processing}>
                         Se connecter
                     </button>

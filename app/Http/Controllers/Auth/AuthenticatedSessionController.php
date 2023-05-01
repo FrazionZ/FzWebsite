@@ -43,16 +43,28 @@ class AuthenticatedSessionController extends Controller
             'password' => 'required|string',
         ]);
 
+        $isOauth = $request->filled('isOauth');
+
         if ($validator->fails()) {
-            return redirect(route('login'))
-                        ->withErrors($validator)
-                        ->withInput()
-                        ->with("status", $this->toastResponse('error', "Le formulaire est incomplet"));
+            if($isOauth)
+                return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with("status", $this->toastResponse('error', "Le formulaire est incomplet"));
+            else
+                return redirect(route('login'))
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with("status", $this->toastResponse('error', "Le formulaire est incomplet"));
         }
 
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
-            return redirect(route('login'))->with("status", $this->toastResponse('error', "Too Many Login."));
+            if($isOauth)
+                return redirect()->back()->with("status", $this->toastResponse('error', "Too Many Login."));
+            else
+                return redirect(route('login'))->with("status", $this->toastResponse('error', "Too Many Login."));
         }
 
         if (! $this->guard()->once($this->credentials($request))) {
@@ -63,13 +75,19 @@ class AuthenticatedSessionController extends Controller
             if($user_log !== null)
                 Logger::log('user.auth.login.password', null, null, $user_log);
 
-            return redirect(route('login'))->with("status", $this->toastResponse('error', "Identifiants invalides."));
+            if($isOauth)
+                return redirect()->back()->with("status", $this->toastResponse('error', "Identifiants invalides."));
+            else
+                return redirect(route('login'))->with("status", $this->toastResponse('error', "Identifiants invalides."));
         }
 
         $user = $this->guard()->user();
 
         if ($user === null || $user->isDeleted()) {
-            return redirect(route('login'))->with("status", $this->toastResponse('error', "L'utilisatuer n'est plus valide."));
+            if($isOauth)
+                return redirect()->back()->with("status", $this->toastResponse('error', "L'utilisatuer n'est plus valide."));
+            else
+                return redirect(route('login'))->with("status", $this->toastResponse('error', "L'utilisatuer n'est plus valide."));
         }
 
         return $this->loginUser($request, $user);
@@ -77,9 +95,13 @@ class AuthenticatedSessionController extends Controller
 
     protected function loginUser(Request $request, User $user)
     {
-
+        $isOauth = $request->filled('isOauth');
+        
         if ($user->isBanned()){
-            return redirect(route('login'))->with("status", $this->toastResponse('error', "Vous êtes bannis. Vous ne pouvez plus vous connecter"));
+            if($isOauth)
+                return redirect(route('login'))->with("status", $this->toastResponse('error', "Vous êtes bannis. Vous ne pouvez plus vous connecter"));
+            else
+                return redirect(route('login'))->with("status", $this->toastResponse('error', "Vous êtes bannis. Vous ne pouvez plus vous connecter"));
         }
 
         if ($user->hasTwoFactorAuth()) {
@@ -87,7 +109,10 @@ class AuthenticatedSessionController extends Controller
             $request->session()->put('login.2fa', [
                 'id' => $user->id,
                 'remember' => $request->filled('remember'),
+                'isOauth' => $isOauth,
+                'redirectURL' => $request->redirect_url
             ]);
+            
             return to_route('2fa.login', []);
         }
 
@@ -97,7 +122,15 @@ class AuthenticatedSessionController extends Controller
 
         Logger::log('user.auth.login.successful', null, null, $user);
 
-        return $this->sendLoginResponse($request);
+        if($request->isOauth){
+            $request->session()->regenerate();
+
+            $this->clearLoginAttempts($request);
+
+            return Inertia::location($request->redirect_url . '?demandeConsent=true');
+        }
+        else
+            return $this->sendLoginResponse($request);
     }
 
     /**

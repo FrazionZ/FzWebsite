@@ -112,6 +112,10 @@ export default function ForumThreadView(props) {
 
     }, [thread])
 
+    
+    let contentThread = toByteArray(thread?.content)
+    contentThread = new TextDecoder().decode(contentThread)
+
     return (
         <Layout
             props={props}
@@ -151,7 +155,7 @@ export default function ForumThreadView(props) {
                         </div>
                     </div>
                     <div className="thread">
-                        <div dangerouslySetInnerHTML={{ __html: md.render(atob(thread?.content)) }} />
+                        <div dangerouslySetInnerHTML={{ __html: contentThread }} />
                     </div>
                 </div>
                 <div className="flex flex-col gap-5">
@@ -187,7 +191,7 @@ export default function ForumThreadView(props) {
                                                 <span>Publié le <br /><b>{lang.replaceMonth(moment(comment?.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}</b></span>
                                             </div>
                                         </div>
-                                        <div className="thread" dangerouslySetInnerHTML={{ __html: md.render(content) }} />
+                                        <div className="thread" dangerouslySetInnerHTML={{ __html: content }} />
                                     </div>
                                 )
                             })}

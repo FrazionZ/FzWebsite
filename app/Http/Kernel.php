@@ -39,6 +39,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\Maintenance::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
+            \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
         ],
 
         'admin' => [ ],
@@ -47,6 +48,7 @@ class Kernel extends HttpKernel
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
         ],
     ];
 

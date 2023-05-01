@@ -24,8 +24,8 @@ export default function Layout({ props, mc, title, isHome, children }) {
             </div>
             <div id="app" className='hidden md:flex'>
                 <Navbar auth={props.auth} mc={mc} title={title} isHome={isHome} navbar={props.navbar} />
-                <div className={`content ${(isHome) ? "home" : "other"} flex flex-col gap-[90px]`}>
-                    <div className="mx-8 xl:mx-[340px] pb-16">
+                <div className={`content ${(isHome) ? "home" : "other"} flex flex-col items-center gap-[90px]`}>
+                    <div className="w-[1180px] pb-16">
                         {children}
                     </div>
                 </div>

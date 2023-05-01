@@ -24,6 +24,7 @@ import FrameInventory from './Frame/Inventory'
 import FrameAppareance from './Frame/Appareance'
 import FrameSettings from './Frame/Settings'
 import FrameLogExternal from './Frame/LogExternal'
+import FrameGuild from './Frame/Guild'
 
 import { FaDiscord, FaPencilAlt } from "react-icons/fa"
 import FzToast from "@/Components/FzToast"
@@ -45,6 +46,9 @@ export default function ProfileIndex(props) {
     let user = props.auth.user
     let factionUser = props.factionProfile
     let capeData = props.capeData
+    const guild = props.guild;
+    const guildProfile = props.guildProfile;
+    const blasonDefault = "https://api.frazionz.net/blasonapi/";
 
     const [socialDiscordData, setSocialDiscordData] = useState(null)
     const [socialDiscordLoaded, setSocialDiscordLoaded] = useState(false)
@@ -52,6 +56,8 @@ export default function ProfileIndex(props) {
 
     const [socialTwitchData, setSocialTwitchData] = useState(null)
     const [socialTwitchLoaded, setSocialTwitchLoaded] = useState(false)
+
+    alert(props.url)
 
     if (!socialDiscordLoaded)
         axios.get(route('social.discord.get'))
@@ -89,17 +95,17 @@ export default function ProfileIndex(props) {
         {
             icon: <MenuSkills className="icon" />,
             display: "Skills",
-            component: <FrameLogExternal />
+            component: null
         },
         {
             icon: <MenuFaction className="icon" />,
             display: "Faction",
-            component: <FrameLogExternal />
+            component: <FrameGuild />
         },
         {
             icon: <MenuSuccess className="icon" />,
             display: "Succès",
-            component: <FrameLogExternal />
+            component: null
         },
         {
             icon: <MenuSettings className="icon" />,
@@ -194,7 +200,19 @@ export default function ProfileIndex(props) {
                             </div>
                             <div className="card">
                                 <img src={Faction} alt="faction" />
-                                Aucune faction définis
+                                {guildProfile !== null && (
+                                    <>
+                                        {guildProfile.faction_id !== null && (
+                                            <>{guild.name}</>
+                                        )}
+                                        {guildProfile.faction_id == null && (
+                                            <>Aucune faction définis</>
+                                        )}
+                                    </>
+                                )}
+                                {guildProfile == null && (
+                                    <>Aucune faction définis</>
+                                )}
                             </div>
                             <div className="card">
                                 <img src={Cogs} alt="cogs" />
