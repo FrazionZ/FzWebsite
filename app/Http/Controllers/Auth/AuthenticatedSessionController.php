@@ -95,7 +95,7 @@ class AuthenticatedSessionController extends Controller
 
     protected function loginUser(Request $request, User $user)
     {
-        $isOauth = $request->filled('isOauth');
+        $isOauth = $request->input('isOauth');
         
         if ($user->isBanned()){
             if($isOauth)

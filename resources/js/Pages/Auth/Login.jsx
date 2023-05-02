@@ -14,7 +14,7 @@ export default function Login(props, { status, canResetPassword }) {
         email: '',
         password: '',
         remember: false,
-        isOauth: true,
+        isOauth: false,
         _token: props.csrf_token
     });
 
