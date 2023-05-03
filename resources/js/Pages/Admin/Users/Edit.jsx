@@ -95,7 +95,7 @@ export default function UserEdit(props) {
                         <div className="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                             <img
                                 className="mb-4 rounded-lg w-[64px] h-[64px] sm:mb-0 xl:mb-4 2xl:mb-0"
-                                src={`https://api.frazionz.net/user/${user.id}/skin/head`}
+                                src={`https://api.frazionz.net/user/${user.uuid}/skin/head`}
                                 alt="Jese picture"
                             />
                             <div className="flex flex-col gap-1">
