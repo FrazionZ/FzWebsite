@@ -46,7 +46,7 @@ class ProfileController extends Controller
     {
         $fastMenu = $request->query('fastMenu');
         $factionProfile = json_decode(@file_get_contents('https://api.frazionz.net/faction/profile/'.$request->user()->id), true);
-        $capeData = json_decode(@file_get_contents('https://api.frazionz.net/user/'.$request->user()->id.'/cape/data'), true);
+        $capeData = json_decode(@file_get_contents('https://api.frazionz.net/user/'.$request->user()->uuid.'/cape/data'), true);
         $tokenUsers = TokenUsers::where('uid', $request->user()->id)->get();
         $guildProfile = GuildProfile::where('user_id', $request->user()->uuid)->first();
         $guild = null;
