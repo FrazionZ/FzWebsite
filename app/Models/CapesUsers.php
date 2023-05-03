@@ -12,6 +12,8 @@ class CapesUsers extends Model
     protected $connection = "api";
     protected $table = "capes_users";
 
+    protected $primaryKey = 'uuid';
+
     protected $fillable = [
         'uuid', 'cape_id'
     ];
