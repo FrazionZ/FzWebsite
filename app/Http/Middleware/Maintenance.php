@@ -39,7 +39,7 @@ class Maintenance
             return $next($request);
         }
 
-        if ($request->user()->hasPermission('admin.maintenance.bypass')) {
+        if ($request->user() !== null && $request->user()->hasPermission('admin.maintenance.bypass')) {
             return $next($request);
         }
 
