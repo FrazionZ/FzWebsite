@@ -57,8 +57,6 @@ export default function ProfileIndex(props) {
     const [socialTwitchData, setSocialTwitchData] = useState(null)
     const [socialTwitchLoaded, setSocialTwitchLoaded] = useState(false)
 
-    alert(props.url)
-
     if (!socialDiscordLoaded)
         axios.get(route('social.discord.get'))
             .then((response) => {
