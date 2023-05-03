@@ -41,7 +41,7 @@ class UsersController extends Controller
     }
 
     public function paginateUsers($pageCurrent = 0, $search = null){
-        $users = User::select('id', 'name', 'email', 'uudi', 'created_at')->where('name', 'LIKE', '%'.$search.'%')->paginate(
+        $users = User::select('id', 'name', 'email', 'uuid', 'created_at')->where('name', 'LIKE', '%'.$search.'%')->paginate(
             10, ['*'], 'page', ($search !== null) ? 0 : $pageCurrent
         );
         foreach($users as $user){
