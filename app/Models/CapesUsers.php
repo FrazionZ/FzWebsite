@@ -14,6 +14,8 @@ class CapesUsers extends Model
 
     protected $primaryKey = 'uuid';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'uuid', 'cape_id'
     ];
