@@ -23,7 +23,11 @@ class TwoFAController extends Controller
         if(!$request->user()->hasTwoFactorAuth())
             return redirect()->route('2fa.register');
 
-        return Inertia::render('Auth/TwoFA/Index', []);
+        $twoFactorRecoveryCodes = $request->user()->two_factor_recovery_codes;
+
+        return Inertia::render('Auth/TwoFA/Index', [
+            'twoFactorRecoveryCodes' => $twoFactorRecoveryCodes
+        ]);
     }
 
     public function register(Request $request)

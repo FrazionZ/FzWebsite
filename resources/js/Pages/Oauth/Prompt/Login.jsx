@@ -8,8 +8,6 @@ import Switch from "@/Components/FzSwitch";
 export default function OauthPromptLogin(props) {
     const title = "Authentification";
 
-    console.log(props)
-
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",

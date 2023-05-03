@@ -55,6 +55,7 @@ class ProfileController extends Controller
         foreach($tokenUsers as $token){
             $token->geo = GeoLocation::lookup(base64_decode($token->ip));
         }
+        
         /*$discordController = new DiscordController();*/
         return Inertia::render('Profile/Index', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
@@ -64,6 +65,7 @@ class ProfileController extends Controller
             'tokensUser' => $tokenUsers,
             'guild' => $guild,
             'guildProfile' => $guildProfile,
+            'pcodeEnabled' => $request->user()->isPCodeEnable(),
             'status' => session('status'),
         ]);
     }

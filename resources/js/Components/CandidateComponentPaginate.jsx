@@ -22,8 +22,6 @@ export default function CandidateComponentPaginate({ funcParse, category }) {
         })
     }
 
-    console.log(category.candids)
-
 
     return (
         <>

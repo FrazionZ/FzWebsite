@@ -89,4 +89,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $roleParent->badgeStyle = $roleParent->getBadgeStyle();
         return $roleParent;
     }
+
+    public function isPCodeEnable()
+    {
+        return ($this->pcode_state == 1);
+    }
 }

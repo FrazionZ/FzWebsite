@@ -26,8 +26,10 @@ const customStyles = {
 
 export default function Index(props) {
 
+    console.log(props.auth.user)
+
     const title = "Authentification à deux facteurs"
-    const [codes, setCodes] = useState(JSON.parse(props.auth.user.two_factor_recovery_codes))
+    const [codes, setCodes] = useState(JSON.parse(props.twoFactorRecoveryCodes))
     const [disabledAllForm, setDisabledAllForm] = useState(false)
 
     async function submitRegenerate(e) {

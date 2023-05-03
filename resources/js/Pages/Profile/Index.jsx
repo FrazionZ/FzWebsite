@@ -46,7 +46,8 @@ export default function ProfileIndex(props) {
     let user = props.auth.user
     let factionUser = props.factionProfile
     let capeData = props.capeData
-    console.log(capeData)
+
+    const pcodeEnabled = props.pcodeEnabled
     const guild = props.guild;
     const guildProfile = props.guildProfile;
     const blasonDefault = "https://api.frazionz.net/blasonapi/";
