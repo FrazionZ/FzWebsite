@@ -5,6 +5,7 @@ import { FaDiscord, FaTwitter, FaInstagram, FaYoutube, FaTiktok, FaTwitch } from
 import FzToastContainer from '@/Components/FzToastContainer'
 import '../../css/app.css';
 import '../../css/switch.css';
+import "../../css/editor.css";
 import Logo from '../../assets/img/logo.svg'
 import Discord from '../../assets/img/icons/network/discord'
 import Insta from '../../assets/img/icons/network/insta'

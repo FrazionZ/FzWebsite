@@ -1,23 +1,55 @@
-import { useForm, Head } from "@inertiajs/react"
-import { useState } from "react";
-import Editor from "@/Components/Editor/Editor";
+import { useForm, Head, router } from "@inertiajs/react"
+import { useEffect, useState } from "react";
 import Layout from "@/Layouts/Layout";
 import CommentPen from '../../../../assets/img/icons/comment-pen.svg'
+import { Editor } from "react-draft-wysiwyg";
+import { convertToRaw, EditorState } from 'draft-js';
+import { stateToHTML } from "draft-js-export-html";
+import draftToHtmlPuri from "draftjs-to-html";
+import "../../../../assets/css/editor.css";
 
 export default function FormCreate(props) {
 
+    
+
+
     const title = "Forum"
-    const { data, setData, post, processing, errors } = useForm({
-        title: "",
-        content: "",
-        sc_id: props.sc.id,
-        _token: props.csrf_token
-    })
+    
+
+    const [ftitle, setTitle] = useState("")
+    const [content, setContent] = useState(EditorState.createEmpty())
+
+    
+    const htmlPuri = draftToHtmlPuri(
+        convertToRaw(content.getCurrentContent())
+    );
+
+    const [acontent, setAContent] = useState(htmlPuri)
+    const [scID, setSCId] = useState(props.sc.id)
+    const [token, setToken] = useState(props.csrf_token)
+
+    const [processing, setProcessing] = useState(false)
 
     async function submitThread(e) {
         e.preventDefault()
-        post(route('forum.thread.create.handle'));
+        setProcessing(true);
+        router.post(route('forum.thread.create.handle'), {
+            title: ftitle,
+            content: content,
+            acontent: acontent,
+            sc_id: scID,
+            _token: token
+        }, {
+            onError: () => {
+                setProcessing(false)
+            }
+        })
     }
+
+    const onEditorStateChange = editorState => {
+        setContent(editorState)
+        setAContent(htmlPuri)
+    };
 
     return (
         <Layout
@@ -38,8 +70,8 @@ export default function FormCreate(props) {
                         <input
                             type="text"
                             disabled={processing}
-                            value={data.title}
-                            onChange={(e) => { setData('title', e.target.value) }}
+                            value={ftitle}
+                            onChange={(e) => { setTitle(e.target.value) }}
                         />
                     </div>
                     <div className="form-group">
@@ -48,19 +80,33 @@ export default function FormCreate(props) {
                             type="text"
                             value={props.fc.name + " -> " + props.sc.name}
                             disabled={true}
-                            onChange={(e) => { setData('title', e.target.value) }}
+                            onChange={(e) => { setSCId(e.target.value) }}
                         />
                     </div>
                 </div>
                 <div className="form-group">
                     <label>Contenue</label>
-                    <Editor 
-                        showToolbar={true}
-                        processing={processing}
-                        state={data.content}
-                        height={500}
-                        onChange={(e) => { setData('content', e) }}
+                    <Editor
+                        editorState={content}
+                        onEditorStateChange={onEditorStateChange}
+                        toolbar={{
+                          options: [
+                            "inline",
+                            "fontSize",
+                            "fontFamily",
+                            "textAlign",
+                            "colorPicker",
+                            "link",
+                            "remove",
+                            "history"
+                          ],
+                          inline: {
+                            inDropdown: false,
+                            options: ["bold", "italic", "underline"]
+                          }
+                        }}
                         />
+                        
                 </div>
                 <button disabled={processing} type="submit" className="btn">Poster</button>
             </form>

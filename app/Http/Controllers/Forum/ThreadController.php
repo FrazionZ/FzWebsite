@@ -54,7 +54,7 @@ class ThreadController extends Controller
     public function comment_publish(Request $request){
         $validator = Validator::make($request->all(), [
             'th_id' => 'required|int',
-            'comment' => 'required|string',
+            'acomment' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -73,7 +73,7 @@ class ThreadController extends Controller
         ForumComments::insert([
             "user_id" => $request->user()->id,
             "th_id" => $request->th_id,
-            "content" => base64_encode($request->comment)
+            "content" => base64_encode($request->acomment)
         ]);
 
         $newThreadLastPageComments = $this->getThread($request->th_id, "lastPage");
@@ -144,7 +144,7 @@ class ThreadController extends Controller
         $validator = Validator::make($request->all(), [
             'sc_id' => 'required|int',
             'title' => 'required|string',
-            'content' => 'required|string',
+            'acontent' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -159,7 +159,7 @@ class ThreadController extends Controller
             'title' => $request->title,
             'sc_id' => $sc->id,
             'user_id' => $request->user()->id,
-            'content' => base64_encode($request->content)
+            'content' => base64_encode($request->acontent)
         ]);
 
         return redirect()->route('forum.thread.view', ['th_id' => $newThread->id])->with("status", $this->toastResponse('success', "Votre Thread est maintenant créé"));

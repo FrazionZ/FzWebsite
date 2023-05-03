@@ -32,4 +32,7 @@
     <body class="font-sans antialiased" style="overlay-x: none; overlay-y: overlay;">
         @inertia
     </body>
+    <script>
+        const global = globalThis;
+    </script>
 </html>

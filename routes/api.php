@@ -19,3 +19,5 @@ Route::middleware(['web', 'auth:api'])->get('/user', function(Request $request) 
         'email'
     ]);
 });
+
+Route::post('skins/update', [App\Http\Controllers\API\SkinsController::class, 'update'])->name('update');

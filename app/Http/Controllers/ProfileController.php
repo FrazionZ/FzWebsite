@@ -62,7 +62,6 @@ class ProfileController extends Controller
             'fastMenu' => $fastMenu,
             'capeData' => $capeData,
             'tokensUser' => $tokenUsers,
-            'url' => "michel.lan/pd.pdf",
             'guild' => $guild,
             'guildProfile' => $guildProfile,
             'status' => session('status'),
