@@ -6,7 +6,6 @@ import { Editor } from "react-draft-wysiwyg";
 import { convertToRaw, EditorState } from 'draft-js';
 import { stateToHTML } from "draft-js-export-html";
 import draftToHtmlPuri from "draftjs-to-html";
-import "../../../../assets/css/editor.css";
 
 export default function FormCreate(props) {
 
