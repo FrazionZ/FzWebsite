@@ -39,6 +39,10 @@ class Maintenance
             return $next($request);
         }
 
+        if ($request->user()->hasPermission('admin.maintenance.bypass')) {
+            return $next($request);
+        }
+
         return $this->renderMaintenanceView();
     }
 

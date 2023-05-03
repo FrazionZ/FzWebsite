@@ -31,6 +31,12 @@ class PermissionsTableSeeder extends Seeder
                 'model'       => 'Permission',
             ],
             [
+                'name'        => 'Bypass Maintenance',
+                'slug'        => 'admin.maintenance.bypass',
+                'description' => 'Accès au site pendant une maintenance',
+                'model'       => 'Permission',
+            ],
+            [
                 'name'        => 'Liste des joueurs',
                 'slug'        => 'admin.users.list',
                 'description' => 'Voir la liste des joueurs',
