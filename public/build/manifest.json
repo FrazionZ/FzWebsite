@@ -23,118 +23,118 @@
     "file": "assets/Paginate-5a4301ec.css",
     "src": "Paginate.css"
   },
-  "_AdminLayout-c79a8f3c.js": {
+  "_AdminLayout-25b01568.js": {
     "css": [
       "assets/AdminLayout-3c50cce6.css"
     ],
-    "file": "assets/AdminLayout-c79a8f3c.js",
+    "file": "assets/AdminLayout-25b01568.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FzToastContainer-2d515a7f.js",
+      "_FzToastContainer-85118678.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_iconBase-e8b875ef.js",
-      "_Toast-42c82b9f.js",
-      "_motion-67847c99.js",
+      "_index.esm-fc55494d.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_iconBase-82cba304.js",
+      "_Toast-bc72f4c6.js",
+      "_motion-714950dd.js",
       "_Language-45cbb11a.js"
     ]
   },
-  "_Alert-7cb287a7.js": {
-    "file": "assets/Alert-7cb287a7.js",
+  "_Alert-7e72c010.js": {
+    "file": "assets/Alert-7e72c010.js",
     "imports": [
       "resources/js/app.jsx",
       "_index-4d501b15.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_index.esm-f4450869.js"
+      "_index.esm-fc55494d.js"
     ]
   },
-  "_Badge-66b031a5.js": {
-    "file": "assets/Badge-66b031a5.js",
+  "_Badge-e855c5d3.js": {
+    "file": "assets/Badge-e855c5d3.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Card-68359eaa.js": {
-    "file": "assets/Card-68359eaa.js",
+  "_Card-79707dc4.js": {
+    "file": "assets/Card-79707dc4.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js"
+      "_Toast-bc72f4c6.js"
     ]
   },
-  "_Dropdown-0b37bd09.js": {
+  "_Dropdown-f50784fa.js": {
     "css": [
       "assets/Dropdown-93c6aee1.css"
     ],
-    "file": "assets/Dropdown-0b37bd09.js",
+    "file": "assets/Dropdown-f50784fa.js",
     "imports": [
       "resources/js/app.jsx",
-      "_motion-67847c99.js"
+      "_motion-714950dd.js"
     ]
   },
-  "_Editor-ea2b38e9.js": {
+  "_Editor-0c16feeb.js": {
     "css": [
       "assets/Editor-c82d12ec.css"
     ],
-    "file": "assets/Editor-ea2b38e9.js",
+    "file": "assets/Editor-0c16feeb.js",
     "imports": [
       "_objectWithoutPropertiesLoose-df62547b.js",
       "resources/js/app.jsx",
       "_index-4d501b15.js",
-      "_index-4a156e47.js"
+      "_index-8a667da8.js"
     ]
   },
-  "_FzSwitch-4a688252.js": {
-    "file": "assets/FzSwitch-4a688252.js",
+  "_FzSwitch-d7607cab.js": {
+    "file": "assets/FzSwitch-d7607cab.js",
     "imports": [
       "resources/js/app.jsx",
-      "_switch-0af9bfe1.js"
+      "_switch-cd603e74.js"
     ]
   },
-  "_FzToast-68d30c0b.js": {
-    "file": "assets/FzToast-68d30c0b.js",
+  "_FzToast-c746319e.js": {
+    "file": "assets/FzToast-c746319e.js",
     "imports": [
       "resources/js/app.jsx",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js"
     ]
   },
-  "_FzToastContainer-2d515a7f.js": {
+  "_FzToastContainer-85118678.js": {
     "css": [
       "assets/FzToastContainer-372535d6.css"
     ],
-    "file": "assets/FzToastContainer-2d515a7f.js",
+    "file": "assets/FzToastContainer-85118678.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FzToast-68d30c0b.js"
+      "_FzToast-c746319e.js"
     ]
   },
-  "_InputError-163e0f00.js": {
-    "file": "assets/InputError-163e0f00.js",
+  "_InputError-da75e880.js": {
+    "file": "assets/InputError-da75e880.js",
     "imports": [
       "resources/js/app.jsx",
       "_Language-45cbb11a.js"
     ]
   },
-  "_InputLabel-eb5d71f6.js": {
-    "file": "assets/InputLabel-eb5d71f6.js",
+  "_InputLabel-fe419e73.js": {
+    "file": "assets/InputLabel-fe419e73.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Label-9c81ebb6.js": {
-    "file": "assets/Label-9c81ebb6.js",
+  "_Label-b55c729f.js": {
+    "file": "assets/Label-b55c729f.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js"
+      "_Toast-bc72f4c6.js"
     ]
   },
   "_Language-45cbb11a.js": {
     "file": "assets/Language-45cbb11a.js"
   },
-  "_Layout-9c6f97a0.js": {
+  "_Layout-3a22c92b.js": {
     "assets": [
       "assets/logo-78674077.png"
     ],
@@ -142,67 +142,67 @@
       "assets/Layout-915497da.css",
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Layout-9c6f97a0.js",
+    "file": "assets/Layout-3a22c92b.js",
     "imports": [
       "resources/js/app.jsx",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_motion-67847c99.js",
-      "_iconBase-e8b875ef.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_motion-714950dd.js",
+      "_iconBase-82cba304.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_twitch-a961c6b4.js"
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_twitch-cf6ef8bf.js"
     ]
   },
-  "_Paginate-f173fc92.js": {
+  "_Paginate-f95be9fb.js": {
     "css": [
       "assets/Paginate-5a4301ec.css"
     ],
-    "file": "assets/Paginate-f173fc92.js",
+    "file": "assets/Paginate-f95be9fb.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_PrimaryButton-6383fd2b.js": {
-    "file": "assets/PrimaryButton-6383fd2b.js",
+  "_PrimaryButton-93ac9bb0.js": {
+    "file": "assets/PrimaryButton-93ac9bb0.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Spinner-7f0dfb7d.js": {
-    "file": "assets/Spinner-7f0dfb7d.js",
+  "_Spinner-401ac0cd.js": {
+    "file": "assets/Spinner-401ac0cd.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js"
+      "_Toast-bc72f4c6.js"
     ]
   },
-  "_TextInput-a9244cd0.js": {
-    "file": "assets/TextInput-a9244cd0.js",
+  "_TextInput-ec9b8cb8.js": {
+    "file": "assets/TextInput-ec9b8cb8.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Toast-42c82b9f.js": {
-    "file": "assets/Toast-42c82b9f.js",
+  "_Toast-bc72f4c6.js": {
+    "file": "assets/Toast-bc72f4c6.js",
     "imports": [
       "resources/js/app.jsx",
-      "_iconBase-e8b875ef.js"
+      "_iconBase-82cba304.js"
     ]
   },
-  "_UploadAsset-39d8e068.js": {
-    "file": "assets/UploadAsset-39d8e068.js",
+  "_UploadAsset-ca14029e.js": {
+    "file": "assets/UploadAsset-ca14029e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FzToast-68d30c0b.js",
-      "_Toast-42c82b9f.js",
-      "_index-4a156e47.js",
+      "_FzToast-c746319e.js",
+      "_Toast-bc72f4c6.js",
+      "_index-8a667da8.js",
       "_hoist-non-react-statics.cjs-657b8f1b.js",
-      "_index.esm-f4450869.js"
+      "_index.esm-fc55494d.js"
     ],
     "isDynamicEntry": true
   },
@@ -240,28 +240,28 @@
     ],
     "file": "assets/commentForum-5f640902.js"
   },
-  "_draftjs-to-html-a071b14e.js": {
-    "file": "assets/draftjs-to-html-a071b14e.js",
+  "_draftjs-to-html-7968e1a5.js": {
+    "file": "assets/draftjs-to-html-7968e1a5.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_draggable-d50d0d41.js": {
+  "_draggable-39e49aef.js": {
     "css": [
       "assets/draggable-9ef5e8be.css"
     ],
-    "file": "assets/draggable-d50d0d41.js",
+    "file": "assets/draggable-39e49aef.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_dropdownProfile-b7601297.js": {
+  "_dropdownProfile-78a94ea8.js": {
     "css": [
       "assets/dropdownProfile-f5204511.css"
     ],
-    "file": "assets/dropdownProfile-b7601297.js",
+    "file": "assets/dropdownProfile-78a94ea8.js",
     "imports": [
-      "_iconBase-e8b875ef.js"
+      "_iconBase-82cba304.js"
     ]
   },
   "_envelope_open-354a45b7.js": {
@@ -270,8 +270,8 @@
     ],
     "file": "assets/envelope_open-354a45b7.js"
   },
-  "_fr-f9dbd262.js": {
-    "file": "assets/fr-f9dbd262.js",
+  "_fr-d108c3cd.js": {
+    "file": "assets/fr-d108c3cd.js",
     "imports": [
       "resources/js/app.jsx"
     ]
@@ -279,30 +279,30 @@
   "_hoist-non-react-statics.cjs-657b8f1b.js": {
     "file": "assets/hoist-non-react-statics.cjs-657b8f1b.js"
   },
-  "_iconBase-e8b875ef.js": {
-    "file": "assets/iconBase-e8b875ef.js",
+  "_iconBase-82cba304.js": {
+    "file": "assets/iconBase-82cba304.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_index-4a156e47.js": {
-    "file": "assets/index-4a156e47.js",
+  "_index-19b19c3b.js": {
+    "file": "assets/index-19b19c3b.js",
     "imports": [
       "resources/js/app.jsx"
+    ]
+  },
+  "_index-4189ee65.js": {
+    "file": "assets/index-4189ee65.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_motion-714950dd.js"
     ]
   },
   "_index-4d501b15.js": {
     "file": "assets/index-4d501b15.js"
   },
-  "_index-d5c08679.js": {
-    "file": "assets/index-d5c08679.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_motion-67847c99.js"
-    ]
-  },
-  "_index-d99276d6.js": {
-    "file": "assets/index-d99276d6.js",
+  "_index-8a667da8.js": {
+    "file": "assets/index-8a667da8.js",
     "imports": [
       "resources/js/app.jsx"
     ]
@@ -310,38 +310,38 @@
   "_index-e3d2c47e.js": {
     "file": "assets/index-e3d2c47e.js"
   },
-  "_index.es-d55bd8c2.js": {
-    "file": "assets/index.es-d55bd8c2.js",
+  "_index.es-02bd37e1.js": {
+    "file": "assets/index.es-02bd37e1.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_index.esm-27a1817f.js": {
-    "file": "assets/index.esm-27a1817f.js",
+  "_index.esm-eb49bc75.js": {
+    "file": "assets/index.esm-eb49bc75.js",
     "imports": [
-      "_iconBase-e8b875ef.js"
+      "_iconBase-82cba304.js"
     ]
   },
-  "_index.esm-f4450869.js": {
-    "file": "assets/index.esm-f4450869.js",
+  "_index.esm-fc55494d.js": {
+    "file": "assets/index.esm-fc55494d.js",
     "imports": [
-      "_iconBase-e8b875ef.js"
+      "_iconBase-82cba304.js"
     ]
   },
-  "_index.modern-1307d31f.js": {
-    "file": "assets/index.modern-1307d31f.js",
-    "imports": [
-      "resources/js/app.jsx"
-    ]
-  },
-  "_keyboard-49518c1f.js": {
-    "file": "assets/keyboard-49518c1f.js",
+  "_index.modern-1ca73f8a.js": {
+    "file": "assets/index.modern-1ca73f8a.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_lock-a7dbfb8a.js": {
-    "file": "assets/lock-a7dbfb8a.js",
+  "_keyboard-9d34834b.js": {
+    "file": "assets/keyboard-9d34834b.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_lock-04508983.js": {
+    "file": "assets/lock-04508983.js",
     "imports": [
       "resources/js/app.jsx"
     ]
@@ -352,8 +352,8 @@
     ],
     "file": "assets/logo-5fe7a993.js"
   },
-  "_motion-67847c99.js": {
-    "file": "assets/motion-67847c99.js",
+  "_motion-714950dd.js": {
+    "file": "assets/motion-714950dd.js",
     "imports": [
       "resources/js/app.jsx"
     ]
@@ -367,22 +367,22 @@
     ],
     "file": "assets/pnotes-8a5673d8.js"
   },
-  "_switch-0af9bfe1.js": {
-    "file": "assets/switch-0af9bfe1.js",
+  "_switch-cd603e74.js": {
+    "file": "assets/switch-cd603e74.js",
     "imports": [
       "resources/js/app.jsx",
-      "_keyboard-49518c1f.js"
+      "_keyboard-9d34834b.js"
     ]
   },
-  "_transition-1d4ad1bd.js": {
-    "file": "assets/transition-1d4ad1bd.js",
+  "_transition-89c70d9a.js": {
+    "file": "assets/transition-89c70d9a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_keyboard-49518c1f.js"
+      "_keyboard-9d34834b.js"
     ]
   },
-  "_twitch-a961c6b4.js": {
-    "file": "assets/twitch-a961c6b4.js",
+  "_twitch-cf6ef8bf.js": {
+    "file": "assets/twitch-cf6ef8bf.js",
     "imports": [
       "resources/js/app.jsx"
     ]
@@ -580,139 +580,139 @@
     "src": "resources/assets/img/potion/tipped_arrow_head_cutout.webp"
   },
   "resources/js/Pages/Admin/Forum/Categories/CategoryCard.jsx": {
-    "file": "assets/CategoryCard-fd8bafc6.js",
+    "file": "assets/CategoryCard-073cb77b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js"
+      "_Toast-bc72f4c6.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Forum/Categories/CategoryCard.jsx"
   },
   "resources/js/Pages/Admin/Forum/Categories/Edit.jsx": {
-    "file": "assets/Edit-1f930607.js",
+    "file": "assets/Edit-b3f6114c.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Admin/Forum/SubCategories/SubcategoryCard.jsx",
-      "_AdminLayout-c79a8f3c.js",
-      "_fr-f9dbd262.js",
-      "_draggable-d50d0d41.js",
-      "_Toast-42c82b9f.js",
-      "_Label-9c81ebb6.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_AdminLayout-25b01568.js",
+      "_fr-d108c3cd.js",
+      "_draggable-39e49aef.js",
+      "_Toast-bc72f4c6.js",
+      "_Label-b55c729f.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Forum/Categories/Edit.jsx"
   },
   "resources/js/Pages/Admin/Forum/Categories/Index.jsx": {
-    "file": "assets/Index-9c05de2c.js",
+    "file": "assets/Index-c0ab7991.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
+      "_AdminLayout-25b01568.js",
       "_Language-45cbb11a.js",
       "resources/js/Pages/Admin/Forum/Categories/CategoryCard.jsx",
-      "_draggable-d50d0d41.js",
-      "_Toast-42c82b9f.js",
-      "_fr-f9dbd262.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_draggable-39e49aef.js",
+      "_Toast-bc72f4c6.js",
+      "_fr-d108c3cd.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js"
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Forum/Categories/Index.jsx"
   },
   "resources/js/Pages/Admin/Forum/SubCategories/Edit.jsx": {
-    "file": "assets/Edit-ebe3687f.js",
+    "file": "assets/Edit-59a0eae3.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js",
-      "_Label-9c81ebb6.js",
-      "_index.esm-f4450869.js",
-      "_AdminLayout-c79a8f3c.js",
-      "_fr-f9dbd262.js",
-      "_draggable-d50d0d41.js",
-      "_Dropdown-0b37bd09.js",
-      "_iconBase-e8b875ef.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_Toast-bc72f4c6.js",
+      "_Label-b55c729f.js",
+      "_index.esm-fc55494d.js",
+      "_AdminLayout-25b01568.js",
+      "_fr-d108c3cd.js",
+      "_draggable-39e49aef.js",
+      "_Dropdown-f50784fa.js",
+      "_iconBase-82cba304.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Forum/SubCategories/Edit.jsx"
   },
   "resources/js/Pages/Admin/Forum/SubCategories/SubcategoryCard.jsx": {
-    "file": "assets/SubcategoryCard-787190fe.js",
+    "file": "assets/SubcategoryCard-bd24eb89.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js"
+      "_Toast-bc72f4c6.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Forum/SubCategories/SubcategoryCard.jsx"
   },
   "resources/js/Pages/Admin/Github/ConnectedIndex.jsx": {
-    "file": "assets/ConnectedIndex-392aa60a.js",
+    "file": "assets/ConnectedIndex-978847ae.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
+      "_AdminLayout-25b01568.js",
       "_Language-45cbb11a.js",
-      "_Toast-42c82b9f.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_Toast-bc72f4c6.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js"
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Github/ConnectedIndex.jsx"
   },
   "resources/js/Pages/Admin/Github/Index.jsx": {
-    "file": "assets/Index-a726ce12.js",
+    "file": "assets/Index-d082c96e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
+      "_AdminLayout-25b01568.js",
       "_Language-45cbb11a.js",
-      "_Toast-42c82b9f.js",
-      "_index.esm-f4450869.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_Toast-bc72f4c6.js",
+      "_index.esm-fc55494d.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js"
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Github/Index.jsx"
@@ -725,31 +725,31 @@
     "css": [
       "assets/Create-37fb481c.css"
     ],
-    "file": "assets/Create-d66aca1b.js",
+    "file": "assets/Create-8aedcdaf.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
+      "_AdminLayout-25b01568.js",
       "_Language-45cbb11a.js",
-      "_Toast-42c82b9f.js",
-      "_Card-68359eaa.js",
+      "_Toast-bc72f4c6.js",
+      "_Card-79707dc4.js",
       "_index-4d501b15.js",
-      "_index.esm-f4450869.js",
+      "_index.esm-fc55494d.js",
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/BranchSelect.jsx",
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/Process.jsx",
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/Recap.jsx",
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/SelectAsset.jsx",
-      "_UploadAsset-39d8e068.js",
+      "_UploadAsset-ca14029e.js",
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/VersionName.jsx",
       "_objectWithoutPropertiesLoose-df62547b.js",
-      "_FzToast-68d30c0b.js",
-      "_FzToastContainer-2d515a7f.js",
+      "_FzToast-c746319e.js",
+      "_FzToastContainer-85118678.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_index-e3d2c47e.js",
-      "_index-4a156e47.js",
+      "_index-8a667da8.js",
       "_hoist-non-react-statics.cjs-657b8f1b.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js"
@@ -758,7 +758,7 @@
     "src": "resources/js/Pages/Admin/Github/Repos/Create.jsx"
   },
   "resources/js/Pages/Admin/Github/Repos/CreateFrame/BranchSelect.jsx": {
-    "file": "assets/BranchSelect-8eb6fafd.js",
+    "file": "assets/BranchSelect-8c932861.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -766,7 +766,7 @@
     "src": "resources/js/Pages/Admin/Github/Repos/CreateFrame/BranchSelect.jsx"
   },
   "resources/js/Pages/Admin/Github/Repos/CreateFrame/PatchNotes.jsx": {
-    "file": "assets/PatchNotes-aa8d1b99.js",
+    "file": "assets/PatchNotes-95b5bb31.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -774,32 +774,32 @@
     "src": "resources/js/Pages/Admin/Github/Repos/CreateFrame/PatchNotes.jsx"
   },
   "resources/js/Pages/Admin/Github/Repos/CreateFrame/Process.jsx": {
-    "file": "assets/Process-b48b582c.js",
+    "file": "assets/Process-2ce5a32c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js",
-      "_index.esm-f4450869.js",
+      "_Toast-bc72f4c6.js",
+      "_index.esm-fc55494d.js",
       "_index-e3d2c47e.js",
-      "_iconBase-e8b875ef.js"
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Github/Repos/CreateFrame/Process.jsx"
   },
   "resources/js/Pages/Admin/Github/Repos/CreateFrame/Recap.jsx": {
-    "file": "assets/Recap-f77eefd4.js",
+    "file": "assets/Recap-0e383e8d.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FzToast-68d30c0b.js",
-      "_Toast-42c82b9f.js",
+      "_FzToast-c746319e.js",
+      "_Toast-bc72f4c6.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_iconBase-e8b875ef.js"
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Github/Repos/CreateFrame/Recap.jsx"
   },
   "resources/js/Pages/Admin/Github/Repos/CreateFrame/SelectAsset.jsx": {
-    "file": "assets/SelectAsset-71d9e58b.js",
+    "file": "assets/SelectAsset-faf120b4.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -807,271 +807,271 @@
     "src": "resources/js/Pages/Admin/Github/Repos/CreateFrame/SelectAsset.jsx"
   },
   "resources/js/Pages/Admin/Github/Repos/CreateFrame/VersionName.jsx": {
-    "file": "assets/VersionName-600552e4.js",
+    "file": "assets/VersionName-af7cf5cd.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FzToast-68d30c0b.js",
-      "_Toast-42c82b9f.js",
+      "_FzToast-c746319e.js",
+      "_Toast-bc72f4c6.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_iconBase-e8b875ef.js"
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Github/Repos/CreateFrame/VersionName.jsx"
   },
   "resources/js/Pages/Admin/Github/Repos/Index.jsx": {
-    "file": "assets/Index-c618f240.js",
+    "file": "assets/Index-a08741b0.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
+      "_AdminLayout-25b01568.js",
       "_Language-45cbb11a.js",
-      "_Toast-42c82b9f.js",
-      "_index.esm-f4450869.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_Toast-bc72f4c6.js",
+      "_index.esm-fc55494d.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js"
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Github/Repos/Index.jsx"
   },
   "resources/js/Pages/Admin/Index.jsx": {
-    "file": "assets/Index-2e38f30d.js",
+    "file": "assets/Index-1fae5698.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
-      "_Toast-42c82b9f.js",
-      "_Card-68359eaa.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_AdminLayout-25b01568.js",
+      "_Toast-bc72f4c6.js",
+      "_Card-79707dc4.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Index.jsx"
   },
   "resources/js/Pages/Admin/Logger/Index.jsx": {
-    "file": "assets/Index-2d79a72b.js",
+    "file": "assets/Index-366c791c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
+      "_AdminLayout-25b01568.js",
       "_Language-45cbb11a.js",
-      "_Toast-42c82b9f.js",
-      "_fr-f9dbd262.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_Toast-bc72f4c6.js",
+      "_fr-d108c3cd.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js"
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Logger/Index.jsx"
   },
   "resources/js/Pages/Admin/Maintenance/Index.jsx": {
-    "file": "assets/Index-f676300c.js",
+    "file": "assets/Index-b5d5b23e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
-      "_Toast-42c82b9f.js",
-      "_Card-68359eaa.js",
-      "_Editor-ea2b38e9.js",
-      "_switch-0af9bfe1.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_AdminLayout-25b01568.js",
+      "_Toast-bc72f4c6.js",
+      "_Card-79707dc4.js",
+      "_Editor-0c16feeb.js",
+      "_switch-cd603e74.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_Language-45cbb11a.js",
       "_objectWithoutPropertiesLoose-df62547b.js",
       "_index-4d501b15.js",
-      "_index-4a156e47.js",
-      "_keyboard-49518c1f.js"
+      "_index-8a667da8.js",
+      "_keyboard-9d34834b.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Maintenance/Index.jsx"
   },
   "resources/js/Pages/Admin/Pages/Edit.jsx": {
-    "file": "assets/Edit-7b1b7f56.js",
+    "file": "assets/Edit-46f4c1af.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
+      "_AdminLayout-25b01568.js",
       "_Language-45cbb11a.js",
       "_index-e3d2c47e.js",
-      "_fr-f9dbd262.js",
-      "_Toast-42c82b9f.js",
-      "_Label-9c81ebb6.js",
-      "_Editor-ea2b38e9.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_fr-d108c3cd.js",
+      "_Toast-bc72f4c6.js",
+      "_Label-b55c729f.js",
+      "_Editor-0c16feeb.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_objectWithoutPropertiesLoose-df62547b.js",
       "_index-4d501b15.js",
-      "_index-4a156e47.js"
+      "_index-8a667da8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Pages/Edit.jsx"
   },
   "resources/js/Pages/Admin/Pages/Index.jsx": {
-    "file": "assets/Index-dca279d2.js",
+    "file": "assets/Index-d887a03b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
+      "_AdminLayout-25b01568.js",
       "_Language-45cbb11a.js",
-      "_Toast-42c82b9f.js",
-      "_fr-f9dbd262.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_Toast-bc72f4c6.js",
+      "_fr-d108c3cd.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js"
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Pages/Index.jsx"
   },
   "resources/js/Pages/Admin/Roles/Edit.jsx": {
-    "file": "assets/Edit-bfc88b84.js",
+    "file": "assets/Edit-a6fc7898.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
-      "_Toast-42c82b9f.js",
-      "_Card-68359eaa.js",
+      "_AdminLayout-25b01568.js",
+      "_Toast-bc72f4c6.js",
+      "_Card-79707dc4.js",
       "resources/js/Pages/Admin/Roles/Permissions.jsx",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Roles/Edit.jsx"
   },
   "resources/js/Pages/Admin/Roles/Index.jsx": {
-    "file": "assets/Index-a3e0119a.js",
+    "file": "assets/Index-d3fe8cd4.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
-      "_fr-f9dbd262.js",
-      "_draggable-d50d0d41.js",
-      "_Toast-42c82b9f.js",
+      "_AdminLayout-25b01568.js",
+      "_fr-d108c3cd.js",
+      "_draggable-39e49aef.js",
+      "_Toast-bc72f4c6.js",
       "resources/js/Pages/Admin/Roles/RoleCard.jsx",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_dropdownProfile-b7601297.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Roles/Index.jsx"
   },
   "resources/js/Pages/Admin/Roles/Permissions.jsx": {
-    "file": "assets/Permissions-af54cdf6.js",
+    "file": "assets/Permissions-0775358c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js",
-      "_Card-68359eaa.js",
-      "_iconBase-e8b875ef.js"
+      "_Toast-bc72f4c6.js",
+      "_Card-79707dc4.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Roles/Permissions.jsx"
   },
   "resources/js/Pages/Admin/Roles/RoleCard.jsx": {
-    "file": "assets/RoleCard-a2a3b952.js",
+    "file": "assets/RoleCard-c5959199.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Toast-42c82b9f.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js"
+      "_Toast-bc72f4c6.js",
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Roles/RoleCard.jsx"
   },
   "resources/js/Pages/Admin/Users/Edit.jsx": {
-    "file": "assets/Edit-4060408e.js",
+    "file": "assets/Edit-682989cc.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
-      "_Toast-42c82b9f.js",
-      "_Card-68359eaa.js",
-      "_fr-f9dbd262.js",
+      "_AdminLayout-25b01568.js",
+      "_Toast-bc72f4c6.js",
+      "_Card-79707dc4.js",
+      "_fr-d108c3cd.js",
       "_Language-45cbb11a.js",
-      "_index.esm-f4450869.js",
-      "_Dropdown-0b37bd09.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_index.esm-fc55494d.js",
+      "_Dropdown-f50784fa.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js"
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Admin/Users/Edit.jsx"
   },
   "resources/js/Pages/Admin/Users/Index.jsx": {
-    "file": "assets/Index-1ef080af.js",
+    "file": "assets/Index-01ca6bbb.js",
     "imports": [
       "resources/js/app.jsx",
-      "_AdminLayout-c79a8f3c.js",
-      "_Toast-42c82b9f.js",
-      "_fr-f9dbd262.js",
-      "_index.esm-f4450869.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_AdminLayout-25b01568.js",
+      "_Toast-bc72f4c6.js",
+      "_fr-d108c3cd.js",
+      "_index.esm-fc55494d.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_index.esm-27a1817f.js",
-      "_motion-67847c99.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_index.esm-eb49bc75.js",
+      "_motion-714950dd.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
@@ -1081,29 +1081,29 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/ConfirmPassword-25f1419c.js",
+    "file": "assets/ConfirmPassword-13c9713d.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_InputError-163e0f00.js",
-      "_InputLabel-eb5d71f6.js",
-      "_PrimaryButton-6383fd2b.js",
-      "_TextInput-a9244cd0.js",
+      "_Layout-3a22c92b.js",
+      "_InputError-da75e880.js",
+      "_InputLabel-fe419e73.js",
+      "_PrimaryButton-93ac9bb0.js",
+      "_TextInput-ec9b8cb8.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
+      "_twitch-cf6ef8bf.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
@@ -1113,28 +1113,28 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/ForgotPassword-0fb5436a.js",
+    "file": "assets/ForgotPassword-7ae7031b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_InputError-163e0f00.js",
-      "_TextInput-a9244cd0.js",
-      "_Alert-7cb287a7.js",
+      "_Layout-3a22c92b.js",
+      "_InputError-da75e880.js",
+      "_TextInput-ec9b8cb8.js",
+      "_Alert-7e72c010.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
+      "_twitch-cf6ef8bf.js",
       "_Language-45cbb11a.js",
       "_index-4d501b15.js"
     ],
@@ -1145,29 +1145,29 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Login-43184ba7.js",
+    "file": "assets/Login-daebbd65.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_InputLabel-eb5d71f6.js",
-      "_TextInput-a9244cd0.js",
-      "_FzSwitch-4a688252.js",
+      "_Layout-3a22c92b.js",
+      "_InputLabel-fe419e73.js",
+      "_TextInput-ec9b8cb8.js",
+      "_FzSwitch-d7607cab.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
-      "_switch-0af9bfe1.js"
+      "_twitch-cf6ef8bf.js",
+      "_switch-cd603e74.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Login.jsx"
@@ -1176,33 +1176,33 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Register-94c5fb99.js",
+    "file": "assets/Register-4cdb1a53.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
+      "_Layout-3a22c92b.js",
       "_Language-45cbb11a.js",
-      "_InputLabel-eb5d71f6.js",
-      "_TextInput-a9244cd0.js",
+      "_InputLabel-fe419e73.js",
+      "_TextInput-ec9b8cb8.js",
       "_index-4d501b15.js",
       "_hoist-non-react-statics.cjs-657b8f1b.js",
-      "_FzSwitch-4a688252.js",
-      "_Alert-7cb287a7.js",
+      "_FzSwitch-d7607cab.js",
+      "_Alert-7e72c010.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
-      "_switch-0af9bfe1.js"
+      "_twitch-cf6ef8bf.js",
+      "_switch-cd603e74.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Register.jsx"
@@ -1211,29 +1211,29 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/ResetPassword-8298863f.js",
+    "file": "assets/ResetPassword-fc263c0b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_InputError-163e0f00.js",
-      "_InputLabel-eb5d71f6.js",
-      "_PrimaryButton-6383fd2b.js",
-      "_TextInput-a9244cd0.js",
+      "_Layout-3a22c92b.js",
+      "_InputError-da75e880.js",
+      "_InputLabel-fe419e73.js",
+      "_PrimaryButton-93ac9bb0.js",
+      "_TextInput-ec9b8cb8.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
+      "_twitch-cf6ef8bf.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
@@ -1243,29 +1243,29 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Index-9c7b08b0.js",
+    "file": "assets/Index-f65f91ea.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Alert-7cb287a7.js",
-      "_FzToast-68d30c0b.js",
+      "_Alert-7e72c010.js",
+      "_FzToast-c746319e.js",
       "_index-4d501b15.js",
-      "_Toast-42c82b9f.js",
-      "_Spinner-7f0dfb7d.js",
-      "_Layout-9c6f97a0.js",
-      "_index.esm-f4450869.js",
+      "_Toast-bc72f4c6.js",
+      "_Spinner-401ac0cd.js",
+      "_Layout-3a22c92b.js",
+      "_index.esm-fc55494d.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_iconBase-e8b875ef.js",
+      "_iconBase-82cba304.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_twitch-a961c6b4.js"
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/TwoFA/Index.jsx"
@@ -1274,26 +1274,26 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Login-5c837063.js",
+    "file": "assets/Login-b2537772.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_index.modern-1307d31f.js",
+      "_Layout-3a22c92b.js",
+      "_index.modern-1ca73f8a.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/TwoFA/Login.jsx"
@@ -1302,25 +1302,25 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Register-ec29814d.js",
+    "file": "assets/Register-9d15c1cc.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_index.esm-f4450869.js",
+      "_Layout-3a22c92b.js",
+      "_index.esm-fc55494d.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/TwoFA/Register.jsx"
@@ -1329,26 +1329,26 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/VerifyEmail-0b2019b4.js",
+    "file": "assets/VerifyEmail-96bcec7e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_PrimaryButton-6383fd2b.js",
+      "_Layout-3a22c92b.js",
+      "_PrimaryButton-93ac9bb0.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/VerifyEmail.jsx"
@@ -1357,32 +1357,32 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Create-625a8bb1.js",
+    "file": "assets/Create-5af33711.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_FzToast-68d30c0b.js",
+      "_Layout-3a22c92b.js",
+      "_FzToast-c746319e.js",
       "_comment-pen-d2ca9284.js",
-      "_Alert-7cb287a7.js",
-      "_Editor-ea2b38e9.js",
-      "_switch-0af9bfe1.js",
+      "_Alert-7e72c010.js",
+      "_Editor-0c16feeb.js",
+      "_switch-cd603e74.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_twitch-a961c6b4.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_twitch-cf6ef8bf.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
       "_index-4d501b15.js",
       "_objectWithoutPropertiesLoose-df62547b.js",
-      "_index-4a156e47.js"
+      "_index-8a667da8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Candidate/Create.jsx"
@@ -1397,34 +1397,34 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Index-d4a0aac5.js",
+    "file": "assets/Index-88e5d9bf.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_Toast-42c82b9f.js",
+      "_Layout-3a22c92b.js",
+      "_Toast-bc72f4c6.js",
       "resources/js/Pages/Candidate/Settings.jsx",
-      "_Badge-66b031a5.js",
-      "_fr-f9dbd262.js",
-      "_Spinner-7f0dfb7d.js",
+      "_Badge-e855c5d3.js",
+      "_fr-d108c3cd.js",
+      "_Spinner-401ac0cd.js",
       "_pnotes-8a5673d8.js",
       "_comment-pen-d2ca9284.js",
-      "_Alert-7cb287a7.js",
+      "_Alert-7e72c010.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
-      "_switch-0af9bfe1.js",
+      "_twitch-cf6ef8bf.js",
+      "_switch-cd603e74.js",
       "_index-4d501b15.js"
     ],
     "isDynamicEntry": true,
@@ -1434,14 +1434,14 @@
     "assets": [
       "assets/settings-16515ed9.svg"
     ],
-    "file": "assets/Settings-01a687d4.js",
+    "file": "assets/Settings-54fb7e80.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index.esm-f4450869.js",
-      "_keyboard-49518c1f.js",
-      "_switch-0af9bfe1.js",
-      "_transition-1d4ad1bd.js",
-      "_iconBase-e8b875ef.js"
+      "_index.esm-fc55494d.js",
+      "_keyboard-9d34834b.js",
+      "_switch-cd603e74.js",
+      "_transition-89c70d9a.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Candidate/Settings.jsx"
@@ -1453,39 +1453,39 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Show-e1f067f2.js",
+    "file": "assets/Show-6474ac5c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_FzToast-68d30c0b.js",
-      "_Alert-7cb287a7.js",
-      "_Badge-66b031a5.js",
-      "_fr-f9dbd262.js",
+      "_Layout-3a22c92b.js",
+      "_FzToast-c746319e.js",
+      "_Alert-7e72c010.js",
+      "_Badge-e855c5d3.js",
+      "_fr-d108c3cd.js",
       "_bubble_infos-3d3cb710.js",
       "_envelope_open-354a45b7.js",
-      "_Editor-ea2b38e9.js",
+      "_Editor-0c16feeb.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_twitch-a961c6b4.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_twitch-cf6ef8bf.js",
       "_bubble_warning-9cee2399.js",
       "_index-4d501b15.js",
       "_objectWithoutPropertiesLoose-df62547b.js",
-      "_index-4a156e47.js"
+      "_index-8a667da8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Candidate/Show.jsx"
   },
   "resources/js/Pages/Capes/Index.jsx": {
-    "file": "assets/Index-729e740b.js",
+    "file": "assets/Index-4e2df370.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -1496,25 +1496,25 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Dashboard-30fa565e.js",
+    "file": "assets/Dashboard-49c86840.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
+      "_Layout-3a22c92b.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Dashboard.jsx"
@@ -1526,7 +1526,7 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Error-7c879ead.js",
+    "file": "assets/Error-2bfc271f.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -1534,16 +1534,16 @@
     "src": "resources/js/Pages/Error.jsx"
   },
   "resources/js/Pages/Forum/Components/CardThread.jsx": {
-    "file": "assets/CardThread-7e029355.js",
+    "file": "assets/CardThread-30b725f4.js",
     "imports": [
       "resources/js/app.jsx",
-      "_fr-f9dbd262.js",
+      "_fr-d108c3cd.js",
       "_Language-45cbb11a.js",
-      "_Toast-42c82b9f.js",
-      "_lock-a7dbfb8a.js",
+      "_Toast-bc72f4c6.js",
+      "_lock-04508983.js",
       "_commentForum-5f640902.js",
-      "_motion-67847c99.js",
-      "_iconBase-e8b875ef.js"
+      "_motion-714950dd.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Forum/Components/CardThread.jsx"
@@ -1552,44 +1552,44 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Index-10594f06.js",
+    "file": "assets/Index-fbeea2fb.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
+      "_Layout-3a22c92b.js",
       "_comment-pen-d2ca9284.js",
-      "_Toast-42c82b9f.js",
-      "_Paginate-f173fc92.js",
-      "_Alert-7cb287a7.js",
+      "_Toast-bc72f4c6.js",
+      "_Paginate-f95be9fb.js",
+      "_Alert-7e72c010.js",
       "resources/js/Pages/Forum/Components/CardThread.jsx",
-      "_motion-67847c99.js",
+      "_motion-714950dd.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
+      "_twitch-cf6ef8bf.js",
       "_index-4d501b15.js",
-      "_fr-f9dbd262.js",
+      "_fr-d108c3cd.js",
       "_Language-45cbb11a.js",
-      "_lock-a7dbfb8a.js"
+      "_lock-04508983.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Forum/Index.jsx"
   },
   "resources/js/Pages/Forum/Thread/FormComment.jsx": {
-    "file": "assets/FormComment-23e23418.js",
+    "file": "assets/FormComment-a4965c21.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FzToast-68d30c0b.js",
-      "_draftjs-to-html-a071b14e.js",
+      "_FzToast-c746319e.js",
+      "_draftjs-to-html-7968e1a5.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js"
     ],
@@ -1600,27 +1600,27 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/FormCreate-1663b3a0.js",
+    "file": "assets/FormCreate-3d9e9da3.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
+      "_Layout-3a22c92b.js",
       "_comment-pen-d2ca9284.js",
-      "_draftjs-to-html-a071b14e.js",
+      "_draftjs-to-html-7968e1a5.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Forum/Thread/FormCreate.jsx"
@@ -1629,37 +1629,37 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/View-95bc8843.js",
+    "file": "assets/View-39a4330c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_Badge-66b031a5.js",
-      "_index-d99276d6.js",
+      "_Layout-3a22c92b.js",
+      "_Badge-e855c5d3.js",
+      "_index-19b19c3b.js",
       "_Language-45cbb11a.js",
-      "_Paginate-f173fc92.js",
-      "_Toast-42c82b9f.js",
-      "_Spinner-7f0dfb7d.js",
+      "_Paginate-f95be9fb.js",
+      "_Toast-bc72f4c6.js",
+      "_Spinner-401ac0cd.js",
       "_index-e3d2c47e.js",
-      "_fr-f9dbd262.js",
+      "_fr-d108c3cd.js",
       "resources/js/Pages/Forum/Thread/FormComment.jsx",
-      "_Alert-7cb287a7.js",
-      "_iconBase-e8b875ef.js",
-      "_index.esm-27a1817f.js",
+      "_Alert-7e72c010.js",
+      "_iconBase-82cba304.js",
+      "_index.esm-eb49bc75.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
-      "_draftjs-to-html-a071b14e.js",
+      "_twitch-cf6ef8bf.js",
+      "_draftjs-to-html-7968e1a5.js",
       "_index-4d501b15.js"
     ],
     "isDynamicEntry": true,
@@ -1674,26 +1674,26 @@
       "assets/Home-86751517.css",
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Home-5e394bc5.js",
+    "file": "assets/Home-7ad2bb06.js",
     "imports": [
       "resources/js/app.jsx",
       "_index-4d501b15.js",
-      "_Layout-9c6f97a0.js",
+      "_Layout-3a22c92b.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Home.jsx"
@@ -1705,31 +1705,31 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Launcher-665c698b.js",
+    "file": "assets/Launcher-fb3fc2dc.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
+      "_Layout-3a22c92b.js",
       "_Language-45cbb11a.js",
-      "_index-d99276d6.js",
-      "_fr-f9dbd262.js",
+      "_index-19b19c3b.js",
+      "_fr-d108c3cd.js",
       "_pnotes-8a5673d8.js",
       "_apple-0a793a20.js",
-      "_Alert-7cb287a7.js",
+      "_Alert-7e72c010.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
+      "_twitch-cf6ef8bf.js",
       "_index-4d501b15.js"
     ],
     "isDynamicEntry": true,
@@ -1739,7 +1739,7 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Maintenance-ad0e5d7d.js",
+    "file": "assets/Maintenance-f3166ac7.js",
     "imports": [
       "resources/js/app.jsx",
       "_logo-5fe7a993.js"
@@ -1751,19 +1751,19 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Login-52dfbde5.js",
+    "file": "assets/Login-5a225b49.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FzToastContainer-2d515a7f.js",
+      "_FzToastContainer-85118678.js",
       "_logo-5fe7a993.js",
-      "_InputLabel-eb5d71f6.js",
-      "_TextInput-a9244cd0.js",
-      "_FzSwitch-4a688252.js",
-      "_FzToast-68d30c0b.js",
+      "_InputLabel-fe419e73.js",
+      "_TextInput-ec9b8cb8.js",
+      "_FzSwitch-d7607cab.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_switch-0af9bfe1.js",
-      "_keyboard-49518c1f.js"
+      "_switch-cd603e74.js",
+      "_keyboard-9d34834b.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Oauth/Prompt/Login.jsx"
@@ -1772,13 +1772,13 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/TwoFa-18dc2621.js",
+    "file": "assets/TwoFa-fd0ecc99.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FzToastContainer-2d515a7f.js",
+      "_FzToastContainer-85118678.js",
       "_logo-5fe7a993.js",
-      "_index.modern-1307d31f.js",
-      "_FzToast-68d30c0b.js",
+      "_index.modern-1ca73f8a.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js"
     ],
@@ -1794,57 +1794,57 @@
       "assets/Display-023699d9.css",
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Display-8e67ef4c.js",
+    "file": "assets/Display-dc8c759d.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_index-d99276d6.js",
+      "_Layout-3a22c92b.js",
+      "_index-19b19c3b.js",
       "_index-e3d2c47e.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Pages/Display.jsx"
   },
   "resources/js/Pages/Profile/Frame/Appareance.jsx": {
-    "file": "assets/Appareance-1c8fe521.js",
+    "file": "assets/Appareance-7ff20cc8.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Alert-7cb287a7.js",
-      "_Toast-42c82b9f.js",
-      "_Label-9c81ebb6.js",
+      "_Alert-7e72c010.js",
+      "_Toast-bc72f4c6.js",
+      "_Label-b55c729f.js",
       "_index-4d501b15.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js"
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Frame/Appareance.jsx"
   },
   "resources/js/Pages/Profile/Frame/Guild.jsx": {
-    "file": "assets/Guild-ba407c13.js",
+    "file": "assets/Guild-0926cc2a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Alert-7cb287a7.js",
+      "_Alert-7e72c010.js",
       "_index-4d501b15.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js"
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Frame/Guild.jsx"
@@ -1874,7 +1874,7 @@
     "css": [
       "assets/Inventory-9eff8cc5.css"
     ],
-    "file": "assets/Inventory-f9126a5b.js",
+    "file": "assets/Inventory-9c73dca5.js",
     "imports": [
       "resources/js/app.jsx",
       "_bubble_infos-3d3cb710.js",
@@ -1884,23 +1884,23 @@
     "src": "resources/js/Pages/Profile/Frame/Inventory.jsx"
   },
   "resources/js/Pages/Profile/Frame/LogExternal.jsx": {
-    "file": "assets/LogExternal-18f506e4.js",
+    "file": "assets/LogExternal-7bbf2057.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Alert-7cb287a7.js",
+      "_Alert-7e72c010.js",
       "resources/js/Pages/Profile/Frame/LogExternal/CardLoginExternal.jsx",
-      "_twitch-a961c6b4.js",
+      "_twitch-cf6ef8bf.js",
       "_index-4d501b15.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js"
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Frame/LogExternal.jsx"
   },
   "resources/js/Pages/Profile/Frame/LogExternal/CardLoginExternal.jsx": {
-    "file": "assets/CardLoginExternal-437e12e7.js",
+    "file": "assets/CardLoginExternal-b7a5b5dc.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -1911,24 +1911,24 @@
     "assets": [
       "assets/fingerprint-cb583743.svg"
     ],
-    "file": "assets/Settings-30939876.js",
+    "file": "assets/Settings-382cbbb7.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Alert-7cb287a7.js",
+      "_Alert-7e72c010.js",
       "resources/js/Pages/Profile/Frame/Settings/ValueCard.jsx",
       "resources/js/Pages/Profile/Frame/Settings/FormPassword.jsx",
       "resources/js/Pages/Profile/Frame/Settings/FormEmail.jsx",
       "_Language-45cbb11a.js",
       "_apple-0a793a20.js",
-      "_fr-f9dbd262.js",
+      "_fr-d108c3cd.js",
       "_index-4d501b15.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_index.esm-f4450869.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_index-d5c08679.js",
-      "_lock-a7dbfb8a.js"
+      "_index.esm-fc55494d.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_index-4189ee65.js",
+      "_lock-04508983.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Frame/Settings.jsx"
@@ -1937,34 +1937,34 @@
     "assets": [
       "assets/envelope-982536dc.svg"
     ],
-    "file": "assets/FormEmail-26b70f23.js",
+    "file": "assets/FormEmail-193ab2dc.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Profile/Frame/Settings/ValueCard.jsx",
-      "_motion-67847c99.js",
-      "_index-d5c08679.js"
+      "_motion-714950dd.js",
+      "_index-4189ee65.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Frame/Settings/FormEmail.jsx"
   },
   "resources/js/Pages/Profile/Frame/Settings/FormPassword.jsx": {
-    "file": "assets/FormPassword-215a668f.js",
+    "file": "assets/FormPassword-52e1422d.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/Profile/Frame/Settings/ValueCard.jsx",
-      "_lock-a7dbfb8a.js",
-      "_motion-67847c99.js",
-      "_index-d5c08679.js"
+      "_lock-04508983.js",
+      "_motion-714950dd.js",
+      "_index-4189ee65.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Frame/Settings/FormPassword.jsx"
   },
   "resources/js/Pages/Profile/Frame/Settings/ValueCard.jsx": {
-    "file": "assets/ValueCard-e8d5fbca.js",
+    "file": "assets/ValueCard-75764f37.js",
     "imports": [
       "resources/js/app.jsx",
-      "_motion-67847c99.js",
-      "_index-d5c08679.js"
+      "_motion-714950dd.js",
+      "_index-4189ee65.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Frame/Settings/ValueCard.jsx"
@@ -1977,7 +1977,7 @@
     "css": [
       "assets/Slots-a1ae07b3.css"
     ],
-    "file": "assets/Slots-33b779a2.js",
+    "file": "assets/Slots-94318bab.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -1994,11 +1994,11 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Index-0d5ef13a.js",
+    "file": "assets/Index-34dbaf65.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_Alert-7cb287a7.js",
+      "_Layout-3a22c92b.js",
+      "_Alert-7e72c010.js",
       "_Language-45cbb11a.js",
       "_bubble_infos-3d3cb710.js",
       "resources/js/Pages/Profile/Frame/Inventory.jsx",
@@ -2006,28 +2006,28 @@
       "resources/js/Pages/Profile/Frame/Settings.jsx",
       "resources/js/Pages/Profile/Frame/LogExternal.jsx",
       "resources/js/Pages/Profile/Frame/Guild.jsx",
-      "_index.esm-f4450869.js",
-      "_FzToast-68d30c0b.js",
-      "_fr-f9dbd262.js",
-      "_motion-67847c99.js",
-      "_index-d5c08679.js",
+      "_index.esm-fc55494d.js",
+      "_FzToast-c746319e.js",
+      "_fr-d108c3cd.js",
+      "_motion-714950dd.js",
+      "_index-4189ee65.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_Dropdown-0b37bd09.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_Dropdown-f50784fa.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_twitch-a961c6b4.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_FzToastContainer-85118678.js",
+      "_twitch-cf6ef8bf.js",
       "_index-4d501b15.js",
       "_bubble_warning-9cee2399.js",
       "resources/js/Pages/Profile/Frame/Slots.jsx",
-      "_Toast-42c82b9f.js",
-      "_Label-9c81ebb6.js",
+      "_Toast-bc72f4c6.js",
+      "_Label-b55c729f.js",
       "resources/js/Pages/Profile/Frame/Settings/ValueCard.jsx",
       "resources/js/Pages/Profile/Frame/Settings/FormPassword.jsx",
-      "_lock-a7dbfb8a.js",
+      "_lock-04508983.js",
       "resources/js/Pages/Profile/Frame/Settings/FormEmail.jsx",
       "_apple-0a793a20.js",
       "resources/js/Pages/Profile/Frame/LogExternal/CardLoginExternal.jsx"
@@ -2039,37 +2039,37 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Index-a2305c4f.js",
+    "file": "assets/Index-72921001.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_Alert-7cb287a7.js",
-      "_TextInput-a9244cd0.js",
+      "_Layout-3a22c92b.js",
+      "_Alert-7e72c010.js",
+      "_TextInput-ec9b8cb8.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
+      "_twitch-cf6ef8bf.js",
       "_index-4d501b15.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Username/Index.jsx"
   },
   "resources/js/Pages/Support/CardTicket.jsx": {
-    "file": "assets/CardTicket-4ee791a5.js",
+    "file": "assets/CardTicket-b027515c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_fr-f9dbd262.js",
+      "_fr-d108c3cd.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
@@ -2079,29 +2079,29 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Create-2b2ce34b.js",
+    "file": "assets/Create-d33eb16e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_Editor-ea2b38e9.js",
+      "_Layout-3a22c92b.js",
+      "_Editor-0c16feeb.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
+      "_twitch-cf6ef8bf.js",
       "_objectWithoutPropertiesLoose-df62547b.js",
       "_index-4d501b15.js",
-      "_index-4a156e47.js"
+      "_index-8a667da8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Support/Create.jsx"
@@ -2111,28 +2111,28 @@
       "assets/support-0267eda4.css",
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Index-da65dcff.js",
+    "file": "assets/Index-831314f6.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
+      "_Layout-3a22c92b.js",
       "_envelope_open-354a45b7.js",
       "resources/js/Pages/Support/CardTicket.jsx",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js",
-      "_fr-f9dbd262.js",
+      "_twitch-cf6ef8bf.js",
+      "_fr-d108c3cd.js",
       "_Language-45cbb11a.js"
     ],
     "isDynamicEntry": true,
@@ -2143,28 +2143,28 @@
       "assets/support-0267eda4.css",
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/View-874b16d2.js",
+    "file": "assets/View-7203de77.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-9c6f97a0.js",
-      "_index-d99276d6.js",
+      "_Layout-3a22c92b.js",
+      "_index-19b19c3b.js",
       "_Language-45cbb11a.js",
-      "_fr-f9dbd262.js",
+      "_fr-d108c3cd.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Support/View.jsx"
@@ -2173,25 +2173,25 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Index-c26000cd.js",
+    "file": "assets/Index-4bb7b6cf.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index.es-d55bd8c2.js",
-      "_Layout-9c6f97a0.js",
-      "_twitch-a961c6b4.js",
-      "_Badge-66b031a5.js",
+      "_index.es-02bd37e1.js",
+      "_Layout-3a22c92b.js",
+      "_twitch-cf6ef8bf.js",
+      "_Badge-e855c5d3.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js"
     ],
@@ -2202,27 +2202,27 @@
     "css": [
       "assets/app-846bd2d9.css"
     ],
-    "file": "assets/Watch-2219d791.js",
+    "file": "assets/Watch-29f9a0dd.js",
     "imports": [
       "resources/js/app.jsx",
-      "_index.es-d55bd8c2.js",
-      "_Layout-9c6f97a0.js",
-      "_Badge-66b031a5.js",
+      "_index.es-02bd37e1.js",
+      "_Layout-3a22c92b.js",
+      "_Badge-e855c5d3.js",
       "_logo-5fe7a993.js",
-      "_dropdownProfile-b7601297.js",
-      "_iconBase-e8b875ef.js",
-      "_motion-67847c99.js",
-      "_Dropdown-0b37bd09.js",
-      "_index.esm-f4450869.js",
+      "_dropdownProfile-78a94ea8.js",
+      "_iconBase-82cba304.js",
+      "_motion-714950dd.js",
+      "_Dropdown-f50784fa.js",
+      "_index.esm-fc55494d.js",
       "_commentForum-5f640902.js",
-      "_keyboard-49518c1f.js",
-      "_transition-1d4ad1bd.js",
-      "_index-d5c08679.js",
-      "_FzToastContainer-2d515a7f.js",
-      "_FzToast-68d30c0b.js",
+      "_keyboard-9d34834b.js",
+      "_transition-89c70d9a.js",
+      "_index-4189ee65.js",
+      "_FzToastContainer-85118678.js",
+      "_FzToast-c746319e.js",
       "_bubble_warning-9cee2399.js",
       "_bubble_infos-3d3cb710.js",
-      "_twitch-a961c6b4.js"
+      "_twitch-cf6ef8bf.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Twitch/Watch.jsx"
@@ -2242,7 +2242,7 @@
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/Process.jsx",
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/Recap.jsx",
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/SelectAsset.jsx",
-      "_UploadAsset-39d8e068.js",
+      "_UploadAsset-ca14029e.js",
       "resources/js/Pages/Admin/Github/Repos/CreateFrame/VersionName.jsx",
       "resources/js/Pages/Admin/Github/Repos/Index.jsx",
       "resources/js/Pages/Admin/Index.jsx",
@@ -2302,7 +2302,7 @@
       "resources/js/Pages/Twitch/Index.jsx",
       "resources/js/Pages/Twitch/Watch.jsx"
     ],
-    "file": "assets/app-71455080.js",
+    "file": "assets/app-ac2a5227.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   },

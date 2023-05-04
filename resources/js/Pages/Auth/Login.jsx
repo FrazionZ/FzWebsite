@@ -5,7 +5,6 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, useForm, router } from '@inertiajs/react';
 import Switch from '@/Components/FzSwitch'
 
