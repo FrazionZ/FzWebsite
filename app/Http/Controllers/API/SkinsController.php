@@ -26,12 +26,12 @@ class SkinsController extends Controller
         ]);
 
         
-        /*$tokenUsers = new TokenUsers();
+        $tokenUsers = new TokenUsers();
         $tokenObject = $tokenUsers->where('token', $request->input('access_token'))->first();
         if($tokenObject == null)
-            return response()->json(['status' => false, 'message' => 'Invalid token'], 200);*/
+            return response()->json(['status' => false, 'message' => 'Invalid token'], 200);
 
-        $user = User::firstWhere('id', "1");
+        $user = User::firstWhere('id', $tokenObject->uid);
 
         if ($user === null)
             return response()->json(['status' => false, 'message' => 'User not found'], 200);

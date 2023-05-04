@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CapesController;
 use Inertia\Inertia;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ProfileController;
@@ -92,6 +93,10 @@ Route::middleware(['fzauth'])->prefix('support')->name('support.')->group(functi
     Route::get('/create', [SupportController::class, 'create'])->name('create');
     Route::post('/create', [SupportController::class, 'create_handle'])->name('create.handle');
     Route::get('/view/{id}', [SupportController::class, 'view'])->name('view');
+});
+
+Route::middleware(['fzauth'])->prefix('capes')->name('capes.')->group(function() {
+    Route::get('/', [CapesController::class, 'index'])->name('index');
 });
 
 

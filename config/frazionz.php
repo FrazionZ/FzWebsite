@@ -2,7 +2,7 @@
   'maintenance' => 
   array (
     'message' => 'Tm91cyByZXZlbm9ucyB0csOocyB2aXRlIGJhbmRlIGRlIG1hcmdvdWxpbnMgIQ==',
-    'enabled' => true,
+    'enabled' => false,
   ),
   'github' => 
   array (

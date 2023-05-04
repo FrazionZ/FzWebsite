@@ -10,13 +10,12 @@
         "alchemyguy/youtube-laravel-api": "^1.0",
         "anhskohbo/no-captcha": "^3.5",
         "bacon/bacon-qr-code": "^2.0",
-        "graham-campbell/markdown": "14.0",
         "guzzlehttp/guzzle": "^7.5",
         "inertiajs/inertia-laravel": "^0.6.3",
         "ixudra/curl": "^6.22",
         "jeremykenedy/laravel-roles": "^9.1",
         "laravel/fortify": "^1.16",
-        "laravel/framework": "^9.19",
+        "laravel/framework": "^10.9.0",
         "laravel/passport": "^11.8",
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.6",
@@ -41,7 +40,7 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "spatie/laravel-ignition": "^2.0.0"
     },
     "autoload": {
         "files": [

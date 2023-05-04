@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if(env('APP_ENV', 'local') !== "local")
             \URL::forceScheme('https');
+            
         Collection::macro('paginate', function ($perPage, $total = null, $page = null, $pageName = 'page') {
             $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
         
@@ -49,6 +50,9 @@ class AppServiceProvider extends ServiceProvider
                return json_decode(file_get_contents(
                 resource_path('lang/frazionz/' .app()->getLocale() .'.json'))
                 , true);
+            },
+            'errors' => function () {
+                return session()->get('errors') ? session()->get('errors')->getBag('default')->getMessages() : (object) [];
             }
         ]);
     }

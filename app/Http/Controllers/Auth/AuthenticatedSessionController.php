@@ -38,14 +38,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $validator = Validator::make($request->all(), [
+        Validator::make($request->all(), [
             'email' => 'required|string',
             'password' => 'required|string',
-        ]);
+        ])->validate();
 
         $isOauth = $request->filled('isOauth');
 
-        if ($validator->fails()) {
+        /*if ($validator->fails()) {
             if($isOauth)
                 return redirect()
                     ->back()
@@ -57,7 +57,7 @@ class AuthenticatedSessionController extends Controller
                     ->withErrors($validator)
                     ->withInput()
                     ->with("status", $this->toastResponse('error', "Le formulaire est incomplet"));
-        }
+        }*/
 
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);

@@ -5,7 +5,8 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Inertia } from '@inertiajs/inertia'
+import { Head, Link, useForm, router } from '@inertiajs/react';
 import Switch from '@/Components/FzSwitch'
 
 export default function Login(props, { status, canResetPassword }) {
@@ -28,10 +29,17 @@ export default function Login(props, { status, canResetPassword }) {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault();
 
-        post(route('login'));
+        alert('bite')
+        router.post(route('login'), {
+            email: '',
+            password: '',
+            remember: false,
+            isOauth: false,
+            _token: props.csrf_token
+        });
     };
 
     let title = "Se connecter"
