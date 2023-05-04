@@ -35,20 +35,20 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|unique:'.User::class,
             'email' => 'required|string|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'captcha' => 'required|captcha',
             'confirm_cguv' => 'accepted'
-        ])->validator();
+        ]);
 
-        /*if ($validator->fails()) {
+        if ($validator->fails()) {
             return redirect(route('register'))
                         ->withErrors($validator)
                         ->withInput()
                         ->with("status", $this->toastResponse('error', "Le formulaire est incomplet"));
-        }*/
+        }
 
         $patternUsername = "/^[A-Z0-9_]{3,16}$/i";
         if(!preg_match($patternUsername, $request->name))
