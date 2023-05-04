@@ -408,10 +408,10 @@
   resolved "https://registry.npmjs.org/@heroicons/react/-/react-2.0.16.tgz"
   integrity sha512-x89rFxH3SRdYaA+JCXwfe+RkE1SFTo9GcOkZettHer71Y3T7V+ogKmfw5CjTazgS3d0ClJ7p1NA+SP7VQLQcLw==
 
-"@inertiajs/core@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/@inertiajs/core/-/core-1.0.6.tgz"
-  integrity sha512-l1fna4c9h2Tw8EWRGrYd8XVOsNI9rNGKLiAnTfbW+tbcpCtsoBIDmp2OZpeMsBw8tuO7qJV+V01G11nsajrJdQ==
+"@inertiajs/core@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@inertiajs/core/-/core-1.0.2.tgz"
+  integrity sha512-IJryvuNBcOIEZqKaA1vsX++hroovrLfb4jezym/W6NqxpsacoOkCLqWFneiScTaa5IiU0Wv0Li3lCuxK7DwTEQ==
   dependencies:
     axios "^1.2.0"
     deepmerge "^4.0.0"
@@ -427,12 +427,12 @@
     deepmerge "^4.0.0"
     qs "^6.9.0"
 
-"@inertiajs/react@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/@inertiajs/react/-/react-1.0.6.tgz"
-  integrity sha512-R7pfb93VkbXoJtN4gBddQCH10BB9DNk7VqcOlEVS5pVjVPhAU5lPJteFFFq7/WYb1fiAVczuWg+HjYvLzmDGRA==
+"@inertiajs/react@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@inertiajs/react/-/react-1.0.2.tgz"
+  integrity sha512-CRoyc/SSWejddOb/E8cJPYZcSl0Jz2hex8se/G4hERx7OychZNsyx2k9JQxYt3wMPU0ih51qtqgiSLYMJWl8bA==
   dependencies:
-    "@inertiajs/core" "1.0.6"
+    "@inertiajs/core" "1.0.2"
     lodash.isequal "^4.5.0"
 
 "@jridgewell/gen-mapping@^0.1.0":
