@@ -39,6 +39,11 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
+        \Illuminate\Support\Facades\URL::forceRootUrl(\Illuminate\Support\Facades\Config::get('app.url'));
+        if (str_contains(\Illuminate\Support\Facades\Config::get('app.url'), 'https://')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         Inertia::share([
             'locale' => function () {
                 return app()->getLocale();
