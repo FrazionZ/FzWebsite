@@ -30,9 +30,7 @@ export default function Login(props, { status, canResetPassword }) {
 
     const submit = async (e) => {
         e.preventDefault();
-
-        alert('bite')
-        router.post(route('login'), {
+        post(route('login'), {
             email: '',
             password: '',
             remember: false,
