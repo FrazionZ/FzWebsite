@@ -1425,6 +1425,72 @@ label[for="switch"] {
     line-height: 30px;
 }
 
+.apparence .library {
+    display: grid;
+    grid-gap: 10px;
+    justify-content: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(140px, auto));
+    grid-column-gap: 12px;
+    width: 100%;
+    grid-row-gap: 12px;
+  }
+  .apparence .library .card {
+    width: 140px;
+    word-wrap: break-word;
+    height: 182px;
+    padding: 10px 24px;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .apparence .library .card.active {
+    box-shadow: inset 0px -4px 0px var(--color-2);
+  }
+  .apparence .library .card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .apparence .library .card.skin .card-body .datas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .apparence .library .card.skin .name {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    width: 6.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .apparence .library .card.skin .model {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: var(--text-inactive);
+  }
+  .apparence .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.8rem;
+  }
+  .apparence .library .card img {
+    height: 116px;
+    width: 70px;
+    border-radius: 8px;
+  }
+  .apparence .library {
+    height: 30rem;
+    overflow-y: overlay;
+    padding: 0px 0px;
+    width: 92%;
+  }
+  z
+
 .ql-toolbar {
     background: var(--fzbg-3);
     border-radius: 12px 12px 0px 0px;

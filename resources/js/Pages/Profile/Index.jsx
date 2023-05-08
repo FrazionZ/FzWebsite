@@ -158,7 +158,7 @@ export default function ProfileIndex(props) {
                 <div className="top flex-wrap xl:flex-nowrap">
                     <ReactSkinview3d
                         skinUrl={`https://api.frazionz.net/user/${user.uuid}/skin/display`}
-                        capeUrl={`https://api.frazionz.net/capes/display/brut/${capeData.cape_id}`}
+                        capeUrl={`https://api.frazionz.net/capes/display/brut/${capeData?.cape_id}`}
                         width="262"
                         height="442"
                         onReady={(ready) => {
