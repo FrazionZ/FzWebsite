@@ -1842,7 +1842,7 @@ header .menu_account .not_logged.mobile {
         font-weight: 700;
         font-size: 20px;
         line-height: 30px;
-        top: 42.5px;
+        top: 42.5px !important;
     }
     footer .network ul {
         display: grid;
