@@ -77,9 +77,9 @@ export default function Index(props) {
         >
             <Head title={title} />
             <div className="flex flex-col gap-4">
-                <Alert state="success">Votre 2FA est activée, vous pouvez récuperer vos codes de secours ainsi que de désactiver votre 2FA</Alert>
+                <Alert state="success">Votre 2FA est activée, vous pouvez récupérer vos codes de secours ainsi que de désactiver votre 2FA</Alert>
                 <div className="flex flex-col gap-4">
-                    <Alert state="infos" className="h-fit">Vos codes secrets peuvent être utilisés une seule fois, une fois utilisés, ils seront régénéré et les anciens seront invalides.</Alert>
+                    <Alert state="infos" className="h-fit">Vos codes secrets peuvent être utilisés une seule fois, une fois utilisés, ils seront régénérés et les anciens seront invalides.</Alert>
                     <div className="button-group justify-center mt-4">
                         <ModalConfirmPassword 
                             iconButton={<FaDownload />}

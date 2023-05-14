@@ -1,4 +1,4 @@
-import { FaComments, FaDesktop, FaHome } from "react-icons/fa";
+import { FaComments, FaDesktop, FaHome, FaNewspaper } from "react-icons/fa";
 import { BsFillBarChartFill, BsFiles } from 'react-icons/bs'
 import { FiNavigation } from 'react-icons/fi'
 import { IoMdCart } from "react-icons/io"
@@ -107,6 +107,11 @@ export default function AdminSidebar({ auth }) {
                                             <Link href={route('admin.pages.index')} preserveState>
                                                 <Sidebar.Item icon={FaDesktop}>
                                                     Pages
+                                                </Sidebar.Item>
+                                            </Link>
+                                            <Link href={route('admin.newsletter.index')} preserveState>
+                                                <Sidebar.Item icon={FaNewspaper}>
+                                                    NewsLetter
                                                 </Sidebar.Item>
                                             </Link>
                                         </Sidebar.ItemGroup>

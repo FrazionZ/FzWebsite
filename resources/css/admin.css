@@ -182,3 +182,102 @@ label[for="file"]{
     border-radius: 8px;
     position: absolute;
 }
+
+.newsletter {
+    margin: 40px;
+}
+.newsletter .preview {
+    background: url(/resources/assets/img/header.png);
+    background-position: top right;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.newsletter .preview .blurring {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.newsletter .preview .head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.newsletter .preview .head h2 {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 74px;
+    line-height: 111px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.5);
+}
+.newsletter .preview .head h2 span.gradient {
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.newsletter .preview .head h4 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #F5F5F5;
+    text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.5);
+}
+.newsletter .preview .content {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.newsletter .preview .content .minia img {
+    width: 16rem;
+}
+.newsletter .preview .content .body {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.newsletter .preview .content .body .title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 72px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+.newsletter .preview .content .body .text {
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: justify;
+}
+.newsletter .preview .footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+.newsletter .preview .footer .tags {
+    display: flex;
+    gap: 10px;
+}
+.newsletter .preview .footer .tags .tag {
+    border-radius: 8px;
+    font-weight: 700;
+    color: white;
+    padding: 8px 24px;
+}
+.newsletter .preview .footer .tags .tag.info {
+    background-color: #317BBF;
+}
+.newsletter .preview .footer .tags .tag.success{
+    background-color: #398E3C;
+}
+.newsletter .preview .footer img {
+    width: 46px;
+}

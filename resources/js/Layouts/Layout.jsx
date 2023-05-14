@@ -18,15 +18,10 @@ export default function Layout({ props, mc, title, isHome, children }) {
 
     return (
         <>
-            <div className="md:hidden flex flex-col justify-center h-screen items-center text-center mx-8 gap-5">
-                <img src={Logo} alt="" width={120} />
-                <h2 className='text-md'>La taille de cet écran n'est pour le moment pas adapté sur notre site, revenez ici plus tard ;) <br />
-                <p className='mt-2'>- Signé, Bob</p></h2>
-            </div>
-            <div id="app" className='hidden md:flex'>
+            <div id="app" className='flex relative'>
                 <Navbar auth={props.auth} mc={mc} title={title} isHome={isHome} navbar={props.navbar} />
                 <div className={`content ${(isHome) ? "home" : "other"} flex flex-col items-center gap-[90px]`}>
-                    <div className="w-[1180px] pb-16">
+                    <div className="lg:w-[1180px] pb-16">
                         {children}
                     </div>
                 </div>

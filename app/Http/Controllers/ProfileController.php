@@ -52,6 +52,13 @@ class ProfileController extends Controller
         $guild = null;
         if($guildProfile !== null)
             $guild = Guild::where('id', $guildProfile->faction_id)->first();
+        if($guild !== null) {
+            $guild->members = GuildProfile::where('faction_id', $guild->id)->orderBy('faction_rank', 'asc')->get();
+            foreach($guild->members as $member) {
+                $member->udata = User::select(['id', 'uuid', 'name'])->where('uuid', $member->user_id)->first();
+                $member->rank = $member->getRank();
+            }
+        }
         foreach($tokenUsers as $token){
             $token->geo = GeoLocation::lookup(base64_decode($token->ip));
         }

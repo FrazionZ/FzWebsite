@@ -3,12 +3,16 @@ import AdminLayout from "@/Layouts/AdminLayout";
 import { Card, Button } from "flowbite-react";
 import MDEditor from "@uiw/react-md-editor";
 import { Switch } from "@headlessui/react";
+import { toByteArray } from "base64-js";
 
 export default function MaintenanceIndex(props) {
     let title = "Maintenance";
 
+    let content = toByteArray(props.message)
+    content = new TextDecoder().decode(content)
+
     const { data, setData, post, processing, errors } = useForm({
-        message: atob(props.message),
+        message: content,
         enabled: props.enabled,
         _token: props.csrf_token,
     });

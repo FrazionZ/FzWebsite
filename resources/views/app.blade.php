@@ -14,6 +14,7 @@
         <meta property="og:image" content="{{ asset('/logo.svg') }}">
         <meta property="og:description" content="">
         <meta property="og:site_name" content="FrazionZ">
+        <meta name="theme-color" content="#0e1014">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +30,7 @@
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
     </head>
-    <body class="font-sans antialiased" style="overlay-x: none; overlay-y: overlay;">
+    <body class="font-sans antialiased">
         @inertia
     </body>
     <script>

@@ -5,69 +5,52 @@ import NotLogged from '@/Components/Navbar/NotLogged'
 import logo_header from '../../assets/img/logo.png'
 import Dropdown from './Dropdown';
 import { useState, useRef } from 'react';
-import { AnimatePresence, motion, useCycle } from "framer-motion";
-import { MenuToggle } from './MenuToggle';
-import { BsFillHouseFill } from 'react-icons/bs';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import Comments from '../../assets/img/icons/commentForum.svg'
-import MobileDropdownProfile from './MobileDropdownProfile';
+import { AnimatePresence, motion } from "framer-motion";
+import MenuHamburger from '../../assets/img/icons/hamburger.svg'
+import MobileSidebar from '@/Layouts/MobileSidebar'
+import { useSwipeable } from 'react-swipeable';
 
-const solutions = [
-    {
-        name: 'Insights',
-        description: 'Measure actions your users take',
-        href: '##',
-    },
-    {
-        name: 'Automations',
-        description: 'Create your own targeted content',
-        href: '##',
-    },
-    {
-        name: 'Reports',
-        description: 'Keep track of your growth',
-        href: '##',
-    },
-]
 
 export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
 
     const { url, component } = usePage()
     const [showNavigationMobile, setShowNavigationMobile] = useState(false);
     const [isOpen, toggleOpen] = useState(false);
+    const [xPos, setXPos] = useState(0)
     const containerRef = useRef(null);
-
-    const sidebar = {
-        open: (height = 1000) => ({
-            clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-            transition: {
-                type: "spring",
-                stiffness: 20,
-                restDelta: 2
+    const handlerSwiper = useSwipeable({
+        onSwiped: (eventData) => {
+            const target = eventData.event.target;
+            console.log(eventData.dir)
+            if(target.classList.contains('backdrop') && eventData.dir == "Left"){
+                toggleOpen(false)
             }
-        }),
-        closed: {
-            clipPath: "circle(30px at 40px 40px)",
-            transition: {
-                delay: 0.5,
-                type: "spring",
-                stiffness: 400,
-                damping: 40
-            }
-        }
-    };
+        },
+      });
 
     if (isOpen)
         window.scrollTo(0, 0);
+    
+    document.querySelector('body').classList.add('overflow-x-hidden')
 
-    isOpen ?
-        document.body.style.overflow = "hidden" :
-        document.body.style.overflow = "overlay"
+    document.querySelector('body').classList.remove('overflow-y-hidden')
+    document.querySelector('body').classList.remove('overflow-y-auto')
 
-    document.body.style.overflowX = "hidden"
+    document.querySelector('body').classList.add(isOpen ? 'overflow-y-hidden' : 'overflow-y-auto')
+    
+    async function swipeSidebar(){
+
+    }
 
     return (
         <>
+            <div className="mobile menu">
+                <button onClick={() => { toggleOpen(!isOpen) }} className='lg:hidden w-fit'><img src={MenuHamburger} alt="" /></button>
+                <div className={`backdrop ${isOpen ? "" : "hidden"}`} onClick={() => { toggleOpen(false) }} {...handlerSwiper} />
+                <div className="relative">
+                    <MobileSidebar xPos={xPos} openSidebar={isOpen} />
+                </div>
+            </div>
             <header>
                 <nav>
                     <div className="menu_general">
@@ -119,25 +102,6 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
                     </div>
                 )}
             </header>
-            <div className={`mobile_user ${isHome ? "absolute" : "relative"}`}>
-                <div className="block md:hidden title_top">
-                    {title}
-                </div>
-                <MobileDropdownProfile />
-            </div>
-            <div className="mobile_navbar">
-                <div className="menu">
-                    <Link href="/" className={`nav-link ${(url == "/") ? 'active' : ''}`}>
-                        <BsFillHouseFill />
-                    </Link>
-                    <Link href="https://boutique.frazionz.net" className="nav-link">
-                        <FaShoppingCart />
-                    </Link>
-                    <Link href={route('forum.index')} className={`nav-link ${url.startsWith("/forum") ? 'active' : ''}`}>
-                        <img src={Comments} alt="" />
-                    </Link>
-                </div>
-            </div>
         </>
 
     );

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MaintenanceController;
+use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\LoggerController;
@@ -28,6 +29,10 @@ Route::middleware(['permission:admin.access'])->group(function() {
     Route::middleware(['permission:admin.maintenance'])->prefix('maintenance')->name('maintenance.')->group(function() {
         Route::get('/', [MaintenanceController::class, 'index'])->name('index');
         Route::post('/handleSubmit', [MaintenanceController::class, 'handleSubmit'])->name('submit');
+    });
+
+    Route::prefix('newsletter')->name('newsletter.')->group(function() {
+        Route::get('/', [NewsletterController::class, 'index'])->name('index');
     });
         
     Route::prefix('users')->name('users.')->group(function() {
