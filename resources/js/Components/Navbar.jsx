@@ -81,7 +81,7 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
                     </div>
                 </nav>
                 {isHome && (
-                    <div className="flex gap-[300px] justify-center home">
+                    <div className="home_head flex lg:gap-[300px] justify-center home">
                         <div className="header-title">
                             <span className="text-white title">Un serveur</span>
                             <span className="text-white subtitle">Faction</span>

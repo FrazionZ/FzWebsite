@@ -829,6 +829,14 @@ input[type="tel"] {
 }
 .mobile.menu aside.sidebar {
     width: calc(100% - 130px);
+    left: calc(0px - 74%);
+    transition: 0.2s all ease-in-out;
+}
+.mobile.menu aside.sidebar.close {
+    left: calc(0px - 74%);
+}
+.mobile.menu aside.sidebar.open {
+    left: calc(0px - 0%);
 }
 .error-page {
     height: 100vh;
@@ -1786,172 +1794,79 @@ header .menu_account .not_logged.mobile {
     header nav .logo {
         width: 68px;
     }
-
-    header aside {
-        margin-bottom: 1.5rem;
-        width: 80%;
-        position: absolute;
-        height: calc(100vh - 80px);
-        top: 80px;
-        left: 0;
-        background: var(--fzbg-4);
-        padding: 20px;
-    }
-
-    header .mobile_menu .btn-container {
-        position: fixed;
-    }
-
-    .parent_button_mobile_menu {
-        position: absolute;
-        z-index: 2;
-        top: calc(82px / 2 - 23px / 2);
-        left: 28px;
-        display: block;
-    }
-
-    header .mobile_menu {
-        display: flex;
-        justify-content: flex-end;
+    .home_head {
+        gap: 24px;
         align-items: center;
-        gap: 1rem;
-        margin-top: 1rem;
-        position: relative;
     }
-
-    header .mobile_menu svg {
-        font-size: 3.5rem;
+    .home_head .header-logo {
+        width: 128px;
+        height: 128px;
     }
-
+    .header-title {
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+    }
     .header-title .title {
-        font-weight: 400;
-        font-size: calc(96px / 2);
-        line-height: 169px;
-    }
-
-    .header-title .subtitle {
-        font-weight: 400;
-        font-size: calc(144px / 2);
-        line-height: 253px;
-    }
-
-    .dropdownFz {
-        width: 100% !important;
-    }
-
-    .dropdownProfile.menu {
+        font-size: 40px;
+        line-height: 70px;
         width: 100%;
-        background: var(--fzbg-4);
-        background-color: var(--fzbg-4);
-    }
-
-    header .mobile_menu .menu_account .not_logged {
-        display: none;
-    }
-
-    header .mobile_menu .menu_account .not_logged.mobile {
-        display: flex;
-        flex-direction: row;
-    }
-
-    header .mobile_menu .menu_account .not_logged.mobile .nav-link {
-        width: fit-content;
-        font-size: 1rem;
-        padding: 0 8px;
-    }
-
-    header .mobile_menu .menu_account .not_logged.mobile .nav-link svg {
-        font-size: 2rem;
-    }
-
-    .mobile_navbar {
-        display: block;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background: var(--fzbg-3);
-        padding: 0px 0px;
-        z-index: 99;
-        border-radius: 12px 12px 0 0;
-    }
-
-    .mobile_navbar .menu {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        flex: 1 1 auto !important;
-    }
-
-    .mobile_navbar .menu .nav-link {
-        padding: 20px 0;
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
         position: relative;
+        top: 0;
+        text-align: center;
     }
-
-    .mobile_navbar .menu .nav-link.active::before {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 5px;
-        bottom: 0;
-        border-radius: 5px 5px 0 0;
-        background: var(--gradient);
-    }
-
-    .mobile_navbar .menu .nav-link>img, .mobile_navbar .menu .nav-link>svg {
-        width: 32px;
-        height: 32px;
-    }
-
-    .mobile_navbar .menu .nav-link img {
-        border-radius: 5px;
-    }
-
-    .mobile_user {
-        display: flex;
-        right: 0;
-        padding: 20px;
-        background: red;
+    .header-title .subtitle {
+        font-size: 64px;
         width: 100%;
-        justify-content: space-between;
-        background: var(--fzbg-1);
-        background: linear-gradient(0deg,
-                rgba(0, 0, 0, 0) 0%,
-                var(--fzbg-1) 100%);
-        align-items: center;
-        margin-bottom: 4rem;
-        overflow: hidden;
+        line-height: 112px;
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: center;
     }
-
-    .mobile_user .title_top {
-        font-family: "Pacifico";
-        font-size: 2rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 60px;
-        width: 80%;
+    .header-title .server {
+        font-weight: 400;
+        width: 100%;
+        font-size: 20px;
+        line-height: 22px;
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: center;
     }
-
-    button[role="switch"].large {
-        width: 92px !important;
+    .btn-download-launch-game svg {
+        width: 231px;
     }
-
-    label[for="switch"] {
-        font-weight: 500;
-        font-size: 15px;
-        line-height: 20px;
+    .btn-download-launch-game .label {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+        top: 42.5px;
     }
-
-    body {
-        margin-bottom: 60px;
+    footer .network ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 48px;
     }
-
-    footer .network ul,
+    footer .network .title {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    footer .network a.social svg {
+        width: 52px;
+        height: 52px;
+    }
     footer .credits ul {
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 12px;
         justify-content: center;
+        align-items: center;
+    }
+    footer .credits ul li {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
     }
 }
