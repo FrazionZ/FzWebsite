@@ -7,7 +7,7 @@ import Dropdown from './Dropdown';
 import { useState, useRef } from 'react';
 import { AnimatePresence, motion } from "framer-motion";
 import MenuHamburger from '../../assets/img/icons/hamburger.svg'
-import MobileSidebar from '@/Layouts/MobileSidebar'
+import MobileSidebar from '@/Components/MobileSidebar'
 import { useSwipeable } from 'react-swipeable';
 
 
@@ -21,7 +21,6 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
     const handlerSwiper = useSwipeable({
         onSwiped: (eventData) => {
             const target = eventData.event.target;
-            console.log(eventData.dir)
             if(target.classList.contains('backdrop') && eventData.dir == "Left"){
                 toggleOpen(false)
             }
@@ -45,10 +44,10 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
     return (
         <>
             <div className="mobile menu">
-                <button onClick={() => { toggleOpen(!isOpen) }} className='lg:hidden w-fit'><img src={MenuHamburger} alt="" /></button>
+                <button onClick={() => { toggleOpen(!isOpen) }} className='lg:hidden w-fit'><img width={48} height={48} src={MenuHamburger} alt="" /></button>
                 <div className={`backdrop ${isOpen ? "" : "hidden"}`} onClick={() => { toggleOpen(false) }} {...handlerSwiper} />
                 <div className="relative">
-                    <MobileSidebar xPos={xPos} openSidebar={isOpen} />
+                    <MobileSidebar auth={auth} navbar={navbar} xPos={xPos} openSidebar={isOpen} />
                 </div>
             </div>
             <header>

@@ -4,6 +4,7 @@
     'message' => 'Tm91cyByZXZlbm9ucyB0csOocyB2aXRlIGJhbmRlIGRlIG1hcmdvdWxpbnMgIQ==',
     'enabled' => false,
   ),
+  'role' => array ( 'default' => 2 ),
   'github' => 
   array (
     'owner' => 'FrazionZ',

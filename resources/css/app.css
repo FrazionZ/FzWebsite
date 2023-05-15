@@ -829,14 +829,22 @@ input[type="tel"] {
 }
 .mobile.menu aside.sidebar {
     width: calc(100% - 130px);
-    left: calc(0px - 74%);
-    transition: 0.2s all ease-in-out;
+    opacity: 1;
+    transition: 0.4s display ease-in-out, 0.18s left ease-in-out, 0.18s opacity ease-in-out, 0.18s padding ease-in-out, 0.18s width ease-in-out;
 }
 .mobile.menu aside.sidebar.close {
-    left: calc(0px - 74%);
+    width: 0;
 }
-.mobile.menu aside.sidebar.open {
-    left: calc(0px - 0%);
+.mobile.menu aside.sidebar{
+    opacity: 1;
+    left: 0px;
+}
+.mobile.menu aside.sidebar.close{
+    opacity: 0;
+    left: -48px;
+}
+.mobile.menu aside.sidebar.close .menu, .mobile.menu aside.sidebar.close .logo {
+    display: none;
 }
 .error-page {
     height: 100vh;
@@ -1689,6 +1697,9 @@ header .menu_account .not_logged.mobile {
     top: -4px;
     background: url(/resources/assets/img/icons/king.png);
 }
+hr {
+    border: 1px solid var(--fzbg-1);
+}
 /* MOBILE */
 @media screen and (max-width: 768px) {
     body {
@@ -1834,6 +1845,51 @@ header .menu_account .not_logged.mobile {
         top: 0;
         left: 0;
         text-align: center;
+    }
+    .mobile.menu .sidebar {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        gap: 24px;
+        padding: 24px;
+    }
+    .mobile.menu .sidebar .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .mobile.menu .sidebar .menu .nav-link {
+        padding: 10px 24px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        border-radius: 10px;
+        color: white;
+    }
+    .mobile.menu .sidebar .menu .nav-link.profile {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+        padding: 10px 0;
+    }
+    .mobile.menu .sidebar .menu .nav-link.profile img {
+        width: 32px;
+        height: 32px;
+        border-radius: 5px;
+    }
+    .mobile.menu .sidebar .menu .nav-link.active {
+        background-color: var(--fzbg-1);
+    }
+    .mobile.menu .sidebar .menu .dropdownFz {
+        width: 100%;
+    }
+    .mobile.menu .sidebar .menu .dropdownFz button {
+        margin: 0;
+        padding: 10px 24px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
     }
     .btn-download-launch-game svg {
         width: 231px;
