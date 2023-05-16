@@ -17,4 +17,4 @@ yarn-error.log
 /.vscode
 /app/Providers/AppServiceProvider.php
 /config
-/public/build
+/public/build/assets
