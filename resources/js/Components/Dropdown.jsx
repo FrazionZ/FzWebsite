@@ -70,6 +70,7 @@ export default function Dropdown({ text, items, hideArrow, buttonClassName, styl
           }
         }}
         style={styleMenu}
+        className={isOpen ? "open" : "close"}
       >
         {items.map((elem, i) => {
             return (

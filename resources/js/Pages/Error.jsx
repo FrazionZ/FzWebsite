@@ -18,7 +18,7 @@ export default function ErrorPage({ status }) {
         <Head title={status} />
         <div className="error-page">
           <h1>{status}</h1>
-          <img src={Error} alt="error_bee" />
+          <img src={Error} className="hidden lg:block" alt="error_bee" />
           <span>{description}</span>
           <Link className="btn" href="/">Accueil</Link>
         </div>

@@ -20,8 +20,8 @@ export default function Layout({ props, mc, title, isHome, children }) {
         <>
             <div id="app" className='flex relative'>
                 <Navbar auth={props.auth} mc={mc} title={title} isHome={isHome} navbar={props.navbar} />
-                <div className={`content ${(isHome) ? "home" : "other"} flex flex-col items-center gap-[90px]`}>
-                    <div className="lg:w-[1180px] pb-16">
+                <div className={`content children ${(isHome) ? "home" : "other"} flex flex-col items-center gap-[90px]`}>
+                    <div className="w-full lg:w-[1180px] pb-16">
                         {children}
                     </div>
                 </div>
@@ -37,16 +37,19 @@ export default function Layout({ props, mc, title, isHome, children }) {
                             <li><a className="social" href="https://www.twitch.tv/frazionz" target="_blank"><Twitch /></a></li>
                         </ul>
                     </div>
+                    <div className='separator' />
                     <div className="contact">
                         <div className="title">Nous Contacter</div>
                         <a href="mailto:contact@frazionz.net">contact@frazionz.net</a>
                     </div>
+                    <div className='separator' />
                     <div className="credits">
                         <ul>
                             <li>2022 - Tous droits réservés</li>
                             <li><Link href="#">Politique de Confidentialités</Link></li>
                             <li><Link href="#">Mentions Légales</Link></li>
-                            <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGU/CGV</Link></li>
+                            <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGU</Link></li>
+                            <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGV</Link></li>
                         </ul>
                     </div>
                 </footer>

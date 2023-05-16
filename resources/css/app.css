@@ -82,7 +82,8 @@ a {
 
 .alert span {
     font-family: "Poppins";
-    font-size: 16px;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 .alert.error {
@@ -346,7 +347,7 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 50px;
-    gap: 60px;
+    gap: 32px;
 }
 
 footer .network {
@@ -826,25 +827,22 @@ input[type="tel"] {
     position: fixed;
     width: 100%;
     height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+.mobile.menu .backdrop.hidden {
+    background: rgba(0,0,0,0);
 }
 .mobile.menu aside.sidebar {
     width: calc(100% - 130px);
     opacity: 1;
     transition: 0.4s display ease-in-out, 0.18s left ease-in-out, 0.18s opacity ease-in-out, 0.18s padding ease-in-out, 0.18s width ease-in-out;
 }
-.mobile.menu aside.sidebar.close {
-    width: 0;
-}
 .mobile.menu aside.sidebar{
-    opacity: 1;
     left: 0px;
 }
 .mobile.menu aside.sidebar.close{
-    opacity: 0;
-    left: -48px;
-}
-.mobile.menu aside.sidebar.close .menu, .mobile.menu aside.sidebar.close .logo {
-    display: none;
+    left: calc(130px - 100%);
+    box-shadow: none;
 }
 .error-page {
     height: 100vh;
@@ -1697,8 +1695,10 @@ header .menu_account .not_logged.mobile {
     top: -4px;
     background: url(/resources/assets/img/icons/king.png);
 }
-hr {
-    border: 1px solid var(--fzbg-1);
+.separator {
+    background-color: var(--fzbg-1);
+    height: 2px;
+    width: 100%;
 }
 /* MOBILE */
 @media screen and (max-width: 768px) {
@@ -1821,7 +1821,7 @@ hr {
     }
     .header-title .title {
         font-size: 40px;
-        line-height: 70px;
+        line-height: 36px;
         width: 100%;
         position: relative;
         top: 0;
@@ -1830,7 +1830,7 @@ hr {
     .header-title .subtitle {
         font-size: 64px;
         width: 100%;
-        line-height: 112px;
+        line-height: 46px;
         position: relative;
         top: 0;
         left: 0;
@@ -1852,6 +1852,14 @@ hr {
         overflow: hidden;
         gap: 24px;
         padding: 24px;
+        box-shadow: 1px 1px 60px var(--fzbg-4);
+    }
+    .mobile.menu .sidebar::-webkit-scrollbar {
+        display: none;
+    }
+    .mobile.menu .sidebar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
     .mobile.menu .sidebar .menu {
         display: flex;
@@ -1891,6 +1899,15 @@ hr {
         font-size: 16px;
         line-height: 24px;
     }
+    .mobile.menu .sidebar .menu .dropdownFz ul {
+        position: relative;
+        top: 0px;
+        height: 0;
+        transition: 0.2s height ease-in-out;
+    }
+    .mobile.menu .sidebar .menu .dropdownFz ul.open {
+        height: fit-content;
+    }
     .btn-download-launch-game svg {
         width: 231px;
     }
@@ -1899,6 +1916,85 @@ hr {
         font-size: 20px;
         line-height: 30px;
         top: 42.5px !important;
+    }
+    header .title_top {
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 70px;
+        text-align: center;
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+    footer .contact .title {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    footer .contact a {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    #app .content.children {
+        margin: 0 24px;
+    }
+    label[for="switch"] {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    input[type="tel"] {
+        font-size: 16px !important;
+        padding: 16px !important;
+        width: 3.4rem !important;
+        gap: 8px !important;
+    }
+    label {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    input[type="text"], input[type="tel"], input[type="file"], input[type="number"], input[type="email"], textarea:not(.w-md-editor-text-input), select, input[type="password"] {
+        font-weight: 500 !important;
+        font-size: 16px !important;
+        line-height: 24px !important;
+        height: 72px !important;
+    }
+    .alert span {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .icon_title {
+        gap: 12px;
+    }
+    .icon_title img {
+        width: 32px;
+        height: 32px;
+    }
+    .icon_title span {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .error-page h1 {
+        font-weight: 700;
+        font-size: 128px;
+        line-height: 192px;
+        -webkit-text-stroke: 8px var(--fzbg-1);
+        text-stroke: 8px var(--fzbg-1);
+        position: relative;
+    }
+    .error-page span {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+        position: relative;
+        top: 0;
+    }
+    .error-page .btn {
+        position: relative;
+        top: 0;
     }
     footer .network ul {
         display: grid;

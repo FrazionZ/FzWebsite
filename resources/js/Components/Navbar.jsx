@@ -46,9 +46,7 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
             <div className="mobile menu">
                 <button onClick={() => { toggleOpen(!isOpen) }} className='lg:hidden w-fit'><img width={48} height={48} src={MenuHamburger} alt="" /></button>
                 <div className={`backdrop ${isOpen ? "" : "hidden"}`} onClick={() => { toggleOpen(false) }} {...handlerSwiper} />
-                <div className="relative">
-                    <MobileSidebar auth={auth} navbar={navbar} xPos={xPos} openSidebar={isOpen} />
-                </div>
+                <MobileSidebar auth={auth} navbar={navbar} xPos={xPos} openSidebar={isOpen} />
             </div>
             <header>
                 <nav>
@@ -96,7 +94,7 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
                     </div>
                 )}
                 {!isHome && (
-                    <div className="hidden md:flex title_top">
+                    <div className="flex title_top">
                         {title}
                     </div>
                 )}

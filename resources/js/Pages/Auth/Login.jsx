@@ -84,14 +84,15 @@ export default function Login(props, { status, canResetPassword }) {
 
                     <div className='flex flex-wrap justify-between items-center'>
                         <Switch checked={data.remember} disabled={processing} label="Rester connecté" onChange={(e) => { setData('remember', e) }} />
-                        <Link href={route('password.request')}>Mot de passe oublié ?</Link>
+                        <Link className="hidden lg:block" href={route('password.request')}>Mot de passe oublié ?</Link>
                     </div>
                 </div>
 
-                <div className="flex items-center justify-center">
+                <div className="flex flex-col gap-4 items-center justify-center">
                     <button className="btn" disabled={processing}>
                         Se connecter
                     </button>
+                    <Link className="lg:hidden" href={route('password.request')}>Mot de passe oublié ?</Link>
                 </div>
             </form>
         </Layout>

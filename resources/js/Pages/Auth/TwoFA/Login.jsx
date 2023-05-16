@@ -45,7 +45,7 @@ export default function Login(props){
                             <label>Code 2FA</label>
                             <AuthCode
                                 autoFocus={true}
-                                containerClassName="flex gap-[24px]"
+                                containerClassName="flex gap-2 lg:gap-[24px]"
                                 disabled={disabledForm}
                                 length="6"
                                 allowedCharacters="numeric"
