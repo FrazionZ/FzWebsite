@@ -1,4 +1,4 @@
-import OAuthLayout from "@/Layouts/OAuthLayout"
+import OAuthLayout from "@/Layouts/OauthLayout"
 import { Head } from "@inertiajs/react"
 import { router } from '@inertiajs/react'
 import { FaFingerprint } from "react-icons/fa"
