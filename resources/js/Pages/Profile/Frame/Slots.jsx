@@ -2,7 +2,7 @@ import { followCursor } from 'tippy.js';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 
-export default function Slots({ items }) {
+export default function Slots({ items, setItemShowMobile, tooltipMobileOpen, setTooltipMobileOpen }) {
 
     function tooltip(item) {
         let hideContent = false;
@@ -12,7 +12,7 @@ export default function Slots({ items }) {
         return (
             <>
                 <div className="tooltip">
-                    <div className={`title flex gap-10 align-center justif-center ${(hideContent) ? "" : "hide-content"}`}>
+                    <div className={`title flex gap-10 align-center ${(hideContent) ? "" : "hide-content"}`}>
                         <div className="column">
                             {item.minecraftItemRealName}
                         </div>
@@ -75,6 +75,14 @@ export default function Slots({ items }) {
         )
     }
 
+    function tooltipMobile(item) {
+        let hideContent = false;
+        if (item?.itemMeta !== undefined || item?.potionMeta !== undefined || item?.storedEnchants !== undefined || item?.skullMeta?.owningPlayer !== undefined || item?.maxDamage > 0)
+            hideContent = true;
+        setTooltipMobileOpen(true)
+        setItemShowMobile({ hideContent: hideContent, item: item })
+    }
+
     return (
         <>
             {[...items].map((item, i) => {
@@ -95,8 +103,8 @@ export default function Slots({ items }) {
                         isLingering = item?.idItemNumber == 441;
                     }
                     return (
-                        <Tippy key={i} followCursor={"vertical"} placement="left" plugins={[followCursor]} onUntrigger={(e) => { e.unmount() }} render={attrs => (tooltip(item))} tabIndex="-1" >
-                            <div key={i} className="item card">
+                        <Tippy key={i} placement="right" onUntrigger={(e) => { e.unmount() }} render={attrs => (tooltip(item))} tabIndex="-1" >
+                            <div key={i} onClick={() => { tooltipMobile(item) }} className="item card">
                                 {isPotion == true && isSplash &&
                                     <span className="mcsprite mcsprite-potion"><span className="potion-color" style={{ backgroundColor: item?.potionMeta?.color }}></span> {item?.potionMeta?.hasEffect && <span className="mcsprite-potion-enchant"></span>} <span className="mcsprite-potion-bottle splash-bottle"></span></span>
                                 }
@@ -113,6 +121,7 @@ export default function Slots({ items }) {
                                     <span className={`mcsprite mcpsrite-${itemClass} ${(isEnchant) ? "enchanted" : ""}`}></span>
                                 }
                                 <span className="amount">{ (item?.amount > 1) ? item?.amount : "" }</span>
+                                
                             </div>
                         </Tippy>
                     )

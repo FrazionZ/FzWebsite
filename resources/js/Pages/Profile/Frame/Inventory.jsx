@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BubbleInfos from '../../../../assets/img/icons/bubble_infos.svg'
 import { usePage } from '@inertiajs/react'
 import "../../../../css/items.css"
 import Slots from './Slots';
+import { FaTimes } from 'react-icons/fa';
 
 export default function FrameInventory() {
 
     let inventory = usePage().props.factionProfile?.inventory
     let enderchest = usePage().props.factionProfile?.enderchest
 
+    const [tooltipMobileOpen, setTooltipMobileOpen] = useState(false)
+    const [itemShowMobile, setItemShowMobile] = useState(null)
+
     if (inventory == undefined)
         inventory = []
 
-    if(enderchest == undefined)
+    if (enderchest == undefined)
         enderchest = []
 
     let armor = [];
@@ -47,21 +51,21 @@ export default function FrameInventory() {
                 <div className="flex flex-col lg:flex-row gap-[50px] items-center">
                     <div className="flex flex-col lg:flex-row gap-[10px]">
                         <div className="lg:hidden grid grid-cols-4 gap-[10px]">
-                            <Slots items={armor} />
+                            <Slots items={armor} setItemShowMobile={setItemShowMobile} tooltipMobileOpen={tooltipMobileOpen} setTooltipMobileOpen={setTooltipMobileOpen} />
                         </div>
                         <div className="lg:hidden grid grid-cols-4 gap-[10px]">
-                            <Slots items={trophy} />
+                            <Slots items={trophy} setItemShowMobile={setItemShowMobile} tooltipMobileOpen={tooltipMobileOpen} setTooltipMobileOpen={setTooltipMobileOpen} />
                         </div>
 
                         <div className="hidden lg:grid grid-rows-4 gap-[10px]">
-                            <Slots items={armor} />
+                            <Slots items={armor} setItemShowMobile={setItemShowMobile} tooltipMobileOpen={tooltipMobileOpen} setTooltipMobileOpen={setTooltipMobileOpen} />
                         </div>
                         <div className="hidden lg:grid grid-rows-4 gap-[10px]">
-                            <Slots items={trophy} />
+                            <Slots items={trophy} setItemShowMobile={setItemShowMobile} tooltipMobileOpen={tooltipMobileOpen} setTooltipMobileOpen={setTooltipMobileOpen} />
                         </div>
                     </div>
                     <div className="grid grid-cols-4 lg:grid-cols-[repeat(9,_1fr)] gap-[10px]">
-                        <Slots items={slots} />
+                        <Slots items={slots} setItemShowMobile={setItemShowMobile} tooltipMobileOpen={tooltipMobileOpen} setTooltipMobileOpen={setTooltipMobileOpen} />
                     </div>
                 </div>
             </div>
@@ -75,6 +79,98 @@ export default function FrameInventory() {
                         <Slots items={enchest} />
                     </div>
                 </div>
+            </div>
+            <div className={`tooltipMobile ${tooltipMobileOpen ? "open" : ""}`}>
+                {itemShowMobile?.item?.item !== null &&
+                    <>
+                        <div className="head">
+                            {itemShowMobile?.item.minecraftItemRealName}
+                            <div className="close" onClick={() => setTooltipMobileOpen(false)}>
+                                <FaTimes />
+                            </div>
+                        </div>
+                        <div className={`content ${itemShowMobile?.hideContent ? "" : "hidden"}`}>
+                            {itemShowMobile?.item?.itemMeta?.displayName !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-2xl'>Nom</h2>
+                                    <h4 className="text-gray">{itemShowMobile?.item?.itemMeta?.displayName}</h4>
+                                </div>
+                            }
+                            {itemShowMobile?.item?.itemMeta?.lore !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Descr. de l'item (Lore)</h2>
+                                    {itemShowMobile?.item?.itemMeta?.lore?.map((lore, index) => {
+                                        return <h4 key={index} className="text-gray">{lore}</h4>
+                                    })}
+                                </div>
+                            }
+                            {itemShowMobile?.item?.skullMeta?.owningPlayer !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Player</h2>
+                                    <h4 className="text-gray">{itemShowMobile?.item?.skullMeta?.owningPlayer}</h4>
+                                </div>
+                            }
+
+                            {itemShowMobile?.item?.potionMeta !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Détails de la potion</h2>
+                                    <h4 className="text-gray">{itemShowMobile?.item?.potionMeta?.displayName}</h4>
+                                </div>
+                            }
+                            {itemShowMobile?.item?.storedEnchants !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Enchants</h2>
+                                    {itemShowMobile?.item?.storedEnchants?.map((ench, i) => {
+                                        return <h4 key={i} className="text-gray">{ench?.displayName} {(ench?.level !== undefined) ? ench?.level : ""}</h4>
+                                    })}
+                                </div>
+                            }
+
+                            {itemShowMobile?.item?.itemMeta?.enchantments !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Enchants</h2>
+                                    {itemShowMobile?.item?.itemMeta?.enchantments?.map((ench, i) => {
+                                        return <h4 key={i} className="text-gray">{ench?.displayName} {(ench?.level !== undefined) ? ench?.level : ""}</h4>
+                                    })}
+                                </div>
+                            }
+
+{itemShowMobile?.item?.itemMeta?.enchantments !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Enchants</h2>
+                                    {itemShowMobile?.item?.itemMeta?.enchantments?.map((ench, i) => {
+                                        return <h4 key={i} className="text-gray">{ench?.displayName} {(ench?.level !== undefined) ? ench?.level : ""}</h4>
+                                    })}
+                                </div>
+                            }
+
+{itemShowMobile?.item?.itemMeta?.enchantments !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Enchants</h2>
+                                    {itemShowMobile?.item?.itemMeta?.enchantments?.map((ench, i) => {
+                                        return <h4 key={i} className="text-gray">{ench?.displayName} {(ench?.level !== undefined) ? ench?.level : ""}</h4>
+                                    })}
+                                </div>
+                            }
+
+{itemShowMobile?.item?.itemMeta?.enchantments !== undefined &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Enchants</h2>
+                                    {itemShowMobile?.item?.itemMeta?.enchantments?.map((ench, i) => {
+                                        return <h4 key={i} className="text-gray">{ench?.displayName} {(ench?.level !== undefined) ? ench?.level : ""}</h4>
+                                    })}
+                                </div>
+                            }
+
+                            {itemShowMobile?.item?.maxDamage > 0 &&
+                                <div className="column">
+                                    <h2 className='text-xl'>Durabilité</h2>
+                                    <h4 className="text-gray">{`${itemShowMobile?.item?.useDamage}/${itemShowMobile?.item?.maxDamage}`}</h4>
+                                </div>
+                            }
+                        </div>
+                    </>
+                }
             </div>
         </div>
     )

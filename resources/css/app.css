@@ -4,7 +4,7 @@
 
 :root {
     --fzbg-1: #24262b;
-    --fzbg-2: #1c1f23;
+    --fzbg-2: #1c1f24;
     --fzbg-3: #15171b;
     --fzbg-4: #0e1014;
     --text: #f5f5f5;
@@ -347,6 +347,7 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 50px;
+    margin: 0px 340px;
     gap: 32px;
 }
 
@@ -1166,7 +1167,7 @@ input[type="tel"] {
     font-size: 20px;
     text-shadow: 2px 2px 0px black;
     font-family: "Minecraft Regular";
-    z-index: 600;
+    z-index: 99;
 }
 
 .profile .inventory .item span.mcsprite {
@@ -1700,6 +1701,9 @@ header .menu_account .not_logged.mobile {
     height: 2px;
     width: 100%;
 }
+.tooltipMobile {
+    display: none;
+}
 /* MOBILE */
 @media screen and (max-width: 768px) {
     body {
@@ -1925,6 +1929,9 @@ header .menu_account .not_logged.mobile {
         margin-left: 24px;
         margin-right: 24px;
     }
+    footer {
+        margin: 0px 0px;
+    }
     footer .contact .title {
         font-weight: 700;
         font-size: 20px;
@@ -2009,6 +2016,47 @@ header .menu_account .not_logged.mobile {
     }
     .profile .frame .menu .items .item {
         width: 100%;
+    }
+    .tooltip {
+        display: none;
+    }
+    .tooltipMobile {
+        display: none;
+    }
+    .tooltipMobile.open {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: transparent;
+        width: 100%;
+        z-index: 100;
+    }
+    .tooltipMobile .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--color-2);
+        padding: 16px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .tooltipMobile .content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        background-color: rgba(28, 31, 36, 0.6) !important;
+        backdrop-filter: blur(16px);
+        height: 20rem;
+        overflow-y: auto;
+    }
+    .tooltipMobile .content::-webkit-scrollbar {
+        display: none;
+    }
+    .tooltipMobile .content {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
     footer .network ul {
         display: grid;
