@@ -1996,6 +1996,20 @@ header .menu_account .not_logged.mobile {
         position: relative;
         top: 0;
     }
+    .card {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .profile .frame {
+        width: 100%;
+    }
+    .profile .frame .menu .items {
+        width: 100%;
+    }
+    .profile .frame .menu .items .item {
+        width: 100%;
+    }
     footer .network ul {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

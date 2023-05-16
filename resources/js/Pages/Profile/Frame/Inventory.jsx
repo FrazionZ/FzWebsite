@@ -31,7 +31,7 @@ export default function FrameInventory() {
         slots.push(inventory[i])
 
     for (var i = 0; i <= 8; i++)
-        bar.push(inventory[i])
+        slots.push(inventory[i])
 
     // @for ($i = 0; $i <= 26; $i++)
     for (var i = 0; i <= 26; i++)
@@ -44,22 +44,24 @@ export default function FrameInventory() {
                     <img src={BubbleInfos} alt="" />
                     <span>Mon Inventaire</span>
                 </div>
-                <div className="flex gap-[50px] overflow-auto xl:overflow-hidden">
-                    <div className="flex gap-[10px]">
-                        <div className="grid grid-row-4 gap-[10px]">
+                <div className="flex flex-col lg:flex-row gap-[50px] items-center">
+                    <div className="flex flex-col lg:flex-row gap-[10px]">
+                        <div className="lg:hidden grid grid-cols-4 gap-[10px]">
                             <Slots items={armor} />
                         </div>
-                        <div className="grid grid-row-4 gap-[10px]">
+                        <div className="lg:hidden grid grid-cols-4 gap-[10px]">
+                            <Slots items={trophy} />
+                        </div>
+
+                        <div className="hidden lg:grid grid-rows-4 gap-[10px]">
+                            <Slots items={armor} />
+                        </div>
+                        <div className="hidden lg:grid grid-rows-4 gap-[10px]">
                             <Slots items={trophy} />
                         </div>
                     </div>
-                    <div className="flex flex-col gap-[10px]">
-                        <div className="grid gap-[10px]" style={{ gridTemplateColumns: "repeat(9, 1fr)" }}>
-                            <Slots items={slots} />
-                        </div>
-                        <div className="grid gap-[10px]" style={{ gridTemplateColumns: "repeat(9, 1fr)" }}>
-                            <Slots items={bar} />
-                        </div>
+                    <div className="grid grid-cols-4 lg:grid-cols-[repeat(9,_1fr)] gap-[10px]">
+                        <Slots items={slots} />
                     </div>
                 </div>
             </div>
@@ -69,7 +71,7 @@ export default function FrameInventory() {
                     <span>Mon Ender Chest</span>
                 </div>
                 <div className="flex justify-center gap-[50px] overflow-auto xl:overflow-hidden">
-                    <div className="grid gap-[10px]" style={{ gridTemplateColumns: "repeat(9, 1fr)" }}>
+                    <div className="grid grid-cols-3 lg:grid-cols-[repeat(9,_1fr)] gap-[10px]">
                         <Slots items={enchest} />
                     </div>
                 </div>
