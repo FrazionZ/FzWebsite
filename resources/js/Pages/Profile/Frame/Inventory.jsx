@@ -135,33 +135,6 @@ export default function FrameInventory() {
                                 </div>
                             }
 
-{itemShowMobile?.item?.itemMeta?.enchantments !== undefined &&
-                                <div className="column">
-                                    <h2 className='text-xl'>Enchants</h2>
-                                    {itemShowMobile?.item?.itemMeta?.enchantments?.map((ench, i) => {
-                                        return <h4 key={i} className="text-gray">{ench?.displayName} {(ench?.level !== undefined) ? ench?.level : ""}</h4>
-                                    })}
-                                </div>
-                            }
-
-{itemShowMobile?.item?.itemMeta?.enchantments !== undefined &&
-                                <div className="column">
-                                    <h2 className='text-xl'>Enchants</h2>
-                                    {itemShowMobile?.item?.itemMeta?.enchantments?.map((ench, i) => {
-                                        return <h4 key={i} className="text-gray">{ench?.displayName} {(ench?.level !== undefined) ? ench?.level : ""}</h4>
-                                    })}
-                                </div>
-                            }
-
-{itemShowMobile?.item?.itemMeta?.enchantments !== undefined &&
-                                <div className="column">
-                                    <h2 className='text-xl'>Enchants</h2>
-                                    {itemShowMobile?.item?.itemMeta?.enchantments?.map((ench, i) => {
-                                        return <h4 key={i} className="text-gray">{ench?.displayName} {(ench?.level !== undefined) ? ench?.level : ""}</h4>
-                                    })}
-                                </div>
-                            }
-
                             {itemShowMobile?.item?.maxDamage > 0 &&
                                 <div className="column">
                                     <h2 className='text-xl'>Durabilité</h2>
