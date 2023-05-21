@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PromoCode;
+use App\Models\PromoCodeHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
@@ -69,8 +70,12 @@ class PromoCodeController extends Controller
     public function edit(Request $request, $id){
         $promoCode = PromoCode::where('id', $id)->first();
         if($promoCode == null) abort(404);
+        $promoCodeUses = PromoCodeHistory::where('pc_id', $promoCode->id)->first();
+        $pchLog = new PromoCodeHistory();
+        $pchLog = $pchLog->pagination(10, 'pch', $request->query('pch', 0), true, $promoCode->id);
         return Inertia::render('Admin/PromoCode/Edit', [
             'promoCode' => $promoCode,
+            'promoCodeUses' => $pchLog
         ]);
     }
 

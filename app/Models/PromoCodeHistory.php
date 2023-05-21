@@ -24,4 +24,16 @@ class PromoCodeHistory extends Model
             $model->created_at = now();
         });
     }
+
+    public function pagination($perPage = 10, $url, $page, $onlyUser, $pc_id = null){
+        $pch_log = $this->orderBy('created_at', 'desc')
+                        ->where('pc_id', '=', $pc_id)
+                        ->paginate($perPage, ['*'], $url, $page);
+
+        foreach($pch_log as $log){
+            $log->user = User::select('id', 'name')->where('id', $log->user_id)->first();
+        }
+
+        return $pch_log;
+    }
 }
