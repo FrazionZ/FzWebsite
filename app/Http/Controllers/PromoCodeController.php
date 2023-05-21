@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FactionProfile;
 use App\Models\PromoCode;
 use App\Models\PromoCodeHistory;
 use Illuminate\Http\Request;
@@ -35,6 +36,12 @@ class PromoCodeController extends Controller
             $balance = $request->user()->money;
             $newBalance = $balance + $promoCode->give_amount;
             $request->user()->update(['money' => $newBalance]);
+        }else if($promoCode->type == "coins") {
+            $fzProfile = FactionProfile::where('uuid', $request->user()->uuid)->first();
+            if($fzProfile == null) return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez rejoindre le serveur au moins une fois pour utiliser ce code."));
+            $balance = $fzProfile->money;
+            $newBalance = $balance + $promoCode->give_amount;
+            $fzProfile->update(['money' => $newBalance]);
         }
 
         PromoCodeHistory::create([

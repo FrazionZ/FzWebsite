@@ -11,4 +11,9 @@ class FactionProfile extends Model
 
     protected $connection = 'faction';
     protected $table = 'profile';
+
+    protected $primaryKey = "uuid";
+    protected $fillable = ['money'];
+
+    public $timestamps = false;
 }
