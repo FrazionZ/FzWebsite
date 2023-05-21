@@ -1,5 +1,6 @@
 import { Link } from "@inertiajs/react";
 import DropdownProfile from "../DropdownProfile";
+import ModalPromoCode from "../ModalPromoCode";
 export default function IsLogged({ auth }) {
 
     let childsElement = [
@@ -12,6 +13,12 @@ export default function IsLogged({ auth }) {
             value: "/profile?fastMenu=5",
             name: "Paramètres",
             type: "inerlink"
+        },
+        {
+            value: "/promocode",
+            name: "Utiliser un code promo",
+            type: "modal",
+            dom: <ModalPromoCode />
         },
         
     ]

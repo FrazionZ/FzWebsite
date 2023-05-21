@@ -13,7 +13,7 @@ export default function MaintenanceIndex(props) {
 
     const { data, setData, post, processing, errors } = useForm({
         message: content,
-        enabled: props.enabled,
+        enabled: props.enabled == 1,
         _token: props.csrf_token,
     });
 

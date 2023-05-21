@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Config;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class Maintenance
 
     public function handle(Request $request, Closure $next)
     {
-        if (! config('frazionz.maintenance.enabled', false)) {
+        if (!Config::get('maintenance.state', false)) {
             return $next($request);
         }
 

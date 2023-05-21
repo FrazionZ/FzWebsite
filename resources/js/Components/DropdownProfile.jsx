@@ -90,6 +90,8 @@ export default function DropdownProfile({ text, items, user }) {
                 <motion.li variants={itemVariants}>{elem.name}</motion.li>
               </Link>
             )
+          } else if(elem.type == "modal"){
+            return elem.dom
           }
         })}
       </motion.ul>

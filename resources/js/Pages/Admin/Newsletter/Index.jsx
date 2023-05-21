@@ -2,7 +2,6 @@ import { Head, useForm } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import logo from '../../../../assets/img/logo.svg'
 import ameliorator from '../../../../assets/img/ameliorator.png'
-import * as rasterizeHTML from 'rasterizehtml';
 
 export default function MaintenanceIndex(props) {
 
@@ -11,10 +10,14 @@ export default function MaintenanceIndex(props) {
 
 
     async function handleSubmit(){
-        var canvas = document.getElementById('canvas');
-        var data = document.querySelector('.newsletter .preview');
-        
-        rasterizeHTML.drawHTML(document.body.innerHTML, canvas);
+        const testnode = document.querySelector('.newsletter .preview')
+        const canvas = document.createElement("canvas");
+        canvas.width = testnode.clientWidth;
+        canvas.height = testnode.clientHeight;
+        canvas.getContext('2d').drawImage(testnode, 0, 0, canvas.width, canvas.height);
+        const img = document.createElement("img");
+        img.src = canvas.toDataURL();
+        document.querySelector('#output').src = canvas.toDataURL()
     }
 
 

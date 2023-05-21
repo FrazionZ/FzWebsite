@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\CapesController;
-use Inertia\Inertia;
+use App\Http\Controllers\Auth\Oauth\AuthorizationController;
+use App\Http\Controllers\Auth\TwoFAController;
 use App\Http\Controllers\CandidateController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SupportController;
+use App\Http\Controllers\CapesController;
+use App\Http\Controllers\Forum\ThreadController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\PagesController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Forum\ThreadController;
-use App\Http\Controllers\Auth\TwoFAController;
-use App\Http\Controllers\Social\TwitchController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PromoCodeController;
 use App\Http\Controllers\Social\DiscordController;
-use App\Http\Controllers\Auth\Oauth\AuthorizationController;
+use App\Http\Controllers\Social\TwitchController;
+use App\Http\Controllers\SupportController;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 
 Route::get('/', function () {
@@ -22,6 +23,8 @@ Route::get('/', function () {
 Route::get('/launcher', function () {
     return Inertia::render('Launcher', [ ]);
 });
+
+Route::post('/promoCodeUse', [PromoCodeController::class, 'useCode'])->name('promocode.use_code');
 
 Route::middleware('fzauth')->prefix('profile')->name('profile.')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('index');

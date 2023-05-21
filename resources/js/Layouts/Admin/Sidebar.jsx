@@ -85,7 +85,12 @@ export default function AdminSidebar({ auth }) {
                                                     <Sidebar.Item>
                                                         Historique d'achats
                                                     </Sidebar.Item>
-                                                </Link>    
+                                                </Link>  
+                                                <Link href={route('admin.promocode.index')} preserveState>
+                                                    <Sidebar.Item>
+                                                        Code Promotionnel
+                                                    </Sidebar.Item>
+                                                </Link>      
                                             </Sidebar.Collapse>
                                             <Sidebar.Collapse
                                                     icon={FaComments}

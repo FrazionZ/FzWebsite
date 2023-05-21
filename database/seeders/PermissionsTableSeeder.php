@@ -115,6 +115,24 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Pouvoir épingler un thread',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Créer un code promo',
+                'slug'        => 'admin.promocode.create',
+                'description' => 'Pouvoir créer un code promo',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Editer un code promo',
+                'slug'        => 'admin.promocode.edit',
+                'description' => 'Pouvoir éditer un code promo',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Supprimer un code promo',
+                'slug'        => 'admin.promocode.delete',
+                'description' => 'Pouvoir supprimer un code promo',
+                'model'       => 'Permission',
+            ],
         ];
 
         /*

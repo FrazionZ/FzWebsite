@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Admin\PromoCodeController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\LoggerController;
@@ -92,5 +93,15 @@ Route::middleware(['permission:admin.access'])->group(function() {
         Route::get('/', [PagesController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [PagesController::class, 'edit'])->name('edit');
         Route::post('/update', [PagesController::class, 'update'])->name('update');
+    });
+
+    Route::prefix('promocode')->middleware(['web'])->name('promocode.')->group(function() {
+        Route::get('/', [PromoCodeController::class, 'index'])->name('index');
+        Route::get('/add', [PromoCodeController::class, 'add'])->middleware(['permission:admin.promocode.create'])->name('add');
+        Route::post('/add_submit', [PromoCodeController::class, 'add_submit'])->middleware(['permission:admin.promocode.create'])->name('add_submit');
+        Route::get('/edit/{id}', [PromoCodeController::class, 'edit'])->middleware(['permission:admin.promocode.edit'])->name('edit');
+        Route::post('/save', [PromoCodeController::class, 'save'])->middleware(['permission:admin.promocode.edit'])->name('save');
+        Route::post('/delete', [PromoCodeController::class, 'delete'])->middleware(['permission:admin.promocode.delete'])->name('delete');
+        Route::post('/search', [PromoCodeController::class, 'search'])->name('search');
     });
 });
