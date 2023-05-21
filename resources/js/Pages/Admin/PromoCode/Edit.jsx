@@ -110,7 +110,7 @@ export default function PromoCodeAdd(props) {
                                     sizing="md"
                                     value={data.max_use}
                                     disabled={processing}
-                                    onChange={(e) => { setData('maxUse', e.target.value) }}
+                                    onChange={(e) => { setData('max_use', e.target.value) }}
                                 />
                             </div>
                             <div>
@@ -126,7 +126,7 @@ export default function PromoCodeAdd(props) {
                                     sizing="md"
                                     value={data.max_use_per_user}
                                     disabled={processing}
-                                    onChange={(e) => { setData('maxUsePerUser', e.target.value) }}
+                                    onChange={(e) => { setData('max_use_per_user', e.target.value) }}
                                 />
                             </div>
                             <div id="select">
