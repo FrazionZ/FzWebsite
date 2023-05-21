@@ -42,6 +42,7 @@ class PromoCodeController extends Controller
             $balance = $fzProfile->money;
             $newBalance = $balance + $promoCode->give_amount;
             $fzProfile->update(['money' => $newBalance]);
+            $this->sendSocketServer($request, $fzProfile);
         }
 
         PromoCodeHistory::create([
@@ -50,6 +51,20 @@ class PromoCodeController extends Controller
         ]);
 
         return redirect()->back()->with('status', $this->toastResponse('success', "Vous venez de valider ce code."));
+    }
+
+    public function sendSocketServer($request, $fzProfile){
+        $client = new \WebSocket\Client("ws://194.9.172.246:4667/v1/ws/update/coins", [
+            'headers' => [
+                'Sec-WebSocket-Version' => '13',
+                'origin' => '*',
+                'key' => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            ],
+        ]);
+        $updateMoney = ['uuid' => $request->user()->uuid, 'money' => $fzProfile->money];
+        $client->send(json_encode($updateMoney));
+        $client->receive();
+        $client->close();
     }
 
 }

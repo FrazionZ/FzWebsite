@@ -33,6 +33,7 @@
         "romanzipp/laravel-twitch": "^4.5",
         "socialiteproviders/discord": "^4.1",
         "socialiteproviders/github": "^4.1",
+        "textalk/websocket": "^1.6",
         "tightenco/ziggy": "^1.0",
         "wohali/oauth2-discord-new": "^1.2"
     },
