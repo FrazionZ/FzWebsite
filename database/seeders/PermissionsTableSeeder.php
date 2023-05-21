@@ -148,6 +148,15 @@ class PermissionsTableSeeder extends Seeder
                     'description'   => $Permissionitem['description'],
                     'model'         => $Permissionitem['model'],
                 ]);
+
+                $roles = config('roles.models.role')::where('level', '>=', 5)->get();
+                foreach($roles as $role){
+                    $appendPermissionRole = config('roles.models.permissionRole')::create([
+                        'permission_id' => $newPermissionitem->id,
+                        'role_id' => $role->id
+                    ]);
+                }
+                
             }
         }
     }
