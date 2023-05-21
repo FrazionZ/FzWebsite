@@ -67,6 +67,7 @@ export default function PromoCodeAdd(props) {
                                     placeholder="a5hk14g9s1qz8n"
                                     value={data.code}
                                     disabled={processing}
+                                    onChange={(e) => { setData('code', e.target.value) }}
                                 />
                                 <Button onClick={randomCode}><FaRandom /></Button>
                             </div>
