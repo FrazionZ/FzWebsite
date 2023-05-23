@@ -58,12 +58,14 @@ Route::middleware(['fzauth'])->prefix('social')->name('social.')->group(function
         Route::get('/start', [DiscordController::class, 'start'])->name('start');
         Route::get('/get', [DiscordController::class, 'get'])->name('get');
         Route::get('/callback', [DiscordController::class, 'callback'])->name('callback');
+        Route::get('/refresh', [DiscordController::class, 'refreshAllToken'])->name('refresh');
         Route::post('/unlink', [DiscordController::class, 'unlink'])->name('unlink');
     });
     Route::prefix('twitch')->name('twitch.')->group(function() {
         Route::get('/start', [TwitchController::class, 'start'])->name('start');
         Route::get('/get', [TwitchController::class, 'get'])->name('get');
         Route::get('/callback', [TwitchController::class, 'callback'])->name('callback');
+        Route::get('/refresh', [TwitchController::class, 'refreshAllToken'])->name('refresh');
         Route::post('/unlink', [TwitchController::class, 'unlink'])->name('unlink');
     });
 });

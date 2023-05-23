@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
 use App\Models\Social\Discord;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Inertia\Inertia;
@@ -80,6 +81,28 @@ class DiscordController extends Controller
         }
         
         return ($userDiscord !== null) ? $userDiscord : ['result' => false];
+    }
+
+    public function refreshAllToken()
+    {
+        $date = new \DateTime(now());
+        $date->setTimezone(new \DateTimeZone('Europe/Paris'));
+        $usdiscord = Discord::get();
+        foreach($usdiscord as $u){
+            try {
+                $udiscord = $this->provider->getAccessToken('refresh_token', [
+                    'refresh_token' => $u->rtoken
+                ]);
+                
+                Model::unguard();
+                $u->update(["atoken" => $udiscord->getToken(), "rtoken" => $udiscord->getRefreshToken(),  "updated_at" => $date]);
+                Model::reguard();
+            } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+                $u->delete();
+                continue;
+            }
+        }
+        return response()->json("refresh complete.");
     }
 
     public function unlink(Request $request)

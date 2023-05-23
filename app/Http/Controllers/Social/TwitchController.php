@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use romanzipp\Twitch\Twitch;
 use romanzipp\Twitch\Objects\AccessToken;
+use romanzipp\Twitch\Enums\GrantType;
 
 class TwitchController extends Controller
 {
@@ -64,6 +65,22 @@ class TwitchController extends Controller
         if(isset($userTwitch->status)) return response()->json(["result" => false]);
         
         return response()->json(["iuser" => $userTwitch->data[0], "result" => true, "isExpiredLogged" => $isExpiredLogged]);
+    }
+
+    public function refreshAllToken()
+    {
+        $ustwitch = \App\Models\Social\Twitch::get();
+        foreach($ustwitch as $u){
+            try {
+                $untwitch = $this->twitch->getOAuthToken($u->refresh_token, GrantType::REFRESH_TOKEN, ['user_read']);
+                $dataTwitch = $untwitch->data();
+                $u->update(["access_token" => $dataTwitch->access_token, "refresh_token" => $dataTwitch->refresh_token,  "updated_at" => now()]);
+            } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+                $u->delete();
+                continue;
+            }
+        }
+        return response()->json("refresh complete.");
     }
 
     public function unlink(Request $request)
