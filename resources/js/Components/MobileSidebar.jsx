@@ -9,7 +9,7 @@ export default function MobileSidebar({ auth, navbar, openSidebar, xPos }) {
 
     return (
         <>
-            <aside style={{ top: 0, height: "100%", overflowY: "auto" }} class={`${openSidebar ? "open" : "close"} sidebar lg:hidden self-start fixed col-span-1 bg-[var(--fzbg-4)] overflow-y-auto z-10`}>
+            <aside style={{ top: 0, height: "100%", overflowY: "auto" }} className={`${openSidebar ? "open" : "close"} sidebar lg:hidden self-start fixed col-span-1 bg-[var(--fzbg-4)] overflow-y-auto z-10`}>
                 <div className="logo flex justify-center">
                     <img src={logo} width={64} height={64} alt="logo" />
                 </div>

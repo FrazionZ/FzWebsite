@@ -13,6 +13,7 @@
         "alchemyguy/youtube-laravel-api": "^1.0",
         "anhskohbo/no-captcha": "^3.5",
         "bacon/bacon-qr-code": "^2.0",
+        "doctrine/dbal": "^3.6",
         "graham-campbell/markdown": "14.0",
         "guzzlehttp/guzzle": "^7.5",
         "inertiajs/inertia-laravel": "^0.6.3",
@@ -31,6 +32,7 @@
         "pragmarx/google2fa-laravel": "^2.0",
         "psecio/oauth2-discord": "dev-master",
         "romanzipp/laravel-twitch": "^4.5",
+        "sentry/sentry-laravel": "^3.4",
         "socialiteproviders/discord": "^4.1",
         "socialiteproviders/github": "^4.1",
         "textalk/websocket": "^1.6",
@@ -89,8 +91,9 @@
       "preferred-install": "dist",
       "sort-packages": true,
       "allow-plugins": {
-        "pestphp/pest-plugin": true
-      }
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "stable",
     "prefer-stable": true

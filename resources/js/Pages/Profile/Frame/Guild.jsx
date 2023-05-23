@@ -1,6 +1,7 @@
 import React from "react";
 import { usePage } from "@inertiajs/react";
 import Alert from "@/Components/Alert";
+import { Tooltip } from "flowbite-react";
 
 export default function FrameInventory() {
     const props = usePage().props;
@@ -11,9 +12,6 @@ export default function FrameInventory() {
     if (guildProfile == null) return <Alert state="infos">Vous devez vous connecter au serveur Faction au moins une fois pour visualiser cette page.</Alert>
 
     if (guildProfile?.faction_id == null) return <Alert state="infos">Vous devez créer une Faction pour visualiser cette page.</Alert>
-
-    console.log("guild", guild)
-    console.log("guildProfile", guildProfile)
 
     return (
         <div className="faction">
@@ -44,10 +42,20 @@ export default function FrameInventory() {
                         return (
                             <div key={i} className={`card guild_member ${member.faction_rank == 1 ? "leader" : ""}`}>
                                 <div className="flex gap-6 w-full justify-between items-center">
-                                    <img className="avatar" src={`https://api.frazionz.net/user/${member.user_id}/skin/head?s=32`} alt={`avatar_${member.user_id}`} />
+                                    {member.session !== null && 
+                                        <Tooltip content={`${member.session !== null ? `En ligne sur ${member.session.server_id}` : ""}`} className="relative" placement="bottom" arrow={true}>
+                                            <div className="relative">
+                                                <img className="avatar" src={`https://api.frazionz.net/user/${member.user_id}/skin/head?s=32`} alt={`avatar_${member.user_id}`} />
+                                                <div className={`state_user ${member.session == null ? "hidden" : ""}`} />
+                                            </div>
+                                        </Tooltip>
+                                    }
+                                    {member.session == null && 
+                                        <img className="avatar" src={`https://api.frazionz.net/user/${member.user_id}/skin/head?s=32`} alt={`avatar_${member.user_id}`} />
+                                    }
                                     <div className="info flex-1">
                                         <div className="username">{member.udata.name}</div>
-                                        <div className="userdata text-white"><span className="rank">{member.rank}</span> - Power: {member.power} / 20</div>
+                                        <div className="userdata text-white"><span className="rank">{member.rank}</span> - Power {member.power}/20</div>
                                     </div>
                                 </div>
                             </div> 

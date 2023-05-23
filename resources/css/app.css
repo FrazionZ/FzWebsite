@@ -739,12 +739,12 @@ input[type="password"] {
 
 div[role="tooltip"] {
     --tw-bg-opacity: 0 !important;
-    background-color: var(--fzbg-2) !important;
+    background-color: var(--fzbg-3) !important;
 }
 
 div[role="tooltip"] div[data-testid="flowbite-tooltip-arrow"] {
     --tw-bg-opacity: 0;
-    background-color: var(--fzbg-2);
+    background-color: var(--fzbg-3);
 }
 
 textarea:not(.w-md-editor-text-input) {
@@ -1688,6 +1688,17 @@ header .menu_account .not_logged.mobile {
     height: 32px;
     border-radius: 5px;
 }
+.faction .guild_member .state_user {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: white;
+    background: #459803;
+    border: 2px solid #1C1F23;
+    border-radius: 3rem;
+    right: -8px;
+    bottom: -8px;
+}
 .faction .guild_member.leader {
     position: relative;
 }
@@ -1707,6 +1718,21 @@ header .menu_account .not_logged.mobile {
 }
 .tooltipMobile {
     display: none;
+}
+.promoCodeModal .apply {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    gap: 12px;
+}
+.promoCodeModal .apply.open {
+    display: flex;
+}
+.promoCodeModal .apply svg {
+    width: 100% !important;
+    height: 14rem !important;
 }
 /* MOBILE */
 @media screen and (max-width: 768px) {

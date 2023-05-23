@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use App\Models\NavbarElements;
 use  Illuminate\Pagination\LengthAwarePaginator;

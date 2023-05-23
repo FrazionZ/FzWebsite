@@ -41,7 +41,7 @@ class UsersController extends Controller
     }
 
     public function paginateUsers($pageCurrent = 0, $search = null){
-        $users = User::select('id', 'name', 'email', 'uuid', 'created_at')->where('name', 'LIKE', '%'.$search.'%')->paginate(
+        $users = User::select('id', 'name', 'email', 'uuid', 'created_at')->where('name', 'LIKE', '%'.$search.'%')->where('deleted', 0)->paginate(
             10, ['*'], 'page', ($search !== null) ? 0 : $pageCurrent
         );
         foreach($users as $user){
@@ -169,6 +169,57 @@ class UsersController extends Controller
         $token->forceDelete();
 
         return redirect()->route('admin.users.edit', ["id" => $request->user_id])->with("status", $this->toastResponse('success', "Le token a bien été révoqué."));
+    }
+
+    public function unbanned(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|int',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lor de la lecture des données"));
+        }
+
+        $user = User::where('id', $request->input('user_id'))->first();
+        if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lor de la lecture des données"));
+
+        $user->update(['banned' => false]);
+
+        return redirect()->back()->with("status", $this->toastResponse('error', "Cet utilisateur est marqué comme débannis."));
+    }
+
+    public function banned(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|int',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lor de la lecture des données"));
+        }
+
+        $user = User::where('id', $request->input('user_id'))->first();
+        if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lor de la lecture des données"));
+
+        $user->update(['banned' => true]);
+
+        return redirect()->back()->with("status", $this->toastResponse('error', "Cet utilisateur est marqué comme bannis."));
+    }
+
+    public function deleted(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|int',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lor de la lecture des données"));
+        }
+
+        $user = User::where('id', $request->input('user_id'))->first();
+        if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lor de la lecture des données"));
+
+        $user->update(['deleted' => true]);
+
+        return redirect()->back()->with("status", $this->toastResponse('error', "Cet utilisateur est marqué comme supprimé. Ces données sont cependant sauvegardées."));
     }
 
 

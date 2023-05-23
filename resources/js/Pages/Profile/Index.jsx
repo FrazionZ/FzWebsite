@@ -59,6 +59,8 @@ export default function ProfileIndex(props) {
     const [socialTwitchData, setSocialTwitchData] = useState(null)
     const [socialTwitchLoaded, setSocialTwitchLoaded] = useState(false)
 
+    const [rotateSkin, setRotateSkin] = useState(window.screen.width >= 768)
+
     if (!socialDiscordLoaded)
         axios.get(route('social.discord.get'))
             .then((response) => {
@@ -160,6 +162,7 @@ export default function ProfileIndex(props) {
                             capeUrl={`https://api.frazionz.net/capes/display/brut/${capeData?.cape_id}`}
                             width="262"
                             height="442"
+                            options={{ enableControls: rotateSkin }}
                             onReady={(ready) => {
                                 ready.viewer.playerObject.rotation.y = playerObjectRotateY;
                                 ready.viewer.controls.enableRotate = true;

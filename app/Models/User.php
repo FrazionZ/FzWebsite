@@ -29,7 +29,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'money',
         'banned',
         'isSlim',
-        'two_factor_secret'
+        'two_factor_secret',
+        'deleted'
     ];
 
     /**
@@ -61,6 +62,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isBanned()
     {
         return $this->banned === 1;
+    }
+
+    public function isDeleted()
+    {
+        return $this->deleted === 1;
     }
 
     public static function getRole($userID)

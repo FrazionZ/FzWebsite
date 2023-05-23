@@ -1,6 +1,8 @@
 import { Head, Link, router, useForm } from "@inertiajs/react";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Button, Badge, Pagination } from "flowbite-react";
+
+import Language from "@/Components/Language";
 import moment from 'moment-timezone'
 import 'moment/locale/fr'
 import { useState } from "react";
@@ -11,6 +13,7 @@ export default function PromoCodeIndex(props) {
 
     const [dataPromoCode, setDataPromoCode] = useState(props.promoCodes);
     const [searchProcess, setSearchProcess] = useState(false)
+    const lang = new Language(props.language);
 
     const { data, setData, post, processing, errors } = useForm({
         search: "",
@@ -39,8 +42,6 @@ export default function PromoCodeIndex(props) {
             })
     }
 
-    console.log(props.auth.permissions)
-
 
     return (
         <AdminLayout>
@@ -48,7 +49,7 @@ export default function PromoCodeIndex(props) {
             <div className="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
                 <div className="w-full mb-1">
                     <div className="mb-4">
-                        <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">{title}</h1>
+                        <h1 className="text-xl font-semibold  sm:text-2xl dark:text-white">{title}</h1>
                     </div>
                     <div className="sm:flex">
                         <div className="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
@@ -57,7 +58,7 @@ export default function PromoCodeIndex(props) {
                                     <div className="form-group">
                                         <label htmlFor="users-search" className="sr-only">Rercher un code promos</label>
                                         <div className="relative mt-1 lg:w-64 xl:w-96">
-                                            <input type="text" disabled={searchProcess} onKeyPress={(e) => { if (e.keyCode == 13) submitSearch(e) }} onChange={(e) => { setData('search', e.target.value) }} value={data.search} name="names" id="users-search" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Rercher un code promos" />
+                                            <input type="text" disabled={searchProcess} onKeyPress={(e) => { if (e.keyCode == 13) submitSearch(e) }} onChange={(e) => { setData('search', e.target.value) }} value={data.search} name="names" id="users-search" className="bg-gray-50 border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Rercher un code promos" />
                                         </div>
                                     </div>
                                     <Button onClick={submitSearch} className="h-[3rem]" disabled={searchProcess}><FaSearch /></Button>
@@ -95,6 +96,9 @@ export default function PromoCodeIndex(props) {
                                             Montant donné
                                         </th>
                                         <th scope="col" className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                            Créé le
+                                        </th>
+                                        <th scope="col" className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                             Actions
                                         </th>
                                     </tr>
@@ -103,12 +107,15 @@ export default function PromoCodeIndex(props) {
                                     {dataPromoCode.data.map((pc, index) => {
                                         return (
                                             <tr key={index} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                                <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{pc.code}</td>
-                                                <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{pc.max_use} fois</td>
-                                                <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{pc.max_use_per_user} fois</td>
-                                                <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{pc.type == "pbs" ? "Points boutique" : "Coins"}</td>
-                                                <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{pc.give_amount}</td>
-                                                <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.code}</td>
+                                                <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.max_use} fois</td>
+                                                <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.max_use_per_user} fois</td>
+                                                <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.type == "pbs" ? "Points boutique" : "Coins"}</td>
+                                                <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.give_amount}</td>
+                                                <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>
+                                                    {lang.replaceMonth(moment(pc.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}
+                                                </td>
+                                                <td className="p-4 text-base font-medium whitespace-nowrap text-white">
                                                     {props.auth.permissions.includes('admin.promocode.edit') &&
                                                         <Link href={route('admin.promocode.edit', { id: pc.id })} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                             <Button>Editer le code promo</Button>

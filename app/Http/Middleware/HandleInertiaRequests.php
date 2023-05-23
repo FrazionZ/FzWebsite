@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 use App\Models\NavbarElements;
@@ -31,6 +32,14 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        if($request->user() !== null){
+            if($request->user()->isDeleted() || $request->user()->isBanned()){
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                redirect($request->path())->with('status', ["type" => 'error', "msg" => 'Vous avez été déconnecté par notre système.']);
+            }
+        }
         $isLogged =  ($request->user() !== null);
         $perms = [];
         if($isLogged){
@@ -56,7 +65,8 @@ class HandleInertiaRequests extends Middleware
             },
             'flash' => [
                 'status' => fn () => $request->session()->get('status'),
-                'dataReset' => fn () => $request->session()->get('dataReset')
+                'dataReset' => fn () => $request->session()->get('dataReset'),
+                'result' => fn () => $request->session()->get('result')
             ],
             'csrf_token' => csrf_token()
         ]);

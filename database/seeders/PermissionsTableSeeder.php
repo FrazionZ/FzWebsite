@@ -55,6 +55,18 @@ class PermissionsTableSeeder extends Seeder
                 'model'       => 'Permission',
             ],
             [
+                'name'        => 'Bannir un joueur',
+                'slug'        => 'admin.user.banned',
+                'description' => 'Ajouter le tag bannis sur un joueur',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Supprimer un joueur',
+                'slug'        => 'admin.user.deleted',
+                'description' => 'Ajouter le tag supprimer sur un joueur',
+                'model'       => 'Permission',
+            ],
+            [
                 'name'        => 'Monnaie du joueur',
                 'slug'        => 'admin.user.money',
                 'description' => 'Changer le nombre de point boutique d\'un joueur',

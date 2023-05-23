@@ -34,9 +34,14 @@ class PromoCodeController extends Controller
     }
 
     public function paginatePromoCode($pageCurrent = 0, $search = null){
-        $promoCodes = PromoCode::where('code', 'LIKE', '%'.$search.'%')->paginate(
+        $promoCodes = PromoCode::where('code', 'LIKE', '%'.$search.'%')->orderBy('created_at', 'desc')->paginate(
             10, ['*'], 'page', ($search !== null) ? 0 : $pageCurrent
         );
+
+        foreach($promoCodes as $promoCode){
+            $promoCode->expired = $promoCode->isExpired();
+        }
+
         return $promoCodes;
     }
 
@@ -46,8 +51,7 @@ class PromoCodeController extends Controller
     
     public function add_submit(Request $request) {
         $validator = Validator::make($request->all(), [
-            'code' => 'required|string',
-            'expire_date' => 'required|string',
+            'code' => 'required|string|unique:'.PromoCode::class,
             'max_use' => 'required|integer',
             'max_use_per_user' => 'required|integer',
             'give_amount' => 'required|integer',
@@ -64,7 +68,7 @@ class PromoCodeController extends Controller
 
         PromoCode::create($request->all());
 
-        return redirect()->back()->with("status", $this->toastResponse('success', "Le code promo a bien été créé"));
+        return redirect()->route('admin.promocode.index')->with("status", $this->toastResponse('success', "Le code promo a bien été créé"));
     }
 
     public function edit(Request $request, $id){
@@ -83,7 +87,6 @@ class PromoCodeController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'required|integer',
             'code' => 'required|string',
-            'expire_date' => 'required|string',
             'max_use' => 'required|integer',
             'max_use_per_user' => 'required|integer',
             'give_amount' => 'required|integer',
@@ -98,10 +101,18 @@ class PromoCodeController extends Controller
             return redirect()->back()->with("status", $this->toastResponse('error', "Le montant à donner ne peut pas être inférieur à 1"));
         }
 
-        $promoCode = PromoCode::where('id', $request->input('id'));
-        if($promoCode == null) return redirect()->back()->with("status", $this->toastResponse('error', "Le code promo est inexistant"));
+        $promoCodeEdit = PromoCode::where('id', $request->input('id'))->first();
+        if($promoCodeEdit == null) return redirect()->back()->with("status", $this->toastResponse('error', "Le code promo est inexistant"));
+
+        //Check if code exist
+        $checkPromoCode = PromoCode::where('code', $request->input('code'))->first();
+        if($checkPromoCode !== null){
+            if($checkPromoCode->id !== $promoCodeEdit->id){
+                if($checkPromoCode->code == $request->input('code')) return redirect()->back()->with("status", $this->toastResponse('error', "Le code promo est déjà existant."));
+            }
+        }
         
-        $promoCode->update($request->except(['_token']));
+        $promoCodeEdit->update($request->except(['_token']));
         
         return redirect()->back()->with("status", $this->toastResponse('success', "Le code promo a bien été mis à jour"));
 

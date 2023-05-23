@@ -8,6 +8,7 @@ use App\Http\Requests\SkinAPI;
 use App\Mail\ConfirmMail;
 use App\Models\ApiSkins;
 use App\Models\EmailIdentify;
+use App\Models\FactionProfileSession;
 use App\Models\TokenUsers;
 use App\Models\User;
 use App\Models\UserHName;
@@ -56,6 +57,7 @@ class ProfileController extends Controller
             $guild->members = GuildProfile::where('faction_id', $guild->id)->orderBy('faction_rank', 'asc')->get();
             foreach($guild->members as $member) {
                 $member->udata = User::select(['id', 'uuid', 'name'])->where('uuid', $member->user_id)->first();
+                $member->session = FactionProfileSession::where('uuid', $member->user_id)->first();
                 $member->rank = $member->getRank();
             }
         }
