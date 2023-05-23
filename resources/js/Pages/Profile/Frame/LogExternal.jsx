@@ -8,13 +8,11 @@ import TwitchIcon from '../../../../assets/img/icons/network/twitch'
 
 export default function FrameLogExternal({ discord, updateDiscord, twitch, updateTwitch }) {
 
-
-    console.log(twitch)
     const logsExternal = [
         {
             icon: <DiscodIcon />,
             display: "Discord",
-            details: (discord !== null) ? (discord !== undefined && discord?.result !== false) ? discord?.username : "Aucun compte lié" : "Recherche..",
+            details: (discord !== null) ? (discord !== undefined || discord?.result !== false) ? discord?.username : "Aucun compte lié" : "Recherche..",
             avatar: (discord !== null) ? discord?.avatar : undefined,
             isLink: (discord !== null && discord !== undefined && discord?.result !== false),
             loaded: (discord !== null),
