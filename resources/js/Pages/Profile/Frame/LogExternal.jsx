@@ -8,13 +8,15 @@ import TwitchIcon from '../../../../assets/img/icons/network/twitch'
 
 export default function FrameLogExternal({ discord, updateDiscord, twitch, updateTwitch }) {
 
+
+    console.log(twitch)
     const logsExternal = [
         {
             icon: <DiscodIcon />,
             display: "Discord",
             details: (discord !== null) ? (discord !== undefined) ? discord?.username : "Aucun compte lié" : "Recherche..",
             avatar: (discord !== null) ? discord?.avatar : undefined,
-            isLink: (discord !== null && discord !== undefined),
+            isLink: (discord !== null && discord !== undefined && discord?.result !== false),
             loaded: (discord !== null),
             action: {
                 link: route('social.discord.start'),
@@ -28,9 +30,9 @@ export default function FrameLogExternal({ discord, updateDiscord, twitch, updat
         {
             icon: <TwitchIcon />,
             display: "Twitch",
-            details: (twitch !== null) ? (twitch !== undefined) ? twitch?.iuser.display_name : "Aucun compte lié" : "Recherche..",
-            avatar: (twitch !== null) ? twitch?.iuser.profile_image_url : undefined,
-            isLink: (twitch !== null && twitch !== undefined),
+            details: (twitch !== null) ? (twitch !== undefined) ? twitch?.iuser?.display_name : "Aucun compte lié" : "Recherche..",
+            avatar: (twitch !== null) ? twitch?.iuser?.profile_image_url : undefined,
+            isLink: (twitch !== null && twitch !== undefined && twitch?.result !== false),
             loaded: (twitch !== null),
             action: {
                 link: route('social.twitch.start'),

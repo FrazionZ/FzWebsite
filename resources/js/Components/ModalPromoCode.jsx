@@ -37,7 +37,7 @@ const itemVariants = {
     closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 }
 
-export default function ModalPromoCode() {
+export default function ModalPromoCode({ isMobile }) {
 
     const props = usePage().props
     const [open, setOpen] = React.useState(false)
@@ -71,8 +71,8 @@ export default function ModalPromoCode() {
 
     return (
         <>
-            <a className="cursor-pointer" onClick={() => { setOpen(true) }}>
-                <motion.li variants={itemVariants}>Utiliser un code promo</motion.li>
+            <a className={`${isMobile ? "nav-link" : ""} cursor-pointer`} onClick={() => { setOpen(true) }}>
+                {isMobile ? "Utiliser un code promo" : <motion.li variants={itemVariants}>Utiliser un code promo</motion.li> }
             </a>
             <Modal
                 isOpen={open}

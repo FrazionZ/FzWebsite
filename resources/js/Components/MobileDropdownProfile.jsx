@@ -11,25 +11,31 @@ export default function MobileDropdownProfile() {
 
   let childsElementLogged = [
     {
-        value: "/profile",
-        name: "Profil",
-        type: "inerlink"
+      value: "/profile",
+      name: "Profil",
+      type: "inerlink"
     },
     {
-        value: "/profile?fastMenu=5",
-        name: "Paramètres",
-        type: "inerlink"
+      value: "/profile?fastMenu=5",
+      name: "Paramètres",
+      type: "inerlink"
     },
-    
+    {
+      value: "/promocode",
+      name: "Utiliser un code promo",
+      type: "modal",
+      dom: <ModalPromoCode />
+    },
+
   ]
-  
-  if(auth.isAccessAdmin) 
+
+  if (auth.isAccessAdmin)
     childsElementLogged.push({
-        value: "/admin",
-        name: "Panel Admin",
-        type: "hyperlink"
+      value: "/admin",
+      name: "Panel Admin",
+      type: "hyperlink"
     })
-  
+
   childsElementLogged.push({
     value: "/logout",
     name: "Déconnexion",
@@ -40,25 +46,28 @@ export default function MobileDropdownProfile() {
 
   return (
     <Menu as="div">
-        <div className="flex">
-          <Menu.Button >
-            {auth?.isLogged ? <img src={`https://auth.frazionz.net/skins/face.php?u=${auth?.user?.id}`} width="48" height="48" className='rounded-md' alt="" /> : <FaUser />}
-          </Menu.Button>
-        </div>
-        <Transition
-          as={Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
-        >
-          <Menu.Items className="absolute top-12 right-1 mt-2 w-40 divide-y divide-gray-100 rounded-md bg-[var(--fzbg-3)] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="px-1 py-1 ">
-              {auth?.isLogged ?
-                <>
-                  {childsElementLogged.map((item, i) => {
+      <div className="flex">
+        <Menu.Button >
+          {auth?.isLogged ? <img src={`https://auth.frazionz.net/skins/face.php?u=${auth?.user?.id}`} width="48" height="48" className='rounded-md' alt="" /> : <FaUser />}
+        </Menu.Button>
+      </div>
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute top-12 right-1 mt-2 w-40 divide-y divide-gray-100 rounded-md bg-[var(--fzbg-3)] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="px-1 py-1 ">
+            {auth?.isLogged ?
+              <>
+                {childsElementLogged.map((item, i) => {
+                  if (item?.type == "modal") {
+                    return <div key={i}>{elem.dom}</div>
+                  } else {
                     return (<Menu.Item key={i}>
                       <Link href={item.value} method={item?.method}>
                         <button className={`text-white group flex w-full items-center rounded-md px-2 py-2`} >
@@ -66,31 +75,33 @@ export default function MobileDropdownProfile() {
                         </button>
                       </Link>
                     </Menu.Item>)
-                  })}
-                  
-                </>
-                :
-                <>
-                  <Menu.Item>
-                    <Link href={route('login')}>
-                      <button className={`text-white group flex w-full items-center rounded-md px-2 py-2`} >
-                        Connexion
-                      </button>
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <Link href={route('register')}>
-                      <button className={`text-white group flex w-full items-center rounded-md px-2 py-2`} >
-                        Insription
-                      </button>
-                    </Link>
-                  </Menu.Item>
-                </>
-              }
-            </div>
-          </Menu.Items>
-        </Transition>
-      </Menu>
+                  }
+
+                })}
+
+              </>
+              :
+              <>
+                <Menu.Item>
+                  <Link href={route('login')}>
+                    <button className={`text-white group flex w-full items-center rounded-md px-2 py-2`} >
+                      Connexion
+                    </button>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link href={route('register')}>
+                    <button className={`text-white group flex w-full items-center rounded-md px-2 py-2`} >
+                      Insription
+                    </button>
+                  </Link>
+                </Menu.Item>
+              </>
+            }
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   )
 }
 

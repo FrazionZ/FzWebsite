@@ -1,6 +1,7 @@
 import { Link, usePage } from "@inertiajs/react";
 import Dropdown from './Dropdown';
 import logo from '../../assets/img/logo.svg'
+import ModalPromoCode from "./ModalPromoCode";
 
 export default function MobileSidebar({ auth, navbar, openSidebar, xPos }) {
 
@@ -20,6 +21,7 @@ export default function MobileSidebar({ auth, navbar, openSidebar, xPos }) {
                             <>
                                 <Link className="nav-link profile"><img src={`https://api.frazionz.net/user/${auth.user.uuid}/skin/head?s=32`} width={64} height={64} alt="logo" /> {auth.user.name}</Link>
                                 <Link className="nav-link" href="/profile">Profil</Link>
+                                <ModalPromoCode isMobile={true} />
                                 {auth.isAccessAdmin && (<a className="nav-link" href="/admin">Panel Admin</a>)}
                                 <Link className="nav-link" method="post" href="/logout">Déconnexion</Link>
                             </>

@@ -2092,6 +2092,9 @@ header .menu_account .not_logged.mobile {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+    .promoCodeModal div[role="dialog"] {
+        width: calc(100% - 30px) !important;
+    }
     footer .network ul {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

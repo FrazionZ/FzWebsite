@@ -93,7 +93,7 @@ export default function PromoCodeAdd(props) {
                                     id="small"
                                     type="date"
                                     sizing="md"
-                                    value={data.expire_date}
+                                    value={data.expire_date.substr(0, 10)}
                                     disabled={processing}
                                     onChange={(e) => { setData('expire_date', e.target.value) }}
                                 />

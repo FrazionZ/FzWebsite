@@ -91,7 +91,7 @@ export default function DropdownProfile({ text, items, user }) {
               </Link>
             )
           } else if(elem.type == "modal"){
-            return elem.dom
+            return <div key={i}>{elem.dom}</div>
           }
         })}
       </motion.ul>

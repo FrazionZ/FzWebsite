@@ -74,11 +74,12 @@ class DiscordController extends Controller
                     $get_infosclt = true;
                 }
             }catch(\Exception $e){
+                return ['result' => false];
             }
-            $userDiscord = ["id" => $infosDiscord['id'], "username" => $infosDiscord['username']."#".$infosDiscord['discriminator'], "get_infosclt" => $get_infosclt, "mfa_enable" => $mfa_enable, "avatar" => "https://cdn.discordapp.com/avatars/".$infosDiscord['id']."/".$infosDiscord['avatar'].".webp?size=64"];
+            $userDiscord = ['result' => true, "id" => $infosDiscord['id'], "username" => $infosDiscord['username']."#".$infosDiscord['discriminator'], "get_infosclt" => $get_infosclt, "mfa_enable" => $mfa_enable, "avatar" => "https://cdn.discordapp.com/avatars/".$infosDiscord['id']."/".$infosDiscord['avatar'].".webp?size=64"];
         }
         
-        return ($userDiscord !== null) ? $userDiscord : abort(404);
+        return ($userDiscord !== null) ? $userDiscord : ['result' => false];
     }
 
     public function unlink(Request $request)

@@ -60,8 +60,10 @@ class TwitchController extends Controller
             else
                 $userTwitch = $this->requestUserDatas($accessTokenObj->accessToken, $twitch->userIdTwitch);
         }
+
+        if(isset($userTwitch->status)) return response()->json(["result" => false]);
         
-        return response()->json(["iuser" => $userTwitch->data[0], "isExpiredLogged" => $isExpiredLogged]);
+        return response()->json(["iuser" => $userTwitch->data[0], "result" => true, "isExpiredLogged" => $isExpiredLogged]);
     }
 
     public function unlink(Request $request)
