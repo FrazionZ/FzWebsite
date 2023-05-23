@@ -148,11 +148,7 @@ export default function ProfileIndex(props) {
                         <Alert state="warning" className="flex-1">Tu dois valider ton adresse mail pour pouvoir jouer !</Alert>
                         <Link href={route('verification.send')} data={{ _token: props.csrf_token }} method="post" as="button" className="btn">Renvoyer un email</Link>
 
-                        {status === 'verification-link-sent' && (
-                            <div className="mt-2 font-medium text-sm text-green-600">
-                                A new verification link has been sent to your email address.
-                            </div>
-                        )}
+                        {status === 'verification-link-sent' && FzToast.success('Un mail vous a été envoyée à l\'instant')}
                     </div>
                 )}
                 <div className="profile">
@@ -190,7 +186,7 @@ export default function ProfileIndex(props) {
                                 </div>
                                 <div className="card">
                                     <FaDiscord fill={"var(--discord)"} />
-                                    {(socialDiscordData !== null) ? (socialDiscordData !== undefined) ? socialDiscordData?.username : "Aucun compte lié" : "Recherche.."}
+                                    {(socialDiscordData !== null) ? (socialDiscordData !== undefined && socialDiscordData?.result !== false) ? socialDiscordData?.username : "Aucun compte lié" : "Recherche.."}
                                 </div>
                                 <div className="card">
                                     <img src={Coins} alt="coins" />

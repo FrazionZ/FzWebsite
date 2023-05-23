@@ -28,7 +28,7 @@ export default function CardLoginExternal({ data, updateData }){
                     { data?.display }
                 </div>
                 <div className="details">
-                    { (data?.details !== undefined) ? data?.details : "Aucun compte lié" }
+                    { data?.details }
                 </div>
             </div>
             <div className="actions">
