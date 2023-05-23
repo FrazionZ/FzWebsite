@@ -67,6 +67,8 @@ export default function ModalPromoCode() {
         });
     }
 
+    document.querySelector('body').style.overflowY = open ? "hidden" : "auto"
+
     return (
         <>
             <a className="cursor-pointer" onClick={() => { setOpen(true) }}>
@@ -75,9 +77,9 @@ export default function ModalPromoCode() {
             <Modal
                 isOpen={open}
                 onRequestClose={() => { setOpen(false) }}
-                shouldCloseOnOverlayClick={processing}
+                shouldCloseOnOverlayClick={true}
                 style={customStyles}
-                ariaHideApp={processing}
+                ariaHideApp={true}
                 contentLabel="Modal Promo Code"
                 bodyOpenClassName='w-full promoCodeModal'
                 portalClassName='promoCodeModal'
