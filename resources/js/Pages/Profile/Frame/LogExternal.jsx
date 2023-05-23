@@ -14,7 +14,7 @@ export default function FrameLogExternal({ discord, updateDiscord, twitch, updat
         {
             icon: <DiscodIcon />,
             display: "Discord",
-            details: (discord !== null) ? (discord !== undefined) ? discord?.username : "Aucun compte lié" : "Recherche..",
+            details: (discord !== null) ? (discord !== undefined && discord?.result !== false) ? discord?.username : "Aucun compte lié" : "Recherche..",
             avatar: (discord !== null) ? discord?.avatar : undefined,
             isLink: (discord !== null && discord !== undefined && discord?.result !== false),
             loaded: (discord !== null),
