@@ -43,7 +43,7 @@ class VerifyPermission
             return $next($request);
         }
 
-        Logger::log('user.auth.permission.denied', json_encode(array('key' => $permission)), null, $this->auth->user());
+        Logger::log('user.permission.denied', json_encode(array('key' => $permission)), null, $this->auth->user());
 
         throw new PermissionDeniedException($permission);
     }
