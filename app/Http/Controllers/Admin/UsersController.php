@@ -188,6 +188,23 @@ class UsersController extends Controller
         return redirect()->back()->with("status", $this->toastResponse('error', "Cet utilisateur est marqué comme débannis."));
     }
 
+    public function verified(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|int',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lor de la lecture des données"));
+        }
+
+        $user = User::where('id', $request->input('user_id'))->first();
+        if($user == null) return redirect()->back()->with("status", $this->toastResponse('error', "Une erreur est survenue lor de la lecture des données"));
+
+        $user->update(['email_verified_at' => now()]);
+
+        return redirect()->back()->with("status", $this->toastResponse('error', "Cet utilisateur est marqué comme vérifié."));
+    }
+
     public function banned(Request $request) {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|int',

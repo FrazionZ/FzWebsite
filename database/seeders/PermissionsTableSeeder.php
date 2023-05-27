@@ -145,6 +145,12 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Pouvoir supprimer un code promo',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Vérifier manuellement une adresse mail',
+                'slug'        => 'admin.user.verified',
+                'description' => 'Pouvoir vérifier un compte utilisateur sans passer par les mails',
+                'model'       => 'Permission',
+            ],
         ];
 
         /*

@@ -1,6 +1,6 @@
 import { usePage } from "@inertiajs/react";
 
-export default function Paginate({ layout, labelType, routeName, parent_id, pagination, setList, setPagination }) {
+export default function Paginate({ layout, labelType, routeName, parent_id, pagination, setList, setPagination, method }) {
 
     const props = usePage().props
 
@@ -33,18 +33,46 @@ export default function Paginate({ layout, labelType, routeName, parent_id, pagi
 
     async function refreshList(page) {
         setList(null)
-        axios.post(route(routeName), {
-            parent_id: parent_id,
-            page: page,
-            _token: props.csrf_token
-        })
-        .then((res) => {
-            let resultPagination = res.data
-            setList(resultPagination.data)
-            setPagination(resultPagination)
-        })
-        .catch((err) => {
-        })
+        if(method == "get"){
+            axios.get(route(routeName), {
+                parent_id: parent_id,
+                page: page,
+                _token: props.csrf_token
+            })
+            .then((res) => {
+                let resultPagination = res.data
+                setList(resultPagination.data)
+                setPagination(resultPagination)
+            })
+            .catch((err) => {
+            })
+        }else if(method == "post"){
+            axios.post(route(routeName), {
+                parent_id: parent_id,
+                page: page,
+                _token: props.csrf_token
+            })
+            .then((res) => {
+                let resultPagination = res.data
+                setList(resultPagination.data)
+                setPagination(resultPagination)
+            })
+            .catch((err) => {
+            })
+        }else{
+            axios.post(route(routeName), {
+                parent_id: parent_id,
+                page: page,
+                _token: props.csrf_token
+            })
+            .then((res) => {
+                let resultPagination = res.data
+                setList(resultPagination.data)
+                setPagination(resultPagination)
+            })
+            .catch((err) => {
+            })
+        }
     }
 
     return (

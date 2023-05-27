@@ -44,6 +44,7 @@ Route::middleware(['permission:admin.access'])->group(function() {
         Route::get('/edit/{id}/role/detach/{role}', [UsersController::class, 'role_detach'])->middleware(['permission:admin.user.role.edit'])->name('role.detach');
         Route::post('/edit/save', [UsersController::class, 'save'])->middleware(['permission:admin.user.edit'])->name('edit.save');
         Route::post('/token/revoke', [UsersController::class, 'tokenRevoke'])->middleware(['permission:admin.user.session.revoke'])->name('token.revoke');
+        Route::post('/verified', [UsersController::class, 'verified'])->middleware(['permission:admin.user.verified'])->name('verified');
         Route::post('/banned', [UsersController::class, 'banned'])->middleware(['permission:admin.user.banned'])->name('banned');
         Route::post('/unbanned', [UsersController::class, 'unbanned'])->middleware(['permission:admin.user.banned'])->name('unbanned');
         Route::post('/deleted', [UsersController::class, 'deleted'])->middleware(['permission:admin.user.deleted'])->name('deleted');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\Loggable\ILoggable;
 use App\Models\Traits\Loggable\LogRole;
+use App\Models\Traits\Loggable\LogPermission;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class Logger extends Model
 
     protected $fillable  = ['user_id', 'enum', 'data', 'target_id', 'ip'];
 
-    private $loggable = ["role" => LogRole::class];
+    private $loggable = ["role" => LogRole::class, "permission" => LogPermission::class];
 
     public static function log(string $action, $data, User $target = null, User $user_origin = null)
     {
@@ -74,6 +75,6 @@ class Logger extends Model
         $ilog = $ref->newInstance(); //FINAL INIT CLASS ILOGGABLE
         $dataReplaceArr = $ilog->execute($dataReplaceArr, $data); //CALLING FUNCTION EXEC FOR SEND FINAL ENUM IN LOG
 
-        return $lang->getLang($log->enum, $dataReplaceArr);
+        return $lang->getLang($log->enum, $dataReplaceArr, false);
     }
 }

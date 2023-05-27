@@ -66,7 +66,8 @@
     transition: 0.2s all ease-in-out;
 }
 
-.admin .sidebar .menu li a.nav-link.active, .admin .sidebar .menu li a.nav-link:hover {
+.admin .sidebar .menu li a.nav-link.active,
+.admin .sidebar .menu li a.nav-link:hover {
     background-color: var(--fzbg-2);
     border-radius: 8px;
 }
@@ -98,13 +99,11 @@
 
 .admin table {
     width: 100%;
-    border-radius: 8px;
 }
 
 .admin table thead {
     background: var(--fzbg-2);
     border: 1px solid var(--fzbg-1);
-    border-radius: 8px;
     width: 100%;
     overflow: hidden;
 }
@@ -116,19 +115,50 @@
     line-height: 24px;
     text-align: left;
 }
-.admin table thead > th:first-child {
-    border-radius: 8px 0px 0px 8px;
-}
-.admin table thead > th:last-child {
-    border-radius: 8px 0px 0px 8px;
-}
 
 .admin table tbody {
     margin: 24px 0;
 }
+
 .admin table tbody tr:last-child {
     border: none;
 }
+
 .admin table tbody tr {
     border-bottom: 1px solid var(--fzbg-1);
+}
+.admin table tbody tr td {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+}
+
+.admin .pagination {
+    width: 100%;
+}
+
+.admin .pagination ul {
+    display: flex;
+    gap: 12px;
+    margin-top: 0;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.btn.blue-gradient {
+    background: var(--gradient-blue);
+    color: white !important;
+}
+.btn.blue-gradient:not(.icon) svg {
+    color: #fff;
+    fill: #fff;
+}
+.btn.rounded-tiny {
+    border-radius: 4px !important;
+}
+.btn.tiny {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
 }

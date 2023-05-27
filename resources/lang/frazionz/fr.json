@@ -12,6 +12,9 @@
                 "attach": "%user_name% a attaché le rôle %role_name% à %target_name%",
                 "dettach": "%user_name% a déttaché le rôle %role_name% à %target_name%"
             },
+            "permission": {
+                "denied": "%user_name% a essayé d'accéder à une requête sans permission (%key_perm%)"
+            },
             "auth": {
                 "logout": "%user_name% s'est déconnecté avec succès",
                 "login": {

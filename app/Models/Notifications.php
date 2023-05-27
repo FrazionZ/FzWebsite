@@ -34,6 +34,6 @@ class Notifications extends Model
         $ilog = $ref->newInstance(); //FINAL INIT CLASS ILOGGABLE
         $dataReplaceArr = $ilog->execute($dataReplaceArr, $log->data); //CALLING FUNCTION EXEC FOR SEND FINAL ENUM IN LOG
 
-        return $lang->getLang($log->type, $dataReplaceArr);
+        return $lang->getLang($log->type, $dataReplaceArr, true);
     }
 }

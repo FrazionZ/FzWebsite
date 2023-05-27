@@ -5,7 +5,7 @@ import moment from "moment-timezone";
 import "moment/locale/fr"; // without this line it didn't work
 import Language from "@/Components/Language";
 import { useState } from "react";
-import { FaTimes } from "react-icons/fa";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import { Select, Card } from "flowbite-react";
 import Dropdown from "@/Components/Dropdown";
 moment.locale("fr");
@@ -84,14 +84,14 @@ export default function UserEdit(props) {
     return (
         <AdminLayout>
             <Head title={title} />
-            <div className="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
+            <div className="grid grid-cols-1 xl:grid-cols-3 xl:gap-4 ">
                 <div className="mb-4 col-span-full xl:mb-2">
                     <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
                         Edition de l'utilisateur
                     </h1>
                 </div>
-                <div className="col-span-full xl:col-auto">
-                    <div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                <div className="col-span-full xl:col-auto flex flex-col gap-4">
+                    <div className="card">
                         <div className="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                             <img
                                 className="mb-4 rounded-lg w-[64px] h-[64px] sm:mb-0 xl:mb-4 2xl:mb-0"
@@ -198,12 +198,12 @@ export default function UserEdit(props) {
                     {props.auth.permissions.includes(
                         "admin.user.session.view"
                     ) && (
-                            <div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-                                <div className="flow-root">
+                            <div className="card">
+                                <div className="flow-root w-full">
                                     <h3 className="text-xl font-semibold dark:text-white">
                                         Sessions
                                     </h3>
-                                    <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                                    <ul className="divide-y divide-gray-200 dark:divide-gray-700 overflow-x-auto">
                                         {tokenUsers.map((session, index) => {
                                             return (
                                                 <li className="py-4" key={index}>
@@ -243,9 +243,9 @@ export default function UserEdit(props) {
                                                                             user.id,
                                                                     })
                                                                 }
-                                                                className="px-3 py-2 mb-3 mr-3 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                                                className="btn tiny"
                                                             >
-                                                                Revoke
+                                                                Révoquer
                                                             </button>
                                                         </div>
                                                     </div>
@@ -282,11 +282,11 @@ export default function UserEdit(props) {
                     </div>
                 </div>
                 <div className="col-span-2">
-                    <div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+                    <div className="card flex-col w-full" style={{ alignItems: "flex-start" }}>
                         <h3 className="mb-4 text-xl font-semibold dark:text-white">
                             Informations Général
                         </h3>
-                        <form onSubmit={submitUser}>
+                        <form className="w-full" onSubmit={submitUser}>
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
                                     <label
@@ -368,31 +368,38 @@ export default function UserEdit(props) {
                                             />
                                         </div>
                                     )}
-                                {auth.permissions.includes(
-                                    "admin.user.ban"
-                                ) && (
-                                        <div className="col-span-6 sm:col-span-3">
+                                <div className="col-span-6 sm:col-span-3">
+                                    <div className="flex gap-3 items-end">
+                                        <div className="col flex-1">
                                             <label
-                                                htmlFor="role"
+                                                htmlFor="createdat"
                                                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                             >
-                                                Est bannis ?
+                                                Adresse Mail confirmée
                                             </label>
-                                            <Select
-                                                onChange={(e) => {
-                                                    setData(
-                                                        "banned",
-                                                        e.target.value
-                                                    );
-                                                }}
-                                                value={data.banned}
-                                                required={true}
-                                            >
-                                                <option value="1">Oui</option>
-                                                <option value="0">Non</option>
-                                            </Select>
+                                            <input
+                                                type="text"
+                                                name="createdat"
+                                                id="createdat"
+                                                disabled
+                                                value={user.email_verified_at == null ? "Non vérifée" : moment(user.email_verified_at)
+                                                    .local("fr")
+                                                    .tz("Europe/Paris")
+                                                    .format("D MMMM YYYY")}
+                                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                placeholder="N/A"
+                                                required
+                                            />
                                         </div>
-                                    )}
+                                        {user.email_verified_at == null && 
+                                            (
+                                                <Link method="post" preserveState={false} href={route('admin.users.verified')} data={{ user_id: user.id }} className="btn w-full tiny" style={{ height: "5rem" }}><FaCheck /></Link>
+                                            )
+                                        }
+                                    </div>
+                                    
+                                    
+                                </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label
                                         htmlFor="createdat"
@@ -416,7 +423,7 @@ export default function UserEdit(props) {
                                 </div>
                                 <div className="col-span-6 sm:col-full">
                                     <button
-                                        className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                        className="btn"
                                         type="submit"
                                     >
                                         Sauvegarder
@@ -427,56 +434,52 @@ export default function UserEdit(props) {
                     </div>
                 </div>
                 <div className="col-span-full">
-                    <Card>
-                        <h3 className="text-xl font-semibold dark:text-white">
-                            Logs concernant l'utilisateur
-                        </h3>
-                        <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                            <thead className="bg-gray-100 dark:bg-gray-700">
+                    <div className="flex flex-col gap-4" style={{ alignItems: "flex-start" }}>
+                        <div className="mb-4 col-span-full xl:mb-2">
+                            <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+                                Logs concernant l'utilisateur
+                            </h1>
+                        </div>
+                        <table>
+                            <thead>
                                 <tr>
                                     <th
                                         scope="col"
-                                        className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
                                     >
                                         Action
                                     </th>
                                     <th
                                         scope="col"
-                                        className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
                                     >
                                         Utilisateur
                                     </th>
                                     <th
                                         scope="col"
-                                        className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
                                     >
                                         Cible
                                     </th>
                                     <th
                                         scope="col"
-                                        className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
                                     >
                                         Adresse IP
                                     </th>
                                     <th
                                         scope="col"
-                                        className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
                                     >
                                         Fait le
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            <tbody>
                                 {props.logger.data.map((log, index) => {
                                     return (
                                         <tr
                                             key={index}
-                                            className="hover:bg-gray-100 dark:hover:bg-gray-700"
                                         >
-                                            <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td>
                                                 {log.enum}
                                             </td>
-                                            <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td>
                                                 <Link
                                                     href={route(
                                                         "admin.users.edit",
@@ -489,7 +492,7 @@ export default function UserEdit(props) {
                                                     {log.userOrigin.name}
                                                 </Link>
                                             </td>
-                                            <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td>
                                                 {log.target_id == null ? (
                                                     "N/A"
                                                 ) : (
@@ -506,10 +509,10 @@ export default function UserEdit(props) {
                                                     </Link>
                                                 )}
                                             </td>
-                                            <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td>
                                                 {log.ip}
                                             </td>
-                                            <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td>
                                                 {lang.replaceMonth(
                                                     moment(log.created_at)
                                                         .local("fr")
@@ -524,7 +527,7 @@ export default function UserEdit(props) {
                                 })}
                             </tbody>
                         </table>
-                    </Card>
+                    </div>
                 </div>
             </div>
         </AdminLayout>

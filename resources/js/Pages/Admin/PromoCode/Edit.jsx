@@ -79,7 +79,7 @@ export default function PromoCodeAdd(props) {
                                         disabled={processing}
                                         onChange={(e) => { setData('code', e.target.value) }}
                                     />
-                                    <Button onClick={randomCode}><FaRandom /></Button>
+                                    <button className="btn" onClick={randomCode}><FaRandom /></button>
                                 </div>
                             </div>
                             <div>
@@ -93,7 +93,7 @@ export default function PromoCodeAdd(props) {
                                     id="small"
                                     type="date"
                                     sizing="md"
-                                    value={data.expire_date.substr(0, 10)}
+                                    value={(data.expire_date !== null) ? data.expire_date.substr(0, 10) : ""}
                                     disabled={processing}
                                     onChange={(e) => { setData('expire_date', e.target.value) }}
                                 />
@@ -165,7 +165,7 @@ export default function PromoCodeAdd(props) {
                             <div></div>
                         </div>
                         <div className="flex justify-end">
-                            <Button className="w-fit" disabled={processing} type="submit">Sauvegarder</Button>
+                            <button className="btn w-fit" disabled={processing} type="submit">Sauvegarder</button>
                         </div>
                     </div>
                 </form>

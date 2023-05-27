@@ -16,6 +16,7 @@
     --color-2: #e48515;
     --color-3: #df5d14;
     --gradient: linear-gradient(91.92deg, #f7a92f 0%, #f16b1f 100%);
+    --gradient-blue: linear-gradient(94.55deg, #2072BD 0.13%, #0D3B65 100.13%);
     --color-red: #981503;
     --color-green: #459803;
     --color-blue: #0fa0b4;
@@ -660,6 +661,7 @@ label {
 input[type="text"],
 input[type="tel"],
 input[type="file"],
+input[type="date"],
 input[type="number"],
 input[type="email"],
 textarea:not(.w-md-editor-text-input),
@@ -761,6 +763,7 @@ input:not([disabled])[type="tel"]:hover,
 input:not([disabled])[type="file"]:hover,
 input:not([disabled])[type="number"]:hover,
 input:not([disabled])[type="email"]:hover,
+input:not([disabled])[type="date"]:hover,
 textarea:not(.w-md-editor-text-input):not([disabled]):hover,
 select:not([disabled])[type="email"]:hover input:not([disabled])[type="password"]:hover {
     box-shadow: inset 0px -4px 0px var(--color-2);
@@ -772,6 +775,7 @@ input[type="tel"]:focus,
 input[type="file"]:focus,
 input[type="number"]:focus,
 input[type="email"]:focus,
+input[type="date"]:focus,
 textarea:not(.w-md-editor-text-input):focus,
 select:focus,
 input[type="password"]:focus {
@@ -783,6 +787,7 @@ input:disabled[type="text"],
 input:disabled[type="email"],
 input:disabled[type="tel"],
 input:disabled[type="password"],
+input:disabled[type="date"],
 textarea:not(.w-md-editor-text-input):disabled,
 select:disabled label.file-upload:has([disabled]) {
     color: var(--text-inactive);

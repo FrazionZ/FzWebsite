@@ -20,9 +20,9 @@ class Lang {
             $this->parent = [];
     }
 
-    public function getLang($key, $replaceArr){
+    public function getLang($key, $replaceArr, $removeFirstPart){
         $parts = explode('.', $key);
-        unset($parts[0]);
+        if($removeFirstPart) unset($parts[0]);
         $parts = array_values($parts);
         $currentObject = $this->parent;
 

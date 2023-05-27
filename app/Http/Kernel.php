@@ -70,7 +70,7 @@ class Kernel extends HttpKernel
         'gauth' => \App\Http\Middleware\GAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
-        'permission' => \jeremykenedy\LaravelRoles\App\Http\Middleware\VerifyPermission::class,
+        'permission' => \App\Http\Middleware\VerifyPermission::class,
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,

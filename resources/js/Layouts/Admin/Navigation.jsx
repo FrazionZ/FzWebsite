@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, usePage } from "@inertiajs/react";
 import Logo from '../../../assets/img/logo.svg'
-import { FaHome, FaTools, FaUsers } from "react-icons/fa";
+import { FaFile, FaHome, FaTools, FaUsers } from "react-icons/fa";
 
 export default function Navigation() {
 
@@ -22,6 +22,11 @@ export default function Navigation() {
             label: "Liste des joueurs",
             icon: <FaUsers className="icon" />,
             href: route('admin.users.index')
+        },
+        {
+            label: "Logs système",
+            icon: <FaFile className="icon" />,
+            href: route('admin.logs.index')
         },
     ]
 
