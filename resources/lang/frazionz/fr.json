@@ -24,6 +24,11 @@
             }
         }
     },
+    "notifications": {
+        "support": {
+            "response": "%username% a répondu à votre ticket"
+        }
+    },
     "auth": {
         "register": {
             "validation": {

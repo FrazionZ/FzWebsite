@@ -29,11 +29,12 @@ export default function MaintenanceIndex(props) {
     }
 
     return (
-        <AdminLayout title={title}>
+        <AdminLayout>
             <Head title={title} />
-            <form onSubmit={submit}>
-                <div className="card flex-col" style={{ alignItems: "flex-start" }}>
-                    <h5 className="w-full text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
+            <form onSubmit={submit} className="p-10">
+                <h1 className="text-3xl text-white mb-5">{title}</h1>
+                <Card>
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                         Message affiché à l'accueil
                     </h5>
                     <MDEditor
@@ -41,7 +42,6 @@ export default function MaintenanceIndex(props) {
                         height={500}
                         disabled={processing}
                         preview="edit"
-                        className="w-full"
                         onChange={(e) => {
                             setData("message", e);
                         }}
@@ -77,7 +77,7 @@ export default function MaintenanceIndex(props) {
                     >
                         Sauvegarder
                     </Button>
-                </div>
+                </Card>
             </form>
         </AdminLayout>
     );

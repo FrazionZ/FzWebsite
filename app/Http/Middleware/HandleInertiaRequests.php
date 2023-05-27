@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Notifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
@@ -46,13 +47,21 @@ class HandleInertiaRequests extends Middleware
             foreach($request->user()->getPermissions() as $perm){
                 array_push($perms, $perm->slug);
             }
+            $notifications = Notifications::where('user_id', $request->user()->id)->get();
+            foreach($notifications as $notification){
+                $notification->data = json_decode($notification->data, true);
+                $notification->enum = $notification->determineEnum($notification);
+            }
+            
         }
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
+                'role' => ($isLogged) ? $request->user()->getHigherRole() : null,
                 'isAdmin' => ($isLogged) ? $request->user()->isAdmin() : false,
                 'isAccessAdmin' => ($isLogged) ? ($request->user()->isAdmin() || $request->user()->hasPermission('admin.access')) ? true : false  : false,
                 'TwoFA' => ($isLogged) ? $request->user()->hasTwoFactorAuth() : false,
+                'notifications' => ($isLogged) ? $notifications : null,
                 'permissions' => $perms,
                 'isLogged' => ($request->user() !== null)
             ],

@@ -5,24 +5,26 @@ namespace App\System;
 class Lang {
 
     private $frazionz;
-    private $logger;
+    private $parent;
 
-    public function __construct(){
+    public function __construct($parent){
         $fzLangPath = resource_path('lang/frazionz/'.app()->getLocale() .'.json');
         if(!file_exists($fzLangPath))
             $this->frazionz = [];
         else
             $this->frazionz = json_decode(file_get_contents($fzLangPath), true);
         
-        if(isset($this->frazionz['logger']))
-            $this->logger = $this->frazionz['logger'];
+        if(isset($this->frazionz[$parent]))
+            $this->parent = $this->frazionz[$parent];
         else
-            $this->logger = [];
+            $this->parent = [];
     }
 
-    public function getLogger($key, $replaceArr){
+    public function getLang($key, $replaceArr){
         $parts = explode('.', $key);
-        $currentObject = $this->logger;
+        unset($parts[0]);
+        $parts = array_values($parts);
+        $currentObject = $this->parent;
 
         foreach ($parts as $part) {
             $currentObject = $currentObject[$part];

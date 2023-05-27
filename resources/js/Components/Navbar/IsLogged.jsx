@@ -1,6 +1,10 @@
 import { Link } from "@inertiajs/react";
 import DropdownProfile from "../DropdownProfile";
 import ModalPromoCode from "../ModalPromoCode";
+import { Dropdown } from "flowbite-react";
+import { FaBell } from "react-icons/fa";
+import DropdownNotifications from '@/Components/DropdownNotifications'
+
 export default function IsLogged({ auth }) {
 
     let childsElement = [
@@ -20,10 +24,10 @@ export default function IsLogged({ auth }) {
             type: "modal",
             dom: <ModalPromoCode />
         },
-        
+
     ]
 
-    if(auth.isAccessAdmin) 
+    if (auth.isAccessAdmin)
         childsElement.push({
             value: "/admin",
             name: "Panel Admin",
@@ -41,6 +45,9 @@ export default function IsLogged({ auth }) {
 
 
     return (
-        <DropdownProfile text={auth.user.name} user={auth.user} items={childsElement} />
+        <div className="flex items-center gap-6">
+            <DropdownNotifications />
+            <DropdownProfile text={auth.user.name} user={auth.user} items={childsElement} />
+        </div>
     );
 }

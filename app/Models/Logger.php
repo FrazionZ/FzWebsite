@@ -53,7 +53,7 @@ class Logger extends Model
 
     public function determineEnum(Logger $log){
 
-        $lang = new Lang();
+        $lang = new Lang('logger');
 
         //DETERMINE THE CATEGORIE WITH EXPLODE ENUM
         $logEnum = explode('.', $log->enum);
@@ -74,6 +74,6 @@ class Logger extends Model
         $ilog = $ref->newInstance(); //FINAL INIT CLASS ILOGGABLE
         $dataReplaceArr = $ilog->execute($dataReplaceArr, $data); //CALLING FUNCTION EXEC FOR SEND FINAL ENUM IN LOG
 
-        return $lang->getLogger($log->enum, $dataReplaceArr);
+        return $lang->getLang($log->enum, $dataReplaceArr);
     }
 }

@@ -31,10 +31,6 @@ export default function DropdownProfile({ text, items, user }) {
         onClick={() => setIsOpen(!isOpen)}
         className={(isOpen) ? "isOpen" : ""}
       >
-        <div className="user">
-          <img src={`https://auth.frazionz.net/skins/face.php?u=${user.id}`} alt="" />
-          <span className='hidden lg:block'>{ user.name }</span>
-        </div>
         <motion.div
           variants={{
             open: { rotate: 180 },
@@ -48,6 +44,10 @@ export default function DropdownProfile({ text, items, user }) {
             <path d="M0 7 L 20 7 L 10 16" />
           </svg>
         </motion.div>
+        <div className="user">
+          <span className='hidden lg:block'>{ user.name }</span>
+          <img src={`https://auth.frazionz.net/skins/face.php?u=${user.id}`} alt="" />
+        </div>
       </motion.button>
       <motion.ul
         variants={{

@@ -22,7 +22,7 @@
 }
 
 .dropdownProfile.menu {
-    width: 300px;
+    width: fit-content;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -63,15 +63,16 @@
     color: var(--white);
     border: none;
     border-radius: 10px;
-    padding: 10px 10px;
+    padding: 10px 10px 10px 15px;
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
-    width: 100%;
+    width: fit-content;
     text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     transition: background 0.2s ease-in-out;
 }
 

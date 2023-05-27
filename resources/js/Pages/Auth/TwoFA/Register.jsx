@@ -38,7 +38,7 @@ export default function Register(props){
                             <div className="flex gap-10">
                                 <div className="form-group">
                                     <label>Secret</label>
-                                    <input type="text" disabled value={props.secret} />
+                                    <input type="text" disabled value="Quoicoubeh" />
                                 </div>
                                 <div className="form-group w-full">
                                     <label>Code</label>
