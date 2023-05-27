@@ -781,6 +781,8 @@ select:focus,
 input[type="password"]:focus {
     box-shadow: inset 0px -4px 0px var(--color-2);
     --tw-ring-color: transparent !important;
+    outline: 0px solid transparent;
+    outline-offset: 0px;
 }
 
 input:disabled[type="text"],
