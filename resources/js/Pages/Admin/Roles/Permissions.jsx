@@ -32,7 +32,7 @@ export default function Permissions({ role, permissions }) {
     return (
         <div className="mt-4">
             <div className="col-span-2">
-                <Card>
+                <div className="card" style={{ flexDirection: "column", alignItems: "flex-start" }}>
                     <h3 className="text-xl font-semibold dark:text-white">
                         Liste des permissions
                     </h3>
@@ -67,9 +67,9 @@ export default function Permissions({ role, permissions }) {
                                 
                             }
                         </ul>
-                        <Button className="w-fit" type="submit">Sauvegarder</Button>
+                        <button className="btn w-fit" type="submit">Sauvegarder</button>
                     </form>
-                </Card>
+                </div>
             </div>
         </div>
     );

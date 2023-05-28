@@ -47,12 +47,11 @@ export default function RolesIndex(props) {
     }
 
     return (
-        <AdminLayout>
+        <AdminLayout title={title}>
             <Head title={title} />
             <div className="p-10">
-                <h1 className="text-3xl text-white mb-5">{title}</h1>
-                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:gap-10 dark:bg-gray-900">
-                    <div className="col-span-1">
+                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:gap-10">
+                    <div className="flex flex-col gap-3">
                         {adminRoles.map((arole, index) => {
                             return (
                                 <RoleCard key={index} authRoleHigh={arh} role={arole} />
@@ -81,7 +80,7 @@ export default function RolesIndex(props) {
                             </>
                         }
                         <div className="flex justify-end">
-                            <Button onClick={submitRoles}>Sauvegarder</Button>
+                            <button className="btn" onClick={submitRoles}>Sauvegarder</button>
                         </div>
                     </div>
                     <div className="col-span-1 flex flex-col justify-center gap-5 border-gray-800 border-l pl-6">

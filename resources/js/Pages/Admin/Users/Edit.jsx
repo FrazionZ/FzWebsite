@@ -13,7 +13,7 @@ moment.locale("fr");
 export default function UserEdit(props) {
     let auth = props.auth;
     const [user, setUser] = useState(props.user);
-    let title = user.name;
+    let title = "Édition de l'utilisateur"
     const lang = new Language(props.language);
 
     let arh = props.authRoleHigh;
@@ -82,14 +82,9 @@ export default function UserEdit(props) {
     }
 
     return (
-        <AdminLayout>
+        <AdminLayout title={title}>
             <Head title={title} />
             <div className="grid grid-cols-1 xl:grid-cols-3 xl:gap-4 ">
-                <div className="mb-4 col-span-full xl:mb-2">
-                    <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
-                        Edition de l'utilisateur
-                    </h1>
-                </div>
                 <div className="col-span-full xl:col-auto flex flex-col gap-4">
                     <div className="card">
                         <div className="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">

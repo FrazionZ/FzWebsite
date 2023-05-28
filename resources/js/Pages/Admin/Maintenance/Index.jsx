@@ -70,13 +70,13 @@ export default function MaintenanceIndex(props) {
                             Souhaitez-vous activer la maintenance ?
                         </span>
                     </div>
-                    <Button
-                        className="w-fit"
+                    <button
+                        className="btn w-fit"
                         type="submit"
                         disabled={processing}
                     >
                         Sauvegarder
-                    </Button>
+                    </button>
                 </div>
             </form>
         </AdminLayout>

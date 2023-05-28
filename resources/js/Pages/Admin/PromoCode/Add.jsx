@@ -45,10 +45,9 @@ export default function PromoCodeAdd(props) {
     }
 
     return (
-        <AdminLayout>
+        <AdminLayout title={title}>
             <Head title={title} />
-            <form onSubmit={submit} className="p-10">
-                <h1 className="text-3xl text-white mb-5">{title}</h1>
+            <form onSubmit={submit}>
                 <div className="flex flex-col gap-4">
                     <div className="grid grid-cols-2 gap-6">
                         <div>
@@ -69,7 +68,7 @@ export default function PromoCodeAdd(props) {
                                     disabled={processing}
                                     onChange={(e) => { setData('code', e.target.value) }}
                                 />
-                                <Button onClick={randomCode}><FaRandom /></Button>
+                                <button className="btn" onClick={randomCode}><FaRandom /></button>
                             </div>
                         </div>
                         <div>
@@ -155,7 +154,7 @@ export default function PromoCodeAdd(props) {
                         <div></div>
                     </div>
                     <div className="flex justify-end">
-                        <Button className="w-fit" disabled={processing} type="submit">Créer</Button>
+                        <button className="btn w-fit" disabled={processing} type="submit">Créer</button>
                     </div>
                 </div>
             </form>

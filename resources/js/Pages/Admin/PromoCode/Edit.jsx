@@ -54,165 +54,170 @@ export default function PromoCodeAdd(props) {
     }
 
     return (
-        <AdminLayout>
+        <AdminLayout title={title}>
             <Head title={title} />
-            <div className="p-10">
-                <form onSubmit={submit}>
-                    <h1 className="text-3xl text-white mb-5">{title}</h1>
-                    <div className="flex flex-col gap-4">
-                        <div className="grid grid-cols-2 gap-6">
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label
-                                        htmlFor="small"
-                                        value="Code"
-                                    />
-                                </div>
-                                <div className="flex gap-6 justify-between items-center">
-                                    <TextInput
-                                        id="small"
-                                        type="text"
-                                        sizing="md"
-                                        className="flex-1"
-                                        placeholder="a5hk14g9s1qz8n"
-                                        value={data.code}
-                                        disabled={processing}
-                                        onChange={(e) => { setData('code', e.target.value) }}
-                                    />
-                                    <button className="btn" onClick={randomCode}><FaRandom /></button>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label
-                                        htmlFor="small"
-                                        value="Date d'expiration"
-                                    />
-                                </div>
-                                <TextInput
-                                    id="small"
-                                    type="date"
-                                    sizing="md"
-                                    value={(data.expire_date !== null) ? data.expire_date.substr(0, 10) : ""}
-                                    disabled={processing}
-                                    onChange={(e) => { setData('expire_date', e.target.value) }}
+            <form onSubmit={submit}>
+                <div className="flex flex-col gap-4">
+                    <div className="grid grid-cols-2 gap-6">
+                        <div>
+                            <div className="mb-2 block">
+                                <Label
+                                    htmlFor="small"
+                                    value="Code"
                                 />
                             </div>
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label
-                                        htmlFor="small"
-                                        value="Maximum d'utilisations (Global)"
-                                    />
-                                </div>
+                            <div className="flex gap-6 justify-between items-center">
                                 <TextInput
                                     id="small"
-                                    type="number"
+                                    type="text"
                                     sizing="md"
-                                    value={data.max_use}
+                                    className="flex-1"
+                                    placeholder="a5hk14g9s1qz8n"
+                                    value={data.code}
                                     disabled={processing}
-                                    onChange={(e) => { setData('max_use', e.target.value) }}
+                                    onChange={(e) => { setData('code', e.target.value) }}
                                 />
+                                <button className="btn" onClick={randomCode}><FaRandom /></button>
                             </div>
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label
-                                        htmlFor="small"
-                                        value="Maximum d'utilisations (Par utilisateur)"
-                                    />
-                                </div>
-                                <TextInput
-                                    id="small"
-                                    type="number"
-                                    sizing="md"
-                                    value={data.max_use_per_user}
-                                    disabled={processing}
-                                    onChange={(e) => { setData('max_use_per_user', e.target.value) }}
-                                />
-                            </div>
-                            <div id="select">
-                                <div className="mb-2 block">
-                                    <Label
-                                        htmlFor="type"
-                                        value="Séléctionner le type"
-                                    />
-                                </div>
-                                <Select required={true} value={data.type} disabled={processing} onChange={(e) => { setData('type', e.target.value) }}>
-                                    <option value="pbs">
-                                        Points boutique
-                                    </option>
-                                    <option value="coins">
-                                        Coins
-                                    </option>
-                                </Select>
-                            </div>
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label
-                                        htmlFor="small"
-                                        value="Montant à donner"
-                                    />
-                                </div>
-                                <TextInput
-                                    id="small"
-                                    type="number"
-                                    sizing="md"
-                                    value={data.give_amount}
-                                    disabled={processing}
-                                    onChange={(e) => { setData('give_amount', e.target.value) }}
-                                />
-                            </div>
-                            <div></div>
                         </div>
-                        <div className="flex justify-end">
-                            <button className="btn w-fit" disabled={processing} type="submit">Sauvegarder</button>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label
+                                    htmlFor="small"
+                                    value="Date d'expiration"
+                                />
+                            </div>
+                            <TextInput
+                                id="small"
+                                type="date"
+                                sizing="md"
+                                value={(data.expire_date !== null) ? data.expire_date.substr(0, 10) : ""}
+                                disabled={processing}
+                                onChange={(e) => { setData('expire_date', e.target.value) }}
+                            />
                         </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label
+                                    htmlFor="small"
+                                    value="Maximum d'utilisations (Global)"
+                                />
+                            </div>
+                            <TextInput
+                                id="small"
+                                type="number"
+                                sizing="md"
+                                value={data.max_use}
+                                disabled={processing}
+                                onChange={(e) => { setData('max_use', e.target.value) }}
+                            />
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label
+                                    htmlFor="small"
+                                    value="Maximum d'utilisations (Par utilisateur)"
+                                />
+                            </div>
+                            <TextInput
+                                id="small"
+                                type="number"
+                                sizing="md"
+                                value={data.max_use_per_user}
+                                disabled={processing}
+                                onChange={(e) => { setData('max_use_per_user', e.target.value) }}
+                            />
+                        </div>
+                        <div id="select">
+                            <div className="mb-2 block">
+                                <Label
+                                    htmlFor="type"
+                                    value="Séléctionner le type"
+                                />
+                            </div>
+                            <Select required={true} value={data.type} disabled={processing} onChange={(e) => { setData('type', e.target.value) }}>
+                                <option value="pbs">
+                                    Points boutique
+                                </option>
+                                <option value="coins">
+                                    Coins
+                                </option>
+                            </Select>
+                        </div>
+                        <div>
+                            <div className="mb-2 block">
+                                <Label
+                                    htmlFor="small"
+                                    value="Montant à donner"
+                                />
+                            </div>
+                            <TextInput
+                                id="small"
+                                type="number"
+                                sizing="md"
+                                value={data.give_amount}
+                                disabled={processing}
+                                onChange={(e) => { setData('give_amount', e.target.value) }}
+                            />
+                        </div>
+                        <div></div>
                     </div>
-                </form>
-                <div className="flex flex-col gap-3">
-                    <h3 className="text-xl font-semibold dark:text-white">
-                        Historique d'utilisations de ce code promo
-                    </h3>
-                    <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-                        <thead className="bg-gray-100 dark:bg-gray-700">
-                            <tr>
-                                <th scope="col" className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Utilisateur
-                                </th>
-                                <th scope="col" className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                    Utilisé le
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                            {props.promoCodeUses.data.map((log, index) => {
-                                return (
-                                    <tr
-                                        key={index}
-                                        className="hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    >
-                                        <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {log.user.name}
-                                        </td>
-                                        <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {lang.replaceMonth(moment(log.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                    <Pagination
-                            currentPage={props.promoCodeUses.current_page}
-                            layout="pagination"
-                            showIcons={true}
-                            totalPages={props.promoCodeUses.last_page}
-                            className="flex justify-end gap-10 items-center w-full"
-                            previousLabel="Précédent"
-                            nextLabel="Suivant"
-                            onPageChange={(e) => { router.get(`${route('admin.promocode.edit', props.promoCode.id)}?pch=${e}`) }}
-                        />
+                    <div className="flex justify-end">
+                        <button className="btn w-fit" disabled={processing} type="submit">Sauvegarder</button>
+                    </div>
                 </div>
+            </form>
+            <div className="flex flex-col gap-3">
+                <h3 className="text-xl font-semibold dark:text-white">
+                    Historique d'utilisations de ce code promo
+                </h3>
+                <table >
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Utilisateur
+                            </th>
+                            <th scope="col">
+                                Utilisé le
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {props.promoCodeUses.data.map((log, index) => {
+                            return (
+                                <tr
+                                    key={index}
+                                    className="hover:bg-gray-100 dark:hover:bg-gray-700"
+                                >
+                                    <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {log.user.name}
+                                    </td>
+                                    <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {lang.replaceMonth(moment(log.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+                <div className="pagination">
+                    <Pagination
+                        currentPage={props.promoCodeUses.current_page}
+                        layout="pagination"
+                        showIcons={true}
+                        totalPages={props.promoCodeUses.last_page}
+                        className="flex justify-end gap-10 items-center w-full"
+                        previousLabel="Précédent"
+                        nextLabel="Suivant"
+                        onPageChange={(e) => { router.get(`${route('admin.promocode.edit', props.promoCode.id)}?pch=${e}`) }}
+                        renderPaginationButton={(props) => {
+                            return (
+                                <button className="btn" disabled={(props.active !== undefined ? (props?.active ? true : false) : false)} onClick={props.onClick}>{props.children}</button>
+                            )
+                        }}
+                    />
+                </div>
+
             </div>
 
         </AdminLayout>

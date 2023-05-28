@@ -2,6 +2,9 @@ import React from "react";
 import { Link, usePage } from "@inertiajs/react";
 import Logo from '../../../assets/img/logo.svg'
 import { FaFile, FaHome, FaTools, FaUsers } from "react-icons/fa";
+import { HiShoppingBag, HiWrenchScrewdriver } from "react-icons/hi2";
+import { MdOutlineLabelImportant } from 'react-icons/md'
+import Dropdown from "./Dropdown";
 
 export default function Navigation() {
 
@@ -11,22 +14,52 @@ export default function Navigation() {
         {
             label: "Accueil",
             icon: <FaHome className="icon" />,
-            href: route('admin.index')
+            href: route('admin.index'),
+            type: "link"
         },
         {
             label: "Maintenance",
-            icon: <FaTools className="icon" />,
-            href: route('admin.maintenance.index')
+            icon: <HiWrenchScrewdriver className="icon" />,
+            href: route('admin.maintenance.index'),
+            type: "link"
         },
         {
             label: "Liste des joueurs",
             icon: <FaUsers className="icon" />,
-            href: route('admin.users.index')
+            href: route('admin.users.index'),
+            type: "link"
+        },
+        {
+            label: "Rôles & Permissions",
+            icon: <MdOutlineLabelImportant className="icon" />,
+            href: route('admin.roles.index'),
+            type: "link"
         },
         {
             label: "Logs système",
             icon: <FaFile className="icon" />,
-            href: route('admin.logs.index')
+            href: route('admin.logs.index'),
+            type: "link"
+        },
+        {
+            label: "Boutique",
+            icon: <HiShoppingBag className="icon" />,
+            type: "dropdown",
+            menu: [
+                {
+                    label: "Ajouter un article",
+                    href: route('admin.index')
+                },
+                {
+                    label: "Liste des articles",
+                    href: route('admin.index')
+                },
+                {
+                    label: "Code promo",
+                    href: route('admin.promocode.index')
+                }
+            ]
+
         },
     ]
 
@@ -41,9 +74,16 @@ export default function Navigation() {
             </div>
             <div className="menu">
                 {navs.map((item, index) => {
-                    return (
-                        <li key={index}><Link className={`nav-link ${props.ziggy.location == item.href ? "active" : ""}`} href={item.href}>{item.icon} <span>{item.label}</span></Link></li>
-                    )
+                    if(item.type == "link")
+                        return (
+                            <li key={index}><Link className={`nav-link ${props.ziggy.location == item.href ? "active" : ""}`} href={item.href}><div className="flex gap-4">{item.icon} <span>{item.label}</span></div></Link></li>
+                        )
+                    else if(item.type == "dropdown")
+                        return (
+                            <li key={index}>
+                                <Dropdown item={item} />
+                            </li>
+                        )
                 })}
             </div>
         </>

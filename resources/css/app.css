@@ -1743,7 +1743,7 @@ header .menu_account .not_logged.mobile {
     height: 14rem !important;
 }
 .notifications .badge {
-    background-color: red;
+    background: var(--gradient);
     padding: 3px 10px;
     position: absolute;
     bottom: -10px;

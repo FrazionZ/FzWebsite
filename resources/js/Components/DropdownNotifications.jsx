@@ -17,8 +17,8 @@ export default function DropdownNotifications() {
     return (
         <Menu as="div" className="relative inline-block text-left notifications">
             <div>
-                <Menu.Button style={{ background: 'var(--gradient)' }} className="inline-flex w-full justify-center gap-x-1.5 rounded-md p-3 text-sm font-semibold fill-[var(--color-2)] shadow-sm">
-                    <FaBell style={{ fill: "var(--text-button)", width: "18px", height: "18px" }} />
+                <Menu.Button style={{ background: 'transparent' }} className="inline-flex w-full justify-center gap-x-1.5 rounded-md p-3 text-sm font-semibold shadow-sm">
+                    <FaBell style={{ fill: "#fff", width: "24px", height: "24px" }} />
                 </Menu.Button>
                 <span className='badge'>{notifications.length}</span>
             </div>
