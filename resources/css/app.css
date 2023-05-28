@@ -766,7 +766,6 @@ input:not([disabled])[type="email"]:hover,
 input:not([disabled])[type="date"]:hover,
 textarea:not(.w-md-editor-text-input):not([disabled]):hover,
 select:not([disabled])[type="email"]:hover input:not([disabled])[type="password"]:hover {
-    box-shadow: inset 0px -4px 0px var(--color-2);
     --tw-ring-color: transparent !important;
 }
 
@@ -779,7 +778,6 @@ input[type="date"]:focus,
 textarea:not(.w-md-editor-text-input):focus,
 select:focus,
 input[type="password"]:focus {
-    box-shadow: inset 0px -4px 0px var(--color-2);
     --tw-ring-color: transparent !important;
     outline: 0px solid transparent;
     outline-offset: 0px;
