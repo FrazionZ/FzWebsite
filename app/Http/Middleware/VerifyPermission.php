@@ -38,6 +38,10 @@ class VerifyPermission
      */
     public function handle($request, Closure $next, ...$permission)
     {
+        if(Auth::user() == null){
+            return redirect()->route('login');
+        }
+
         $permission = join(',', $permission);
         if ($this->auth->check() && $this->auth->user()->hasPermission($permission)) {
             return $next($request);
