@@ -7,6 +7,7 @@ use App\Models\Logger;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VerifyPermission
 {
