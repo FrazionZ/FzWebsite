@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Config;
 use App\Models\RoleUser;
 use App\Models\User;
 use App\Models\Role;
@@ -27,6 +28,7 @@ class RolesController extends Controller
 
         return Inertia::render('Admin/Roles/Index', [
             'roles' => $roles,
+            'roleDefaultId' => intval(Config::get('role.default', 1)),
             'authRoleHigh' => $request->user()->getHigherRole()
         ]);
     }
@@ -111,6 +113,23 @@ class RolesController extends Controller
         ]);
 
         return redirect()->back()->with("status", $this->toastResponse('success', "Rôle sauvegardé."));
+    }
+
+    public function defineDefault(Request $request){
+        $validator = Validator::make($request->all(), [
+            'role_id' => 'required|int',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with("status", $this->toastResponse('error', "La requête est invalide ou incomplet"));
+        }
+
+        $role = config('roles.models.role')::find($request->role_id);
+        if($role == null) return redirect()->back()->with("status", $this->toastResponse('error', "Rôle non trouvable"));
+
+        Config::set('role.default', $request->input('role_id'));
+        
+        return redirect()->back()->with("status", $this->toastResponse('success', "Mise à jours terminée."));
     }
 
     public function perms(Request $request){

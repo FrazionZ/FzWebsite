@@ -162,7 +162,7 @@ class Role extends Model
      */
     public static function defaultRoleId()
     {
-        return (int) config('roleDefault', 4);
+        return (int) Config::get('role.default', 1);
     }
 
     /**

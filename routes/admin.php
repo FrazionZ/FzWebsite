@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\LoggerController;
 use App\Http\Controllers\Admin\GithubController;
 use App\Http\Controllers\Admin\ForumController;
+use App\Http\Controllers\Admin\Forum\ThreadController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\Github\ReposController;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,7 @@ Route::middleware(['permission:admin.access'])->group(function() {
         Route::get('/', [RolesController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [RolesController::class, 'edit'])->middleware(['permission:admin.role.edit'])->name('edit');
         Route::post('/swap', [RolesController::class, 'swap'])->middleware(['permission:admin.role.swap'])->name('swap');
+        Route::post('/defineDefault', [RolesController::class, 'defineDefault'])->middleware(['permission:admin.role.definedefault'])->name('defineDefault');
         Route::post('/edit/save', [RolesController::class, 'save'])->middleware(['permission:admin.role.edit'])->name('edit.save');
         Route::post('/edit/perms', [RolesController::class, 'perms'])->middleware(['permission:admin.role.edit'])->name('edit.perms');
     });
@@ -90,6 +92,8 @@ Route::middleware(['permission:admin.access'])->group(function() {
         Route::post('/subcategory/save', [ForumController::class, 'subcategory_save'])->name('subcategory.save');
         Route::post('/category/save', [ForumController::class, 'category_save'])->name('category.save');
         Route::get('/subcategories', [ForumController::class, 'subcategories_index'])->name('subcategories.index');
+        
+        Route::get('/threads', [ThreadController::class, 'threads_index'])->name('threads.index');
     });
 
     

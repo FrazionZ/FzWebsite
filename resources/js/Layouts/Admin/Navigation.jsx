@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, usePage } from "@inertiajs/react";
 import Logo from '../../../assets/img/logo.svg'
-import { FaFile, FaHome, FaTools, FaUsers } from "react-icons/fa";
+import { FaFile, FaComments, FaHome, FaTools, FaUsers } from "react-icons/fa";
 import { HiShoppingBag, HiWrenchScrewdriver } from "react-icons/hi2";
 import { MdOutlineLabelImportant } from 'react-icons/md'
 import Dropdown from "./Dropdown";
@@ -59,8 +59,22 @@ export default function Navigation() {
                     href: route('admin.promocode.index')
                 }
             ]
-
         },
+        {
+            label: "Forum",
+            icon: <FaComments className="icon" />,
+            type: "dropdown",
+            menu: [
+                {
+                    label: "Catégories",
+                    href: route('admin.forum.categories.index')
+                },
+                {
+                    label: "Threads",
+                    href: route('admin.forum.threads.index')
+                }
+            ]
+        }
     ]
 
     return (

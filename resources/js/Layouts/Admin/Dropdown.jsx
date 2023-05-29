@@ -25,7 +25,7 @@ export default function Dropdown(props) {
             <motion.ul>
                 {props.item.menu.map((item, index) => {
                     return (
-                        <li><Link href={item.href}>{item.label}</Link></li>
+                        <li key={index}><Link href={item.href}>{item.label}</Link></li>
                     )
                 })}
             </motion.ul>

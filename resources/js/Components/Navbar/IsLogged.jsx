@@ -31,7 +31,7 @@ export default function IsLogged({ auth }) {
         childsElement.push({
             value: "/admin",
             name: "Panel Admin",
-            type: "hyperlink"
+            type: "inerlink"
         })
 
     childsElement.push({

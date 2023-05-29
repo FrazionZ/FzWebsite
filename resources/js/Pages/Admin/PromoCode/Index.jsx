@@ -61,66 +61,67 @@ export default function PromoCodeIndex(props) {
                     </form>
                     {props.auth.permissions.includes('admin.promocode.create') &&
                         <div className="flex items-center ml-auto space-x-2 sm:space-x-3">
-                            <Link href={route('admin.promocode.add')} ><button className="btn">Créer</button></Link>
+                            <Link href={route('admin.promocode.add')} ><button className="btn add tiny">Créer</button></Link>
                         </div>
                     }
                 </div>
                 <table>
-                    <thead>
-                        <tr>
-                            <th scope="col" >
-                                Code
-                            </th>
-                            <th scope="col" >
-                                Maximum d'utilisations (Global)
-                            </th>
-                            <th scope="col" >
-                                Maximum d'utilisations (Par personne)
-                            </th>
-                            <th scope="col" >
-                                Type
-                            </th>
-                            <th scope="col" >
-                                Montant donné
-                            </th>
-                            <th scope="col" >
-                                Créé le
-                            </th>
-                            <th scope="col" >
-                                Actions
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {dataPromoCode.data.map((pc, index) => {
-                            return (
-                                <tr key={index} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                    <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.code}</td>
-                                    <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.max_use} fois</td>
-                                    <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.max_use_per_user} fois</td>
-                                    <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.type == "pbs" ? "Points boutique" : "Coins"}</td>
-                                    <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.give_amount}</td>
-                                    <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>
-                                        {lang.replaceMonth(moment(pc.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}
-                                    </td>
-                                    <td className="p-4 text-base font-medium whitespace-nowrap text-white">
-                                        {props.auth.permissions.includes('admin.promocode.edit') &&
-                                            <Link href={route('admin.promocode.edit', { id: pc.id })} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                <Button>Editer le code promo</Button>
-                                            </Link>
-                                        }
-                                        {props.auth.permissions.includes('admin.promocode.delete') &&
-                                            <Link href={route('admin.promocode.delete')} method="post" preserveState={false} only={['promoCodes']} data={{ id: pc.id }} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                <Button color="failure">Supprimer</Button>
-                                            </Link>
-                                        }
-                                    </td>
-                                </tr>
-                            )
-                        })}
+                        <thead>
+                            <tr>
+                                <th scope="col" >
+                                    Code
+                                </th>
+                                <th scope="col" >
+                                    Maximum d'utilisations (Global)
+                                </th>
+                                <th scope="col" >
+                                    Maximum d'utilisations (Par personne)
+                                </th>
+                                <th scope="col" >
+                                    Type
+                                </th>
+                                <th scope="col" >
+                                    Montant donné
+                                </th>
+                                <th scope="col" >
+                                    Créé le
+                                </th>
+                                <th scope="col" >
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {dataPromoCode.data.map((pc, index) => {
+                                return (
+                                    <tr key={index} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.code}</td>
+                                        <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.max_use} fois</td>
+                                        <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.max_use_per_user} fois</td>
+                                        <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.type == "pbs" ? "Points boutique" : "Coins"}</td>
+                                        <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>{pc.give_amount}</td>
+                                        <td className={`p-4 text-base font-medium whitespace-nowrap ${pc.expired ? "text-[var(--text-inactive)] line-through" : "text-white"}`}>
+                                            {lang.replaceMonth(moment(pc.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}
+                                        </td>
+                                        <td className="p-4 text-base font-medium whitespace-nowrap text-white">
+                                            {props.auth.permissions.includes('admin.promocode.edit') &&
+                                                <Link href={route('admin.promocode.edit', { id: pc.id })} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                    <Button>Editer le code promo</Button>
+                                                </Link>
+                                            }
+                                            {props.auth.permissions.includes('admin.promocode.delete') &&
+                                                <Link href={route('admin.promocode.delete')} method="post" preserveState={false} only={['promoCodes']} data={{ id: pc.id }} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                    <Button color="failure">Supprimer</Button>
+                                                </Link>
+                                            }
+                                        </td>
+                                    </tr>
+                                )
+                            })}
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+
                 <div className="sticky bottom-0 right-0 items-center w-full card" style={{ borderRadius: "0px" }}>
                     <div className="pagination">
                         <Pagination

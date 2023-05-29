@@ -14,7 +14,7 @@ export default function ForumCategoriesEdit(props) {
     const [subcategories, setSubcategories] = useState(category.subcategories);
     const title = "Forum - Catégorie";
 
-    
+
     async function getChangedPos(currentPos, newPos) {
         let subcategoriesPrepare = subcategories;
         subcategoriesPrepare = subcategoriesPrepare.swap(newPos, currentPos);
@@ -24,8 +24,8 @@ export default function ForumCategoriesEdit(props) {
     }
 
 
-    async function submitSubcategories(){
-        router.post(route('admin.forum.subcategories.swap'), {subcategories: subcategories, _token: props.csrf_token}, { 
+    async function submitSubcategories() {
+        router.post(route('admin.forum.subcategories.swap'), { subcategories: subcategories, _token: props.csrf_token }, {
             onSuccess: (data) => {
             }
         })
@@ -37,7 +37,7 @@ export default function ForumCategoriesEdit(props) {
         _token: props.csrf_token
     });
 
-    async function saveCategory(e){
+    async function saveCategory(e) {
         e.preventDefault()
         post(route('admin.forum.category.save'), {
             preserveState: true,
@@ -53,46 +53,43 @@ export default function ForumCategoriesEdit(props) {
     }
 
     return (
-        <AdminLayout>
+        <AdminLayout title={title}>
             <Head title={title} />
-
-            <div className="p-10">
-                <h1 className="text-3xl text-white mb-5">{title}</h1>
-                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-10 dark:bg-gray-900">
-                    <div className="col-span-1">
-                        <form onSubmit={saveCategory}>
-                            <div className="mb-2 block">
-                                <Label
-                                    htmlFor="name"
-                                    value="Nom de la catégorie"
-                                />
-                            </div>
-                            <TextInput
-                                id="name"
-                                type="text"
-                                placeholder="BobbyCategory"
-                                value={data.name}
-                                disabled={processing}
-                                onChange={ (e) => { setData('name', e.target.value) }}
-                                required={true}
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-10">
+                <div className="col-span-1">
+                    <h1 className="text-2xl text-white">Informations</h1>
+                    <form onSubmit={saveCategory}>
+                        <div className="mb-2 block">
+                            <Label
+                                htmlFor="name"
+                                value="Nom de la catégorie"
                             />
-                            <Button className="mt-3" disabled={processing} type="submit">Sauvegarder</Button>
-                        </form>
-                    </div>
-                    <div className="col-span-1 flex flex-col justify-center gap-5">
-                        <h1 className="text-2xl text-white">Sous catégories</h1>
-                        {true &&  
-                             <Draggable onPosChange={getChangedPos}>
-                                {subcategories.map((subcategory, index) => {
-                                    return (
-                                        <ForumSubcategoryCard key={index} subcategory={subcategory} />
-                                    );
-                                })} 
-                            </Draggable>
-                        }
-                        <div className="flex justify-end">
-                            <Button onClick={submitSubcategories}>Sauvegarder</Button>
                         </div>
+                        <TextInput
+                            id="name"
+                            type="text"
+                            placeholder="BobbyCategory"
+                            value={data.name}
+                            disabled={processing}
+                            onChange={(e) => { setData('name', e.target.value) }}
+                            required={true}
+                        />
+                        <Button className="mt-3" disabled={processing} type="submit">Sauvegarder</Button>
+                    </form>
+                </div>
+                <div className="col-span-1 flex flex-col justify-center gap-5">
+                    <h1 className="text-2xl text-white">Sous catégories</h1>
+                    {true &&
+                        <Draggable onPosChange={getChangedPos}>
+                            {subcategories.map((subcategory, index) => {
+                                return (
+                                    <ForumSubcategoryCard key={index} subcategory={subcategory} />
+                                );
+                            })}
+                        </Draggable>
+                    }
+                    <div className="flex justify-end">
+                        <Button onClick={submitSubcategories}>Sauvegarder</Button>
                     </div>
                 </div>
             </div>

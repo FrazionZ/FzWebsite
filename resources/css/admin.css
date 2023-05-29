@@ -89,24 +89,30 @@
     width: 24px;
     height: 24px;
 }
+
 .admin .sidebar .menu .dropdown .nav-link svg.arrow {
     transform: rotate(0deg);
     transition: transform 0.2s ease-in-out;
 }
+
 .admin .sidebar .menu .dropdown.open .nav-link svg.arrow {
     transform: rotate(-180deg);
 }
+
 .admin .sidebar .menu .dropdown ul {
     display: none;
     padding-left: 48px;
     margin-top: 4px;
 }
-.admin .sidebar .menu .dropdown.open  ul {
+
+.admin .sidebar .menu .dropdown.open ul {
     display: block;
 }
+
 .admin .sidebar .menu .dropdown ul li a:hover {
     background: var(--fzbg-2);
 }
+
 .admin .sidebar .menu .dropdown ul li a {
     display: block;
     padding: 10px 16px;
@@ -123,6 +129,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.admin .body .topbar .menu_mobile {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin .body .topbar .menu_mobile .icon {
+    display: none;
+    width: 32px;
+    height: 32px;
 }
 
 .admin .body {
@@ -163,6 +182,7 @@
 .admin table tbody tr {
     border-bottom: 1px solid var(--fzbg-1);
 }
+
 .admin table tbody tr td {
     padding: 1rem;
     font-size: 1rem;
@@ -182,19 +202,47 @@
     justify-content: flex-end;
 }
 
-.btn.blue-gradient {
-    background: var(--gradient-blue);
-    color: white !important;
+.admin .backdrop {
+    display: none;
 }
-.btn.blue-gradient:not(.icon) svg {
-    color: #fff;
-    fill: #fff;
-}
-.btn.rounded-tiny {
-    border-radius: 4px !important;
-}
-.btn.tiny {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
+@media screen and (max-width: 1536px) {
+    .admin .sidebar .head img[alt="logo_fz"] {
+        width: 90px;
+    }
+    .admin .sidebar {
+        padding: 24px;
+        left: -320px;
+        position: absolute;
+        transition: left 0.2s ease-in-out;
+    }
+    .admin .sidebar .head .title span {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 36px;
+        text-transform: uppercase;
+    }
+    .admin .sidebar .head .title span.gradient {
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .admin .sidebar.open {
+        left: -0px;
+        z-index: 99;
+        background: var(--fzbg-4);
+        height: 100vh;
+        position: fixed;
+    }
+    .admin .backdrop.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0, 0.6);
+        z-index: 98;
+    }
+    .admin .body .topbar .menu_mobile .icon {
+        display: block;
+    }
 }

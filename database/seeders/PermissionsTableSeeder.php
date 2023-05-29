@@ -151,6 +151,12 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Pouvoir vérifier un compte utilisateur sans passer par les mails',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Modifier le rôle par défaut',
+                'slug'        => 'admin.role.definedefault',
+                'description' => 'Définir le rôle attacher aux nouveaux utilisateurs',
+                'model'       => 'Permission',
+            ],
         ];
 
         /*

@@ -24,6 +24,10 @@ class ConfigTableSeeder extends Seeder
                 'key'        => 'maintenance.message',
                 'value'      => 'Tm91cyByZXZlbm9ucyB0csOocyB2aXRlIGJhbmRlIGRlIG1hcmdvdWxpbnMgIQ=='
             ],
+            [
+                'key'        => 'role.default',
+                'value'      => 1
+            ]
         ];
 
         /*

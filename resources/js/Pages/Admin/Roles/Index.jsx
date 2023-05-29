@@ -50,7 +50,7 @@ export default function RolesIndex(props) {
         <AdminLayout title={title}>
             <Head title={title} />
             <div className="p-10">
-                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:gap-10">
+                <div className="grid grid-cols-1">
                     <div className="flex flex-col gap-3">
                         {adminRoles.map((arole, index) => {
                             return (
@@ -82,19 +82,6 @@ export default function RolesIndex(props) {
                         <div className="flex justify-end">
                             <button className="btn" onClick={submitRoles}>Sauvegarder</button>
                         </div>
-                    </div>
-                    <div className="col-span-1 flex flex-col justify-center gap-5 border-gray-800 border-l pl-6">
-                        <h2 className="text-3xl text-white">
-                            Comment fonctionne les rôles ?
-                        </h2>
-                        <h4 className="text-1xl text-white">
-                            L'ordre d'affichage des cartes forment la hiérarchie
-                            des rôles. Plus un rôle est haut, plus il a de
-                            pribilèges. (NB. Si vous avez la permission d'éditer
-                            les permissions et les rôles, vous ne pouvez pas
-                            éditer vos propres rôles ni les rôles au dessus des
-                            votres)
-                        </h4>
                     </div>
                 </div>
             </div>
