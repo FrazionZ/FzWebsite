@@ -21,3 +21,4 @@ Route::middleware(['web', 'auth:api'])->get('/user', function(Request $request) 
 });
 
 Route::post('skins/update', [App\Http\Controllers\API\SkinsController::class, 'update'])->name('update');
+Route::post('resetpwd', [App\Http\Controllers\Auth\PasswordResetLinkController::class, 'store'])->name('resetpwd');

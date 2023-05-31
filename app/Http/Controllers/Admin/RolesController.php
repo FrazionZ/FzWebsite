@@ -46,6 +46,8 @@ class RolesController extends Controller
         $role->users = RoleUser::where('role_id', $role->id)->count();
         $role->barStyle = $role->getBadgeStyle();
 
+        $categoriePermission = [];
+
         $permissions = Permission::get();
         foreach($permissions as $perm){
             $perm->hasCheck = false;
@@ -55,11 +57,21 @@ class RolesController extends Controller
                     break;
                 }
             }
+            $explodeKey = explode(".", $perm->slug);
+            $keyCateg = ucfirst($explodeKey[0]) . " - " . ucfirst($explodeKey[1]);
+            $perm->keyCateg = $keyCateg;
+            if (!in_array(array('name' => $keyCateg), $categoriePermission))
+                array_push($categoriePermission, array('name' => $keyCateg));
+        }
+        foreach($permissions as $perm){
+            if(!isset($categoriePermission[array_search($perm->keyCateg, array_column($categoriePermission, 'name'))]['perms']))
+                $categoriePermission[array_search($perm->keyCateg, array_column($categoriePermission, 'name'))]['perms'] = [];
+            array_push($categoriePermission[array_search($perm->keyCateg, array_column($categoriePermission, 'name'))]['perms'], $perm);
         }
 
         return Inertia::render('Admin/Roles/Edit', [
             'role' => $role,
-            'permissions' => $permissions
+            'categoriePermission' => $categoriePermission
         ]);
     }
 
@@ -135,7 +147,7 @@ class RolesController extends Controller
     public function perms(Request $request){
         $validator = Validator::make($request->all(), [
             'role_id' => 'required|int',
-            'permissions' => 'required',
+            'categoriePermission' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -150,11 +162,13 @@ class RolesController extends Controller
             if($highRole->position >= $role->position) 
                 return redirect()->back()->with("status", $this->toastResponse('error', "Vous n'avez pas le droit de faire cette requête !"));
 
-        foreach($request->permissions as $perm){
-            if($perm['hasCheck'])
-                $role->attachPermission($perm['id']);
-            else
-                $role->detachPermission($perm['id']);
+        foreach($request->categoriePermission as $categPerm){
+            foreach($categPerm['perms'] as $perm){
+                if($perm['hasCheck'])
+                    $role->attachPermission($perm['id']);
+                else
+                    $role->detachPermission($perm['id']);
+            }
         }
 
         return redirect()->back()->with("status", $this->toastResponse('success', "Permissions sauvegardé."));

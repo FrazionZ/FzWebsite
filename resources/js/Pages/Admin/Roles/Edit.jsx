@@ -8,7 +8,7 @@ export default function UserEdit(props) {
     const [role, setRole] = useState(props.role);
     let title = `Edition d'un rôle`;
 
-    const [permissions, setPermissions] = useState(props.permissions)
+    const [categoriePermission, setCategoriePermission] = useState(props.categoriePermission)
 
     const { data, setData, post, processing, errors } = useForm({
         id: role.id,
@@ -81,7 +81,7 @@ export default function UserEdit(props) {
                 </div>
             </div>
             {role.level < 5 &&
-                <Permissions role={role} permissions={permissions} />
+                <Permissions role={role} categoriePermission={categoriePermission} />
             }
         </AdminLayout>
     );
