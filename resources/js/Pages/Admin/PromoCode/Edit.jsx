@@ -77,7 +77,7 @@ export default function PromoCodeAdd(props) {
                                     disabled={processing}
                                     onChange={(e) => { setData('code', e.target.value) }}
                                 />
-                                <button className="btn" onClick={randomCode}><FaRandom /></button>
+                                <div className="btn" onClick={randomCode}><FaRandom /></div>
                             </div>
                         </div>
                         <div>
