@@ -19,14 +19,14 @@ Array.prototype.swap = function (x, y) {
 };
 
 window.axeptioSettings = {
-    clientId: "647b861ef54636749ca8c5f4",
-    cookiesVersion: "frazionz-fr",
+    clientId: "647b861ef54636749ca8c5f4"
 };
    
-(function(d, s) {
-    var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
-    e.async = true; e.src = "//static.axept.io/sdk-slim.js";
-    t.parentNode.insertBefore(e, t);
+(function(d, s) {
+      var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+      e.async = true; 
+      e.src = "//static.axept.io/sdk-slim.js";
+      t.parentNode.insertBefore(e, t);
 })(document, "script");
 
 /**
