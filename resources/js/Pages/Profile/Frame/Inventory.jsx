@@ -113,7 +113,7 @@ export default function FrameInventory() {
 
                             {itemShowMobile?.item?.potionMeta !== undefined &&
                                 <div className="column">
-                                    <h2 className='text-xl'>Détails de la potion</h2>
+                                    <h2 className='text-xl'>Détails de l'effet</h2>
                                     <h4 className="text-gray">{itemShowMobile?.item?.potionMeta?.displayName}</h4>
                                 </div>
                             }
