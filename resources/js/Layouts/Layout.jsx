@@ -48,7 +48,7 @@ export default function Layout({ props, mc, title, isHome, children }) {
                             <li>2022 - Tous droits réservés</li>
                             <li><Link href="#">Politique de Confidentialités</Link></li>
                             <li><Link href="#">Mentions Légales</Link></li>
-                            <li><a href="#" id="open_preferences_center">Change your preferences</a></li>
+                            <li><a href="#" id="open_consent_cookies">Change your preferences</a></li>
                             <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGU</Link></li>
                             <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGV</Link></li>
                         </ul>
