@@ -24,6 +24,10 @@
         rel="stylesheet"
         href="https://unpkg.com/react-quill@1.3.3/dist/quill.snow.css"
         />
+
+        
+        <script type="module" src="https://cookieconsent.popupsmart.com/js/CookieConsent.js" ></script>
+        <script type="text/javascript" src="https://cookieconsent.popupsmart.com/js/App.js"></script>
         <!-- Scripts -->
         @routes
         @viteReactRefresh
@@ -32,18 +36,18 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
-        <script>
-            window.axeptioSettings = {
-                clientId: "647b861ef54636749ca8c5f4",
-                cookiesVersion: "frazionz-fr",
-            };
-            
-            (function(d, s) {
-                var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
-                e.async = true; e.src = "//static.axept.io/sdk-slim.js";;
-                t.parentNode.insertBefore(e, t);
-            })(document, "script");
-            const global = globalThis;
-        </script>
     </body>
+    <script>
+        popupsmartCookieConsentPopup({
+            "siteName" : "FrazionZ" ,
+            "notice_banner_type": "simple-dialog",
+            "consent_type": "gdpr",
+            "palette": "dark",
+            "language": "French",
+            "privacy_policy_url" : "https://frazionz.net/page/contrat-generales-dutilisations-et-de-ventes" ,
+            "preferencesId" : "#open_consent_cookies" ,
+            "companyLogoURL" : "https://d2r80wdbkwti6l.cloudfront.net/GwxhJIaPUyQ74O4Q5zClVu7koL1Upfmr.jpg"
+        });
+        const global = globalThis;
+    </script>
 </html>
