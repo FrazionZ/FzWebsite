@@ -363,11 +363,6 @@
   resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.16.17.tgz"
   integrity sha512-y+EHuSchhL7FjHgvQL/0fnnFmO4T1bhvWANX6gcnqTjtnKWbTvUMCpGnv2+t+31d7RzyEAYAd4u2fnIhHL6N/Q==
 
-"@fantassin/axeptio@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@fantassin/axeptio/-/axeptio-1.0.3.tgz"
-  integrity sha512-JQMT4bqGk6+voyKzyQQpvznZzd/jUybVogrKhiEzQyogFMB3HzxyzJwSONmJy355482zc1pu0n+ySJt5JqOXLQ==
-
 "@floating-ui/core@^1.2.2":
   version "1.2.2"
   resolved "https://registry.npmjs.org/@floating-ui/core/-/core-1.2.2.tgz"

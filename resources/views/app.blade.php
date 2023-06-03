@@ -37,7 +37,7 @@
     <body class="font-sans antialiased">
         @inertia
     </body>
-    <script>
+    <script cookie-consent="functionality">
         popupsmartCookieConsentPopup({
             "siteName" : "FrazionZ" ,
             "notice_banner_type": "simple-dialog",
