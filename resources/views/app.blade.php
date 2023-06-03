@@ -34,6 +34,16 @@
         @inertia
     </body>
     <script>
+        window.axeptioSettings = {
+            clientId: "647b861ef54636749ca8c5f4",
+            cookiesVersion: "frazionz-fr",
+        };
+        
+        (function(d, s) {
+            var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+            e.async = true; e.src = "//static.axept.io/sdk.js";
+            t.parentNode.insertBefore(e, t);
+        })(document, "script");
         const global = globalThis;
     </script>
 </html>
