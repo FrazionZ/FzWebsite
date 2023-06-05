@@ -48,7 +48,7 @@ export default function Layout({ props, mc, title, isHome, children }) {
                             <li>2022 - Tous droits réservés</li>
                             <li><Link href="#">Politique de Confidentialités</Link></li>
                             <li><Link href="#">Mentions Légales</Link></li>
-                            <li><a href="#" onClick={()=>{ javascript:openAxeptioCookies() }}>Préférence des cookies</a></li>
+                            <li><a href="#axeptio_consent_pref" id="axeptio_consent_pref" onClick={()=>{ javascript:openAxeptioCookies() }}>Préférence des cookies</a></li>
                             <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGU</Link></li>
                             <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGV</Link></li>
                         </ul>
