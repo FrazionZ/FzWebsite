@@ -38,16 +38,6 @@
         @inertia
     </body>
     <script>
-        popupsmartCookieConsentPopup({
-            "siteName" : "FrazionZ" ,
-            "notice_banner_type": "head-dialog",
-            "consent_type": "gdpr",
-            "palette": "dark",
-            "language": "French",
-            "privacy_policy_url" : "https://frazionz.net/page/contrat-generales-dutilisations-et-de-ventes" ,
-            "preferencesId" : "#" ,
-            "companyLogoURL" : "https://d2r80wdbkwti6l.cloudfront.net/b3nIYVdM7alIyznfK1CchPTBTMmHe4ur.jpg"
-        });
         const global = globalThis;
     </script>
 </html>
