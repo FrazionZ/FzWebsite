@@ -48,6 +48,10 @@
     color: white;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: var(--fzbg-4);
     overflow-x: hidden;
