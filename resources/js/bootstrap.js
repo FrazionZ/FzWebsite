@@ -18,6 +18,16 @@ Array.prototype.swap = function (x, y) {
     return this;
 };
 
+window.axeptioSettings = {
+    clientId: "647b861ef54636749ca8c5f4",
+};
+
+(function (d, s) {
+    var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+    e.async = true; e.src = "//static.axept.io/sdk.js";
+    t.parentNode.insertBefore(e, t);
+})(document, "script");
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

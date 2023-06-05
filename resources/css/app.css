@@ -52,10 +52,6 @@ body {
     background: var(--fzbg-4);
     overflow-x: hidden;
     overflow-y: overlay;
-    transition: all 2s ease-in-out;
-}
-body.light {
-    background: #fff;
 }
 
 body #app {
