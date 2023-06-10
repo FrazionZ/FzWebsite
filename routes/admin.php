@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\LoggerController;
 use App\Http\Controllers\Admin\GithubController;
 use App\Http\Controllers\Admin\ForumController;
+use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\Forum\ThreadController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\Github\ReposController;
@@ -35,6 +37,18 @@ Route::middleware(['permission:admin.access'])->group(function() {
 
     Route::prefix('newsletter')->name('newsletter.')->group(function() {
         Route::get('/', [NewsletterController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('support')->name('support.')->group(function() {
+        Route::get('/', [SupportController::class, 'index'])->name('index');
+        Route::get('/show/{id}', [SupportController::class, 'show'])->middleware(['permission:admin.support.show'])->name('show');
+    });
+
+    Route::prefix('shop')->name('shop.')->group(function() {
+        Route::get('/categories', [ShopController::class, 'categories'])->name('categories');
+        Route::get('/items', [ShopController::class, 'items'])->name('items');
+        Route::get('/items/create', [ShopController::class, 'create_items'])->middleware(['permission:admin.shop.items.add'])->name('items.create');
+        Route::post('/items/search', [ShopController::class, 'search_items'])->name('items.search');
     });
         
     Route::prefix('users')->name('users.')->group(function() {

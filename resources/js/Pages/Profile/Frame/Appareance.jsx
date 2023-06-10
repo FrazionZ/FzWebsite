@@ -30,7 +30,7 @@ export default function FrameAppareance() {
     return (
         <form onSubmit={submitSkin} className="flex flex-col gap-[32px]">
             <Alert state="infos">
-                Une liste de Capes est diplonible sur cette <Link href={"#"}>page</Link>
+                Une liste de Capes est disponible sur cette <Link href={"#"}>page</Link>
             </Alert>
             <div className="appareance px-[102px] form-group">
                 <legend>

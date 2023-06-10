@@ -15,7 +15,7 @@ class SupportController extends Controller
     
 
     public function index(Request $request){
-        $tickets = SupportTickets::get();
+        $tickets = SupportTickets::where('author', $request->user()->id)->get();
         foreach($tickets as $ticket){
             $ticket->author = User::select('id', 'name')->where('id', $ticket->author)->first();
             //Get Last Message

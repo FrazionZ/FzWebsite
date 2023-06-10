@@ -3,6 +3,7 @@ import { Link, usePage } from "@inertiajs/react";
 import Logo from '../../../assets/img/logo.svg'
 import { FaFile, FaComments, FaHome, FaTools, FaUsers } from "react-icons/fa";
 import { HiShoppingBag, HiWrenchScrewdriver } from "react-icons/hi2";
+import { HiOutlineSupport } from "react-icons/hi";
 import { MdOutlineLabelImportant } from 'react-icons/md'
 import Dropdown from "./Dropdown";
 
@@ -42,17 +43,23 @@ export default function Navigation() {
             type: "link"
         },
         {
+            label: "Support système",
+            icon: <HiOutlineSupport className="icon" />,
+            href: route('admin.support.index'),
+            type: "link"
+        },
+        {
             label: "Boutique",
             icon: <HiShoppingBag className="icon" />,
             type: "dropdown",
             menu: [
                 {
-                    label: "Ajouter un article",
-                    href: route('admin.index')
+                    label: "Catégories",
+                    href: route('admin.shop.categories')
                 },
                 {
-                    label: "Liste des articles",
-                    href: route('admin.index')
+                    label: "Articles",
+                    href: route('admin.shop.items')
                 },
                 {
                     label: "Code promo",

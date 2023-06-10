@@ -18,6 +18,7 @@
     --gradient: linear-gradient(91.92deg, #f7a92f 0%, #f16b1f 100%);
     --gradient-blue: linear-gradient(94.55deg, #2072BD 0.13%, #0D3B65 100.13%);
     --gradient-green: linear-gradient(92.06deg, #69C82F 0%, #26910B 100%);
+    --gradient-red: linear-gradient(92.06deg, #D44E14 0%, #910B0B 100%);
     --color-red: #981503;
     --color-green: #459803;
     --color-blue: #0fa0b4;
@@ -592,6 +593,14 @@ svg.gradientForce linearGradient stop:last-child {
     color: white !important;
 }
 .btn.blue-gradient:not(.icon) svg {
+    color: #fff;
+    fill: #fff;
+}
+.btn.red-gradient { 
+    background: var(--gradient-red);
+    color: white !important;
+}
+.btn.red-gradient:not(.icon) svg {
     color: #fff;
     fill: #fff;
 }
@@ -1775,6 +1784,15 @@ header .menu_account .not_logged.mobile {
     right: -10px;
     border-radius: 5px;
     font-size: 0.8rem;
+}
+.support {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.support .answers #messages {
+    max-height: 40rem;
+    overflow-y: auto;
 }
 /* MOBILE */
 @media screen and (max-width: 768px) {

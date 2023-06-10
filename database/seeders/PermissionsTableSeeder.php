@@ -157,6 +157,30 @@ class PermissionsTableSeeder extends Seeder
                 'description' => 'Définir le rôle attacher aux nouveaux utilisateurs',
                 'model'       => 'Permission',
             ],
+            [
+                'name'        => 'Voir un ticket',
+                'slug'        => 'admin.support.show',
+                'description' => 'Voir la conversation d\'un ticket',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Ajouter un article',
+                'slug'        => 'admin.shop.items.add',
+                'description' => 'Ajout d\'un article dans la boutique',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Editer un article',
+                'slug'        => 'admin.shop.items.edit',
+                'description' => 'Edition d\'un article dans la boutique',
+                'model'       => 'Permission',
+            ],
+            [
+                'name'        => 'Supprimer un article',
+                'slug'        => 'admin.shop.items.delete',
+                'description' => 'Suppression d\'un article dans la boutique',
+                'model'       => 'Permission',
+            ],
         ];
 
         /*

@@ -22,8 +22,6 @@ export default function UsersIndex(props) {
 
     let title = "Liste des utilisateurs";
 
-    console.log(dataUsers)
-
     async function submitSearch(e) {
         e.preventDefault()
 
