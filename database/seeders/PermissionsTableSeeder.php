@@ -164,6 +164,12 @@ class PermissionsTableSeeder extends Seeder
                 'model'       => 'Permission',
             ],
             [
+                'name'        => 'Répondre à un ticket',
+                'slug'        => 'admin.support.answer',
+                'description' => 'Répondre au ticket d\'un joueur sans être l\'auteur du ticket',
+                'model'       => 'Permission',
+            ],
+            [
                 'name'        => 'Ajouter un article',
                 'slug'        => 'admin.shop.items.add',
                 'description' => 'Ajout d\'un article dans la boutique',

@@ -9,6 +9,8 @@ use App\Mail\ConfirmMail;
 use App\Models\ApiSkins;
 use App\Models\EmailIdentify;
 use App\Models\FactionProfileSession;
+use App\Models\Payments;
+use App\Models\ShopHistory;
 use App\Models\TokenUsers;
 use App\Models\User;
 use App\Models\UserHName;
@@ -50,6 +52,8 @@ class ProfileController extends Controller
         $capeData = json_decode(@file_get_contents('https://api.frazionz.net/user/'.$request->user()->uuid.'/cape/data'), true);
         $tokenUsers = TokenUsers::where('uid', $request->user()->id)->get();
         $guildProfile = GuildProfile::where('user_id', $request->user()->uuid)->first();
+        $storeArticles = ShopHistory::pagination(10, 'page', $request->query('page', 0));
+        $storeCredits = Payments::pagination(10, 'page', $request->query('page', 0));
         $guild = null;
         if($guildProfile !== null)
             $guild = Guild::where('id', $guildProfile->faction_id)->first();
@@ -74,6 +78,8 @@ class ProfileController extends Controller
             'tokensUser' => $tokenUsers,
             'guild' => $guild,
             'guildProfile' => $guildProfile,
+            'storeArticles' => $storeArticles,
+            'storeCredits' => $storeCredits,
             'pcodeEnabled' => $request->user()->isPCodeEnable(),
             'status' => session('status'),
         ]);

@@ -3,19 +3,205 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
 .card.ticket .infos {
     display: flex;
     flex-direction: column;
 }
-.card.ticket .infos .title, .ticket.view .infos .title {
+
+.card.ticket .infos .title,
+.ticket.view .infos .title {
     font-size: 22px;
     font-weight: 700;
     line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
+
 .card.ticket.view .content {
     word-break: break-all;
 }
-.card.ticket .infos, .ticket.view .infos > span.pub_or_up_date, span.last_message {
+
+.card.ticket .infos,
+.ticket.view .infos>span.pub_or_up_date,
+span.last_message {
     color: var(--text-inactive);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.support {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.support .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 362px;
+}
+
+.support .menu .tickets {
+    height: 36rem;
+    overflow-y: auto;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.support .menu .tickets::-webkit-scrollbar {
+    display: none;
+}
+
+.support .menu .create {
+    width: 100%;
+}
+
+.support .menu .card.ticket {
+    border-radius: 10px;
+}
+
+.support .menu .card.ticket.active {
+    background: var(--fzbg-1);
+}
+
+.support .chatbox {
+    background-color: var(--fzbg-2);
+    border: 1px solid var(--fzbg-1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.support .chatbox .head {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.support .chatbox .head .title_ticket {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.support .chatbox .head .details_ticket {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-inactive);
+}
+
+.support .chatbox .messages {
+    padding: 16px;
+    overflow: auto;
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    max-height: 38rem;
+}
+
+.support .chatbox .messages .list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.support .chatbox .messages .list .item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.support .chatbox .messages .list .item.isYou {
+    align-items: end;
+}
+
+.support .chatbox .messages .list .item .infos {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.support .chatbox .messages .list .item.isYou .infos {
+    flex-direction: row-reverse;
+}
+
+
+.support .chatbox .messages .list .item .details {
+    color: var(--text-inactive);
+}
+
+.support .chatbox .messages .list .item .user img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+}
+
+.support .chatbox .messages .list .item .content {
+    border-radius: 8px 8px 8px 0px;
+    min-width: 217px;
+    max-width: 434px;
+    padding: 12px;
+    background: var(--fzbg-4);
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+
+    word-wrap: break-word;
+}
+.support .chatbox .messages .list .item .content.isYou {
+    border-radius: 8px 8px 0px 8px;
+    background: var(--gradient);
+    color: var(--button-text, #311903);
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

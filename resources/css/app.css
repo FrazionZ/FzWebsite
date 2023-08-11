@@ -705,14 +705,14 @@ select,
 input[type="password"] {
     border-radius: 12px !important;
     padding: 24px !important;
+    font-size: 14px !important;
     font-weight: 500 !important;
-    font-size: 20px !important;
-    line-height: 30px !important;
-    height: 78px !important;
+    height: 62px !important;
     border: 1px solid var(--fzbg-1) !important;
     background-color: var(--fzbg-2) !important;
     color: white;
     transition: 0.2s all ease-in-out;
+    line-height: 0.8rem !important;
 }
 
 [type='checkbox'],
@@ -827,6 +827,7 @@ input:disabled[type="date"],
 textarea:not(.w-md-editor-text-input):disabled,
 select:disabled label.file-upload:has([disabled]) {
     color: var(--text-inactive);
+    background: var(--fzbg-3) !important;
 }
 
 input.discord[type="text"] {
@@ -1390,6 +1391,44 @@ input[type="tel"] {
     padding: 0rem !important;
 }
 
+table {
+    width: 100%;
+}
+
+table thead {
+    background: var(--fzbg-2);
+    border: 1px solid var(--fzbg-1);
+    width: 100%;
+    overflow: hidden;
+}
+
+table thead th {
+    padding: 24px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+}
+
+table tbody {
+    margin: 24px 0;
+}
+
+table tbody tr:last-child {
+    border: none;
+}
+
+table tbody tr {
+    border-bottom: 1px solid var(--fzbg-1);
+}
+
+table tbody tr td {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+}
+
 .profile .menu .items .item:hover,
 .profile .menu .items .item.active {
     background-color: var(--fzbg-1);
@@ -1461,6 +1500,12 @@ input[type="tel"] {
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
+}
+
+.profile .history_store {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .paginate {
@@ -1793,6 +1838,35 @@ header .menu_account .not_logged.mobile {
 .support .answers #messages {
     max-height: 40rem;
     overflow-y: auto;
+}
+.loader-3 {
+    width: 28px;
+    height: 28px;
+    border: 3px solid var(--text);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    animation: rotation 1s linear infinite;
+}
+.loader-3:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: var(--color-2);
+}
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+   }
+    100% {
+        transform: rotate(360deg);
+   }
 }
 /* MOBILE */
 @media screen and (max-width: 768px) {

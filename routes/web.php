@@ -98,6 +98,8 @@ Route::middleware(['fzauth'])->prefix('support')->name('support.')->group(functi
     Route::get('/create', [SupportController::class, 'create'])->name('create');
     Route::post('/create', [SupportController::class, 'create_handle'])->name('create.handle');
     Route::get('/view/{id}', [SupportController::class, 'view'])->name('view');
+    Route::post('/messages', [SupportController::class, 'gettingMessages'])->name('gettingMessages');
+    Route::post('/sendAnswer', [SupportController::class, 'sendAnswer'])->name('sendAnswer');
 });
 
 Route::middleware(['fzauth'])->prefix('capes')->name('capes.')->group(function() {

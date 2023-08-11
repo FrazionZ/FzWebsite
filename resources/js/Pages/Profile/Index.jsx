@@ -17,11 +17,13 @@ import MenuAppareance from '../../../assets/img/icons/profile/appareance.jsx'
 import MenuSkills from '../../../assets/img/icons/profile/skills.jsx'
 import MenuFaction from '../../../assets/img/icons/profile/factions.jsx'
 import MenuSuccess from '../../../assets/img/icons/profile/success.jsx'
+import MenuBank from '../../../assets/img/icons/profile/bank.jsx'
 import MenuSettings from '../../../assets/img/icons/profile/settings.jsx'
 import MenuLogExternal from '../../../assets/img/icons/profile/logexternal.jsx'
 
 import FrameInventory from './Frame/Inventory'
 import FrameAppareance from './Frame/Appareance'
+import FrameHistoryStore from './Frame/HistoryStore'
 import FrameSettings from './Frame/Settings'
 import FrameLogExternal from './Frame/LogExternal'
 import FrameGuild from './Frame/Guild'
@@ -108,6 +110,11 @@ export default function ProfileIndex(props) {
             icon: <MenuSuccess className="icon" />,
             display: "Succès",
             component: null
+        },
+        {
+            icon: <MenuBank className="icon" />,
+            display: "Historique des transactions",
+            component: <FrameHistoryStore />
         },
         {
             icon: <MenuSettings className="icon" />,

@@ -15,17 +15,44 @@ class SupportController extends Controller
     
 
     public function index(Request $request){
-        $tickets = SupportTickets::where('author', $request->user()->id)->get();
+
+
+        if($request->user()->hasPermission('admin.support.show')){
+            $tickets = SupportTickets::orderBy('created_at', 'desc')->get();
+        }else{
+            $tickets = SupportTickets::orderBy('created_at', 'desc')->where('author', $request->user()->id)->get();
+        }
+
+
         foreach($tickets as $ticket){
             $ticket->author = User::select('id', 'name')->where('id', $ticket->author)->first();
             //Get Last Message
-            $ticket->lastMessage = SupportAnswers::where('author', $request->user()->id)->orderBy('created_at', 'desc')->first();
+            $ticket->lastMessage = SupportAnswers::where('ticket_id', $ticket->id)->where('author', $request->user()->id)->orderBy('created_at', 'desc')->first();
             if($ticket->lastMessage !== null)
                 $ticket->lastMessage->author = User::select('id', 'name')->where('id', $ticket->lastMessage->author)->first();
         }
         return Inertia::render('Support/Index', [
             'tickets' => $tickets
         ]);
+    }
+
+    public function gettingMessages(Request $request){
+        $validator = Validator::make($request->all(), [
+            'ticket_id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['result' => 'error', 'msg' => 'Une erreur est survenue lors de la lecture des données']);
+        }
+
+        $ticket_id = $request->ticket_id;
+        $ticket =  SupportTickets::where('id', $ticket_id)->first();
+        if($ticket == null)  return response()->json(['result' => 'error', 'msg' => 'Une erreur est survenue lors de la lecture des données']);
+        if($ticket->author !== $request->user()->id && !$request->user()->hasPermission('admin.support.show')) return response()->json(['result' => 'error', 'msg' => 'Vous n\'êtes pas autorisé à voir ce ticket']);
+
+        $messages = SupportAnswers::getWithAuthor($ticket->id);
+
+        return response()->json(['result' => 'success', 'messages' => $messages]);
     }
 
     public  function view(Request $request, $id){
@@ -43,6 +70,32 @@ class SupportController extends Controller
         return Inertia::render('Support/View', [
             'ticket' => $ticket
         ]);
+    }
+
+    public function sendAnswer(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'tid' => 'required|integer',
+            'answer' => 'required|string|min:10',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->with('status', $this->toastResponse('error', 'Le formulaire semble incomplet'));
+        }
+
+        $ticket =  SupportTickets::where('id', $request->tid)->first();
+        if($ticket == null)  $this->toastResponse('error', 'Une erreur est survenue lors de la lecture des données');
+        if($ticket->author !== $request->user()->id && !$request->user()->hasPermission('admin.support.answer')) return redirect()->back()->with('status', $this->toastResponse('error', 'Vous n\'êtes pas autorisé à répondre à ce ticket'));
+
+        SupportAnswers::create([
+            'author' => $request->user()->id,
+            'ticket_id' => $ticket->id,
+            'content' => $request->answer,
+            'ip_address' => $_SERVER['REMOTE_ADDR']
+        ]);
+
+        return redirect()->back()->with('result', SupportAnswers::getWithAuthor($ticket->id))->with('status', $this->toastResponse('success', 'Votre réponse à bien été envoyée'));
+
+
     }
 
     public function create(Request $request){

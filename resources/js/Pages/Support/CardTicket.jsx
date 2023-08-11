@@ -9,20 +9,15 @@ export default function CardTicket(props) {
     const ticket = props.ticket
     const lang = new Lang(props.lang)
     const lastMessage = ticket?.lastMessage
+    const isCurrentTicket = props.isCurrentTicket
 
     return (
-        <div className="card ticket">
+        <div onClick={props.onClick} className={`card ticket ${isCurrentTicket ? "active" : ""}`}>
             <div className="infos">
                 <span className="title">{ticket.title}</span>
-                <span className="pub_or_up_date">
-                    Mis à jour le {lang.replaceMonth(moment(ticket?.updated_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}
-                </span>
                 <span className='last_message'>
-                    Derniers message {lastMessage == null ? ", Aucun" : " de "+lastMessage?.author?.name+" le "+lang.replaceMonth(moment(lastMessage?.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm')) }
+                    {lastMessage == null ? "Aucun message" : lastMessage?.content}
                 </span>
-            </div>
-            <div className="actions">
-                <Link href={route('support.view', {id: ticket?.id})}><button className='btn'>Voir</button></Link>
             </div>
         </div>
     )

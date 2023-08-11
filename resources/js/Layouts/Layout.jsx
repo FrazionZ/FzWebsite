@@ -45,10 +45,10 @@ export default function Layout({ props, mc, title, isHome, children }) {
                     <div className='separator' />
                     <div className="credits">
                         <ul>
-                            <li>2022 - Tous droits réservés</li>
+                            <li>© 2022 - Tous droits réservés - Non affilié à Mojang</li>
                             <li><Link href="#">Politique de Confidentialités</Link></li>
                             <li><Link href="#">Mentions Légales</Link></li>
-                            <li><a href="#axeptio_consent_pref" id="axeptio_consent_pref" onClick={()=>{ javascript:openAxeptioCookies() }}>Préférence des cookies</a></li>
+                            <li><a href="#axeptio_consent_pref" id="axeptio_consent_pref" onClick={()=>{ javascript:openAxeptioCookies() }}>Préf. cookies</a></li>
                             <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGU</Link></li>
                             <li><Link href={route('page.display', {slug: 'contrat-generales-dutilisations-et-de-ventes'})}>CGV</Link></li>
                         </ul>
@@ -57,6 +57,6 @@ export default function Layout({ props, mc, title, isHome, children }) {
                 <FzToastContainer />
             </div>
         </>
-        
+
     );
 }
