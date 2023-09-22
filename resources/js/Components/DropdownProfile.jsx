@@ -6,8 +6,8 @@ import '../../css/dropdownProfile.css'
 
 
 export default function DropdownProfile({ text, items, user }) {
-  
-  
+
+
   const itemVariants = {
       open: {
         opacity: 1,
@@ -17,7 +17,7 @@ export default function DropdownProfile({ text, items, user }) {
       closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
   }
 
-  
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -85,7 +85,6 @@ export default function DropdownProfile({ text, items, user }) {
                 key={i}
                 href={elem.value}
                 method={(elem.method !== undefined) ? elem.method : "get"}
-                as={elem?.as}
                 >
                 <motion.li variants={itemVariants}>{elem.name}</motion.li>
               </Link>

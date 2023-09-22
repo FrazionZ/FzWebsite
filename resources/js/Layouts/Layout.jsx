@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navbar from '@/Components/Navbar'
 import { Link } from '@inertiajs/react';
+import { BiHome } from 'react-icons/bi';
 import { FaDiscord, FaTwitter, FaInstagram, FaYoutube, FaTiktok, FaTwitch } from 'react-icons/fa'
 import FzToastContainer from '@/Components/FzToastContainer'
 import '../../css/app.css';
@@ -13,6 +14,7 @@ import Tiktok from '../../assets/img/icons/network/tiktok'
 import Twitter from '../../assets/img/icons/network/twitter'
 import Twitch from '../../assets/img/icons/network/twitch'
 import Youtube from '../../assets/img/icons/network/youtube'
+
 
 export default function Layout({ props, mc, title, isHome, children }) {
 
