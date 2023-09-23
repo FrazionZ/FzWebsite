@@ -15,8 +15,10 @@ use PragmaRX\Google2FA\Google2FA;
 use Illuminate\Validation\ValidationException;
 use App\Support\QrCodeRenderer;
 use Illuminate\Support\HtmlString;
+use Laravel\Socialite\Facades\Socialite;
+
 class TwoFAController extends Controller
-{ 
+{
 
     public function index(Request $request) {
 
@@ -38,7 +40,7 @@ class TwoFAController extends Controller
 
         $google2fa = new Google2FA();
 
-        $secret = $google2fa->generateSecretKey(); 
+        $secret = $google2fa->generateSecretKey();
 
         if($request->session()->has('2fa.secret'))
             $secret = $request->session()->get('2fa.secret');
@@ -52,9 +54,9 @@ class TwoFAController extends Controller
         $request->session()->put('2fa.secret', $secret);
 
         $qrCode = new HtmlString(QrCodeRenderer::render($qrCodeUrl, 250));
-        
+
         return Inertia::render('Auth/TwoFA/Register', [
-            'qrCode' =>  $qrCode->toHtml(), 
+            'qrCode' =>  $qrCode->toHtml(),
             'secret' => $secret
         ]);
     }
@@ -104,9 +106,9 @@ class TwoFAController extends Controller
 
         return redirect()->route('2fa.index')->with("status", $this->toastResponse('success', "Vos codes ont étaient régénéré"));
     }
- 
+
     public function login(Request $request)
-    {        
+    {
         if (! $request->session()->has('login.2fa.id')) {
             return redirect()->route('login');
         }
@@ -126,7 +128,7 @@ class TwoFAController extends Controller
             else
                 return redirect()->back()->with("status", $this->toastResponse('error', "Vous devez remplir touts les champs"));
         }
-        
+
         if (! $request->session()->has('login.2fa.id')) {
             if($isOauth)
                 return redirect()->back();
@@ -134,7 +136,7 @@ class TwoFAController extends Controller
                 return redirect()->route('login');
         }
 
-        
+
         $redirectURL = $request->session()->get('login.2fa.redirectURL');
 
         $user = User::findOrFail($request->session()->get('login.2fa.id'));
@@ -171,13 +173,15 @@ class TwoFAController extends Controller
 
         Auth::guard()->login($user, $request->session()->get('login.2fa.remember'));
 
+        if($user->uuid != null) {
+            $request->session()->put('msa', Socialite::driver('minecraft')->getProfileMinecraft($user->uuid));
+        }
+
         $request->session()->remove('login.2fa');
         $request->session()->remove('login.2fa.isOauth');
         $request->session()->remove('login.2fa.redirectURL');
 
         //$user->replaceRecoveryCode($code);
-
-        if($user->uuid == null) $user->update(['uuid' => Str::uuid()]);
 
         Logger::log('user.auth.login.successful', null, null, $user);
 
