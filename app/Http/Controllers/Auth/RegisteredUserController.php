@@ -60,7 +60,6 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'uuid' => Str::uuid(),
             'password' => Hash::make($request->password),
             'two_factor_secret' => $request->two_factor_secret,
         ]);
@@ -80,7 +79,7 @@ class RegisteredUserController extends Controller
 
         $google2fa = app('pragmarx.google2fa');
 
-        $registration_data["two_factor_secret"] = $google2fa->generateSecretKey(); 
+        $registration_data["two_factor_secret"] = $google2fa->generateSecretKey();
         $request->session()->flash('registration_data', $registration_data);
 
         $QR_Image = $google2fa->getQRCodeInline(
@@ -88,9 +87,9 @@ class RegisteredUserController extends Controller
             $request->user()->email,
             $registration_data['two_factor_secret']
         );
-        
+
         return Inertia::render('Auth/TwoFA/Register', [
-            'QR_Image' => $QR_Image, 
+            'QR_Image' => $QR_Image,
             'secret' => $registration_data['two_factor_secret']
         ]);
     }
@@ -101,7 +100,7 @@ class RegisteredUserController extends Controller
      * @return response()
      */
     public function completeRegistration(Request $request)
-    {        
+    {
 
     }
 }

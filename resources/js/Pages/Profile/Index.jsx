@@ -193,7 +193,7 @@ export default function ProfileIndex(props) {
                                     <div className="card">
                                         <div className="flex justify-between items-center w-full">
                                             <div className="a_u flex gap-6 items-center">
-                                                <img src={`https://api.frazionz.net/user/${user.uuid}/skin/head?s=32`} alt="avatar" />
+                                                <img src={`https://minotar.net/helm/${ microsoft != null ? microsoft?.profileId : "steve" }/600.png`} alt="avatar" />
                                                 {microsoft?.profileName}
                                             </div>
                                         </div>

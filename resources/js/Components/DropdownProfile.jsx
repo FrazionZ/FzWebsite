@@ -45,8 +45,8 @@ export default function DropdownProfile({ items, user }) {
           </svg>
         </motion.div>
         <div className="user">
-          <span className='hidden lg:block'>{ user?.msa?.profileName }</span>
-          <img src={`https://auth.frazionz.net/skins/face.php?u=1`} alt="" />
+          <span className='hidden lg:block'>{ user?.msa != null ? user?.msa?.profileName : "Visiteur" }</span>
+          <img src={`https://minotar.net/helm/${ user?.msa != null ? user?.msa?.profileId : "steve" }/600.png`} alt="" />
         </div>
       </motion.button>
       <motion.ul
