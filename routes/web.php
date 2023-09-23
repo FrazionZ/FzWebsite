@@ -10,6 +10,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromoCodeController;
 use App\Http\Controllers\Social\DiscordController;
+use App\Http\Controllers\Social\MSAController;
 use App\Http\Controllers\Social\TwitchController;
 use App\Http\Controllers\SupportController;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +29,8 @@ Route::post('/promoCodeUse', [PromoCodeController::class, 'useCode'])->name('pro
 
 Route::middleware('fzauth')->prefix('profile')->name('profile.')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('index');
-    Route::get('/username', [ProfileController::class, 'username'])->name('username');
-    Route::post('/username', [ProfileController::class, 'username_handle'])->name('username.handle');
+    //Route::get('/username', [ProfileController::class, 'username'])->name('username');
+    //Route::post('/username', [ProfileController::class, 'username_handle'])->name('username.handle');
     Route::post('/skin/update', [ProfileController::class, 'skin_update'])->name('skin.update');
     Route::patch('/', [ProfileController::class, 'update'])->name('update');
     Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
@@ -60,6 +61,10 @@ Route::middleware(['fzauth'])->prefix('social')->name('social.')->group(function
         Route::get('/callback', [DiscordController::class, 'callback'])->name('callback');
         Route::get('/refresh', [DiscordController::class, 'refreshAllToken'])->name('refresh');
         Route::post('/unlink', [DiscordController::class, 'unlink'])->name('unlink');
+    });
+    Route::prefix('msa')->name('msa.')->group(function() {
+        Route::get('/start', [MSAController::class, 'start'])->name('start');
+        Route::get('/callback', [MSAController::class, 'callback'])->name('callback');
     });
     Route::prefix('twitch')->name('twitch.')->group(function() {
         Route::get('/start', [TwitchController::class, 'start'])->name('start');

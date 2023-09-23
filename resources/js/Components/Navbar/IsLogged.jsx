@@ -46,7 +46,7 @@ export default function IsLogged({ auth }) {
     return (
         <div className="flex items-center gap-6">
             <DropdownNotifications />
-            <DropdownProfile text={auth.user.name} user={auth.user} items={childsElement} />
+            <DropdownProfile user={auth} items={childsElement} />
         </div>
     );
 }

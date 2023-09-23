@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -15,14 +16,16 @@ use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Inertia\Response;
 use \Illuminate\Support\Str;
+use App\Models\MicrosoftAuth;
+use App\Socialite\Minecraft\MinecraftProvider;
 
 class AuthenticatedSessionController extends Controller
 {
-    
-    
+
+
     use AuthenticatesUsers;
 
-    
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
     public function create(): Response
@@ -96,7 +99,7 @@ class AuthenticatedSessionController extends Controller
     protected function loginUser(Request $request, User $user)
     {
         $isOauth = $request->input('isOauth');
-        
+
         if ($user->isBanned()){
             if($isOauth)
                 return redirect(route('login'))->with("status", $this->toastResponse('error', "Vous êtes bannis. Vous ne pouvez plus vous connecter"));
@@ -112,13 +115,15 @@ class AuthenticatedSessionController extends Controller
                 'isOauth' => $isOauth,
                 'redirectURL' => $request->redirect_url
             ]);
-            
+
             return to_route('2fa.login', []);
         }
 
         $this->guard()->login($user, $request->filled('remember'));
 
-        if($user->uuid == null) $user->update(['uuid' => Str::uuid()]);
+        if($user->uuid != null) {
+            $request->session()->put('msa', Socialite::driver('minecraft')->getProfileMinecraft($user->uuid));
+        }
 
         Logger::log('user.auth.login.successful', null, null, $user);
 
@@ -141,6 +146,7 @@ class AuthenticatedSessionController extends Controller
         Logger::log('user.auth.logout', null, null, Auth::user());
 
         Auth::guard('web')->logout();
+
 
         $request->session()->invalidate();
 

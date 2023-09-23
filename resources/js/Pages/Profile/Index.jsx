@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import Layout from "@/Layouts/Layout"
 import { Link, Head } from '@inertiajs/react'
 import Alert from "@/Components/Alert"
 import ReactSkinview3d from 'react-skinview3d'
 import Language from "@/Components/Language";
 import { motion, AnimatePresence } from "framer-motion";
-
+import * as minecraftAuth from "minecraft-auth";
 import BubbleInfos from '../../../assets/img/icons/bubble_infos.svg'
 import Coins from '../../../assets/img/icons/coins.svg'
 import Money from '../../../assets/img/icons/money.svg'
@@ -42,6 +42,7 @@ export default function ProfileIndex(props) {
 
     let title = "Profil"
     let status = props.status
+    let microsoft = props.auth.msa
     let mustVerifyEmail = props.mustVerifyEmail
     let TwoFA = props.auth.TwoFA
     let lang = new Language(props.language);
@@ -62,6 +63,11 @@ export default function ProfileIndex(props) {
     const [socialTwitchLoaded, setSocialTwitchLoaded] = useState(false)
 
     const [rotateSkin, setRotateSkin] = useState(window.screen.width >= 768)
+
+    const MicrosoftAuth = minecraftAuth.MicrosoftAuth;
+
+
+    const webview = useRef(null);
 
     if (!socialDiscordLoaded)
         axios.get(route('social.discord.get'))
@@ -124,11 +130,14 @@ export default function ProfileIndex(props) {
         {
             icon: <MenuLogExternal className="icon" />,
             display: "Connexions Externe",
-            component: <FrameLogExternal twitch={socialTwitchData} updateTwitch={setSocialTwitchData} discord={socialDiscordData} updateDiscord={setSocialDiscordData} />
+            component: <FrameLogExternal microsoft={microsoft} twitch={socialTwitchData} updateTwitch={setSocialTwitchData} discord={socialDiscordData} updateDiscord={setSocialDiscordData} />
         }
     ]
     const [playerObjectRotateY, setPlayerObjectRotateY] = useState(31.7)
     const [menuItemActive, setMenuItemActive] = useState((props.fastMenu !== null) ? props.fastMenu : 0)
+
+    const skinMsa = props.auth.msa?.textures?.SKIN?.url
+    const capeMsa = props.auth.msa?.textures?.CAPE?.url
 
 
     const switchComponentMenu = (index) => {
@@ -158,107 +167,114 @@ export default function ProfileIndex(props) {
                         {status === 'verification-link-sent' && FzToast.success('Un mail vous a été envoyée à l\'instant')}
                     </div>
                 )}
-                <div className="profile">
-                    <div className="top flex-col lg:flex-row">
-                        <ReactSkinview3d
-                            skinUrl={`https://api.frazionz.net/user/${user.uuid}/skin/display`}
-                            capeUrl={`https://api.frazionz.net/capes/display/brut/${capeData?.cape_id}`}
-                            width="262"
-                            height="442"
-                            options={{ enableControls: rotateSkin }}
-                            onReady={(ready) => {
-                                ready.viewer.playerObject.rotation.y = playerObjectRotateY;
-                                ready.viewer.controls.enableRotate = true;
-                                ready.viewer.controls.enableZoom = false;
-                                ready.viewer.controls.enablePan = false;
-                                ready.viewer.animation = new WalkingAnimation();
-                            }}
-                        />
-                        <div className="infos">
-                            <div className="icon_title">
-                                <img src={BubbleInfos} alt="" />
-                                <span>Mes Informations</span>
-                            </div>
-                            <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6 w-full">
-                                <div className="card">
-                                    <div className="flex justify-between items-center w-full">
-                                        <div className="a_u flex gap-6 items-center">
-                                            <img src={`https://api.frazionz.net/user/${user.uuid}/skin/head?s=32`} alt="avatar" />
-                                            {user.name}
-                                        </div>
-                                        <div className="act">
-                                            <Link href={route('profile.username')}><FaPencilAlt /></Link>
+                {microsoft != null &&
+                    <div className="profile">
+                        <div className="top flex-col lg:flex-row">
+                            <ReactSkinview3d
+                                skinUrl={`${skinMsa}`}
+                                capeUrl={`${capeMsa}`}
+                                width="262"
+                                height="442"
+                                options={{ enableControls: rotateSkin, backEquipment: "elytra"}}
+                                onReady={(ready) => {
+                                    ready.viewer.playerObject.rotation.y = playerObjectRotateY;
+                                    ready.viewer.controls.enableRotate = true;
+                                    ready.viewer.controls.enableZoom = false;
+                                    ready.viewer.controls.enablePan = false;
+                                    ready.viewer.animation = new WalkingAnimation();
+                                }}
+                            />
+                            <div className="infos">
+                                <div className="icon_title">
+                                    <img src={BubbleInfos} alt="" />
+                                    <span>Mes Informations</span>
+                                </div>
+                                <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6 w-full">
+                                    <div className="card">
+                                        <div className="flex justify-between items-center w-full">
+                                            <div className="a_u flex gap-6 items-center">
+                                                <img src={`https://api.frazionz.net/user/${user.uuid}/skin/head?s=32`} alt="avatar" />
+                                                {microsoft?.profileName}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="card">
-                                    <FaDiscord fill={"var(--discord)"} />
-                                    {(socialDiscordData !== null) ? (socialDiscordData !== undefined && socialDiscordData?.result !== false) ? socialDiscordData?.username : "Aucun compte lié" : "Recherche.."}
-                                </div>
-                                <div className="card">
-                                    <img src={Coins} alt="coins" />
-                                    <div className="value">{factionUser?.money} <span className="text-[var(--text-inactive)]">Coins</span></div>
-                                </div>
-                                <div className="card">
-                                    <img src={Money} alt="money" />
-                                    <div className="value">{user.money} <span className="text-[var(--text-inactive)]">Points boutique</span></div>
-                                </div>
-                                <div className="card">
-                                    <img src={Faction} alt="faction" />
-                                    {guildProfile !== null && (
-                                        <>
-                                            {guildProfile.faction_id !== null && (
-                                                <>{guild.name}</>
-                                            )}
-                                            {guildProfile.faction_id == null && (
-                                                <>Aucune faction définis</>
-                                            )}
-                                        </>
-                                    )}
-                                    {guildProfile == null && (
-                                        <>Aucune faction définis</>
-                                    )}
-                                </div>
-                                <div className="card">
-                                    <img src={Cogs} alt="cogs" />
-                                    Créé le {lang.replaceMonth(moment(user.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}
+                                    <div className="card">
+                                        <FaDiscord fill={"var(--discord)"} />
+                                        {(socialDiscordData !== null) ? (socialDiscordData !== undefined && socialDiscordData?.result !== false) ? socialDiscordData?.username : "Aucun compte lié" : "Recherche.."}
+                                    </div>
+                                    <div className="card">
+                                        <img src={Coins} alt="coins" />
+                                        <div className="value">{factionUser?.money} <span className="text-[var(--text-inactive)]">Coins</span></div>
+                                    </div>
+                                    <div className="card">
+                                        <img src={Money} alt="money" />
+                                        <div className="value">{user.money} <span className="text-[var(--text-inactive)]">Points boutique</span></div>
+                                    </div>
+                                    <div className="card">
+                                        <img src={Faction} alt="faction" />
+                                        {guildProfile !== null && (
+                                            <>
+                                                {guildProfile.faction_id !== null && (
+                                                    <>{guild.name}</>
+                                                )}
+                                                {guildProfile.faction_id == null && (
+                                                    <>Aucune faction définis</>
+                                                )}
+                                            </>
+                                        )}
+                                        {guildProfile == null && (
+                                            <>Aucune faction définis</>
+                                        )}
+                                    </div>
+                                    <div className="card">
+                                        <img src={Cogs} alt="cogs" />
+                                        Créé le {lang.replaceMonth(moment(user.created_at).local("fr").tz("Europe/Paris").format('D MMMM YYYY à HH:mm'))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="frame flex-col lg:flex-row">
-                        <div className="menu">
-                            <div className="items">
-                                <span className="title">Autres pages</span>
-                                {menu.map((item, index) => {
-                                    return (
-                                        <motion.button
-                                            key={index}
-                                            whileTap={{ scale: 0.87 }}
-                                            onClick={() => { switchComponentMenu(index) }}
-                                            className={`item ${(index == menuItemActive) ? "active" : ""}`}
-                                        >
-                                            {item.icon} {item.display}
-                                        </motion.button>
+                        <div className="frame flex-col lg:flex-row">
+                            <div className="menu">
+                                <div className="items">
+                                    <span className="title">Autres pages</span>
+                                    {menu.map((item, index) => {
+                                        return (
+                                            <motion.button
+                                                key={index}
+                                                whileTap={{ scale: 0.87 }}
+                                                onClick={() => { switchComponentMenu(index) }}
+                                                className={`item ${(index == menuItemActive) ? "active" : ""}`}
+                                            >
+                                                {item.icon} {item.display}
+                                            </motion.button>
 
-                                    )
-                                })}
+                                        )
+                                    })}
+                                </div>
                             </div>
+                            <AnimatePresence exitBeforeEnter>
+                                <motion.div
+                                    key={menuItemActive ? menuItemActive.component : "empty"}
+                                    initial={{ y: 10, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: -10, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="component"
+                                >
+                                    {menu[menuItemActive].component}
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
-                        <AnimatePresence exitBeforeEnter>
-                            <motion.div
-                                key={menuItemActive ? menuItemActive.component : "empty"}
-                                initial={{ y: 10, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                exit={{ y: -10, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="component"
-                            >
-                                {menu[menuItemActive].component}
-                            </motion.div>
-                        </AnimatePresence>
                     </div>
-                </div>
+                }
+                {microsoft == null &&
+                    <>
+                        <Alert state="infos">
+                            Pour pouvoir accéder à cette page, ainsi qu'au serveur, vous devez impérativement lier votre compte Microsoft avec FrazionZ.
+                        </Alert>
+                        <a className="btn" href={ route('social.msa.start') }>Lier mon compte Microsoft</a>
+                    </>
+                }
             </div>
 
         </Layout>

@@ -29,17 +29,13 @@ export default function Navbar({ auth, navbar, mc, isHome, title, className }) {
 
     if (isOpen)
         window.scrollTo(0, 0);
-    
+
     document.querySelector('body').classList.add('overflow-x-hidden')
 
     document.querySelector('body').classList.remove('overflow-y-hidden')
     document.querySelector('body').classList.remove('overflow-y-auto')
 
     document.querySelector('body').classList.add(isOpen ? 'overflow-y-hidden' : 'overflow-y-auto')
-    
-    async function swipeSidebar(){
-
-    }
 
     return (
         <>

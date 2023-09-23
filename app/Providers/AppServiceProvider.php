@@ -8,7 +8,9 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\NavbarElements;
 use  Illuminate\Pagination\LengthAwarePaginator;
 use Inertia\Inertia;
-
+use App\Socialite\Minecraft\AzuriomMinecraftProvider;
+use App\Socialite\Xbox\AzuriomXboxProvider;
+use Laravel\Socialite\Contracts\Factory;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -28,12 +30,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerSocialiteProviders();
+
         if(env('APP_ENV', 'local') !== "local")
             \URL::forceScheme('https');
-            
+
         Collection::macro('paginate', function ($perPage, $total = null, $page = null, $pageName = 'page') {
             $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
-        
+
             return new LengthAwarePaginator($this->forPage($page, $perPage), $total ?: $this->count(), $perPage, $page, [
                 'path' => LengthAwarePaginator::resolveCurrentPath(),
                 'pageName' => $pageName,
@@ -61,5 +65,21 @@ class AppServiceProvider extends ServiceProvider
                 return session()->get('errors') ? session()->get('errors')->getBag('default')->getMessages() : (object) [];
             }
         ]);
+    }
+
+    protected function registerSocialiteProviders(): void
+    {
+        $socialite = $this->app->make(Factory::class);
+        $socialite->extend('xbox', function ($app) use ($socialite) {
+            $config = config('services.microsoft');
+
+            return $socialite->buildProvider(AzuriomXboxProvider::class, $config);
+        });
+
+        $socialite->extend('minecraft', function ($app) use ($socialite) {
+            $config = config('services.minecraft');
+
+            return $socialite->buildProvider(AzuriomMinecraftProvider::class, $config);
+        });
     }
 }

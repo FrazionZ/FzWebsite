@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\MicrosoftAuth;
 use App\Models\Notifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,11 +53,14 @@ class HandleInertiaRequests extends Middleware
                 $notification->data = json_decode($notification->data, true);
                 $notification->enum = $notification->determineEnum($notification);
             }
-            
+
         }
+
+
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
+                'msa' => $request->session()->get('msa'),
                 'role' => ($isLogged) ? $request->user()->getHigherRole() : null,
                 'isAdmin' => ($isLogged) ? $request->user()->isAdmin() : false,
                 'isAccessAdmin' => ($isLogged) ? ($request->user()->isAdmin() || $request->user()->hasPermission('admin.access')) ? true : false  : false,

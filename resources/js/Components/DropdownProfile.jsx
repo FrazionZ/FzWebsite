@@ -5,7 +5,7 @@ import '../../css/dropdownProfile.css'
 
 
 
-export default function DropdownProfile({ text, items, user }) {
+export default function DropdownProfile({ items, user }) {
 
 
   const itemVariants = {
@@ -45,8 +45,8 @@ export default function DropdownProfile({ text, items, user }) {
           </svg>
         </motion.div>
         <div className="user">
-          <span className='hidden lg:block'>{ user.name }</span>
-          <img src={`https://auth.frazionz.net/skins/face.php?u=${user.id}`} alt="" />
+          <span className='hidden lg:block'>{ user?.msa?.profileName }</span>
+          <img src={`https://auth.frazionz.net/skins/face.php?u=1`} alt="" />
         </div>
       </motion.button>
       <motion.ul
