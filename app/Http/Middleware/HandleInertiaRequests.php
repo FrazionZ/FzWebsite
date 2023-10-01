@@ -6,6 +6,7 @@ use App\Models\MicrosoftAuth;
 use App\Models\Notifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 use App\Models\NavbarElements;
@@ -54,8 +55,8 @@ class HandleInertiaRequests extends Middleware
                 $notification->enum = $notification->determineEnum($notification);
             }
             if($request->user()->uuid !== null) {
-                $profile = Socialite::driver('minecraft')->getProfileMinecraft($user->uuid);
-                $request->session()->put('msa', $profile);
+                $profile = Socialite::driver('minecraft')->getProfileMinecraft($request->user()->uuid);
+                if(!$request->session()->has('msa')) $request->session()->put('msa', $profile);
             }
         }
 
