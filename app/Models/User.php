@@ -21,7 +21,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'id',
-        'name',
         'email',
         'email_verified_at',
         'password',
@@ -99,5 +98,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isPCodeEnable()
     {
         return ($this->pcode_state == 1);
+    }
+
+    public function setUsername($name) {
+        $this->name = $name;
     }
 }

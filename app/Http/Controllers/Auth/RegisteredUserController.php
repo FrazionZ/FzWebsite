@@ -37,9 +37,6 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', Rule::unique('users')->where(function ($query) {
-                return $query->where('deleted', 0);
-            })],
             'email' => 'required|string|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'captcha' => 'required|captcha',
@@ -58,7 +55,6 @@ class RegisteredUserController extends Controller
             return redirect(route('register'))->with("status", $this->toastResponse('error', "Votre pseudo n'est pas valide."));
 
         $user = User::create([
-            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'two_factor_secret' => $request->two_factor_secret,

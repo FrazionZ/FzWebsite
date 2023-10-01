@@ -53,9 +53,11 @@ class HandleInertiaRequests extends Middleware
                 $notification->data = json_decode($notification->data, true);
                 $notification->enum = $notification->determineEnum($notification);
             }
-
+            if($request->user()->uuid !== null) {
+                $profile = Socialite::driver('minecraft')->getProfileMinecraft($user->uuid);
+                $request->session()->put('msa', $profile);
+            }
         }
-
 
         return array_merge(parent::share($request), [
             'auth' => [

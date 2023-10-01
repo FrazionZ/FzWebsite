@@ -122,7 +122,8 @@ class AuthenticatedSessionController extends Controller
         $this->guard()->login($user, $request->filled('remember'));
 
         if($user->uuid != null) {
-            $request->session()->put('msa', Socialite::driver('minecraft')->getProfileMinecraft($user->uuid));
+            $profile = Socialite::driver('minecraft')->getProfileMinecraft($user->uuid);
+            $request->session()->put('msa', $profile);
         }
 
         Logger::log('user.auth.login.successful', null, null, $user);

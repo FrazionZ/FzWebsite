@@ -16,7 +16,6 @@ export default function Register(props) {
     const lang = new Lang(props.language)
 
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -60,51 +59,36 @@ export default function Register(props) {
                     <ul className="mt-2 xl:pl-7">
                         {errorsEntries.map((err, key) => {
                             return (
-                                <li className="mb-2">- {lang.get('auth.register.'+err[1], [{ key: ':attribute', value: err[0] }])}</li>
+                                <li className="mb-2">- {lang.get('auth.register.' + err[1], [{ key: ':attribute', value: err[0] }])}</li>
                             )
                         })}
                     </ul>
-                    
+
                 </Alert>
             }
 
-            <form className='flex gap-12 flex-col justify-center' onSubmit={submit}>
+            <Alert state="infos" className="mb-4">
+                Une fois inscrit, vous devrez lier votre compte Microsoft avec FrazionZ pour définir votre pseudo.
+            </Alert>
+
+            <form className='flex gap-6 flex-col justify-center' onSubmit={submit}>
+                <div>
+                    <InputLabel forInput="email" value="Adresse Mail" />
+
+                    <TextInput
+                        id="email"
+                        type="email"
+                        name="email"
+                        value={data.email}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        placeholder="bob@frazionz.net"
+                        disabled={processing}
+                        handleChange={onHandleChange}
+                        required
+                    />
+                </div>
                 <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6">
-
-                    <div>
-                        <InputLabel forInput="email" value="Adresse Mail" />
-
-                        <TextInput
-                            id="email"
-                            type="email"
-                            name="email"
-                            value={data.email}
-                            className="mt-1 block w-full"
-                            autoComplete="username"
-                            placeholder="bob@frazionz.net"
-                            disabled={processing}
-                            handleChange={onHandleChange}
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <InputLabel forInput="name" value="Pseudonyme" />
-
-                        <TextInput
-                            id="name"
-                            name="name"
-                            value={data.name}
-                            className="mt-1 block w-full"
-                            autoComplete="name"
-                            isFocused={true}
-                            placeholder="SuperBob3000"
-                            disabled={processing}
-                            handleChange={onHandleChange}
-                            required
-                        />
-                    </div>
-
 
                     <div>
                         <InputLabel forInput="password" value="Mot de passe" />

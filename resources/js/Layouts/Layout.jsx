@@ -18,6 +18,8 @@ import Youtube from '../../assets/img/icons/network/youtube'
 
 export default function Layout({ props, mc, title, isHome, children }) {
 
+    console.log(props.auth.user?.name)
+
     return (
         <>
             <div id="app" className='flex relative'>

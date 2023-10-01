@@ -171,10 +171,13 @@ class TwoFAController extends Controller
             ])->save();
         }
 
+
+
         Auth::guard()->login($user, $request->session()->get('login.2fa.remember'));
 
         if($user->uuid != null) {
-            $request->session()->put('msa', Socialite::driver('minecraft')->getProfileMinecraft($user->uuid));
+            $profile = Socialite::driver('minecraft')->getProfileMinecraft($user->uuid);
+            $request->session()->put('msa', $profile);
         }
 
         $request->session()->remove('login.2fa');
