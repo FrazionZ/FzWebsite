@@ -43,7 +43,6 @@ class MinecraftProvider extends XboxProvider
         if(count($profile) > 0) {
             $profile = json_decode(base64_decode($profile[0]['value']), true);
         }
-
         return $profile;
     }
 }

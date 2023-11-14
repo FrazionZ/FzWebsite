@@ -50,10 +50,6 @@ class RegisteredUserController extends Controller
                         ->with("status", $this->toastResponse('error', "Le formulaire est incomplet"));
         }
 
-        $patternUsername = "/^[A-Z0-9_]{3,16}$/i";
-        if(!preg_match($patternUsername, $request->name))
-            return redirect(route('register'))->with("status", $this->toastResponse('error', "Votre pseudo n'est pas valide."));
-
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
