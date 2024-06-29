@@ -28,7 +28,7 @@ class Maintenance
 
     public function handle(Request $request, Closure $next)
     {
-        if (!config('frazionz.maintenance.state', false)) {
+        if (!config('frazionz.maintenance.enabled', false)) {
             return $next($request);
         }
 
